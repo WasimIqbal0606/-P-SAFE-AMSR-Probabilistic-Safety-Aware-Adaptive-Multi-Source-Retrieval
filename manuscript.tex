@@ -61,9 +61,9 @@ beneficial. In selective-escalation settings, the system saves
 $31.4\%$--$42.3\%$ latency while retaining up to $88.1\%$ of the
 quality gain afforded by full re-ranking. In protection/no-benefit
 settings such as ArguAna, it achieves $55\%$--$61\%$ latency
-reduction without statistically significant degradation. All
-claims are supported by paired $t$-tests, Wilcoxon signed-rank
-tests, and $95\%$ bootstrap confidence intervals ($p < 0.05$).
+reduction without statistically significant degradation. Performance
+claims are evaluated using paired $t$-tests, Wilcoxon signed-rank
+tests, bootstrap confidence intervals, and permutation tests.
 These results suggest that calibrated safety-aware routing can
 improve the quality--cost--safety trade-off frontier of retrieval
 cascades.
@@ -336,7 +336,7 @@ zero-degree candidates. Zero-degree candidates indicate isolated
 documents that the semantic graph cannot recover, informing
 graph-expansion necessity.
 
-\subsection{Sub-Millisecond Pipeline Timeline}
+\subsection{Per-Stage Inference Latency Breakdown}
 \label{sec:latency}
 
 Table~\ref{tab:latency} reports the per-stage latency
@@ -364,10 +364,10 @@ Cross-Encoder Re-ranking   & $736.686$ & Selective \\
 \end{tabular}
 \end{table}
 
-The critical observation is that the lightweight ``always-on''
-stages (dense search, feature extraction, router decision) add
-only $\approx 3.1\text{ ms}$ of overhead beyond what a pure dense
-system would incur. The Cross-Encoder at $736.69\text{ ms}$ is
+Excluding BM25 lexical retrieval, the routing-specific overhead from
+feature extraction and router decision is approximately $2.8\text{ ms}$.
+Including the always-on BM25 stage, the non-reranking overhead remains
+small relative to the $736.69\text{ ms}$ Cross-Encoder cost. The Cross-Encoder at $736.69\text{ ms}$ is
 invoked selectively, and the P-SAFE total of $505.03\text{ ms}$
 reflects a $67.8\%$ hybrid activation rate on SciFact
 \textit{high\_recall}, meaning $32.2\%$ of queries are served by
@@ -454,7 +454,7 @@ Hyperparameter tuning for \textit{balanced} and
 The validation scoring function is a weighted composite:
 \begin{equation}
 \label{eq:valscore}
-\mathcal{S}_{\text{val}} = 0.50\,\text{QR}
+\mathcal{S}_{\text{val}} = 0.50\,\text{HGR}
   + 0.20\,\text{LS}
   + 0.15\,\text{RC}
   + 0.10\,\text{HA}
@@ -501,8 +501,9 @@ latency reduction.
 Table~\ref{tab:main} consolidates the empirical evaluation across
 all four BEIR domains and three operating configurations.
 The metric columns are defined as follows:
-\textbf{QR} (Quality Retention vs.\ Deep Hybrid),
-\textbf{LS} (Latency Saving vs.\ Deep Hybrid),
+\textbf{HGR} (Hybrid Gain Retention vs.\ Deep Hybrid),
+\textbf{LS} (Latency Saving, defined as the reduction in Cross-Encoder
+re-ranking latency relative to always-on Deep Hybrid, not total wall-clock latency),
 \textbf{RC} (Recovery Capture on hard queries),
 \textbf{HA} (Harm Avoidance on easy queries),
 \textbf{OGC} (Oracle Gap Closed), and
@@ -530,7 +531,7 @@ Core Operating Configurations}
 \label{tab:main}
 \begin{tabular}{llccccccc p{5cm}}
 \toprule
-Dataset & Mode & QR & LS & RC & HA & OGC & HAR & Taxonomy \\
+Dataset & Mode & HGR & LS & RC & HA & OGC & HAR & Taxonomy \\
 \midrule
 scifact & lite        & 0.000 & 1.000 & 0.000 & 0.0411 & 0.000 & 0.00 & Hybrid-beneficial / P-SAFE under-treatment \\
 scifact & balanced    & 0.644 & 0.379 & 0.667 & 0.0028 & 0.465 & 0.61 & Selective escalation \\
@@ -810,7 +811,7 @@ The four evaluation domains exhibit distinct routing regimes:
 \paragraph{SciFact}
 In \textit{high\_recall} mode, B-P-SAFE significantly improves over
 Dense ($p = 2.19 \times 10^{-3}$) and retains $73.7\%$ of Deep
-Hybrid quality (QR). However, B-P-SAFE remains significantly below
+Hybrid quality (HGR). However, B-P-SAFE remains significantly below
 Deep Hybrid in absolute nDCG@10 ($p = 0.038$), indicating that the
 router trades quality for latency rather than matching the ceiling.
 
@@ -907,10 +908,11 @@ Several limitations should be noted:
           SCIDOCS) remains to be demonstrated.
     \item \textbf{Router baselines.} Current comparisons use the
           Dense and Deep Hybrid boundary conditions. Future work
-          should benchmark against rule-based margin routers,
-          regression-only and classification-only routers, random
-          routing, and cost-aware dispatchers such as FrugalGPT
-          adapters.
+          should benchmark against a margin-based dense confidence router,
+          a BM25/dense disagreement router, a random router with matched
+          activation rate, a regression-only router, a classifier-only
+          router, and always-rerank / never-rerank bounds, along with
+          cost-aware dispatchers such as FrugalGPT adapters.
     \item \textbf{Single-seed results.} All reported numbers use
           seed $42$. Multi-seed evaluation (e.g., seeds 42, 123,
           2026) with cross-seed confidence intervals is needed to
