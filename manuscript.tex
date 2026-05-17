@@ -382,7 +382,7 @@ Cross-Encoder pathway.
     \includegraphics[width=\linewidth]{results_top_tier_psafe/latency_breakdown.png}
     \caption{Chronological latency breakdown of individual inference
     stages on a log scale (measured on the SciFact benchmark). The
-    sub-4\,ms cumulative overhead of feature extraction and routing
+    sub-4\,ms routing-specific overhead of feature extraction and router
     decision gates a highly volatile 736.69\,ms Cross-Encoder pathway.}
     \label{fig:latency_breakdown}
 \end{figure}
@@ -485,8 +485,8 @@ Two boundary conditions define the evaluation frame:
         BM25 lexical retrieval, semantic graph expansion, score
         fusion, and Cross-Encoder re-ranking
         (\texttt{BAAI/bge-reranker-v2-m3}) over 400 candidate
-        documents. This represents the maximum quality, maximum
-        compute operating point: the performance ceiling.
+        documents. This represents the maximum-compute operating point and the
+        expected upper-quality reference in domains where hybrid re-ranking is beneficial.
 \end{itemize}
 
 The P-SAFE router navigates between these two extremes,
@@ -501,7 +501,11 @@ latency reduction.
 Table~\ref{tab:main} consolidates the empirical evaluation across
 all four BEIR domains and three operating configurations.
 The metric columns are defined as follows:
-\textbf{HGR} (Hybrid Gain Retention vs.\ Deep Hybrid),
+\textbf{HGR} (Hybrid Gain Retention vs.\ Deep Hybrid):
+\begin{equation}
+\text{HGR} = \frac{\bar{q}_{\text{P-SAFE}} - \bar{q}_{\text{dense}}}{\bar{q}_{\text{DeepHybrid}} - \bar{q}_{\text{dense}}}
+\end{equation}
+When Deep Hybrid does not improve over Dense, HGR is clipped to 0 and the dataset is treated as protection/no-benefit.
 \textbf{LS} (Latency Saving, defined as the reduction in Cross-Encoder
 re-ranking latency relative to always-on Deep Hybrid, not total wall-clock latency),
 \textbf{RC} (Recovery Capture on hard queries),
@@ -825,8 +829,8 @@ quality on this domain while saving $42.3\%$ latency.
 \paragraph{NFCorpus}
 The strongest result: B-P-SAFE significantly outperforms Dense
 ($p = 4.35 \times 10^{-3}$, balanced) and is not significantly
-worse than Deep Hybrid ($p = 0.442$), achieving $88.1\%$ quality
-retention with $26.5\%$ latency saving.
+worse than Deep Hybrid ($p = 0.442$), achieving $88.1\%$ hybrid gain
+retention with $26.5\%$ re-ranking latency saving.
 
 \paragraph{ArguAna}
 Protection/no-benefit regime. Deep Hybrid is not reliably better
