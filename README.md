@@ -1,109 +1,101 @@
-# Neuromorphic Quantum-Cognitive Task Management System
+# Adaptive Hybrid Retrieval Controller (AHRC)
 
-A revolutionary task management system inspired by quantum mechanics and neuromorphic computing principles, featuring advanced neural embeddings, task entanglement mechanics, and entropy-based workload analytics.
+An uncertainty-aware, dynamic retrieval framework that optimizes the cost-quality tradeoff in vector search via multi-signal uncertainty estimation, adaptive candidate sizing, and selective graph expansion.
 
-## 🧠 Advanced Features
+## 🚀 Overview
+Most dense retrieval systems statically retrieve a fixed $k$ number of candidates (e.g., `k=10`) regardless of query difficulty. This rigid approach either wastes compute on easy queries or underperforms on complex, ambiguous queries.
 
-### Quantum-Inspired Task Framework
-- **Superposition State Management:** Tasks exist in multiple potential states (PENDING) until observation
-- **Quantum Entanglement:** Bi-directional relationships between semantically similar tasks
-- **Wave Function Collapse:** Determine optimal resolution paths through superposition collapse
-- **Entropy Decay:** Automatic decay of task entropy over time, simulating quantum decoherence
-- **Multiverse Paths:** Each task can have multiple potential resolution paths
+The **Adaptive Hybrid Retrieval Controller (AHRC)** solves this by introducing a dynamic control policy. By estimating the "uncertainty" of a query on-the-fly, AHRC decides whether to halt retrieval early, expand the candidate pool, or traverse an underlying task relationship graph to rescue difficult queries.
 
-### Neuromorphic Intelligence
-- **Neural Embeddings Engine:** Converts task descriptions into high-dimensional vector space for semantic understanding
-- **Adaptive Similarity Thresholds:** Self-adjusting thresholds based on the task ecosystem
-- **Contextual Search:** Search and filter tasks using natural language processing
-- **Automatic Tag Suggestion:** AI-powered tag suggestions based on task descriptions
-- **Semantic Relationship Discovery:** Automatic detection of related tasks based on content
+### What This System Does
+✅ **System-level innovation**: Replaces static retrieval with dynamic inference pipelines.  
+✅ **Adaptive inference design**: Allocates compute budget (k-size, reranking depth) dynamically per query.  
+✅ **Hybrid retrieval**: Combines dense approximate nearest neighbors (FAISS HNSW) with semantic graph traversals.  
+✅ **Cost-quality tradeoffs**: Demonstrates Pareto-optimal performance for Retrieval-Augmented Generation (RAG) and dense search.  
 
-### Advanced Analytics
-- **Entropy Visualization:** Track system complexity through quantum-inspired entropy metrics
-- **Workload Distribution Analysis:** Identify overloaded work zones and assignees
-- **Entanglement Network Mapping:** Interactive visualization of task relationships
-- **Priority Cascades:** Analyze how task priorities affect entangled tasks
-- **System Health Monitoring:** Track overall system state and performance
+### Domains
+- Retrieval Systems (IR / Search)
+- Efficient AI (Compute-aware inference)
+- Adaptive Decision Policies
+- LLM / RAG Infrastructure
 
-### Productivity Enhancement
-- **Optimization Suggestions:** AI-powered suggestions for task redistribution
-- **Entanglement Suggestions:** Automatic suggestions for potential task relationships
-- **Task Superposition Analysis:** Multiple potential resolution paths with probability weighting
-- **Work Pattern Recognition:** Analytics on work patterns and team efficiency
-- **Cognitive Load Balancing:** Optimize workload distribution across team members
+---
 
-## 🔬 System Architecture
+## 🧠 Core Architecture
 
-The system follows a modular, quantum-inspired architecture:
+The AHRC pipeline consists of 5 modular stages executed sequentially for each query:
 
-1. **Quantum Core (quantum_core.py):** Central processing unit that manages the quantum-inspired task states, relationships, and transformations
-   
-2. **Neural Embedding Engine (embedding_engine.py):** Provides semantic understanding through vector embeddings, enabling the system to understand relationships between tasks
-   
-3. **Persistence Layer (persistence.py):** Handles data persistence, system snapshots, and temporal versioning
-   
-4. **Visualization Engine (visualization.py):** Creates interactive visualizations of the task multiverse and network relationships
-   
-5. **REST API (api.py):** Exposes system functionality through FastAPI endpoints for integration
-   
-6. **Streamlit UI (main.py):** Interactive web interface for task management and analytics
+1. **Initial Dense Retrieval (Staged)**: Performs a fast, approximate nearest-neighbor search via FAISS HNSW for a small initial candidate set.
+2. **Uncertainty Estimation (Quality Guard)**: Computes a multi-signal uncertainty score $U \in [0,1]$ using:
+   - **Margin**: Gap between top-1 and top-2 similarities.
+   - **Spread**: Gap between top-1 and top-5 similarities.
+   - **Graph Ambiguity**: Structural connectivity of the candidate pool.
+   - **Historical Context**: Rolling confidence scores for specific domains.
+3. **Adaptive Controller**: Maps the uncertainty score $U$ to a dynamic `RetrievalDecision`.
+   - *Confident queries* stop early.
+   - *Uncertain queries* trigger deeper search ($k \uparrow$).
+4. **Selective Graph Expansion**: If uncertainty remains high, the controller expands the top-3 dense seeds by traversing a semantic task relationship graph, rescuing hard queries that dense embeddings alone fail to capture.
+5. **Dynamic Reranking**: Executes an exact inner-product rerank (or cross-encoder) exclusively on the expanded pool of high-uncertainty queries.
 
-## 💻 Technology Stack
+---
 
-- **Core Framework:** Python with quantum-inspired algorithms
-- **Neural Processing:** Vector embeddings with optimized similarity detection
-- **Frontend:** Streamlit with reactive data flow and advanced visualizations
-- **Data Processing:** NumPy and Pandas for efficient data manipulation
-- **Visualization:** Interactive network graphs, heatmaps, and trend analysis
-- **Performance Optimization:** Streamlit caching for high-performance UI
+## 🔬 Experimental Framework & Ablation Study
 
-## 🚀 Deployment on Streamlit
+This repository includes a fully synthetic benchmarking suite designed to generate mathematically defensible, rigorous evaluation of the AHRC.
 
-This application is optimized for deployment on Streamlit Cloud, providing a seamless, interactive experience for quantum-inspired task management.
+### Benchmark Generation (`dataset_generator.py`)
+Generates tasks with localized multi-level ground-truth relevance (0–3 scale) using `all-MiniLM-L6-v2` embeddings, ensuring that relevance isn't purely distance-based but semantic and structural.
 
-### Deployment Steps
+### Built-in Baselines (`baselines.py`)
+The system evaluates AHRC against controlled baselines to ensure scientific rigor:
+- **BM25**: Standard lexical matching using `rank-bm25`.
+- **Dense Fixed-k**: Standard static FAISS retrieval.
+- **Dense + Graph Fixed**: Always-on, non-adaptive graph expansion.
 
-1. **Create a Streamlit Account**
-   - Sign up at [https://streamlit.io](https://streamlit.io)
-   - Verify your email and log in to your account
+### Evaluation Metrics (`evaluation.py`)
+The framework focuses on metrics relevant to Efficient AI and IR:
+- **Quality**: $Recall@k$, $nDCG@k$, $MRR$.
+- **Cost / Latency**: Candidates explored, $p50/p95/p99$ latency ($ms$), cost-per-recall ratios.
 
-2. **Connect Your GitHub Repository**
-   - Push this project to your GitHub repository
-   - In Streamlit Cloud, connect to your GitHub account
-   - Select the repository containing this project
+---
 
-3. **Configure Deployment Settings**
-   - Set the main file path to `main.py`
-   - Add the following secrets in the Streamlit dashboard if needed:
-     - `OPENAI_API_KEY` (if using LLM features)
-   - No additional environment variables are required
+## ⚙️ Running the Research Suite
 
-4. **Deploy the Application**
-   - Click "Deploy" in the Streamlit Cloud dashboard
-   - Wait for the build and deployment process to complete
-   - Access your application via the provided Streamlit URL
-
-5. **Custom Domain (Optional)**
-   - In Streamlit Cloud settings, you can configure a custom subdomain
-   - For full custom domains, additional DNS configuration may be required
-
-### Local Development
-
-To run and develop this application locally:
-
+### 1. Install Dependencies
 ```bash
-# Install dependencies
-pip install streamlit fastapi uvicorn numpy pandas matplotlib requests pillow
-
-# Run the application
-streamlit run main.py
+pip install -r requirements.txt
+pip install rank-bm25
 ```
 
-## 📊 Key Use Cases
+### 2. Run the Full Experiment Suite
+Runs dataset generation, index building, all baselines, and multiple AHRC modes (Lite, Balanced, High-Recall) to plot the Pareto frontier.
+```bash
+python -m ahrc.run_experiments --tasks 50000 --queries 1000 --index hnsw
+```
 
-- **Complex Project Management:** Manage interconnected tasks with semantic understanding
-- **Research & Development Teams:** Track multifaceted research paths and potential outcomes
-- **Software Development:** Manage feature development, bug fixes, and their relationships
-- **Cross-Functional Collaboration:** Visualize connections between work across departments
-- **Product Development:** Track multiple potential product paths and their interdependencies
-- **Decision Making:** Explore multiple resolution paths before committing to action
+### 3. Run the Ablation Study
+Systematically disables components (Uncertainty, Adaptation, Graph Expansion) to measure isolated algorithmic contributions.
+```bash
+python -m ahrc.ablation_study --tasks 10000 --queries 200
+```
+
+### 4. Visualizations
+The framework automatically generates publication-quality Matplotlib plots in the `ahrc_results/` directory:
+- `accuracy_vs_latency.png`
+- `cost_vs_recall.png`
+- `ablation_bars.png`
+- $nDCG@k$ and $Recall@k$ scaling curves.
+
+---
+
+## 📈 Current Operating Modes
+
+The controller is calibrated for a Pareto frontier of cost-performance tradeoffs:
+- **AHRC-lite**: Aggressively shrinks budget for clear queries (min $k=6$, max $k=12$). Best for maximum throughput.
+- **AHRC-balanced**: Preserves near-baseline $nDCG$ while reducing candidate exploration.
+- **AHRC-high-recall**: Triggers deep graph expansion for edge-case queries, maximizing quality under a strict upper bound.
+
+---
+
+## 📝 License
+MIT License. Feel free to use this framework to benchmark adaptive retrieval layers in your own LLM/RAG infrastructures.

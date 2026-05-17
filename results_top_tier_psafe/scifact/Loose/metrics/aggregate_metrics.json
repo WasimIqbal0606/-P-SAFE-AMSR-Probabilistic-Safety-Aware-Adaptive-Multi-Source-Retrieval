@@ -1,0 +1,154 @@
+{
+  "Dense": {
+    "method": "Dense",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.7780701754385965
+    },
+    "ndcg_at_k": {
+      "10": 0.6465710417012945
+    },
+    "mrr": 0.6121136173767753,
+    "latency_mean_ms": 0.32065329095961426,
+    "latency_p50_ms": 0.32175000524148345,
+    "latency_p95_ms": 0.3925449913367629,
+    "latency_p99_ms": 0.3993249995983206,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  },
+  "Dense+BM25": {
+    "method": "Dense+BM25",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.7530701754385966
+    },
+    "ndcg_at_k": {
+      "10": 0.6201898525226713
+    },
+    "mrr": 0.5831558061821219,
+    "latency_mean_ms": 12.495032235931017,
+    "latency_p50_ms": 11.711500003002584,
+    "latency_p95_ms": 22.219115012558177,
+    "latency_p99_ms": 24.715483999461878,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  },
+  "Dense+Graph": {
+    "method": "Dense+Graph",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.7780701754385965
+    },
+    "ndcg_at_k": {
+      "10": 0.6465710417012945
+    },
+    "mrr": 0.6121136173767753,
+    "latency_mean_ms": 0.3541078961126531,
+    "latency_p50_ms": 0.34819998836610466,
+    "latency_p95_ms": 0.48502499994356174,
+    "latency_p99_ms": 0.5340850070933812,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  },
+  "Dense+BM25+Graph": {
+    "method": "Dense+BM25+Graph",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.7912280701754386
+    },
+    "ndcg_at_k": {
+      "10": 0.6388637451251235
+    },
+    "mrr": 0.5932252506265664,
+    "latency_mean_ms": 12.154841447275095,
+    "latency_p50_ms": 11.316549993352965,
+    "latency_p95_ms": 22.21217500191414,
+    "latency_p99_ms": 26.071715999278243,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  },
+  "Dense+BM25+CE": {
+    "method": "Dense+BM25+CE",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.8394736842105263
+    },
+    "ndcg_at_k": {
+      "10": 0.7334098529079122
+    },
+    "mrr": 0.7036340852130326,
+    "latency_mean_ms": 383.0782375001658,
+    "latency_p50_ms": 359.797150013037,
+    "latency_p95_ms": 533.5525400019832,
+    "latency_p99_ms": 663.8379379903205,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  },
+  "Dense+BM25+Graph+CE": {
+    "method": "Dense+BM25+Graph+CE",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.8394736842105263
+    },
+    "ndcg_at_k": {
+      "10": 0.7334098529079122
+    },
+    "mrr": 0.7036340852130326,
+    "latency_mean_ms": 387.13540789390925,
+    "latency_p50_ms": 363.9100000000326,
+    "latency_p95_ms": 538.9355699953738,
+    "latency_p99_ms": 666.6410549994914,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  },
+  "Deep Hybrid": {
+    "method": "Deep Hybrid",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.8460526315789473
+    },
+    "ndcg_at_k": {
+      "10": 0.735080536326432
+    },
+    "mrr": 0.704093567251462,
+    "latency_mean_ms": 749.7678421038329,
+    "latency_p50_ms": 715.1106000092113,
+    "latency_p95_ms": 1005.0952049961776,
+    "latency_p99_ms": 1150.1156999985692,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  },
+  "P-SAFE-AMSR": {
+    "method": "P-SAFE-AMSR",
+    "num_queries": 152,
+    "recall_at_k": {
+      "10": 0.7999999999999999
+    },
+    "ndcg_at_k": {
+      "10": 0.6821483304405446
+    },
+    "mrr": 0.6493682121971596,
+    "latency_mean_ms": 152.17491776389866,
+    "latency_p50_ms": 0.34875000710599124,
+    "latency_p95_ms": 794.8226000124121,
+    "latency_p99_ms": 986.5100859990349,
+    "candidates_mean": 0.0,
+    "candidates_total": 0,
+    "k_mean": 10.0,
+    "cost_per_recall": 0.0
+  }
+}

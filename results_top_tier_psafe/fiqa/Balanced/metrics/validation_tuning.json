@@ -1,0 +1,14 @@
+{
+    "gain_threshold": 0.25,
+    "harm_threshold": 0.4,
+    "lambda_latency": 1e-05,
+    "lambda_harm": 0.1,
+    "lambda_recovery": 0.4,
+    "use_lcb_safety": false,
+    "val_score": 0.6341,
+    "val_qr": 0.8794,
+    "val_ls": 0.3393,
+    "val_rc": 0.6583,
+    "val_ha": 0.0298,
+    "val_har": 0.2812
+}

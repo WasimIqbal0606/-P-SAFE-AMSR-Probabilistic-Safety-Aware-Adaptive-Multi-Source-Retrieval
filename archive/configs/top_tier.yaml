@@ -1,0 +1,35 @@
+# P-SAFE-AMSR Experiment Configuration
+# Single model pair: BGE-M3 + BGE-reranker-v2-m3
+# =============================================
+
+datasets:
+  - scifact
+  - fiqa
+  - nfcorpus
+  - arguana
+  - trec-covid
+  - scidocs
+
+# Single model pair only
+embedding_model: BAAI/bge-m3
+reranker_model: BAAI/bge-reranker-v2-m3
+
+# GPU settings for RTX 5070 Ti (16GB)
+hardware:
+  device: auto
+  embedding_batch_size: 16
+  reranker_batch_size: 8
+  use_fp16: true
+  use_cache: true
+
+# Evaluation
+evaluation:
+  max_queries: null    # null = all queries
+  seed: 42
+  leakage_safe: true
+  train_ratio: 0.4
+  val_ratio: 0.1
+  test_ratio: 0.5
+
+output:
+  results_dir: results_top_tier_psafe

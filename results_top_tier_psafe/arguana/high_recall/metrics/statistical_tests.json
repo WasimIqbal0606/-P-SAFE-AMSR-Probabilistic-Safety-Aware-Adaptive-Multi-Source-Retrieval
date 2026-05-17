@@ -1,0 +1,114 @@
+{
+    "P-SAFE vs Dense": {
+        "comparison": "B-P-SAFE vs Dense",
+        "n_queries": 706,
+        "mean_delta": 0.011454512502470015,
+        "median_delta": 0.0,
+        "std_delta": 0.22078460051154825,
+        "baseline_mean": 0.39457959764510603,
+        "system_mean": 0.406034110147576,
+        "wins": 128,
+        "ties": 450,
+        "losses": 128,
+        "effect_size": {
+            "cohens_d": 0.04489884323225086,
+            "cohens_dz": 0.05184418360845926,
+            "magnitude": "negligible"
+        },
+        "paired_ttest": {
+            "t_statistic": 1.3775342021392831,
+            "p_value": 0.1687842881408605,
+            "significant": false
+        },
+        "wilcoxon": {
+            "w_statistic": 14911.5,
+            "p_value": 0.19492736484684647,
+            "significant": false,
+            "n_nonzero": 256
+        },
+        "bootstrap_ci": {
+            "ci_low": -0.004958631267460379,
+            "ci_high": 0.027822428163757806,
+            "ci_level": 0.95,
+            "significant": false,
+            "n_bootstrap": 5000
+        },
+        "permutation_test": {
+            "p_value": 0.161,
+            "significant": false,
+            "n_permutations": 2000
+        },
+        "easy_queries": {
+            "n": 211,
+            "baseline_mean": 0.6309297535714575,
+            "system_mean": 0.5976642799252269,
+            "mean_delta": -0.03326547364623073,
+            "degradation": true,
+            "improvement": false
+        },
+        "hard_queries": {
+            "n": 495,
+            "baseline_mean": 0.2938323594623581,
+            "system_mean": 0.32434933070700156,
+            "mean_delta": 0.030516971244643462,
+            "degradation": false,
+            "improvement": true
+        }
+    },
+    "P-SAFE vs Hybrid": {
+        "comparison": "B-P-SAFE vs Hybrid",
+        "n_queries": 706,
+        "mean_delta": 0.014096981127304713,
+        "median_delta": 0.0,
+        "std_delta": 0.2574096319313266,
+        "baseline_mean": 0.3919371290202713,
+        "system_mean": 0.406034110147576,
+        "wins": 164,
+        "ties": 421,
+        "losses": 121,
+        "effect_size": {
+            "cohens_d": 0.0461578692461081,
+            "cohens_dz": 0.054725978146657,
+            "magnitude": "negligible"
+        },
+        "paired_ttest": {
+            "t_statistic": 1.4541053864766873,
+            "p_value": 0.14636211825555287,
+            "significant": false
+        },
+        "wilcoxon": {
+            "w_statistic": 18068.0,
+            "p_value": 0.0969616622328708,
+            "significant": false,
+            "n_nonzero": 285
+        },
+        "bootstrap_ci": {
+            "ci_low": -0.004613801097260321,
+            "ci_high": 0.032384773295020465,
+            "ci_level": 0.95,
+            "significant": false,
+            "n_bootstrap": 5000
+        },
+        "permutation_test": {
+            "p_value": 0.1415,
+            "significant": false,
+            "n_permutations": 2000
+        },
+        "easy_queries": {
+            "n": 211,
+            "baseline_mean": 0.49336573726969285,
+            "system_mean": 0.5976642799252269,
+            "mean_delta": 0.10429854265553395,
+            "degradation": false,
+            "improvement": true
+        },
+        "hard_queries": {
+            "n": 495,
+            "baseline_mean": 0.3487019040897097,
+            "system_mean": 0.32434933070700156,
+            "mean_delta": -0.02435257338270816,
+            "degradation": true,
+            "improvement": false
+        }
+    }
+}

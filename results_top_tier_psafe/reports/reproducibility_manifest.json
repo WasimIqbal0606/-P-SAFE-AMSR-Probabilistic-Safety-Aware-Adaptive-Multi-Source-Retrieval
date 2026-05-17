@@ -1,0 +1,19 @@
+{
+    "datasets": [
+        "scifact",
+        "fiqa",
+        "nfcorpus",
+        "arguana",
+        "trec-covid"
+    ],
+    "modes": [
+        "lite",
+        "balanced",
+        "high_recall"
+    ],
+    "n_results": 12,
+    "embedding": "BAAI/bge-m3",
+    "reranker": "BAAI/bge-reranker-v2-m3",
+    "tuning": "validation-only grid search",
+    "note": "Multi-dataset evidence generated. Final research claim depends on statistical significance, robustness across seeds, and comparison with strong baselines."
+}

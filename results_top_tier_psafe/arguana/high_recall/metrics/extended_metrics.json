@@ -1,0 +1,18 @@
+{
+    "best_hybrid_name": "Deep Hybrid",
+    "best_hybrid_ndcg": 0.3919371290202713,
+    "best_hybrid_latency": 1251.5925444761838,
+    "quality_retention_vs_best_hybrid": 0.0,
+    "quality_retention_vs_hybrid": 0.0,
+    "latency_saving_vs_best_hybrid": 0.550764875016873,
+    "harm_avoidance": 0.12878661587828089,
+    "recovery_capture": 0.47969042215488367,
+    "oracle_gap": 0.11483787330086676,
+    "oracle_gap_closed": 0.09069836181816232,
+    "safe_gain": -0.0003243627172342528,
+    "taxonomy": "Protection / No-benefit",
+    "dataset": "arguana",
+    "hybrid_activation_rate": 0.46458923512747874,
+    "p_value_vs_dense": 0.1687842881408605,
+    "p_value_vs_hybrid": 0.14636211825555287
+}

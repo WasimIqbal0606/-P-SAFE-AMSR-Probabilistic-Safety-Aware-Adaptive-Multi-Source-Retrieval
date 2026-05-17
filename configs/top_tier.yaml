@@ -1,0 +1,73 @@
+datasets:
+  - scifact
+  - fiqa
+  - nfcorpus
+  - trec-covid
+  - arguana
+  - scidocs
+
+model_profiles:
+  bge_m3:
+    embedding_model: BAAI/bge-m3
+    reranker_model: BAAI/bge-reranker-v2-m3
+  strong_english:
+    embedding_model: BAAI/bge-base-en-v1.5
+    reranker_model: BAAI/bge-reranker-large
+
+router_modes:
+  lite:
+    gain_threshold: 0.60
+    harm_threshold: 0.20
+    lambda_latency: 0.00020
+    lambda_harm: 0.50
+    lambda_candidate: 0.0001
+    lambda_recovery: 0.10
+    use_lcb_safety: true
+  balanced:
+    gain_threshold: 0.40
+    harm_threshold: 0.40
+    lambda_latency: 0.00005
+    lambda_harm: 0.25
+    lambda_candidate: 0.0001
+    lambda_recovery: 0.25
+    use_lcb_safety: false
+  high_recall:
+    gain_threshold: 0.25
+    harm_threshold: 0.55
+    lambda_latency: 0.00001
+    lambda_harm: 0.15
+    lambda_candidate: 0.00001
+    lambda_recovery: 0.35
+    use_lcb_safety: false
+
+threshold_grid:
+  gain_thresholds: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+  harm_thresholds: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8]
+
+lambda_grid:
+  lambda_latency: [0.00001, 0.00005, 0.00020, 0.001]
+  lambda_harm: [0.10, 0.15, 0.25, 0.50]
+
+seeds: [42, 123, 2026]
+
+hardware:
+  batch_size: 16
+  reranker_batch_size: 8
+  precision: fp16
+  device: auto
+
+cache:
+  paths:
+    embeddings: results_top_tier_psafe/cache/embeddings
+    features: results_top_tier_psafe/cache/features
+
+output_paths:
+  results_dir: results_top_tier_psafe
+
+evaluation:
+  relevance_threshold: 1
+  no_max_queries: true
+  leakage_safe: true
+  train_ratio: 0.4
+  val_ratio: 0.1
+  test_ratio: 0.5

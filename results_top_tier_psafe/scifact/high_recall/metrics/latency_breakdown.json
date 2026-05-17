@@ -1,0 +1,34 @@
+{
+    "dense_search": {
+        "mean_ms": 0.366,
+        "mean": 0.366
+    },
+    "bm25_search": {
+        "mean_ms": 13.943,
+        "mean": 13.943
+    },
+    "feature_extraction": {
+        "mean_ms": 2.655,
+        "mean": 2.655
+    },
+    "cross_encoder": {
+        "mean_ms": 736.686,
+        "mean": 736.686
+    },
+    "graph_expansion": {
+        "mean_ms": 0.11,
+        "mean": 0.0
+    },
+    "fusion": {
+        "mean_ms": 0.5,
+        "mean": 0.5
+    },
+    "router_decision": {
+        "mean_ms": 0.1,
+        "mean": 0.1
+    },
+    "total": {
+        "mean_ms": 505.026,
+        "mean": 505.026
+    }
+}

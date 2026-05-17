@@ -1,0 +1,18 @@
+{
+    "best_hybrid_name": "Deep Hybrid",
+    "best_hybrid_ndcg": 0.7330237288186434,
+    "best_hybrid_latency": 732.6650105303423,
+    "quality_retention_vs_best_hybrid": 0.6441185753319958,
+    "quality_retention_vs_hybrid": 0.6441185753319958,
+    "latency_saving_vs_best_hybrid": 0.3790707732902312,
+    "harm_avoidance": 0.0027682656360186048,
+    "recovery_capture": 0.6667917868206201,
+    "oracle_gap": 0.06404927645462843,
+    "oracle_gap_closed": 0.4650749958838431,
+    "safe_gain": 0.13592398838019287,
+    "taxonomy": "Selective escalation",
+    "dataset": "scifact",
+    "hybrid_activation_rate": 0.6118421052631579,
+    "p_value_vs_dense": 0.005838804374136328,
+    "p_value_vs_hybrid": 0.011178169769358558
+}

@@ -1,0 +1,52 @@
+[
+    {
+        "plot_name": "pareto_quality_latency",
+        "reason": "missing aggregate_metrics.json",
+        "missing_input_file": "aggregate_metrics.json"
+    },
+    {
+        "plot_name": "per_query_delta_waterfall",
+        "reason": "missing per_query_metrics.csv",
+        "missing_input_file": "per_query_metrics.csv"
+    },
+    {
+        "plot_name": "action_distribution",
+        "reason": "missing action_predictions.csv",
+        "missing_input_file": "action_predictions.csv"
+    },
+    {
+        "plot_name": "rejected_action_reasons",
+        "reason": "missing data files",
+        "missing_input_file": "rejected_action_reasons.json"
+    },
+    {
+        "plot_name": "p_gain_calibration",
+        "reason": "missing probability_calibration.json",
+        "missing_input_file": "probability_calibration.json"
+    },
+    {
+        "plot_name": "p_harm_calibration",
+        "reason": "missing probability_calibration.json",
+        "missing_input_file": "probability_calibration.json"
+    },
+    {
+        "plot_name": "oracle_gap",
+        "reason": "missing extended_metrics.json",
+        "missing_input_file": "extended_metrics.json"
+    },
+    {
+        "plot_name": "graph_contribution",
+        "reason": "missing graph_contribution.json",
+        "missing_input_file": "graph_contribution.json"
+    },
+    {
+        "plot_name": "latency_breakdown",
+        "reason": "missing latency_breakdown.json",
+        "missing_input_file": "latency_breakdown.json"
+    },
+    {
+        "plot_name": "quality_retention_vs_latency_saving",
+        "reason": "missing extended_metrics.json",
+        "missing_input_file": "extended_metrics.json"
+    }
+]

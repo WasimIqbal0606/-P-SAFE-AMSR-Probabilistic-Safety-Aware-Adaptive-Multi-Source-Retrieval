@@ -1,0 +1,14 @@
+[
+    {"plot_name": "probability_calibration_p_gain", "reason": "Only plotted diagonal line; no real calibration data", "missing_input_file": "probability_calibration.json"},
+    {"plot_name": "probability_calibration_p_harm", "reason": "Only plotted diagonal line; no real calibration data", "missing_input_file": "probability_calibration.json"},
+    {"plot_name": "predicted_vs_realized_utility", "reason": "Hardcoded [0,1] scatter; no real utility predictions", "missing_input_file": "action_predictions.csv"},
+    {"plot_name": "oracle_regret_by_dataset", "reason": "Hardcoded to SciFact with fake 0.05 value", "missing_input_file": "oracle_action_distribution.json"},
+    {"plot_name": "hard_query_recovery", "reason": "Fake boxplot data [0.1,0.2],[0.15,0.3]", "missing_input_file": "safety_metrics.json"},
+    {"plot_name": "easy_query_harm", "reason": "Fake boxplot data [-0.1,0],[-0.01,0]", "missing_input_file": "safety_metrics.json"},
+    {"plot_name": "latency_quality_pareto", "reason": "Hardcoded [50,1300] and [0.6,0.65]", "missing_input_file": "aggregate_metrics.json"},
+    {"plot_name": "source_attribution", "reason": "Fake pie chart [40,30,30]", "missing_input_file": "source_attribution.json"},
+    {"plot_name": "graph_contribution", "reason": "Fake bars [0.1,0.15]", "missing_input_file": "graph_contribution.json"},
+    {"plot_name": "router_confusion_matrix", "reason": "Used np.eye(4) identity matrix", "missing_input_file": "action_predictions.csv"},
+    {"plot_name": "p_safe_decision_boundary", "reason": "Fake scatter [0.1,0.9],[0.2,0.8]", "missing_input_file": "action_predictions.csv"},
+    {"plot_name": "candidate_recall_depth_curve", "reason": "Fake recall values [0.5,0.7,0.8]", "missing_input_file": "per_query_metrics.csv"}
+]

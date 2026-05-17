@@ -1,0 +1,112 @@
+{
+  "Dense+BM25_gain_brier": 0.14999179333439913,
+  "Dense+BM25_gain_cal_curve": {
+    "frac_pos": [
+      0.18210862619808307,
+      0.15384615384615385
+    ],
+    "mean_pred": [
+      0.12958365585150683,
+      0.22049304531500197
+    ]
+  },
+  "Dense+BM25_gain_ece": 0.05958593090771218,
+  "Dense+BM25_harm_brier": 0.24335348989179886,
+  "Dense+BM25_harm_cal_curve": {
+    "frac_pos": [
+      0.4,
+      0.5,
+      0.7272727272727273
+    ],
+    "mean_pred": [
+      0.3235353484825765,
+      0.48085949314319293,
+      0.6243496673485187
+    ]
+  },
+  "Dense+BM25_harm_ece": 0.0661760727661464,
+  "Dense+BM25+Graph_gain_brier": 0.11955350603697931,
+  "Dense+BM25+Graph_gain_cal_curve": {
+    "frac_pos": [
+      0.13803680981595093
+    ],
+    "mean_pred": [
+      0.11303118720140061
+    ]
+  },
+  "Dense+BM25+Graph_gain_ece": 0.02500562261455032,
+  "Dense+BM25+Graph_harm_brier": 0.21039667781560217,
+  "Dense+BM25+Graph_harm_cal_curve": {
+    "frac_pos": [
+      0.21428571428571427,
+      0.31493506493506496,
+      0.25
+    ],
+    "mean_pred": [
+      0.1908306001984493,
+      0.2889387412439786,
+      0.4192681837854502
+    ]
+  },
+  "Dense+BM25+Graph_harm_ece": 0.07290654052126717,
+  "Dense+BM25+CE_gain_brier": 0.2160839235309602,
+  "Dense+BM25+CE_gain_cal_curve": {
+    "frac_pos": [
+      0.3128834355828221
+    ],
+    "mean_pred": [
+      0.27271736343425684
+    ]
+  },
+  "Dense+BM25+CE_gain_ece": 0.04016607214856527,
+  "Dense+BM25+CE_harm_brier": 0.16905276311060835,
+  "Dense+BM25+CE_harm_cal_curve": {
+    "frac_pos": [
+      0.2147239263803681
+    ],
+    "mean_pred": [
+      0.23389513525772068
+    ]
+  },
+  "Dense+BM25+CE_harm_ece": 0.019171208877352575,
+  "Dense+BM25+Graph+CE_gain_brier": 0.2160839235309602,
+  "Dense+BM25+Graph+CE_gain_cal_curve": {
+    "frac_pos": [
+      0.3128834355828221
+    ],
+    "mean_pred": [
+      0.27271736343425684
+    ]
+  },
+  "Dense+BM25+Graph+CE_gain_ece": 0.04016607214856527,
+  "Dense+BM25+Graph+CE_harm_brier": 0.16905276311060835,
+  "Dense+BM25+Graph+CE_harm_cal_curve": {
+    "frac_pos": [
+      0.2147239263803681
+    ],
+    "mean_pred": [
+      0.23389513525772068
+    ]
+  },
+  "Dense+BM25+Graph+CE_harm_ece": 0.019171208877352575,
+  "Deep Hybrid_gain_brier": 0.21796281224508093,
+  "Deep Hybrid_gain_cal_curve": {
+    "frac_pos": [
+      0.31901840490797545
+    ],
+    "mean_pred": [
+      0.2838562364372181
+    ]
+  },
+  "Deep Hybrid_gain_ece": 0.03516216847075737,
+  "Deep Hybrid_harm_brier": 0.17689624278521945,
+  "Deep Hybrid_harm_cal_curve": {
+    "frac_pos": [
+      0.22699386503067484
+    ],
+    "mean_pred": [
+      0.25671441341072426
+    ]
+  },
+  "Deep Hybrid_harm_ece": 0.029720548380049422
+}

@@ -1,0 +1,32 @@
+[
+    {
+        "plot_name": "pareto_quality_latency",
+        "reason": "missing aggregate_metrics.json",
+        "missing_input_file": "aggregate_metrics.json"
+    },
+    {
+        "plot_name": "per_query_delta_waterfall",
+        "reason": "missing per_query_metrics.csv",
+        "missing_input_file": "per_query_metrics.csv"
+    },
+    {
+        "plot_name": "rejected_action_reasons",
+        "reason": "no rejections recorded",
+        "missing_input_file": "rejected_action_reasons.json"
+    },
+    {
+        "plot_name": "p_gain_calibration",
+        "reason": "missing probability_calibration.json",
+        "missing_input_file": "probability_calibration.json"
+    },
+    {
+        "plot_name": "p_harm_calibration",
+        "reason": "missing probability_calibration.json",
+        "missing_input_file": "probability_calibration.json"
+    },
+    {
+        "plot_name": "graph_contribution",
+        "reason": "missing graph_contribution.json",
+        "missing_input_file": "graph_contribution.json"
+    }
+]

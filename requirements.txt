@@ -1,0 +1,27 @@
+# Core dependencies
+fastapi>=0.104.0
+uvicorn>=0.24.0
+pydantic>=2.0.0
+numpy>=1.24.0
+requests>=2.31.0
+
+# Visualization
+matplotlib>=3.7.0
+plotly>=5.17.0
+scipy>=1.11.0
+networkx>=3.1
+
+# UI (optional but recommended)
+streamlit>=1.28.0
+
+# Embedding engine (optional - for vector search)
+sentence-transformers>=2.2.0
+chromadb>=0.4.0
+faiss-cpu>=1.7.4
+
+# GPU acceleration (optional)
+# cupy-cuda11x>=12.0.0  # For NVIDIA GPUs with CUDA 11.x
+# torch>=2.0.0  # Alternative GPU backend
+
+# Additional utilities
+pandas>=2.0.0

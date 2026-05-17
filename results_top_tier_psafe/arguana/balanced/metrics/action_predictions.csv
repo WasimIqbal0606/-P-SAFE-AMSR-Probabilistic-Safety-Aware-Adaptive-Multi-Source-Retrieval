@@ -1,0 +1,707 @@
+query_id,selected_action,action_name,expected_utility,p_gain,p_harm,pred_delta,pred_latency,candidate_count,rejected_reason,mode,split
+test-culture-ahrtsdlgra-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-ahrtsdlgra-pro03a,6,Deep Hybrid,0.024509,0.2728,0.3812,-0.040171,1267.49,400,,balanced,test
+test-culture-ascidfakhba-con02a,6,Deep Hybrid,0.078082,0.3405,0.3754,-0.013445,1809.86,400,,balanced,test
+test-culture-ascidfakhba-con03a,6,Deep Hybrid,0.1805,0.4038,0.3929,0.063602,1360.02,400,,balanced,test
+test-culture-ascidfakhba-con04a,6,Deep Hybrid,0.196362,0.3739,0.3349,0.090698,1133.39,400,,balanced,test
+test-culture-ascidfakhba-pro01a,6,Deep Hybrid,0.177106,0.4539,0.4307,0.040837,1986.67,400,,balanced,test
+test-culture-cgeeghwmeo-con01a,6,Deep Hybrid,0.246078,0.457,0.3453,0.107419,1398.26,400,,balanced,test
+test-culture-cgeeghwmeo-con02a,6,Deep Hybrid,0.040809,0.3107,0.3907,-0.03894,1230.09,400,,balanced,test
+test-culture-cgeeghwmeo-con04a,6,Deep Hybrid,0.295499,0.5012,0.3353,0.138955,1160.41,400,,balanced,test
+test-culture-cgeeghwmeo-pro03a,6,Deep Hybrid,0.084936,0.319,0.3581,0.001601,1363.72,400,,balanced,test
+test-culture-mmciahbans-con04a,6,Deep Hybrid,0.059859,0.3125,0.384,-0.020773,1059.11,400,,balanced,test
+test-culture-mmciahbans-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctghwbsa-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctghwbsa-con03a,6,Deep Hybrid,0.142775,0.4209,0.3996,0.018914,1037.45,400,,balanced,test
+test-culture-mmctghwbsa-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctghwbsa-pro03a,6,Deep Hybrid,0.168074,0.409,0.3772,0.048706,913.86,400,,balanced,test
+test-culture-mmctghwbsa-pro04a,6,Deep Hybrid,0.24217,0.4546,0.3619,0.104481,1050.5,400,,balanced,test
+test-culture-mmctyshwbcp-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctyshwbcp-con02a,6,Deep Hybrid,0.142787,0.3941,0.4191,0.030077,1450.9,400,,balanced,test
+test-culture-mmctyshwbcp-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctyshwbcp-pro02a,6,Deep Hybrid,0.236061,0.4501,0.374,0.100276,1044.89,400,,balanced,test
+test-culture-mmctyshwbcp-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctyshwbcp-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctyshwbcp-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mmctyshwbcp-pro06a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mthbah-con01a,6,Deep Hybrid,0.056342,0.3117,0.3856,-0.024094,811.54,400,,balanced,test
+test-culture-mthbah-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mthbah-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mthbah-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-mthbah-pro03a,6,Deep Hybrid,0.13551,0.3967,0.3942,0.021249,932.99,400,,balanced,test
+test-culture-thbcsbptwhht-con03a,6,Deep Hybrid,0.06176,0.339,0.3931,-0.029122,1613.17,400,,balanced,test
+test-culture-thbcsbptwhht-pro01a,6,Deep Hybrid,0.106215,0.3794,0.3935,-0.00102,1220.41,400,,balanced,test
+test-culture-thbcsbptwhht-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-thbcsbptwhht-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-thbcsbptwhht-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-tlhrilsfhwr-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-culture-tlhrilsfhwr-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-aihbiahr-con01a,6,Deep Hybrid,0.199987,0.4302,0.3971,0.072438,1110.65,400,,balanced,test
+test-digital-freedoms-aihbiahr-pro01a,6,Deep Hybrid,0.277937,0.486,0.3804,0.128098,1513.12,400,,balanced,test
+test-digital-freedoms-aihbiahr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-aihwbasmn-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-aihwbasmn-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-dfiphbgs-con01a,6,Deep Hybrid,0.226978,0.4464,0.3776,0.092836,1252.89,400,,balanced,test
+test-digital-freedoms-dfiphbgs-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-dfiphbgs-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-dfiphbgs-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-efsappgdfp-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-efsappgdfp-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-efsappgdfp-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-efsappgdfp-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-efsappgdfp-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-efsappgdfp-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-eifdfaihs-pro01a,6,Deep Hybrid,0.074493,0.326,0.393,-0.011346,1245.93,400,,balanced,test
+test-digital-freedoms-eifdfaihs-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-eifpgdff-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-eifpgdff-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-eifpgdff-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-eifpgdff-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-eifpgdff-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-phwnaccpdt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-phwnaccpdt-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-phwnaccpdt-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-phwnaccpdt-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-piidfaihbg-con03a,6,Deep Hybrid,0.128887,0.3819,0.3959,0.020562,941.79,400,,balanced,test
+test-digital-freedoms-piidfaihbg-pro01a,6,Deep Hybrid,0.250194,0.4689,0.408,0.107169,881.87,400,,balanced,test
+test-digital-freedoms-piidfaihbg-pro03a,6,Deep Hybrid,0.206494,0.4382,0.3934,0.075642,981.15,400,,balanced,test
+test-digital-freedoms-piidfiphwu-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-piidfiphwu-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-piidfiphwu-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-digital-freedoms-piidfiphwu-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-beghwbh-pro02a,6,Deep Hybrid,0.463758,0.6511,0.3053,0.246925,1075.62,400,,balanced,test
+test-economy-beghwbh-pro03a,6,Deep Hybrid,0.226723,0.483,0.3551,0.077607,1039.88,400,,balanced,test
+test-economy-bepahbtsnrt-con02a,6,Deep Hybrid,0.203321,0.4737,0.3979,0.058302,965.83,400,,balanced,test
+test-economy-bepahbtsnrt-pro02a,6,Deep Hybrid,0.230737,0.4746,0.4057,0.08543,964.11,400,,balanced,test
+test-economy-bepahbtsnrt-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-bepiehbesa-con01a,6,Deep Hybrid,0.169692,0.4192,0.4195,0.046745,1082.85,400,,balanced,test
+test-economy-bepiehbesa-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-bepiehbesa-pro01a,6,Deep Hybrid,0.1978,0.4374,0.4176,0.067607,1145.74,400,,balanced,test
+test-economy-bepiehbesa-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-bepiehbesa-pro04a,6,Deep Hybrid,0.149263,0.4327,0.4123,0.020909,1206.84,400,,balanced,test
+test-economy-bepighbdb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-bepighbdb-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-beplcpdffe-con01a,6,Deep Hybrid,0.233394,0.4237,0.3678,0.107992,776.89,400,,balanced,test
+test-economy-beplcpdffe-con02a,6,Deep Hybrid,0.176423,0.4095,0.4042,0.057078,850.73,400,,balanced,test
+test-economy-beplcpdffe-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-beplcpdffe-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-beplcpdffe-pro03a,6,Deep Hybrid,0.291314,0.4851,0.3681,0.14138,875.92,400,,balanced,test
+test-economy-bhahwbsps-con03a,6,Deep Hybrid,0.459405,0.5906,0.3439,0.267096,974.5,400,,balanced,test
+test-economy-bhahwbsps-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-bhahwbsps-pro02a,6,Deep Hybrid,0.266197,0.4872,0.3644,0.11549,1095.97,400,,balanced,test
+test-economy-bhahwbsps-pro04a,6,Deep Hybrid,0.273765,0.4855,0.3547,0.123507,804.26,400,,balanced,test
+test-economy-egecegphw-con01a,6,Deep Hybrid,0.17875,0.425,0.4198,0.053675,1441.55,400,,balanced,test
+test-economy-egecegphw-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-egecegphw-con03a,6,Deep Hybrid,0.1901,0.4622,0.4124,0.050137,1580.16,400,,balanced,test
+test-economy-egecegphw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-egiahbwaka-con01a,6,Deep Hybrid,0.214675,0.4424,0.3637,0.082176,1675.1,400,,balanced,test
+test-economy-egiahbwaka-con02a,6,Deep Hybrid,0.165888,0.3967,0.3946,0.051807,1273.93,400,,balanced,test
+test-economy-egiahbwaka-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-egiahbwaka-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-egiahbwaka-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-egppphbcb-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-egppphbcb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-egppphbcb-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epegiahsc-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epegiahsc-con03a,6,Deep Hybrid,0.247676,0.4595,0.373,0.107973,710.95,400,,balanced,test
+test-economy-epegiahsc-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epehwmrbals-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epehwmrbals-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epiasghbf-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epiasghbf-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epiasghbf-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epsihbdns-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epsihbdns-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-epsihbdns-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-eptpghdtre-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-eptpghdtre-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-fiahwpamu-con02a,6,Deep Hybrid,0.327463,0.4974,0.3539,0.172524,964.29,400,,balanced,test
+test-economy-fiahwpamu-pro03a,6,Deep Hybrid,0.16351,0.4156,0.385,0.041561,920.47,400,,balanced,test
+test-economy-thhghwhwift-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-thhghwhwift-con02a,6,Deep Hybrid,0.185028,0.4339,0.4065,0.056522,2008.02,400,,balanced,test
+test-economy-thhghwhwift-pro03a,6,Deep Hybrid,0.144668,0.4034,0.4127,0.028091,1278.47,400,,balanced,test
+test-economy-thsptr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-thsptr-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-thsptr-con03a,6,Deep Hybrid,0.114347,0.3794,0.3986,0.007138,1137.25,400,,balanced,test
+test-economy-thsptr-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-thsptr-con05a,6,Deep Hybrid,0.226059,0.4757,0.4066,0.080499,1313.46,400,,balanced,test
+test-economy-thsptr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-thsptr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-economy-thsptr-pro04a,6,Deep Hybrid,0.325537,0.5691,0.364,0.142295,1540.73,400,,balanced,test
+test-economy-thsptr-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egscphsrdt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egscphsrdt-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egscphsrdt-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egtuscpih-con01a,6,Deep Hybrid,0.136053,0.3884,0.392,0.025194,1180.78,400,,balanced,test
+test-education-egtuscpih-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egtuscpih-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egtuscpih-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egtuscpih-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egtuscpih-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egtuscpih-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-egtuscpih-pro04a,6,Deep Hybrid,0.107316,0.3742,0.3961,0.002158,1119.61,400,,balanced,test
+test-education-egtuscpih-pro05a,6,Deep Hybrid,0.257882,0.48,0.3715,0.110103,986.4,400,,balanced,test
+test-education-pshhghwpba0-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-pshhghwpba0-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-pshhghwpba0-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-pshhghwpba0-pro04a,6,Deep Hybrid,0.1338,0.3473,0.3891,0.039116,702.76,400,,balanced,test
+test-education-pstrgsehwt-con01a,6,Deep Hybrid,0.358703,0.5547,0.3555,0.181268,1773.7,400,,balanced,test
+test-education-pstrgsehwt-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-pstrgsehwt-pro04a,6,Deep Hybrid,0.210194,0.4156,0.3681,0.088411,1535.4,400,,balanced,test
+test-education-pstrgsehwt-pro05a,6,Deep Hybrid,0.270748,0.4858,0.385,0.121004,1466.42,400,,balanced,test
+test-education-pteuhwfphe-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-pteuhwfphe-con03a,6,Deep Hybrid,0.158823,0.3923,0.4013,0.046462,1081.66,400,,balanced,test
+test-education-pteuhwfphe-pro02a,6,Deep Hybrid,0.228758,0.4499,0.3545,0.092966,1214.16,400,,balanced,test
+test-education-tuhwastua-con01a,6,Deep Hybrid,0.153968,0.3628,0.3727,0.053027,927.05,400,,balanced,test
+test-education-tuhwastua-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-tuhwastua-pro01a,6,Deep Hybrid,0.276517,0.4773,0.3917,0.130094,1188.04,400,,balanced,test
+test-education-tuhwastua-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-tuhwastua-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-tuhwastua-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-udfakusma-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-udfakusma-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-udfakusma-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-udfakusma-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ufsdfkhbwu-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ufsdfkhbwu-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ufsdfkhbwu-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ufsdfkhbwu-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ufsdfkhbwu-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ufsdfkhbwu-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ughbuesbf-con01a,6,Deep Hybrid,0.266184,0.4886,0.3859,0.115184,1156.72,400,,balanced,test
+test-education-ughbuesbf-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ughbuesbf-con04a,6,Deep Hybrid,0.193274,0.4316,0.3804,0.064949,1013.01,400,,balanced,test
+test-education-ughbuesbf-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-ughbuesbf-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-usuprmhbu-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-usuprmhbu-con03a,6,Deep Hybrid,0.321316,0.5084,0.3994,0.162522,1149.61,400,,balanced,test
+test-education-usuprmhbu-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-usuprmhbu-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-xeegshwfeu-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-education-xeegshwfeu-pro01a,6,Deep Hybrid,0.200401,0.3961,0.3632,0.086014,865.49,400,,balanced,test
+test-environment-aeghhgwpe-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-aeghhgwpe-con02a,6,Deep Hybrid,0.09885,0.3662,0.3702,-0.003404,1030.7,400,,balanced,test
+test-environment-aeghhgwpe-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-aeghhgwpe-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-aeghhgwpe-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-aeghhgwpe-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-aiahwagit-con01a,6,Deep Hybrid,0.092569,0.3586,0.3918,-0.006528,869.63,400,,balanced,test
+test-environment-aiahwagit-con03a,6,Deep Hybrid,0.236348,0.4549,0.3626,0.098611,1164.18,400,,balanced,test
+test-environment-aiahwagit-con04a,6,Deep Hybrid,0.208343,0.449,0.4183,0.073506,1148.71,400,,balanced,test
+test-environment-aiahwagit-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-assgbatj-con03a,6,Deep Hybrid,0.277636,0.4449,0.3474,0.143571,806.19,400,,balanced,test
+test-environment-assgbatj-con04a,6,Deep Hybrid,0.334796,0.485,0.3552,0.184714,698.94,400,,balanced,test
+test-environment-assgbatj-pro03a,6,Deep Hybrid,0.236484,0.4373,0.3653,0.105648,879.04,400,,balanced,test
+test-environment-assgbatj-pro04a,6,Deep Hybrid,0.253039,0.4414,0.351,0.120368,742.32,400,,balanced,test
+test-environment-chbwtlgcc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-chbwtlgcc-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-chbwtlgcc-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-environment-opecewiahw-con01a,6,Deep Hybrid,0.220543,0.4604,0.3921,0.080866,1145.85,400,,balanced,test
+test-environment-opecewiahw-con03a,6,Deep Hybrid,0.186866,0.414,0.3939,0.065687,946.22,400,,balanced,test
+test-environment-opecewiahw-con04a,6,Deep Hybrid,0.213546,0.4488,0.39,0.078482,1129.04,400,,balanced,test
+test-environment-opecewiahw-pro01a,6,Deep Hybrid,0.253716,0.4856,0.3792,0.103873,1179.96,400,,balanced,test
+test-environment-opecewiahw-pro02a,6,Deep Hybrid,0.163692,0.4197,0.4051,0.040334,915.71,400,,balanced,test
+test-environment-opecewiahw-pro03a,6,Deep Hybrid,0.257905,0.4658,0.359,0.115809,1250.68,400,,balanced,test
+test-environment-opecewiahw-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-fchbjaj-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-fchbjaj-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-fchbjaj-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-fsaphgiap-con01a,6,Deep Hybrid,0.142616,0.39,0.3973,0.031195,1181.96,400,,balanced,test
+test-free-speech-debate-fsaphgiap-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-fsaphgiap-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-fsaphgiap-pro01a,6,Deep Hybrid,0.232538,0.4465,0.38,0.098172,893.52,400,,balanced,test
+test-free-speech-debate-fsaphgiap-pro02a,6,Deep Hybrid,0.158132,0.4158,0.3836,0.036262,1209.88,400,,balanced,test
+test-free-speech-debate-fsaphgiap-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-fsaphgiap-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwbmclg-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwbmclg-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwbmclg-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwbmclg-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwprhs-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwprhs-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwprhs-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-ldhwprhs-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-magghbcrg-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbbsbfb-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbbsbfb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbbsbfb-con03a,6,Deep Hybrid,0.184148,0.4054,0.3653,0.066318,1370.57,400,,balanced,test
+test-free-speech-debate-nshbbsbfb-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbbsbfb-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbbsbfb-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbcsbawc-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbcsbawc-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-nshbcsbawc-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-radhbsshr-con01a,6,Deep Hybrid,0.19636,0.4479,0.3707,0.061504,1201.88,400,,balanced,test
+test-free-speech-debate-radhbsshr-con02a,6,Deep Hybrid,0.142147,0.4137,0.4198,0.021522,1341.84,400,,balanced,test
+test-free-speech-debate-radhbsshr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-radhbsshr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-free-speech-debate-yfsdfkhbwu-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-ahiahbgbsp-con02a,6,Deep Hybrid,0.323915,0.5182,0.3446,0.160589,1042.99,400,,balanced,test
+test-health-ahiahbgbsp-pro03a,6,Deep Hybrid,0.313095,0.4789,0.3276,0.165218,774.64,400,,balanced,test
+test-health-ahiahbgbsp-pro04a,6,Deep Hybrid,0.354144,0.5234,0.31,0.188327,874.93,400,,balanced,test
+test-health-ahiahbgbsp-pro05a,6,Deep Hybrid,0.241408,0.4518,0.3626,0.104796,997.23,400,,balanced,test
+test-health-dhghhbampt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhghhbampt-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhghwapgd-con01a,6,Deep Hybrid,0.173746,0.4288,0.3708,0.046658,1457.75,400,,balanced,test
+test-health-dhghwapgd-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhghwapgd-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhghwapgd-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhghwapgd-pro02a,6,Deep Hybrid,0.395799,0.5867,0.3236,0.205359,1977.07,400,,balanced,test
+test-health-dhghwapgd-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhgsshbesbc-con02a,6,Deep Hybrid,0.251202,0.4638,0.3883,0.11014,1145.99,400,,balanced,test
+test-health-dhgsshbesbc-pro02a,6,Deep Hybrid,0.486668,0.6202,0.3178,0.282238,981.9,400,,balanced,test
+test-health-dhiacihwph-con02a,6,Deep Hybrid,0.300854,0.4991,0.3558,0.145186,831.76,400,,balanced,test
+test-health-dhiacihwph-con03a,6,Deep Hybrid,0.359584,0.5658,0.357,0.177279,880.74,400,,balanced,test
+test-health-dhiacihwph-pro03a,6,Deep Hybrid,0.184574,0.4289,0.3905,0.05738,915.28,400,,balanced,test
+test-health-dhiacihwph-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhpelhbass-con02a,6,Deep Hybrid,0.107664,0.3887,0.3893,-0.002992,1851.96,400,,balanced,test
+test-health-dhpelhbass-con03a,6,Deep Hybrid,0.227853,0.4277,0.3548,0.101024,1389.83,400,,balanced,test
+test-health-dhpelhbass-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-dhpelhbass-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-hdond-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-hdond-con02a,6,Deep Hybrid,0.027358,0.2878,0.3958,-0.04326,1051.36,400,,balanced,test
+test-health-hdond-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-hdond-pro01a,6,Deep Hybrid,0.137508,0.3978,0.3732,0.022883,1527.07,400,,balanced,test
+test-health-hgwhwbjfs-con02a,6,Deep Hybrid,0.164189,0.4236,0.402,0.039628,1698.18,400,,balanced,test
+test-health-hgwhwbjfs-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-hgwhwbjfs-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-hpehwadvoee-con02a,6,Deep Hybrid,0.072793,0.3388,0.3973,-0.018244,1033.01,400,,balanced,test
+test-health-hpehwadvoee-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-hpehwadvoee-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-hpehwadvoee-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-health-ppelfhwbpba-con03a,6,Deep Hybrid,0.107633,0.3581,0.3987,0.008899,1012.94,400,,balanced,test
+test-international-aahwstdrtfm-con02a,6,Deep Hybrid,0.276752,0.4836,0.3503,0.127392,1121.16,400,,balanced,test
+test-international-aahwstdrtfm-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aegmeppghw-con02a,6,Deep Hybrid,0.225529,0.4604,0.368,0.085929,1797.96,400,,balanced,test
+test-international-aegmeppghw-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aegmeppghw-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aegmeppghw-pro03a,6,Deep Hybrid,0.095554,0.3675,0.396,-0.006932,1098.56,400,,balanced,test
+test-international-aegmeppghw-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aghbfcpspr-con01a,6,Deep Hybrid,0.212178,0.4221,0.3852,0.087897,1421.45,400,,balanced,test
+test-international-aghbfcpspr-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aghbfcpspr-pro01a,6,Deep Hybrid,0.041164,0.3116,0.3784,-0.038816,1735.36,400,,balanced,test
+test-international-aghbfcpspr-pro05a,6,Deep Hybrid,0.164186,0.376,0.4374,0.058721,1083.94,400,,balanced,test
+test-international-aghwrem-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aghwrem-con03a,6,Deep Hybrid,0.216362,0.4471,0.3917,0.081986,1055.69,400,,balanced,test
+test-international-aghwrem-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aghwrem-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aghwrem-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aghwrem-pro03a,6,Deep Hybrid,0.226057,0.454,0.402,0.089072,1202.95,400,,balanced,test
+test-international-aglhrilhb-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-aglhrilhb-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-amehbuaisji-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-amehbuaisji-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-amehbuaisji-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-appghblsba-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-appghblsba-con03a,6,Deep Hybrid,0.301831,0.5111,0.3703,0.141785,1395.9,400,,balanced,test
+test-international-appghblsba-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-appghblsba-pro03a,6,Deep Hybrid,0.165194,0.4238,0.416,0.040529,1426.35,400,,balanced,test
+test-international-appghblsba-pro04a,6,Deep Hybrid,0.220664,0.4599,0.3896,0.08117,1127.67,400,,balanced,test
+test-international-apwhbaucmip-con01a,6,Deep Hybrid,0.246472,0.4115,0.3253,0.12568,1075.1,400,,balanced,test
+test-international-apwhbaucmip-con02a,6,Deep Hybrid,0.292801,0.4809,0.363,0.144514,893.77,400,,balanced,test
+test-international-apwhbaucmip-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-apwhbaucmip-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-apwhbaucmip-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-atiahblit-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-atiahblit-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-atiahblit-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-atiahblit-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-atiahblit-pro02a,6,Deep Hybrid,0.220673,0.4643,0.3712,0.079304,1297.27,400,,balanced,test
+test-international-atiahblit-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-bldimehbn-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-bldimehbn-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-bldimehbn-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-bmaggiahbl-con02a,6,Deep Hybrid,0.261065,0.4826,0.3576,0.112239,1253.41,400,,balanced,test
+test-international-eghrhbeusli-con01a,6,Deep Hybrid,0.16362,0.4326,0.4111,0.035371,1336.91,400,,balanced,test
+test-international-eghrhbeusli-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-eghrhbeusli-con04a,6,Deep Hybrid,0.499786,0.6184,0.317,0.296071,979.44,400,,balanced,test
+test-international-eghrhbeusli-con05a,6,Deep Hybrid,0.483144,0.6355,0.3208,0.272779,1214.63,400,,balanced,test
+test-international-eghrhbeusli-pro01a,6,Deep Hybrid,0.244383,0.4595,0.3833,0.104968,1126.4,400,,balanced,test
+test-international-eghrhbeusli-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-eghrhbeusli-pro05a,6,Deep Hybrid,0.236067,0.4831,0.3946,0.087385,1232.32,400,,balanced,test
+test-international-ehbfe-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ehbfe-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-eiahwpamu-con01a,6,Deep Hybrid,0.259076,0.4336,0.355,0.129762,1125.16,400,,balanced,test
+test-international-eiahwpamu-con02a,6,Deep Hybrid,0.327463,0.4974,0.3539,0.172524,964.29,400,,balanced,test
+test-international-eiahwpamu-pro03a,6,Deep Hybrid,0.16351,0.4156,0.385,0.041561,920.47,400,,balanced,test
+test-international-eiahwpamu-pro04a,6,Deep Hybrid,0.33176,0.5264,0.3578,0.165208,876.39,400,,balanced,test
+test-international-eiahwpamu-pro05a,6,Deep Hybrid,0.27742,0.4873,0.3717,0.126722,973.18,400,,balanced,test
+test-international-emephsate-con01a,6,Deep Hybrid,0.249648,0.467,0.3748,0.10728,1332.31,400,,balanced,test
+test-international-emephsate-con02a,6,Deep Hybrid,0.12591,0.3443,0.4356,0.03326,1418.79,400,,balanced,test
+test-international-emephsate-con03a,6,Deep Hybrid,0.131887,0.4048,0.3947,0.014558,1261.75,400,,balanced,test
+test-international-emephsate-pro02a,6,Deep Hybrid,0.249867,0.4842,0.3697,0.100627,1499.26,400,,balanced,test
+test-international-epdlhfcefp-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-epdlhfcefp-pro01a,6,Deep Hybrid,0.20988,0.4502,0.3811,0.074165,1134.33,400,,balanced,test
+test-international-epglghbni-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-epglghbni-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-epglghbni-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-epvhwhranet-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-epvhwhranet-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-epvhwhranet-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-epvhwhranet-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ghbunhf-con03a,6,Deep Hybrid,0.17309,0.4139,0.4136,0.052105,876.07,400,,balanced,test
+test-international-ghbunhf-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ghbunhf-pro02a,6,Deep Hybrid,0.112237,0.3758,0.3928,0.006422,1122.59,400,,balanced,test
+test-international-ghwcitca-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ghwcitca-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ghwcitca-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ghwcitca-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ghwcitca-pro04a,6,Deep Hybrid,0.222485,0.4562,0.3976,0.084728,1470.61,400,,balanced,test
+test-international-glilpdwhsn-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-gmehbisrip1b-pro01a,6,Deep Hybrid,0.209698,0.458,0.3755,0.071332,2184.26,400,,balanced,test
+test-international-gmehbisrip1b-pro03a,6,Deep Hybrid,0.240204,0.4885,0.3815,0.089683,2109.28,400,,balanced,test
+test-international-gmehwasr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-gmehwasr-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-gmehwasr-pro01a,6,Deep Hybrid,0.190644,0.444,0.4026,0.057643,1167.35,400,,balanced,test
+test-international-gmehwasr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-gmehwasr-pro04a,6,Deep Hybrid,0.196781,0.4288,0.3782,0.069547,1010.07,400,,balanced,test
+test-international-gpdwhwcusa-con02a,6,Deep Hybrid,0.221835,0.4823,0.3924,0.07364,1605.44,400,,balanced,test
+test-international-gpdwhwcusa-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-gpdwhwcusa-con04a,6,Deep Hybrid,0.226193,0.4641,0.4053,0.085053,910.35,400,,balanced,test
+test-international-gpdwhwcusa-con05a,6,Deep Hybrid,0.224207,0.4474,0.3805,0.089519,948.67,400,,balanced,test
+test-international-gpdwhwcusa-pro03a,6,Deep Hybrid,0.295441,0.4788,0.3561,0.148169,1383.32,400,,balanced,test
+test-international-gpsmhbsosb-pro01a,6,Deep Hybrid,0.166026,0.4058,0.4265,0.048762,1579.96,400,,balanced,test
+test-international-gpsmhbsosb-pro03a,6,Deep Hybrid,0.210814,0.5165,0.4204,0.049202,1560.77,400,,balanced,test
+test-international-gsciidffe-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-gsciidffe-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-gsciidffe-pro01a,6,Deep Hybrid,0.008416,0.303,0.3855,-0.068175,1518.18,400,,balanced,test
+test-international-iiahwagit-con01a,6,Deep Hybrid,0.092569,0.3586,0.3918,-0.006528,869.63,400,,balanced,test
+test-international-iiahwagit-con02a,6,Deep Hybrid,0.116659,0.3843,0.3835,0.007222,934.51,400,,balanced,test
+test-international-iiahwagit-con03a,6,Deep Hybrid,0.236348,0.4549,0.3626,0.098611,1164.18,400,,balanced,test
+test-international-iiahwagit-pro01a,6,Deep Hybrid,0.185524,0.423,0.3949,0.06073,930.75,400,,balanced,test
+test-international-iiahwagit-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-iiahwagit-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-iighbopcc-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-iighbopcc-pro01a,6,Deep Hybrid,0.196818,0.4252,0.3767,0.071042,1057.64,400,,balanced,test
+test-international-ipecfiepg-con04a,6,Deep Hybrid,0.378388,0.538,0.3711,0.207523,1228.73,400,,balanced,test
+test-international-iwiaghbss-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-iwiaghbss-con03a,6,Deep Hybrid,0.05521,0.3228,0.3891,-0.029383,1273.31,400,,balanced,test
+test-international-iwiaghbss-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-iwiaghbss-pro02a,6,Deep Hybrid,0.149631,0.3808,0.3566,0.041298,877.19,400,,balanced,test
+test-international-iwiaghbss-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-iwiaghbss-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-miasimyhw-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-miasimyhw-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-miasimyhw-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-miasimyhw-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-miasimyhw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-miasimyhw-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-miasimyhw-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-segiahbarr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-segiahbarr-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-sepiahbaaw-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-sepiahbaaw-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-siacphbnt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-siacphbnt-con04a,6,Deep Hybrid,0.031668,0.293,0.3958,-0.041073,989.61,400,,balanced,test
+test-international-siacphbnt-pro01a,6,Deep Hybrid,0.269658,0.5,0.3531,0.113933,1487.37,400,,balanced,test
+test-international-siacphbnt-pro03a,6,Deep Hybrid,0.147752,0.3955,0.3631,0.03369,991.29,400,,balanced,test
+test-international-ssiarcmhb-pro02a,6,Deep Hybrid,0.278336,0.4577,0.3937,0.139695,1012.66,400,,balanced,test
+test-international-ssiarcmhb-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-international-ssiarcmhb-pro05a,6,Deep Hybrid,0.33725,0.5238,0.3572,0.171724,827.92,400,,balanced,test
+test-law-cpilhbishioe-con02a,6,Deep Hybrid,0.172096,0.4069,0.3795,0.053551,860.08,400,,balanced,test
+test-law-cpilhbishioe-pro01a,6,Deep Hybrid,0.155368,0.4055,0.3993,0.037755,1200.54,400,,balanced,test
+test-law-cpilhbishioe-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cpilhbishioe-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cplglghwbhwd-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cplglghwbhwd-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cplglghwbhwd-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cplglghwbhwd-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cplgpshwdp-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cplgpshwdp-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cppshbcjsfm-con02a,6,Deep Hybrid,0.22406,0.4741,0.3827,0.078807,1122.59,400,,balanced,test
+test-law-cppshbcjsfm-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cppshbcjsfm-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-cppshbcjsfm-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-hrilpgwhwr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-hrilpgwhwr-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-hrilpgwhwr-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-hrilpgwhwr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-hrilpgwhwr-pro02a,6,Deep Hybrid,0.117112,0.3587,0.3965,0.018122,1079.75,400,,balanced,test
+test-law-hrpepthwuto-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-hrpepthwuto-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-hrpepthwuto-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-ilppppghb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-ilppppghb-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-lghbacpsba-con02a,6,Deep Hybrid,0.213688,0.4379,0.3877,0.08287,905.14,400,,balanced,test
+test-law-lghbacpsba-pro01a,6,Deep Hybrid,0.104636,0.3225,0.4043,0.020234,1106.8,400,,balanced,test
+test-law-lghbacpsba-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-lghbacpsba-pro05a,6,Deep Hybrid,0.101771,0.3436,0.3825,0.00878,1254.84,400,,balanced,test
+test-law-lghwpcctcc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-lghwpcctcc-pro02a,6,Deep Hybrid,0.205195,0.4343,0.367,0.075788,1263.41,400,,balanced,test
+test-law-lghwpcctcc-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-lgplhbssbco-con03a,6,Deep Hybrid,0.003223,0.2633,0.3707,-0.057944,889.63,400,,balanced,test
+test-law-phwmfri-con02a,6,Deep Hybrid,0.078868,0.3389,0.3861,-0.012215,1268.43,400,,balanced,test
+test-law-phwmfri-con03a,6,Deep Hybrid,0.093737,0.3595,0.3962,-0.005563,1112.2,400,,balanced,test
+test-law-phwmfri-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-phwmfri-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-ralhrilglv-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-ralhrilglv-con04a,6,Deep Hybrid,0.088129,0.3541,0.3997,-0.009064,893.22,400,,balanced,test
+test-law-ralhrilglv-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-ralhrilglv-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-rmelhrilhbiw-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-rmelhrilhbiw-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-rmelhrilhbiw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-sdfclhrppph-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-sdfclhrppph-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-sdfclhrppph-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-sdfclhrppph-pro04a,6,Deep Hybrid,0.08973,0.3464,0.372,-0.004605,997.57,400,,balanced,test
+test-law-sdiflhrdffe-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-sdiflhrdffe-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-sdiflhrdffe-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-tahglcphsld-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-tahglcphsld-con02a,6,Deep Hybrid,0.24919,0.4771,0.3869,0.102737,1012.5,400,,balanced,test
+test-law-tahglcphsld-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-tahglcphsld-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-tahglcphsld-pro02a,6,Deep Hybrid,0.191602,0.4347,0.4076,0.06226,916.43,400,,balanced,test
+test-law-tahglcphsld-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-tahglcphsld-pro07a,6,Deep Hybrid,0.229989,0.4309,0.384,0.101834,768.52,400,,balanced,test
+test-law-thgglcplgphw-con01a,6,Deep Hybrid,0.163523,0.4308,0.4189,0.036151,1550.64,400,,balanced,test
+test-law-thgglcplgphw-con02a,6,Deep Hybrid,0.161765,0.4348,0.3875,0.032451,1433.17,400,,balanced,test
+test-law-thgglcplgphw-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-thgglcplgphw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-tlcplghwfne-con01a,6,Deep Hybrid,0.193476,0.4319,0.4219,0.065481,1069.67,400,,balanced,test
+test-law-tlcplghwfne-con03a,6,Deep Hybrid,0.239082,0.4925,0.3901,0.086545,1134.03,400,,balanced,test
+test-law-tlcplghwfne-pro01a,6,Deep Hybrid,0.274501,0.5546,0.3747,0.097315,1840.21,400,,balanced,test
+test-law-tlcplghwfne-pro03a,6,Deep Hybrid,0.216603,0.4582,0.4093,0.078059,1302.28,400,,balanced,test
+test-law-umtlilhotac-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-umtlilhotac-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-law-umtlilhotac-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-apessghwba-con01a,6,Deep Hybrid,0.249605,0.4635,0.3696,0.108514,1236.72,400,,balanced,test
+test-philosophy-apessghwba-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-apessghwba-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-apessghwba-pro01a,6,Deep Hybrid,0.215828,0.4446,0.388,0.082616,1526.27,400,,balanced,test
+test-philosophy-apessghwba-pro02a,6,Deep Hybrid,0.131099,0.3722,0.3844,0.026651,1186.79,400,,balanced,test
+test-philosophy-apessghwba-pro04a,6,Deep Hybrid,0.182188,0.4115,0.3694,0.061856,1165.42,400,,balanced,test
+test-philosophy-elhbrd-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-elhbrd-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-elhbrd-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-elkosmj-con01a,6,Deep Hybrid,0.090166,0.3165,0.3834,0.007843,886.85,400,,balanced,test
+test-philosophy-elkosmj-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-elkosmj-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-elkosmj-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-elkosmj-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-eppphwlrtjs-con02a,6,Deep Hybrid,0.210906,0.4309,0.3682,0.082942,1401.47,400,,balanced,test
+test-philosophy-eppphwlrtjs-con03a,6,Deep Hybrid,0.23829,0.4622,0.3755,0.097936,1528.0,400,,balanced,test
+test-philosophy-eppphwlrtjs-con04a,6,Deep Hybrid,0.170993,0.3956,0.3639,0.056951,1150.71,400,,balanced,test
+test-philosophy-eppphwlrtjs-pro04a,6,Deep Hybrid,0.075493,0.3558,0.3915,-0.022099,1643.22,400,,balanced,test
+test-philosophy-eppphwlrtjs-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-ippelhbcp-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-ippelhbcp-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-ippelhbcp-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-npegiepp-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-npegiepp-con04a,6,Deep Hybrid,0.029086,0.2957,0.3875,-0.044839,926.94,400,,balanced,test
+test-philosophy-npegiepp-pro01a,6,Deep Hybrid,0.335108,0.5471,0.3324,0.160201,1202.59,400,,balanced,test
+test-philosophy-npegiepp-pro03a,6,Deep Hybrid,0.261563,0.4702,0.3669,0.117665,1017.32,400,,balanced,test
+test-philosophy-npegiepp-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-npppmhwup-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-npppmhwup-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-npppmhwup-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-npppmhwup-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pphbclsbs-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pphbclsbs-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pphbclsbs-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pphbclsbs-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pphbclsbs-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppgshbsd-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppgshbsd-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppgshbsd-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppgshbsd-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppgshbsd-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppgshbsd-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppthbtcb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppthbtcb-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppthbtcb-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppthbtcb-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppthbtcb-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppthbtcb-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-philosophy-pppthbtcb-pro05a,6,Deep Hybrid,0.041599,0.3093,0.3879,-0.037537,1394.98,400,,balanced,test
+test-politics-cdfsaphgiap-con02a,6,Deep Hybrid,0.058205,0.3255,0.3962,-0.027451,1183.52,400,,balanced,test
+test-politics-cdfsaphgiap-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdfsaphgiap-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdmaggpdgdf-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdmaggpdgdf-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdmaggpdgdf-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdmaggpdgdf-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdmaggpdgdf-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdmaggpdgdf-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cdmaggpdgdf-pro04a,6,Deep Hybrid,0.188266,0.4256,0.3776,0.062399,1156.21,400,,balanced,test
+test-politics-cdmaggpdgdf-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-cpecfiepg-con01a,6,Deep Hybrid,0.467154,0.617,0.3421,0.264542,1551.91,400,,balanced,test
+test-politics-cpecfiepg-con02a,6,Deep Hybrid,0.39368,0.575,0.3613,0.207899,1199.73,400,,balanced,test
+test-politics-cpecfiepg-con03a,6,Deep Hybrid,0.530354,0.6508,0.3192,0.313855,1274.66,400,,balanced,test
+test-politics-cpecfiepg-con04a,6,Deep Hybrid,0.378388,0.538,0.3711,0.207523,1228.73,400,,balanced,test
+test-politics-cpecfiepg-pro02a,6,Deep Hybrid,0.371172,0.5728,0.3685,0.186536,1626.08,400,,balanced,test
+test-politics-cpecfiepg-pro03a,6,Deep Hybrid,0.407579,0.5834,0.3606,0.218324,979.38,400,,balanced,test
+test-politics-cpegiepgh-pro02a,6,Deep Hybrid,0.253493,0.4985,0.3815,0.098526,1253.16,400,,balanced,test
+test-politics-cpegiepgh-pro03a,6,Deep Hybrid,0.187071,0.442,0.4198,0.054914,855.34,400,,balanced,test
+test-politics-dhbanhrnw-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-dhbanhrnw-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-dhbanhrnw-con04a,6,Deep Hybrid,0.124913,0.3934,0.3959,0.012148,1244.96,400,,balanced,test
+test-politics-dhbanhrnw-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-dhbanhrnw-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-dhbanhrnw-pro02a,6,Deep Hybrid,0.122982,0.3993,0.3971,0.007967,1469.91,400,,balanced,test
+test-politics-dhbanhrnw-pro03a,6,Deep Hybrid,0.122982,0.3993,0.3971,0.007967,1469.91,400,,balanced,test
+test-politics-dhbanhrnw-pro04a,6,Deep Hybrid,0.209018,0.4442,0.3914,0.075934,1358.88,400,,balanced,test
+test-politics-dhwem-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-dhwem-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-dhwem-pro01a,6,Deep Hybrid,0.270786,0.4793,0.3886,0.123396,849.81,400,,balanced,test
+test-politics-dhwem-pro02a,6,Deep Hybrid,0.163216,0.3963,0.3916,0.0491,964.1,400,,balanced,test
+test-politics-dhwem-pro03a,6,Deep Hybrid,0.239224,0.4591,0.384,0.100007,1147.23,400,,balanced,test
+test-politics-eppghwgpi-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwgpi-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwgpi-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwgpi-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwgpi-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwgpi-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwgpi-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwgpi-pro05a,6,Deep Hybrid,0.019223,0.2794,0.397,-0.048105,919.23,400,,balanced,test
+test-politics-eppghwlrba-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-eppghwlrba-pro01a,6,Deep Hybrid,0.037112,0.3259,0.3988,-0.048805,879.1,400,,balanced,test
+test-politics-eppghwlrba-pro03a,6,Deep Hybrid,0.040773,0.2634,0.3862,-0.020319,843.5,400,,balanced,test
+test-politics-epvhbfsmsaop-con01a,6,Deep Hybrid,0.124161,0.3869,0.3732,0.013934,1581.03,400,,balanced,test
+test-politics-epvhbfsmsaop-con02a,6,Deep Hybrid,0.159771,0.4039,0.3481,0.042325,1234.1,400,,balanced,test
+test-politics-epvhbfsmsaop-con03a,6,Deep Hybrid,0.110339,0.3202,0.3366,0.026386,1500.9,400,,balanced,test
+test-politics-ghbgussbsbt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ghbgussbsbt-con02a,6,Deep Hybrid,0.075173,0.353,0.3942,-0.021516,1129.15,400,,balanced,test
+test-politics-ghbgussbsbt-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ghbgussbsbt-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ghbgussbsbt-pro01a,6,Deep Hybrid,0.258557,0.4751,0.3819,0.112873,1077.58,400,,balanced,test
+test-politics-ghbgussbsbt-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ghbgussbsbt-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ghbgussbsbt-pro04a,6,Deep Hybrid,0.134021,0.393,0.3903,0.021294,1173.4,400,,balanced,test
+test-politics-glghssi-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-glgvhbqssc-con01a,6,Deep Hybrid,0.216307,0.4564,0.3731,0.078234,1473.73,400,,balanced,test
+test-politics-glgvhbqssc-pro02a,6,Deep Hybrid,0.237401,0.4613,0.3979,0.097559,1359.83,400,,balanced,test
+test-politics-grcrgshwbr-con03a,6,Deep Hybrid,0.347209,0.5255,0.337,0.180978,1159.07,400,,balanced,test
+test-politics-grcrgshwbr-pro01a,6,Deep Hybrid,0.246285,0.4861,0.396,0.096368,1091.11,400,,balanced,test
+test-politics-grcrgshwbr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-grcrgshwbr-pro03a,6,Deep Hybrid,0.164376,0.418,0.4096,0.041847,1130.45,400,,balanced,test
+test-politics-grcrgshwbr-pro04a,6,Deep Hybrid,0.155158,0.3915,0.3853,0.04293,1004.05,400,,balanced,test
+test-politics-gvhbhlsbr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-gvhbhlsbr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-gvhwhnerse-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-gvhwhnerse-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-gvhwhnerse-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-gvhwhnerse-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-lghwdecm-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-lghwdecm-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-mtpghwaacb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-mtpghwaacb-con03a,6,Deep Hybrid,0.209997,0.4154,0.3913,0.088423,1309.07,400,,balanced,test
+test-politics-mtpghwaacb-pro02a,6,Deep Hybrid,0.200108,0.4003,0.4441,0.085198,1535.82,400,,balanced,test
+test-politics-nlpdwhbusbuc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-nlpdwhbusbuc-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oapdhwinkp-con01a,6,Deep Hybrid,0.137964,0.3827,0.3973,0.029497,1255.35,400,,balanced,test
+test-politics-oapdhwinkp-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oapdhwinkp-pro01a,6,Deep Hybrid,0.162247,0.4145,0.3881,0.040972,1314.55,400,,balanced,test
+test-politics-oapdhwinkp-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oapdhwinkp-pro03a,6,Deep Hybrid,0.133457,0.3913,0.4086,0.021716,1413.91,400,,balanced,test
+test-politics-oepdlhfcefp-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oepdlhfcefp-pro01a,6,Deep Hybrid,0.20988,0.4502,0.3811,0.074165,1134.33,400,,balanced,test
+test-politics-oepdlhfcefp-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oepghbrnsl-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oepghbrnsl-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oepghbrnsl-con04a,6,Deep Hybrid,0.106021,0.3824,0.3951,-0.002511,964.52,400,,balanced,test
+test-politics-oepghbrnsl-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oepghbrnsl-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oeplhbuwhmi-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oeplhbuwhmi-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oeplhbuwhmi-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oeplhbuwhmi-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oglilpdwhsn-con01a,6,Deep Hybrid,0.458316,0.6857,0.35,0.228881,2659.58,400,,balanced,test
+test-politics-oglilpdwhsn-con03a,6,Deep Hybrid,0.251385,0.5026,0.4031,0.095604,2467.18,400,,balanced,test
+test-politics-oglilpdwhsn-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-oglilpdwhsn-pro02a,6,Deep Hybrid,0.350744,0.5578,0.3684,0.172651,2689.45,400,,balanced,test
+test-politics-pgsimhwoia-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-pgsimhwoia-pro02a,6,Deep Hybrid,0.121395,0.3894,0.3883,0.0101,1190.92,400,,balanced,test
+test-politics-pgsimhwoia-pro03a,6,Deep Hybrid,0.158483,0.4116,0.3911,0.038274,1076.06,400,,balanced,test
+test-politics-ypppdghwid-con05a,6,Deep Hybrid,0.096523,0.3515,0.3856,0.000381,1244.49,400,,balanced,test
+test-politics-ypppdghwid-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ypppdghwid-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ypppgvhwmv-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ypppgvhwmv-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-politics-ypppgvhwmv-pro04a,6,Deep Hybrid,0.321328,0.5196,0.3321,0.157383,1123.35,400,,balanced,test
+test-politics-ypppgvhwmv-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-cmrsgfhbr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-cmrsgfhbr-pro03a,6,Deep Hybrid,0.118047,0.3906,0.3756,0.006398,1646.03,400,,balanced,test
+test-religion-frghbbgi-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-frghbbgi-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-frghbbgi-con03a,6,Deep Hybrid,0.151459,0.3722,0.3635,0.046663,877.87,400,,balanced,test
+test-religion-frghbbgi-pro01a,6,Deep Hybrid,0.189326,0.3899,0.3563,0.077335,806.35,400,,balanced,test
+test-religion-frghbbgi-pro02a,6,Deep Hybrid,0.099637,0.3275,0.3747,0.012705,630.41,400,,balanced,test
+test-religion-frghbbgi-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-frghbbgi-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-frghbbgi-pro05a,6,Deep Hybrid,0.008369,0.2696,0.3979,-0.055102,786.85,400,,balanced,test
+test-religion-grcrgshwbr-con04a,6,Deep Hybrid,0.223532,0.4566,0.3588,0.084979,973.4,400,,balanced,test
+test-religion-grcrgshwbr-pro04a,6,Deep Hybrid,0.155158,0.3915,0.3853,0.04293,1004.05,400,,balanced,test
+test-religion-msgfhwbamec-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-wcprrgrhbmi-con02a,6,Deep Hybrid,0.056491,0.2883,0.3539,-0.014733,1085.84,400,,balanced,test
+test-religion-yercfrggms-con01a,6,Deep Hybrid,0.293172,0.4845,0.3592,0.143562,1193.04,400,,balanced,test
+test-religion-yercfrggms-con03a,6,Deep Hybrid,0.219604,0.4489,0.3559,0.084167,1093.68,400,,balanced,test
+test-religion-yercfrggms-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-religion-yercfrggms-pro06a,6,Deep Hybrid,0.17459,0.4252,0.3456,0.04865,1391.69,400,,balanced,test
+test-religion-yercfrggms-pro07a,6,Deep Hybrid,0.267959,0.479,0.3668,0.120547,1064.87,400,,balanced,test
+test-science-ascidfakhba-con02a,6,Deep Hybrid,0.078082,0.3405,0.3754,-0.013445,1809.86,400,,balanced,test
+test-science-ascidfakhba-con03a,6,Deep Hybrid,0.1805,0.4038,0.3929,0.063602,1360.02,400,,balanced,test
+test-science-ascidfakhba-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-ascidfakhba-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-ciidfaihwc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-ciidfaihwc-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-cpisydfphwj-con01a,6,Deep Hybrid,0.242642,0.4802,0.3865,0.095214,1604.01,400,,balanced,test
+test-science-cpisydfphwj-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-cpisydfphwj-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-cpisydfphwj-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-dssghsdmd-con02a,6,Deep Hybrid,0.074224,0.3663,0.3928,-0.027615,1519.52,400,,balanced,test
+test-science-dssghsdmd-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-dssghsdmd-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-dssghsdmd-pro03a,6,Deep Hybrid,0.262643,0.4842,0.3554,0.113229,1427.46,400,,balanced,test
+test-science-eassgbatj-con03a,6,Deep Hybrid,0.277636,0.4449,0.3474,0.143571,806.19,400,,balanced,test
+test-science-eassgbatj-con05a,6,Deep Hybrid,0.180424,0.387,0.4052,0.070043,754.37,400,,balanced,test
+test-science-eassgbatj-pro05a,6,Deep Hybrid,0.342526,0.505,0.3426,0.184277,647.58,400,,balanced,test
+test-science-nsihwbtiss-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-nsihwbtiss-con04a,6,Deep Hybrid,0.13482,0.3533,0.3918,0.037891,913.14,400,,balanced,test
+test-science-sghwbdgmo-con01a,6,Deep Hybrid,0.271386,0.51,0.3704,0.111647,1100.96,400,,balanced,test
+test-science-sghwbdgmo-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-science-sghwbdgmo-pro01a,6,Deep Hybrid,0.163972,0.4432,0.4195,0.031786,1834.44,400,,balanced,test
+test-science-wsihwclscaaw-con01a,6,Deep Hybrid,0.245726,0.4643,0.3476,0.104072,1147.69,400,,balanced,test
+test-science-wsihwclscaaw-con02a,6,Deep Hybrid,0.14049,0.3908,0.407,0.028784,1086.66,400,,balanced,test
+test-science-wsihwclscaaw-con03a,6,Deep Hybrid,0.171568,0.4724,0.4281,0.027561,1324.79,400,,balanced,test
+test-society-asfhwapg-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-asfhwapg-pro01a,6,Deep Hybrid,0.292281,0.5051,0.3604,0.134389,1107.66,400,,balanced,test
+test-society-cpisydfphwj-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-cpisydfphwj-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epiasghbf-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epiasghbf-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epiasghbf-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epiasghbf-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epsihbdns-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epsihbdns-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epsihbdns-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-epsihbdns-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-ghbgqeaaems-con03a,6,Deep Hybrid,0.23532,0.5006,0.4038,0.079953,1666.12,400,,balanced,test
+test-society-ghbgqeaaems-pro02a,6,Deep Hybrid,0.389697,0.5952,0.3729,0.196219,1782.66,400,,balanced,test
+test-society-ghbgqeaaems-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-ghbgqeaaems-pro04a,6,Deep Hybrid,0.399628,0.597,0.3425,0.205203,1935.52,400,,balanced,test
+test-society-mmcpsgfhbf-con03a,6,Deep Hybrid,0.102064,0.3409,0.3862,0.010241,1328.62,400,,balanced,test
+test-society-mmcpsgfhbf-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-simhbrasnba-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-simhbrasnba-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-tlhrilsfhwr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-tlhrilsfhwr-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-tlhrilsfhwr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-tlhrilsfhwr-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-tsmihwurpp-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-society-tsmihwurpp-pro02a,6,Deep Hybrid,0.138396,0.3929,0.416,0.02599,1167.94,400,,balanced,test
+test-society-tsmihwurpp-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-sport-aastshsrqsar-con02a,6,Deep Hybrid,0.145394,0.3997,0.4312,0.03032,986.5,400,,balanced,test
+test-sport-aastshsrqsar-con04a,6,Deep Hybrid,0.456179,0.6264,0.3169,0.249259,980.18,400,,balanced,test
+test-sport-aastshsrqsar-pro01a,6,Deep Hybrid,0.363719,0.5927,0.3758,0.170899,973.55,400,,balanced,test
+test-sport-otshwbe2uuyt-con03a,6,Deep Hybrid,0.346836,0.5535,0.3683,0.169858,1486.76,400,,balanced,test
+test-sport-otshwbe2uuyt-con04a,6,Deep Hybrid,0.207126,0.4668,0.408,0.065053,1094.93,400,,balanced,test
+test-sport-otshwbe2uuyt-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-sport-otshwbe2uuyt-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-sport-tshbmlbscac-con04a,6,Deep Hybrid,0.376299,0.6009,0.3498,0.1801,1344.35,400,,balanced,test
+test-sport-tshbmlbscac-pro02a,6,Deep Hybrid,0.466906,0.6664,0.315,0.244533,2105.13,400,,balanced,test
+test-sport-tshbmlbscac-pro03a,6,Deep Hybrid,0.534667,0.6798,0.3135,0.306523,1317.89,400,,balanced,test
+test-sport-ybfgsohbhog-con03a,6,Deep Hybrid,0.16467,0.419,0.3984,0.041645,1190.83,400,,balanced,test
+test-sport-ybfgsohbhog-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,balanced,test
+test-sport-ybfgsohbhog-pro04a,6,Deep Hybrid,0.221627,0.4654,0.3886,0.079809,873.04,400,,balanced,test

@@ -1,0 +1,10 @@
+{
+    "mode": "high_recall",
+    "gain_threshold": 0.3,
+    "harm_threshold": 0.4,
+    "lambda_latency": 5e-07,
+    "lambda_harm": 0.01,
+    "lambda_candidate": 1e-05,
+    "lambda_recovery": 0.4,
+    "use_lcb_safety": false
+}
