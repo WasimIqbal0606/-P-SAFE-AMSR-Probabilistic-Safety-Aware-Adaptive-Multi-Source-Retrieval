@@ -1,5 +1,9 @@
 import os
 import sys
+
+# Add src to python path to allow importing psafe
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+
 import yaml
 import argparse
 from typing import List
@@ -23,7 +27,7 @@ from psafe.router import BPSafeRouter
 from psafe.actions import Action, ACTION_NAMES
 from psafe.evaluation import calculate_sensitivity_splits, analyze_sensitivity, EvaluationManager
 from psafe.metrics import calculate_extended_metrics
-from psafe.reports.generator import write_reproducibility_manifest
+
 
 def run_experiment(config: dict, dataset: str, profile: str, mode: str, seed: int = 42, use_cache: bool = False):
     import random
