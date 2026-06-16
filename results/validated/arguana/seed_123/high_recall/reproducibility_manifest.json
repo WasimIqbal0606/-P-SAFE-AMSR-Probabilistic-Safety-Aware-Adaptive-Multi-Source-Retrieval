@@ -1,0 +1,36 @@
+{
+    "dataset": "arguana",
+    "seed": 123,
+    "mode": "high_recall",
+    "router": "B-P-SAFE-AMSR",
+    "profile": "bge_m3",
+    "embedding_model": "BAAI/bge-m3",
+    "reranker_model": "BAAI/bge-reranker-v2-m3",
+    "device": "auto",
+    "python_version": "3.11.9",
+    "timestamp": "2026-05-19T10:18:46+0500",
+    "num_queries": 1406,
+    "num_docs": 8674,
+    "split_sizes": {
+        "train": 561,
+        "val": 139,
+        "test": 706,
+        "easy_test": 211,
+        "hard_test": 495
+    },
+    "thresholds": {
+        "gain": 0.1,
+        "harm": 0.3
+    },
+    "lambda_values": {
+        "lat": 1e-05,
+        "harm": 0.1
+    },
+    "cache_used": true,
+    "runtime_seconds": 6169.62,
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+    "git_commit": "690323995e8a16ee40f46841b29fc4d1d5494f8f",
+    "split_hash": "d0f51580",
+    "bge_m3_mode": "dense_only"
+}

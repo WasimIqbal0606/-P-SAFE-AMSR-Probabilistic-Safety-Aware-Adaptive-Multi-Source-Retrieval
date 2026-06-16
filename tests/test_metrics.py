@@ -1,17 +1,17 @@
 """Tests for metrics — taxonomy classification order."""
 import pytest
-from psafe.statistics.metrics import calculate_extended_metrics
+from psafe.metrics import calculate_extended_metrics
 
 
 def test_taxonomy_failure():
-    """P-SAFE failure: psafe_ndcg much worse than dense."""
+    """Low quality retention when hybrid helps is under-treatment."""
     m = calculate_extended_metrics(
         dense_ndcg=0.60, hybrid_ndcg=0.65, psafe_ndcg=0.55, oracle_ndcg=0.70,
         always_on_hybrid_lat=100, psafe_lat=50,
         always_on_hybrid_easy_deg=0.01, psafe_easy_deg=0.005,
         always_on_hybrid_hard_gain=0.05, psafe_hard_gain=0.02,
     )
-    assert m["taxonomy"] == "P-SAFE failure"
+    assert m["taxonomy"] == "Hybrid-beneficial / P-SAFE under-treatment"
 
 
 def test_taxonomy_protection():
@@ -22,18 +22,19 @@ def test_taxonomy_protection():
         always_on_hybrid_easy_deg=0.01, psafe_easy_deg=0.001,
         always_on_hybrid_hard_gain=0.005, psafe_hard_gain=0.001,
     )
-    assert m["taxonomy"] == "Protection / No-benefit"
+    assert m["taxonomy"] == "Protection / no-benefit"
+    assert m["quality_retention_applicable"] is True
 
 
 def test_taxonomy_recovery():
-    """P-SAFE beats hybrid."""
+    """P-SAFE beats hybrid and saves latency: selective escalation."""
     m = calculate_extended_metrics(
         dense_ndcg=0.50, hybrid_ndcg=0.55, psafe_ndcg=0.56, oracle_ndcg=0.60,
         always_on_hybrid_lat=200, psafe_lat=80,
         always_on_hybrid_easy_deg=0.02, psafe_easy_deg=0.005,
         always_on_hybrid_hard_gain=0.08, psafe_hard_gain=0.07,
     )
-    assert m["taxonomy"] == "Recovery / Selective-win"
+    assert m["taxonomy"] == "Selective escalation"
 
 
 def test_quality_retention_clamp():
@@ -45,6 +46,18 @@ def test_quality_retention_clamp():
         always_on_hybrid_hard_gain=0, psafe_hard_gain=0,
     )
     assert m["quality_retention_vs_best_hybrid"] <= 1.5
+
+
+def test_no_benefit_qr_not_applicable():
+    m = calculate_extended_metrics(
+        dense_ndcg=0.50, hybrid_ndcg=0.50, psafe_ndcg=0.80, oracle_ndcg=0.80,
+        always_on_hybrid_lat=100, psafe_lat=50,
+        always_on_hybrid_easy_deg=0, psafe_easy_deg=0,
+        always_on_hybrid_hard_gain=0, psafe_hard_gain=0,
+    )
+    assert m["quality_retention_vs_best_hybrid"] == 0.0
+    assert m["quality_retention_applicable"] is False
+    assert m["dataset_regime"] == "no_benefit"
 
 
 def test_oracle_gap_closed():

@@ -1,0 +1,17 @@
+{
+    "gain_threshold": 0.1,
+    "harm_threshold": 0.3,
+    "lambda_latency": 1e-05,
+    "lambda_harm": 0.1,
+    "lambda_recovery": 0.1,
+    "use_lcb_safety": false,
+    "val_score": 26.3644,
+    "val_qr": 74.7083,
+    "val_ls": 0.7124,
+    "val_rc": 0.4453,
+    "val_ha": 0.1322,
+    "val_har": 0.2806,
+    "best_simple_router_name": "Regression-only",
+    "best_simple_router_ndcg": 0.436627,
+    "psafe_minus_best_simple_ndcg": 0.000425
+}

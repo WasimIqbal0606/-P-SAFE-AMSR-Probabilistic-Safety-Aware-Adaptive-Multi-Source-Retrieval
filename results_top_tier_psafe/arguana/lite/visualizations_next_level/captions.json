@@ -1,6 +1,0 @@
-{
-    "action_distribution": "Distribution of actions selected by the B-P-SAFE router.",
-    "oracle_gap": "Oracle gap: nDCG difference between P-SAFE and oracle routing, and fraction closed.",
-    "latency_breakdown": "Mean latency per pipeline component.",
-    "quality_retention_vs_latency_saving": "Trade-off: quality retained vs latency saved relative to always-on hybrid."
-}

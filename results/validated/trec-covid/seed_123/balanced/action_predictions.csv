@@ -1,0 +1,26 @@
+query_id,selected_action,action_name,expected_utility,p_gain,p_harm,pred_delta,pred_latency,candidate_count,rejected_reason,override_used,override_reason,mode,split
+12,6,Deep Hybrid,0.198491,0.8206,0.1748,0.088163,1110.61,400,,False,,balanced,test
+14,6,Deep Hybrid,0.809177,0.7772,0.1395,0.699248,949.12,400,,False,,balanced,test
+16,6,Deep Hybrid,0.5983,0.8248,0.14,0.476132,902.72,400,,False,,balanced,test
+19,6,Deep Hybrid,0.307068,0.7737,0.1845,0.210042,1027.3,400,,False,,balanced,test
+20,6,Deep Hybrid,0.766556,0.646,0.193,0.703868,1057.27,400,,False,,balanced,test
+25,6,Deep Hybrid,0.355563,0.6998,0.2177,0.285466,1044.1,400,,False,,balanced,test
+26,6,Deep Hybrid,0.089058,0.79,0.1914,-0.011471,913.86,400,,False,,balanced,test
+27,6,Deep Hybrid,0.131487,0.8012,0.1873,0.028609,1059.3,400,,False,,balanced,test
+28,6,Deep Hybrid,0.309381,0.793,0.1755,0.206686,1168.79,400,,False,,balanced,test
+30,6,Deep Hybrid,0.573403,0.6813,0.2412,0.511712,833.22,400,,False,,balanced,test
+32,6,Deep Hybrid,0.402335,0.7332,0.1836,0.315105,1018.57,400,,False,,balanced,test
+33,6,Deep Hybrid,0.323811,0.7963,0.1828,0.219215,877.06,400,,False,,balanced,test
+35,6,Deep Hybrid,0.49643,0.7494,0.1723,0.40176,962.43,400,,False,,balanced,test
+37,6,Deep Hybrid,0.258795,0.6873,0.2206,0.193126,1102.48,400,,False,,balanced,test
+38,6,Deep Hybrid,0.332409,0.7187,0.1921,0.252604,1183.91,400,,False,,balanced,test
+39,6,Deep Hybrid,0.475596,0.7258,0.2481,0.406642,1048.34,400,,False,,balanced,test
+40,6,Deep Hybrid,0.585552,0.6851,0.2047,0.519656,1419.94,400,,False,,balanced,test
+41,6,Deep Hybrid,0.25961,0.7246,0.2427,0.19223,1310.42,400,,False,,balanced,test
+42,6,Deep Hybrid,0.575312,0.7561,0.2484,0.494285,589.91,400,,False,,balanced,test
+43,6,Deep Hybrid,0.378037,0.7733,0.167,0.278812,1236.33,400,,False,,balanced,test
+45,6,Deep Hybrid,0.657028,0.6882,0.197,0.583299,906.84,400,,False,,balanced,test
+46,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+48,6,Deep Hybrid,0.180861,0.7521,0.2409,0.106035,1296.9,400,,False,,balanced,test
+8,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+9,6,Deep Hybrid,0.493057,0.7935,0.1533,0.382154,914.58,400,,False,,balanced,test

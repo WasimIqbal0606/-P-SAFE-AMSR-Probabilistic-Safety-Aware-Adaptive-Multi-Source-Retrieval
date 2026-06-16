@@ -1,101 +1,62 @@
-# Adaptive Hybrid Retrieval Controller (AHRC)
+# P-SAFE-AMSR: Probabilistic Safety-Aware Adaptive Multi-Source Retrieval
 
-An uncertainty-aware, dynamic retrieval framework that optimizes the cost-quality tradeoff in vector search via multi-signal uncertainty estimation, adaptive candidate sizing, and selective graph expansion.
+An open-source research repository demonstrating **P-SAFE**, a dynamic routing architecture for retrieval-augmented systems. P-SAFE treats retrieval escalation as a probabilistic, safety-aware decision problem, dynamically balancing cost, quality, and harm-avoidance.
 
-## 🚀 Overview
-Most dense retrieval systems statically retrieve a fixed $k$ number of candidates (e.g., `k=10`) regardless of query difficulty. This rigid approach either wastes compute on easy queries or underperforms on complex, ambiguous queries.
+## Overview
 
-The **Adaptive Hybrid Retrieval Controller (AHRC)** solves this by introducing a dynamic control policy. By estimating the "uncertainty" of a query on-the-fly, AHRC decides whether to halt retrieval early, expand the candidate pool, or traverse an underlying task relationship graph to rescue difficult queries.
+In traditional retrieval systems, developers often face a rigid choice:
+- **Dense Retrieval** (e.g., dual-encoders): Very fast and cheap, but sometimes lacks lexical precision and structural depth on hard queries.
+- **Deep Hybrid** (e.g., Dense + BM25 + CrossEncoder): Achieves state-of-the-art accuracy, but requires significantly more compute latency, GPU overhead, and token limits.
 
-### What This System Does
-✅ **System-level innovation**: Replaces static retrieval with dynamic inference pipelines.  
-✅ **Adaptive inference design**: Allocates compute budget (k-size, reranking depth) dynamically per query.  
-✅ **Hybrid retrieval**: Combines dense approximate nearest neighbors (FAISS HNSW) with semantic graph traversals.  
-✅ **Cost-quality tradeoffs**: Demonstrates Pareto-optimal performance for Retrieval-Augmented Generation (RAG) and dense search.  
+**P-SAFE (v1)** dynamically routes incoming queries between a fast Dense baseline (A0) and an expensive Deep Hybrid pipeline (A6). By using pre-retrieval features (query lexical specificity) and cheap post-retrieval signals (Dense/BM25 overlap, score distributions, nearest-neighbor graph degree), the router estimates:
+1. The **Probability of Gain** (likelihood the Hybrid pipeline will improve nDCG).
+2. The **Probability of Harm** (likelihood the Hybrid pipeline will degrade results due to out-of-domain CrossEncoder instability).
+3. Expected Latency.
 
-### Domains
-- Retrieval Systems (IR / Search)
-- Efficient AI (Compute-aware inference)
-- Adaptive Decision Policies
-- LLM / RAG Infrastructure
+The router uses a safety-constrained utility function to decide whether escalating to Deep Hybrid is worth the cost. 
 
----
+### Why "Safety-Aware"?
+P-SAFE explicitly models and penalizes "harm"—cases where advanced deep learning models (like CrossEncoders) confidently degrade performance on queries perfectly answered by simple Dense retrieval. P-SAFE achieves **Quality Retention** while strictly avoiding unnecessary compute.
 
-## 🧠 Core Architecture
+## Codebase Architecture
 
-The AHRC pipeline consists of 5 modular stages executed sequentially for each query:
+This repository hosts the stable **P-SAFE v1** architecture, consisting of the following key modules:
 
-1. **Initial Dense Retrieval (Staged)**: Performs a fast, approximate nearest-neighbor search via FAISS HNSW for a small initial candidate set.
-2. **Uncertainty Estimation (Quality Guard)**: Computes a multi-signal uncertainty score $U \in [0,1]$ using:
-   - **Margin**: Gap between top-1 and top-2 similarities.
-   - **Spread**: Gap between top-1 and top-5 similarities.
-   - **Graph Ambiguity**: Structural connectivity of the candidate pool.
-   - **Historical Context**: Rolling confidence scores for specific domains.
-3. **Adaptive Controller**: Maps the uncertainty score $U$ to a dynamic `RetrievalDecision`.
-   - *Confident queries* stop early.
-   - *Uncertain queries* trigger deeper search ($k \uparrow$).
-4. **Selective Graph Expansion**: If uncertainty remains high, the controller expands the top-3 dense seeds by traversing a semantic task relationship graph, rescuing hard queries that dense embeddings alone fail to capture.
-5. **Dynamic Reranking**: Executes an exact inner-product rerank (or cross-encoder) exclusively on the expanded pool of high-uncertainty queries.
-
----
-
-## 🔬 Experimental Framework & Ablation Study
-
-This repository includes a fully synthetic benchmarking suite designed to generate mathematically defensible, rigorous evaluation of the AHRC.
-
-### Benchmark Generation (`dataset_generator.py`)
-Generates tasks with localized multi-level ground-truth relevance (0–3 scale) using `all-MiniLM-L6-v2` embeddings, ensuring that relevance isn't purely distance-based but semantic and structural.
-
-### Built-in Baselines (`baselines.py`)
-The system evaluates AHRC against controlled baselines to ensure scientific rigor:
-- **BM25**: Standard lexical matching using `rank-bm25`.
-- **Dense Fixed-k**: Standard static FAISS retrieval.
-- **Dense + Graph Fixed**: Always-on, non-adaptive graph expansion.
-
-### Evaluation Metrics (`evaluation.py`)
-The framework focuses on metrics relevant to Efficient AI and IR:
-- **Quality**: $Recall@k$, $nDCG@k$, $MRR$.
-- **Cost / Latency**: Candidates explored, $p50/p95/p99$ latency ($ms$), cost-per-recall ratios.
-
----
-
-## ⚙️ Running the Research Suite
-
-### 1. Install Dependencies
-```bash
-pip install -r requirements.txt
-pip install rank-bm25
+```text
+src/psafe/
+├── router.py             # B-P-SAFE-AMSR Bayesian Routing Logic
+├── feature_extractor.py  # Canonical signal extraction (BM25/Dense overlap, entropies)
+├── evaluation.py         # Leakage-safe, stratified split evaluations
+├── latency_tracker.py    # Microsecond precision profiling of the routing overhead
+├── metrics.py            # Safety-aware metrics (Quality Retention, Harm Avoidance)
+├── statistical_tests.py  # Rigorous permutation and paired t-tests
+└── baselines.py          # 9 standard and heuristic routing baselines
 ```
 
-### 2. Run the Full Experiment Suite
-Runs dataset generation, index building, all baselines, and multiple AHRC modes (Lite, Balanced, High-Recall) to plot the Pareto frontier.
+## Running the Canonical Experiment
+
+The canonical runner reproduces the P-SAFE evaluation across BEIR datasets. 
+
 ```bash
-python -m ahrc.run_experiments --tasks 50000 --queries 1000 --index hnsw
+# Evaluate P-SAFE on SciFact using seed 42
+python experiments/run_psafe_v1_experiments.py --datasets scifact --seeds 42 --modes balanced
 ```
 
-### 3. Run the Ablation Study
-Systematically disables components (Uncertainty, Adaptation, Graph Expansion) to measure isolated algorithmic contributions.
-```bash
-python -m ahrc.ablation_study --tasks 10000 --queries 200
-```
+The runner evaluates 9 different baseline routers alongside P-SAFE, generating:
+- `extended_metrics.json` (Performance against the Deep Hybrid ceiling)
+- `statistical_tests.json` (Significance bounds)
+- `latency_breakdown.json` (Cost tradeoffs)
 
-### 4. Visualizations
-The framework automatically generates publication-quality Matplotlib plots in the `ahrc_results/` directory:
-- `accuracy_vs_latency.png`
-- `cost_vs_recall.png`
-- `ablation_bars.png`
-- $nDCG@k$ and $Recall@k$ scaling curves.
+## Experimental Rigor & Reproducibility
 
----
+We prioritize honest, reproducible empirical science:
+1. **Strict Train/Test Isolation:** Router training and threshold tuning happen on isolated splits, evaluated on a held-out test split.
+2. **Comprehensive Baselines:** Evaluated against Random, Margin-based, Entropy-based, Regression-only, and Oracle routers.
+3. **Validated Audits:** We publish an automated audit (`docs/result_audit.md`) confirming the integrity of pre-computed runs.
+4. **No Free Lunch Disclaimer:** P-SAFE is computationally viable only when `(Routing Overhead) < (Hybrid Cost * (1 - Escalation Rate))`. Our latency tracking enforces this reality.
 
-## 📈 Current Operating Modes
+## Future Work (A0-A16 Action Space)
+While P-SAFE v1 focuses on Dense (A0) vs Deep Hybrid (A6), our experimental tracking explores a full 16-action space including Knowledge Graph injections, LLM-rewrites, and recursive chunking. This work is actively archived and developed for future versions.
 
-The controller is calibrated for a Pareto frontier of cost-performance tradeoffs:
-- **AHRC-lite**: Aggressively shrinks budget for clear queries (min $k=6$, max $k=12$). Best for maximum throughput.
-- **AHRC-balanced**: Preserves near-baseline $nDCG$ while reducing candidate exploration.
-- **AHRC-high-recall**: Triggers deep graph expansion for edge-case queries, maximizing quality under a strict upper bound.
-
----
-
-## 📝 License
-MIT License. Feel free to use this framework to benchmark adaptive retrieval layers in your own LLM/RAG infrastructures.
+## License
+MIT License.

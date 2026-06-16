@@ -1,0 +1,707 @@
+query_id,selected_action,action_name,expected_utility,p_gain,p_harm,pred_delta,pred_latency,candidate_count,rejected_reason,override_used,override_reason,mode,split
+test-culture-ahrtsdlgra-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-ahrtsdlgra-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-ahrtsdlgra-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-ahrtsdlgra-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-ascidfakhba-con01a,6,Deep Hybrid,0.091577,0.4334,0.3706,0.093823,1725.97,400,,False,,balanced,test
+test-culture-ascidfakhba-con02a,6,Deep Hybrid,0.074293,0.4453,0.351,0.065029,1712.8,400,,False,,balanced,test
+test-culture-ascidfakhba-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-ascidfakhba-con04a,6,Deep Hybrid,0.117824,0.3899,0.3715,0.1078,1041.03,400,,True,balanced_soft_override,balanced,test
+test-culture-ascidfakhba-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-ascidfakhba-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-cgeeghwmeo-con01a,6,Deep Hybrid,0.088767,0.4142,0.3834,0.083821,1326.14,400,,False,,balanced,test
+test-culture-cgeeghwmeo-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-cgeeghwmeo-con04a,6,Deep Hybrid,0.12895,0.4447,0.3699,0.093866,1095.65,400,,False,,balanced,test
+test-culture-mmciahbans-con03a,6,Deep Hybrid,0.082137,0.3938,0.382,0.06874,960.12,400,,True,balanced_soft_override,balanced,test
+test-culture-mmciahbans-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mmciahbans-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mmciahbans-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mmctghwbsa-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mmctghwbsa-con03a,6,Deep Hybrid,0.031909,0.395,0.4292,0.033242,1030.8,400,,True,balanced_soft_override,balanced,test
+test-culture-mmctghwbsa-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mmctghwbsa-pro01a,6,Deep Hybrid,0.046216,0.3978,0.4489,0.052884,1066.95,400,,True,balanced_soft_override,balanced,test
+test-culture-mmctghwbsa-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mmctyshwbcp-pro02a,6,Deep Hybrid,0.05825,0.4183,0.3974,0.038405,999.0,400,,False,,balanced,test
+test-culture-mmctyshwbcp-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mmctyshwbcp-pro06a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mthbah-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mthbah-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mthbah-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-mthbah-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-thbcsbptwhht-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-thbcsbptwhht-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-tlhrilsfhwr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-tlhrilsfhwr-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-tlhrilsfhwr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-culture-tlhrilsfhwr-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-aihbiahr-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-aihbiahr-con03a,6,Deep Hybrid,0.094678,0.4808,0.3949,0.062281,1386.06,400,,False,,balanced,test
+test-digital-freedoms-aihbiahr-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-aihbiahr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-aihwbasmn-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-aihwbasmn-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-aihwbasmn-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-dfiphbgs-con01a,6,Deep Hybrid,0.124912,0.4846,0.3999,0.080408,1156.99,400,,False,,balanced,test
+test-digital-freedoms-dfiphbgs-con03a,6,Deep Hybrid,0.022855,0.4534,0.4205,0.021373,1601.66,400,,False,,balanced,test
+test-digital-freedoms-dfiphbgs-pro01a,6,Deep Hybrid,0.128791,0.4728,0.3826,0.115566,1750.45,400,,False,,balanced,test
+test-digital-freedoms-dfiphbgs-pro02a,6,Deep Hybrid,0.00073,0.4314,0.4695,0.003124,1214.57,400,,False,,balanced,test
+test-digital-freedoms-dfiphbgs-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-efsappgdfp-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-efsappgdfp-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-eifdfaihs-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-eifdfaihs-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-eifdfaihs-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-eifdfaihs-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-eifpgdff-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-eifpgdff-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-phwnaccpdt-con01a,6,Deep Hybrid,0.086502,0.4443,0.4048,0.077909,1447.36,400,,False,,balanced,test
+test-digital-freedoms-phwnaccpdt-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-phwnaccpdt-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-piidfaihbg-con01a,6,Deep Hybrid,0.197132,0.4742,0.3723,0.149724,1131.77,400,,False,,balanced,test
+test-digital-freedoms-piidfaihbg-con02a,6,Deep Hybrid,0.290273,0.552,0.3688,0.200455,1079.8,400,,False,,balanced,test
+test-digital-freedoms-piidfaihbg-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-piidfiphwu-con02a,6,Deep Hybrid,0.024477,0.3643,0.4132,0.033111,949.6,400,,True,balanced_soft_override,balanced,test
+test-digital-freedoms-piidfiphwu-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-piidfiphwu-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-digital-freedoms-piidfiphwu-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-beghwbh-con01a,6,Deep Hybrid,0.195524,0.4808,0.3373,0.139835,1207.55,400,,False,,balanced,test
+test-economy-beghwbh-con02a,6,Deep Hybrid,0.17256,0.4655,0.343,0.131732,1323.33,400,,False,,balanced,test
+test-economy-beghwbh-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-beghwbh-pro03a,6,Deep Hybrid,0.221389,0.5049,0.355,0.14873,1021.16,400,,False,,balanced,test
+test-economy-bepahbtsnrt-con02a,6,Deep Hybrid,0.165359,0.4443,0.4077,0.133579,968.95,400,,False,,balanced,test
+test-economy-bepahbtsnrt-pro02a,6,Deep Hybrid,0.099974,0.4268,0.371,0.067026,953.68,400,,False,,balanced,test
+test-economy-bepahbtsnrt-pro03a,6,Deep Hybrid,0.085679,0.4341,0.3983,0.06294,1094.83,400,,False,,balanced,test
+test-economy-bepiehbesa-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-bepiehbesa-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-bepiehbesa-pro01a,6,Deep Hybrid,0.016369,0.4116,0.4455,0.016223,1085.59,400,,False,,balanced,test
+test-economy-bepiehbesa-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-bepighbdb-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-bepighbdb-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-beplcpdffe-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-beplcpdffe-pro02a,6,Deep Hybrid,0.03222,0.3661,0.4583,0.04258,776.38,400,,True,balanced_soft_override,balanced,test
+test-economy-beplcpdffe-pro03a,6,Deep Hybrid,0.064945,0.4163,0.4282,0.047024,863.35,400,,False,,balanced,test
+test-economy-beplcpdffe-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-bhahwbsps-con01a,6,Deep Hybrid,0.23114,0.4954,0.3541,0.166189,1084.75,400,,False,,balanced,test
+test-economy-bhahwbsps-con02a,6,Deep Hybrid,0.028979,0.3975,0.3835,0.023392,1145.83,400,,True,balanced_soft_override,balanced,test
+test-economy-bhahwbsps-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-bhahwbsps-pro03a,6,Deep Hybrid,0.154042,0.4421,0.3756,0.131463,1291.76,400,,False,,balanced,test
+test-economy-bhahwbsps-pro04a,6,Deep Hybrid,0.180183,0.4523,0.3851,0.129925,792.16,400,,False,,balanced,test
+test-economy-egecegphw-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-egecegphw-con03a,6,Deep Hybrid,0.0895,0.4452,0.4027,0.084448,1537.79,400,,False,,balanced,test
+test-economy-egecegphw-pro01a,6,Deep Hybrid,0.291041,0.5819,0.3506,0.195491,1355.13,400,,False,,balanced,test
+test-economy-egiahbwaka-con02a,6,Deep Hybrid,0.037592,0.4294,0.408,0.025906,1220.71,400,,False,,balanced,test
+test-economy-egiahbwaka-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-egiahbwaka-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-egppphbcb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-egppphbcb-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-egppphbcb-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-egppphbcb-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epegiahsc-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epehwmrbals-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epehwmrbals-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epehwmrbals-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epehwmrbals-pro03a,6,Deep Hybrid,0.052611,0.3916,0.406,0.051616,1066.2,400,,True,balanced_soft_override,balanced,test
+test-economy-epehwmrbals-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epehwmrbals-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epiasghbf-con03a,6,Deep Hybrid,0.166857,0.4506,0.3863,0.120778,852.79,400,,False,,balanced,test
+test-economy-epiasghbf-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epiasghbf-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epsihbdns-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epsihbdns-con03a,6,Deep Hybrid,0.182804,0.4783,0.3597,0.12635,1054.82,400,,False,,balanced,test
+test-economy-epsihbdns-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epsihbdns-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-epsihbdns-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-eptpghdtre-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-eptpghdtre-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-eptpghdtre-pro01a,6,Deep Hybrid,0.075961,0.3646,0.3864,0.073205,859.15,400,,True,balanced_soft_override,balanced,test
+test-economy-fiahwpamu-con02a,6,Deep Hybrid,0.160617,0.4527,0.3821,0.117492,953.55,400,,False,,balanced,test
+test-economy-fiahwpamu-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-fiahwpamu-pro03a,6,Deep Hybrid,0.058666,0.4071,0.4146,0.042961,884.11,400,,False,,balanced,test
+test-economy-fiahwpamu-pro04a,6,Deep Hybrid,0.069191,0.3923,0.4257,0.062045,852.09,400,,True,balanced_soft_override,balanced,test
+test-economy-thhghwhwift-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-thhghwhwift-con02a,6,Deep Hybrid,0.033547,0.4392,0.4062,0.052355,1936.94,400,,False,,balanced,test
+test-economy-thhghwhwift-pro01a,6,Deep Hybrid,0.186706,0.499,0.3693,0.151183,1633.34,400,,False,,balanced,test
+test-economy-thhghwhwift-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-thsptr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-thsptr-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-thsptr-pro01a,6,Deep Hybrid,0.14793,0.4802,0.4263,0.112693,1165.56,400,,False,,balanced,test
+test-economy-thsptr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-economy-thsptr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-egscphsrdt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-egscphsrdt-con02a,6,Deep Hybrid,0.021964,0.4292,0.4539,0.035571,1494.79,400,,False,,balanced,test
+test-education-egscphsrdt-con03a,6,Deep Hybrid,0.055176,0.364,0.4074,0.063752,974.18,400,,True,balanced_soft_override,balanced,test
+test-education-egscphsrdt-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-egscphsrdt-pro02a,6,Deep Hybrid,0.004092,0.4104,0.4205,0.017151,1462.15,400,,False,,balanced,test
+test-education-egscphsrdt-pro03a,6,Deep Hybrid,0.105453,0.4186,0.389,0.083981,1011.68,400,,False,,balanced,test
+test-education-egtuscpih-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-egtuscpih-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-egtuscpih-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-pshhghwpba0-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-pshhghwpba0-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-pshhghwpba0-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-pshhghwpba0-pro04a,6,Deep Hybrid,0.036731,0.3454,0.42,0.042038,660.45,400,,True,balanced_soft_override,balanced,test
+test-education-pstrgsehwt-con01a,6,Deep Hybrid,0.239036,0.5406,0.3431,0.180665,1723.09,400,,False,,balanced,test
+test-education-pstrgsehwt-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-pstrgsehwt-pro04a,6,Deep Hybrid,0.206364,0.4895,0.346,0.162398,1485.58,400,,False,,balanced,test
+test-education-pstrgsehwt-pro05a,6,Deep Hybrid,0.064212,0.4385,0.4112,0.058532,1414.85,400,,False,,balanced,test
+test-education-pteuhwfphe-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-pteuhwfphe-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-pteuhwfphe-pro03a,6,Deep Hybrid,0.058434,0.4117,0.4126,0.047697,1039.38,400,,False,,balanced,test
+test-education-tuhwastua-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-tuhwastua-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-tuhwastua-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-tuhwastua-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-udfakusma-con02a,6,Deep Hybrid,0.02133,0.3958,0.4456,0.028251,1068.88,400,,True,balanced_soft_override,balanced,test
+test-education-udfakusma-con04a,6,Deep Hybrid,0.088151,0.4253,0.3884,0.075129,1250.1,400,,False,,balanced,test
+test-education-udfakusma-pro03a,6,Deep Hybrid,0.032761,0.3754,0.3864,0.034115,1049.23,400,,True,balanced_soft_override,balanced,test
+test-education-udfakusma-pro04a,6,Deep Hybrid,0.065141,0.3998,0.402,0.065362,1192.35,400,,True,balanced_soft_override,balanced,test
+test-education-ufsdfkhbwu-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-ufsdfkhbwu-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-ufsdfkhbwu-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-ughbuesbf-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-ughbuesbf-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-ughbuesbf-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-ughbuesbf-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-usuprmhbu-con02a,6,Deep Hybrid,0.027363,0.3658,0.414,0.048285,1206.23,400,,True,balanced_soft_override,balanced,test
+test-education-usuprmhbu-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-xeegshwfeu-con01a,6,Deep Hybrid,0.09399,0.3971,0.3668,0.069057,837.94,400,,True,balanced_soft_override,balanced,test
+test-education-xeegshwfeu-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-education-xeegshwfeu-pro02a,6,Deep Hybrid,0.053757,0.3533,0.3532,0.038631,664.67,400,,True,balanced_soft_override,balanced,test
+test-environment-aeghhgwpe-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-environment-aeghhgwpe-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-environment-aiahwagit-con02a,6,Deep Hybrid,0.04661,0.3707,0.4115,0.049947,915.84,400,,True,balanced_soft_override,balanced,test
+test-environment-aiahwagit-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-environment-assgbatj-con01a,6,Deep Hybrid,0.247018,0.4578,0.3517,0.179183,662.21,400,,False,,balanced,test
+test-environment-assgbatj-con02a,6,Deep Hybrid,0.211376,0.4683,0.3532,0.138911,668.23,400,,False,,balanced,test
+test-environment-assgbatj-con03a,6,Deep Hybrid,0.117575,0.381,0.3838,0.101457,768.42,400,,True,balanced_soft_override,balanced,test
+test-environment-assgbatj-pro03a,6,Deep Hybrid,0.258016,0.4508,0.371,0.208237,857.91,400,,False,,balanced,test
+test-environment-assgbatj-pro05a,6,Deep Hybrid,0.235873,0.4468,0.3687,0.176162,630.92,400,,False,,balanced,test
+test-environment-chbwtlgcc-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-environment-chbwtlgcc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-environment-ehwsnwu-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-environment-opecewiahw-con01a,6,Deep Hybrid,0.004383,0.4101,0.4342,0.00213,1085.21,400,,False,,balanced,test
+test-environment-opecewiahw-con04a,6,Deep Hybrid,0.26756,0.5067,0.3698,0.200402,1074.96,400,,False,,balanced,test
+test-environment-opecewiahw-pro02a,6,Deep Hybrid,0.145136,0.4464,0.3766,0.101543,909.23,400,,False,,balanced,test
+test-environment-opecewiahw-pro03a,6,Deep Hybrid,0.092305,0.4529,0.3984,0.064287,1177.05,400,,False,,balanced,test
+test-environment-opecewiahw-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-fchbjaj-con01a,6,Deep Hybrid,0.01767,0.3934,0.3897,0.026485,1361.88,400,,True,balanced_soft_override,balanced,test
+test-free-speech-debate-fchbjaj-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-fchbjaj-con03a,6,Deep Hybrid,0.127827,0.4665,0.3418,0.100803,1615.79,400,,False,,balanced,test
+test-free-speech-debate-fsaphgiap-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-fsaphgiap-pro01a,6,Deep Hybrid,0.324949,0.5437,0.3443,0.223693,890.51,400,,False,,balanced,test
+test-free-speech-debate-fsaphgiap-pro02a,6,Deep Hybrid,0.062087,0.4397,0.4096,0.040847,1123.92,400,,False,,balanced,test
+test-free-speech-debate-fsaphgiap-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-ldhwbmclg-con03a,6,Deep Hybrid,0.196085,0.5931,0.2878,0.183191,3434.07,400,,False,,balanced,test
+test-free-speech-debate-ldhwbmclg-pro01a,6,Deep Hybrid,0.116926,0.5583,0.2786,0.140714,3865.95,400,,False,,balanced,test
+test-free-speech-debate-ldhwprhs-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-ldhwprhs-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-ldhwprhs-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-magghbcrg-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-magghbcrg-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbbsbfb-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbbsbfb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbbsbfb-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbbsbfb-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbbsbfb-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbcsbawc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbcsbawc-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbcsbawc-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbcsbawc-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-nshbcsbawc-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-radhbsshr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-radhbsshr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-radhbsshr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-yfsdfkhbwu-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-yfsdfkhbwu-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-free-speech-debate-yfsdfkhbwu-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-ahiahbgbsp-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-ahiahbgbsp-con02a,6,Deep Hybrid,0.103143,0.4214,0.4126,0.085415,995.87,400,,False,,balanced,test
+test-health-ahiahbgbsp-con03a,6,Deep Hybrid,0.425292,0.5699,0.3216,0.303793,861.45,400,,False,,balanced,test
+test-health-ahiahbgbsp-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-ahiahbgbsp-pro01a,6,Deep Hybrid,0.100903,0.4502,0.4079,0.081813,1280.38,400,,False,,balanced,test
+test-health-ahiahbgbsp-pro05a,6,Deep Hybrid,0.149292,0.4169,0.3842,0.1256,973.65,400,,False,,balanced,test
+test-health-dhghhbampt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-dhghhbampt-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-dhghhbampt-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-dhghwapgd-con02a,6,Deep Hybrid,0.022308,0.3774,0.45,0.051456,1307.62,400,,True,balanced_soft_override,balanced,test
+test-health-dhghwapgd-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-dhghwapgd-pro02a,6,Deep Hybrid,0.015375,0.4291,0.3812,0.029996,1877.03,400,,False,,balanced,test
+test-health-dhghwapgd-pro03a,6,Deep Hybrid,0.014961,0.4144,0.4036,0.032584,1678.35,400,,False,,balanced,test
+test-health-dhghwapgd-pro04a,6,Deep Hybrid,0.013761,0.4179,0.4418,0.043602,1766.79,400,,False,,balanced,test
+test-health-dhghwapgd-pro05a,6,Deep Hybrid,0.331851,0.5851,0.3137,0.220154,1248.29,400,,False,,balanced,test
+test-health-dhgsshbesbc-con03a,6,Deep Hybrid,0.138675,0.4465,0.3357,0.078591,785.46,400,,False,,balanced,test
+test-health-dhgsshbesbc-pro01a,6,Deep Hybrid,0.135845,0.4829,0.3728,0.087589,1200.3,400,,False,,balanced,test
+test-health-dhgsshbesbc-pro04a,6,Deep Hybrid,0.030774,0.3807,0.3875,0.021145,876.74,400,,True,balanced_soft_override,balanced,test
+test-health-dhiacihwph-con02a,6,Deep Hybrid,0.089715,0.416,0.4395,0.070785,783.95,400,,False,,balanced,test
+test-health-dhiacihwph-pro01a,6,Deep Hybrid,0.120429,0.4475,0.4142,0.090885,1013.27,400,,False,,balanced,test
+test-health-dhiacihwph-pro03a,6,Deep Hybrid,0.075304,0.3902,0.414,0.068864,902.94,400,,True,balanced_soft_override,balanced,test
+test-health-dhiacihwph-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-dhpelhbass-con02a,6,Deep Hybrid,0.116355,0.4586,0.3607,0.105916,1774.34,400,,False,,balanced,test
+test-health-dhpelhbass-con03a,6,Deep Hybrid,0.372407,0.5721,0.3025,0.269823,1357.05,400,,False,,balanced,test
+test-health-dhpelhbass-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-dhpelhbass-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-dhpelhbass-pro02a,6,Deep Hybrid,0.053028,0.4048,0.3842,0.053539,1337.38,400,,False,,balanced,test
+test-health-dhpelhbass-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hdond-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hdond-pro01a,6,Deep Hybrid,0.18633,0.4568,0.3425,0.156922,1467.01,400,,False,,balanced,test
+test-health-hdond-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hgwhwbjfs-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hgwhwbjfs-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hgwhwbjfs-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hgwhwbjfs-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hpehwadvoee-con02a,6,Deep Hybrid,0.036104,0.4064,0.4186,0.026151,972.36,400,,False,,balanced,test
+test-health-hpehwadvoee-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hpehwadvoee-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-hpehwadvoee-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-ppelfhwbpba-con02a,6,Deep Hybrid,0.088195,0.3723,0.3928,0.08289,852.93,400,,True,balanced_soft_override,balanced,test
+test-health-ppelfhwbpba-pro01a,6,Deep Hybrid,0.220304,0.4976,0.358,0.150872,996.83,400,,False,,balanced,test
+test-health-ppelfhwbpba-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-health-ppelfhwbpba-pro04a,6,Deep Hybrid,0.105777,0.4117,0.3583,0.077168,953.46,400,,False,,balanced,test
+test-international-aahwstdrtfm-con02a,6,Deep Hybrid,0.100252,0.4275,0.3854,0.077062,1084.22,400,,False,,balanced,test
+test-international-aahwstdrtfm-con03a,6,Deep Hybrid,0.141852,0.4664,0.3805,0.10431,1210.71,400,,False,,balanced,test
+test-international-aahwstdrtfm-pro01a,6,Deep Hybrid,0.108067,0.4022,0.3662,0.089772,1024.66,400,,False,,balanced,test
+test-international-aahwstdrtfm-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aahwstdrtfm-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aegmeppghw-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aegmeppghw-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aegmeppghw-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aghbfcpspr-con01a,6,Deep Hybrid,0.161357,0.4743,0.3528,0.119997,1351.73,400,,False,,balanced,test
+test-international-aghbfcpspr-con02a,6,Deep Hybrid,0.001056,0.417,0.4266,0.012725,1470.56,400,,False,,balanced,test
+test-international-aghbfcpspr-con04a,6,Deep Hybrid,0.110093,0.4196,0.4049,0.084906,867.43,400,,False,,balanced,test
+test-international-aghbfcpspr-pro01a,6,Deep Hybrid,0.186042,0.482,0.3106,0.145702,1659.68,400,,False,,balanced,test
+test-international-aghbfcpspr-pro02a,6,Deep Hybrid,0.179034,0.5184,0.3618,0.12569,1508.07,400,,False,,balanced,test
+test-international-aghbfcpspr-pro04a,6,Deep Hybrid,0.218794,0.5047,0.3518,0.153769,1187.69,400,,False,,balanced,test
+test-international-aghwrem-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aghwrem-con03a,6,Deep Hybrid,0.009406,0.4155,0.4508,0.004105,995.31,400,,False,,balanced,test
+test-international-aghwrem-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aghwrem-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aghwrem-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aghwrem-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aghwrem-pro05a,6,Deep Hybrid,0.083524,0.4274,0.3744,0.049825,927.91,400,,False,,balanced,test
+test-international-aglhrilhb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aglhrilhb-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aglhrilhb-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-aglhrilhb-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-amehbuaisji-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-amehbuaisji-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-appghblsba-con01a,6,Deep Hybrid,0.050132,0.4172,0.4097,0.0459,1238.56,400,,False,,balanced,test
+test-international-appghblsba-con03a,6,Deep Hybrid,0.054086,0.4444,0.3979,0.037462,1322.36,400,,False,,balanced,test
+test-international-appghblsba-pro02a,6,Deep Hybrid,0.057234,0.4407,0.3853,0.034935,1234.17,400,,False,,balanced,test
+test-international-appghblsba-pro04a,6,Deep Hybrid,0.101832,0.4684,0.4003,0.061993,1085.76,400,,False,,balanced,test
+test-international-apwhbaucmip-con01a,6,Deep Hybrid,0.364197,0.5471,0.2978,0.256576,1029.49,400,,False,,balanced,test
+test-international-apwhbaucmip-pro02a,6,Deep Hybrid,0.058751,0.4026,0.3969,0.046892,1004.83,400,,False,,balanced,test
+test-international-atiahblit-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-atiahblit-pro03a,6,Deep Hybrid,0.021018,0.3761,0.4272,0.025614,916.63,400,,True,balanced_soft_override,balanced,test
+test-international-atiahblit-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-bldimehbn-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-bldimehbn-pro03a,6,Deep Hybrid,0.042887,0.3751,0.364,0.061117,1495.49,400,,True,balanced_soft_override,balanced,test
+test-international-bmaggiahbl-con01a,6,Deep Hybrid,0.018181,0.4224,0.4307,0.013308,1172.72,400,,False,,balanced,test
+test-international-bmaggiahbl-con02a,6,Deep Hybrid,0.053126,0.4421,0.3989,0.031781,1199.3,400,,False,,balanced,test
+test-international-bmaggiahbl-con03a,6,Deep Hybrid,0.053525,0.4444,0.3917,0.039209,1399.5,400,,False,,balanced,test
+test-international-bmaggiahbl-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-eghrhbeusli-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-eghrhbeusli-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-eghrhbeusli-pro03a,6,Deep Hybrid,0.240815,0.4874,0.3751,0.181691,1016.68,400,,False,,balanced,test
+test-international-ehbfe-con04a,6,Deep Hybrid,0.159956,0.4261,0.3657,0.117887,790.46,400,,False,,balanced,test
+test-international-ehbfe-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ehbfe-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ehbfe-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-eiahwpamu-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-eiahwpamu-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-eiahwpamu-pro04a,6,Deep Hybrid,0.069191,0.3923,0.4257,0.062045,852.09,400,,True,balanced_soft_override,balanced,test
+test-international-emephsate-pro02a,6,Deep Hybrid,0.016233,0.3952,0.4146,0.033842,1430.97,400,,True,balanced_soft_override,balanced,test
+test-international-epdlhfcefp-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-epdlhfcefp-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-epdlhfcefp-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-epglghbni-pro03a,6,Deep Hybrid,0.05931,0.4055,0.3901,0.051859,1155.48,400,,False,,balanced,test
+test-international-epglghbni-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-epvhwhranet-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-epvhwhranet-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-epvhwhranet-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-epvhwhranet-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ghbunhf-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ghbunhf-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ghbunhf-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ghwcitca-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ghwcitca-con03a,6,Deep Hybrid,0.082694,0.4243,0.3924,0.074996,1326.99,400,,False,,balanced,test
+test-international-ghwcitca-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ghwcitca-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ghwcitca-pro04a,6,Deep Hybrid,0.041223,0.4309,0.4287,0.042685,1394.82,400,,False,,balanced,test
+test-international-glilpdwhsn-con01a,6,Deep Hybrid,0.300592,0.6268,0.316,0.235589,2587.54,400,,False,,balanced,test
+test-international-glilpdwhsn-pro01a,6,Deep Hybrid,0.119236,0.4956,0.379,0.133122,2538.7,400,,False,,balanced,test
+test-international-glilpdwhsn-pro03a,6,Deep Hybrid,0.191412,0.5327,0.3454,0.168934,2350.14,400,,False,,balanced,test
+test-international-gmehbisrip1b-con01a,6,Deep Hybrid,0.068643,0.4486,0.3355,0.110524,2845.92,400,,False,,balanced,test
+test-international-gmehbisrip1b-pro03a,6,Deep Hybrid,0.124303,0.4797,0.3823,0.119903,1997.48,400,,False,,balanced,test
+test-international-gmehwasr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gmehwasr-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gmehwasr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gmehwasr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gpdwhwcusa-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gpdwhwcusa-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gpsmhbsosb-con03a,6,Deep Hybrid,0.095068,0.4717,0.3845,0.075327,1599.85,400,,False,,balanced,test
+test-international-gpsmhbsosb-pro01a,6,Deep Hybrid,0.030493,0.4097,0.3905,0.037572,1485.83,400,,False,,balanced,test
+test-international-gpsmhbsosb-pro02a,6,Deep Hybrid,0.176509,0.5944,0.3143,0.115549,2353.71,400,,False,,balanced,test
+test-international-gsciidffe-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gsciidffe-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gsciidffe-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gsciidffe-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-gsciidffe-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-iiahwagit-con02a,6,Deep Hybrid,0.04661,0.3707,0.4115,0.049947,915.84,400,,True,balanced_soft_override,balanced,test
+test-international-iiahwagit-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-iiahwagit-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-iighbopcc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-iighbopcc-pro02a,6,Deep Hybrid,0.04224,0.3938,0.4014,0.038531,1056.99,400,,True,balanced_soft_override,balanced,test
+test-international-iighbopcc-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ipecfiepg-con02a,6,Deep Hybrid,0.047504,0.4084,0.4387,0.052228,1184.62,400,,False,,balanced,test
+test-international-ipecfiepg-pro02a,6,Deep Hybrid,0.080459,0.4578,0.4089,0.072696,1578.32,400,,False,,balanced,test
+test-international-iwiaghbss-pro02a,6,Deep Hybrid,0.042628,0.3807,0.3657,0.025123,828.75,400,,True,balanced_soft_override,balanced,test
+test-international-miasimyhw-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-miasimyhw-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-miasimyhw-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-miasimyhw-pro02a,6,Deep Hybrid,0.041386,0.3967,0.4245,0.050286,1222.1,400,,True,balanced_soft_override,balanced,test
+test-international-miasimyhw-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-segiahbarr-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-segiahbarr-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-segiahbarr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-segiahbarr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-segiahbarr-pro03a,6,Deep Hybrid,0.04345,0.4006,0.3933,0.045744,1285.6,400,,False,,balanced,test
+test-international-segiahbarr-pro04a,6,Deep Hybrid,0.139779,0.4572,0.3839,0.108427,1225.73,400,,False,,balanced,test
+test-international-sepiahbaaw-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-sepiahbaaw-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-sepiahbaaw-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-sepiahbaaw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-sepiahbaaw-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-siacphbnt-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-siacphbnt-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-siacphbnt-pro01a,6,Deep Hybrid,0.089806,0.4444,0.3981,0.077928,1415.56,400,,False,,balanced,test
+test-international-siacphbnt-pro02a,6,Deep Hybrid,0.195031,0.4567,0.3489,0.157943,1280.95,400,,False,,balanced,test
+test-international-siacphbnt-pro03a,6,Deep Hybrid,0.038188,0.3699,0.3801,0.036183,958.25,400,,True,balanced_soft_override,balanced,test
+test-international-siacphbnt-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ssiarcmhb-con01a,6,Deep Hybrid,0.229273,0.4904,0.38,0.160935,836.97,400,,False,,balanced,test
+test-international-ssiarcmhb-con03a,6,Deep Hybrid,0.205205,0.4941,0.3832,0.137625,873.89,400,,False,,balanced,test
+test-international-ssiarcmhb-con04a,6,Deep Hybrid,0.144453,0.4224,0.3828,0.120551,1032.14,400,,False,,balanced,test
+test-international-ssiarcmhb-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-international-ssiarcmhb-pro01a,6,Deep Hybrid,0.302701,0.5209,0.3377,0.227031,1207.22,400,,False,,balanced,test
+test-international-ssiarcmhb-pro02a,6,Deep Hybrid,0.025669,0.38,0.435,0.033142,974.51,400,,True,balanced_soft_override,balanced,test
+test-international-ssiarcmhb-pro05a,6,Deep Hybrid,0.222922,0.4803,0.3862,0.160271,818.83,400,,False,,balanced,test
+test-law-cpilhbishioe-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cpilhbishioe-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cplglghwbhwd-con01a,6,Deep Hybrid,0.016808,0.4273,0.3952,0.02369,1635.2,400,,False,,balanced,test
+test-law-cplglghwbhwd-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cplgpshwdp-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cplgpshwdp-con03a,6,Deep Hybrid,0.205053,0.4601,0.3696,0.162963,1110.93,400,,False,,balanced,test
+test-law-cplgpshwdp-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cplgpshwdp-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cppshbcjsfm-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cppshbcjsfm-con02a,6,Deep Hybrid,0.032731,0.3913,0.4451,0.042567,1083.65,400,,True,balanced_soft_override,balanced,test
+test-law-cppshbcjsfm-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-cppshbcjsfm-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-hrilpgwhwr-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-hrilpgwhwr-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-hrilpgwhwr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-hrilpgwhwr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-hrpepthwuto-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-hrpepthwuto-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-hrpepthwuto-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-ilppppghb-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-ilppppghb-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-ilppppghb-pro03a,6,Deep Hybrid,0.027118,0.3923,0.3941,0.023436,1078.74,400,,True,balanced_soft_override,balanced,test
+test-law-lghbacpsba-con02a,6,Deep Hybrid,0.11295,0.4419,0.384,0.071917,878.46,400,,False,,balanced,test
+test-law-lghbacpsba-pro03a,6,Deep Hybrid,0.035622,0.3415,0.3777,0.039176,797.22,400,,True,balanced_soft_override,balanced,test
+test-law-lghbacpsba-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-lghbacpsba-pro05a,6,Deep Hybrid,0.081316,0.3913,0.3784,0.080297,1200.94,400,,True,balanced_soft_override,balanced,test
+test-law-lghwpcctcc-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-lghwpcctcc-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-lgplhbssbco-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-lgplhbssbco-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-lgplhbssbco-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-lgplhbssbco-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-phwmfri-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-phwmfri-con02a,6,Deep Hybrid,0.109465,0.45,0.3613,0.07529,1209.87,400,,False,,balanced,test
+test-law-phwmfri-con03a,6,Deep Hybrid,0.0248,0.4029,0.4286,0.02332,1056.17,400,,False,,balanced,test
+test-law-phwmfri-pro01a,6,Deep Hybrid,0.032195,0.3938,0.4124,0.023768,907.28,400,,True,balanced_soft_override,balanced,test
+test-law-phwmfri-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-ralhrilglv-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-ralhrilglv-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-ralhrilglv-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-ralhrilglv-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-rmelhrilhbiw-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-rmelhrilhbiw-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-rmelhrilhbiw-pro01a,6,Deep Hybrid,0.037305,0.3828,0.4208,0.055036,1278.41,400,,True,balanced_soft_override,balanced,test
+test-law-rmelhrilhbiw-pro02a,6,Deep Hybrid,0.164735,0.4904,0.378,0.130824,1535.45,400,,False,,balanced,test
+test-law-rmelhrilhbiw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-rmelhrilhbiw-pro04a,6,Deep Hybrid,0.037484,0.385,0.4155,0.05634,1349.29,400,,True,balanced_soft_override,balanced,test
+test-law-sdfclhrppph-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-sdfclhrppph-pro04a,6,Deep Hybrid,0.004214,0.3318,0.411,0.027721,933.08,400,,True,balanced_soft_override,balanced,test
+test-law-sdiflhrdffe-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-sdiflhrdffe-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-sdiflhrdffe-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-sdiflhrdffe-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-tahglcphsld-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-tahglcphsld-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-tahglcphsld-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-tahglcphsld-pro07a,6,Deep Hybrid,0.048752,0.4221,0.4357,0.023203,732.16,400,,False,,balanced,test
+test-law-thgglcplgphw-con01a,6,Deep Hybrid,0.217054,0.5236,0.3738,0.16383,1503.08,400,,False,,balanced,test
+test-law-thgglcplgphw-con02a,6,Deep Hybrid,0.117784,0.4692,0.404,0.091438,1345.13,400,,False,,balanced,test
+test-law-thgglcplgphw-pro01a,6,Deep Hybrid,0.238875,0.5361,0.356,0.168772,1378.75,400,,False,,balanced,test
+test-law-tlcplghwfne-con01a,6,Deep Hybrid,0.093991,0.4331,0.415,0.07415,1058.51,400,,False,,balanced,test
+test-law-tlcplghwfne-con02a,6,Deep Hybrid,0.088431,0.4553,0.4017,0.060849,1193.13,400,,False,,balanced,test
+test-law-tlcplghwfne-pro01a,6,Deep Hybrid,0.166399,0.5589,0.3404,0.100486,1768.68,400,,False,,balanced,test
+test-law-tlcplghwfne-pro02a,6,Deep Hybrid,0.007658,0.4246,0.4023,-0.012069,1039.98,400,,False,,balanced,test
+test-law-umtlilhotac-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-umtlilhotac-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-law-umtlilhotac-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-apessghwba-con01a,6,Deep Hybrid,0.051907,0.4158,0.43,0.050231,1174.73,400,,False,,balanced,test
+test-philosophy-apessghwba-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-apessghwba-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-apessghwba-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-apessghwba-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elhbrd-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elhbrd-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elhbrd-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elkosmj-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elkosmj-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elkosmj-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elkosmj-con06a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-elkosmj-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-eppphwlrtjs-con03a,6,Deep Hybrid,0.075454,0.4422,0.4083,0.068619,1443.64,400,,False,,balanced,test
+test-philosophy-eppphwlrtjs-pro01a,6,Deep Hybrid,0.026762,0.3798,0.413,0.03365,1070.91,400,,True,balanced_soft_override,balanced,test
+test-philosophy-eppphwlrtjs-pro03a,6,Deep Hybrid,0.036534,0.3917,0.4115,0.043304,1194.89,400,,True,balanced_soft_override,balanced,test
+test-philosophy-eppphwlrtjs-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-ippelhbcp-con01a,6,Deep Hybrid,0.154835,0.4263,0.3707,0.117844,870.2,400,,False,,balanced,test
+test-philosophy-ippelhbcp-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-ippelhbcp-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-ippelhbcp-pro02a,6,Deep Hybrid,0.067621,0.428,0.3941,0.041876,994.56,400,,False,,balanced,test
+test-philosophy-npegiepp-con02a,6,Deep Hybrid,0.268401,0.5375,0.3263,0.183155,1238.23,400,,False,,balanced,test
+test-philosophy-npegiepp-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-npppmhwup-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-npppmhwup-con03a,6,Deep Hybrid,0.152436,0.4438,0.4038,0.1255,1079.86,400,,False,,balanced,test
+test-philosophy-npppmhwup-pro02a,6,Deep Hybrid,0.025083,0.4217,0.4389,0.027062,1262.67,400,,False,,balanced,test
+test-philosophy-npppmhwup-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-npppmhwup-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pphbclsbs-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pphbclsbs-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pphbclsbs-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pphbclsbs-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pphbclsbs-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pphbclsbs-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppgshbsd-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppgshbsd-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppgshbsd-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppgshbsd-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppthbtcb-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppthbtcb-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppthbtcb-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppthbtcb-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppthbtcb-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-philosophy-pppthbtcb-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdfsaphgiap-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdfsaphgiap-con02a,6,Deep Hybrid,0.090486,0.4202,0.3784,0.071244,1124.87,400,,False,,balanced,test
+test-politics-cdfsaphgiap-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdfsaphgiap-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cdmaggpdgdf-pro04a,6,Deep Hybrid,0.027171,0.4179,0.418,0.017248,1090.51,400,,False,,balanced,test
+test-politics-cpecfiepg-con01a,6,Deep Hybrid,0.178583,0.5137,0.3641,0.126905,1482.79,400,,False,,balanced,test
+test-politics-cpecfiepg-con03a,6,Deep Hybrid,0.164992,0.5029,0.3927,0.111573,1197.5,400,,False,,balanced,test
+test-politics-cpecfiepg-pro02a,6,Deep Hybrid,0.080459,0.4578,0.4089,0.072696,1578.32,400,,False,,balanced,test
+test-politics-cpegiepgh-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-cpegiepgh-pro04a,6,Deep Hybrid,0.217595,0.4851,0.3997,0.167826,1057.09,400,,False,,balanced,test
+test-politics-dhbanhrnw-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhbanhrnw-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhbanhrnw-con05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhbanhrnw-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhbanhrnw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhbanhrnw-pro04a,6,Deep Hybrid,0.007993,0.4017,0.459,0.024866,1259.1,400,,False,,balanced,test
+test-politics-dhbanhrnw-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhwem-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhwem-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhwem-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhwem-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhwem-pro01a,6,Deep Hybrid,0.064171,0.4045,0.4131,0.046493,826.44,400,,False,,balanced,test
+test-politics-dhwem-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhwem-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-dhwem-pro06a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwgpi-con04a,6,Deep Hybrid,0.07365,0.4096,0.4176,0.053929,813.81,400,,False,,balanced,test
+test-politics-eppghwgpi-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwgpi-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwgpi-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwgpi-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwgpi-pro05a,6,Deep Hybrid,0.123083,0.411,0.38,0.096921,886.96,400,,False,,balanced,test
+test-politics-eppghwlrba-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwlrba-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwlrba-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-eppghwlrba-pro03a,6,Deep Hybrid,0.188668,0.3978,0.3544,0.158712,807.04,400,,True,balanced_soft_override,balanced,test
+test-politics-epvhbfsmsaop-con01a,6,Deep Hybrid,0.170929,0.4608,0.3465,0.143285,1522.11,400,,False,,balanced,test
+test-politics-epvhbfsmsaop-con02a,6,Deep Hybrid,0.078363,0.4295,0.3705,0.054525,1165.54,400,,False,,balanced,test
+test-politics-epvhbfsmsaop-con03a,6,Deep Hybrid,0.121399,0.4394,0.3053,0.087581,1391.41,400,,False,,balanced,test
+test-politics-epvhbfsmsaop-pro01a,6,Deep Hybrid,0.040299,0.3983,0.3704,0.059678,1718.14,400,,True,balanced_soft_override,balanced,test
+test-politics-epvhbfsmsaop-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-epvhbfsmsaop-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-ghbgussbsbt-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-ghbgussbsbt-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-ghbgussbsbt-pro01a,6,Deep Hybrid,0.167858,0.5017,0.3861,0.105431,1038.21,400,,False,,balanced,test
+test-politics-ghbgussbsbt-pro04a,6,Deep Hybrid,0.028504,0.4093,0.4257,0.02622,1119.19,400,,False,,balanced,test
+test-politics-glghssi-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-glghssi-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-glghssi-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-glghssi-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-glgvhbqssc-con01a,6,Deep Hybrid,0.250588,0.4953,0.3305,0.199382,1476.17,400,,False,,balanced,test
+test-politics-glgvhbqssc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-glgvhbqssc-pro01a,6,Deep Hybrid,0.18048,0.4877,0.3501,0.139648,1510.27,400,,False,,balanced,test
+test-politics-glgvhbqssc-pro03a,6,Deep Hybrid,0.414867,0.6111,0.3038,0.284253,1180.09,400,,False,,balanced,test
+test-politics-grcrgshwbr-con01a,6,Deep Hybrid,0.157446,0.4575,0.4338,0.121658,890.07,400,,False,,balanced,test
+test-politics-grcrgshwbr-con02a,6,Deep Hybrid,0.268331,0.542,0.3867,0.173032,780.75,400,,False,,balanced,test
+test-politics-grcrgshwbr-con04a,6,Deep Hybrid,0.052974,0.4148,0.4132,0.036743,957.37,400,,False,,balanced,test
+test-politics-grcrgshwbr-pro03a,6,Deep Hybrid,0.045979,0.401,0.4445,0.052812,1123.9,400,,False,,balanced,test
+test-politics-grcrgshwbr-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-grcrgshwbr-pro05a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-gvhbhlsbr-con02a,6,Deep Hybrid,0.07359,0.3799,0.3856,0.067404,946.81,400,,True,balanced_soft_override,balanced,test
+test-politics-gvhbhlsbr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-gvhbhlsbr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-gvhwhnerse-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-gvhwhnerse-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-gvhwhnerse-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-gvhwhnerse-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-gvhwhnerse-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-lghwdecm-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-lghwdecm-con02a,6,Deep Hybrid,0.098252,0.4405,0.4048,0.085517,1326.45,400,,False,,balanced,test
+test-politics-lghwdecm-pro02a,6,Deep Hybrid,0.124765,0.4744,0.3993,0.100155,1455.24,400,,False,,balanced,test
+test-politics-lghwdecm-pro03a,6,Deep Hybrid,0.013791,0.4056,0.4407,0.018333,1143.06,400,,False,,balanced,test
+test-politics-mtpghwaacb-con03a,6,Deep Hybrid,0.16537,0.5086,0.373,0.104989,1213.63,400,,False,,balanced,test
+test-politics-mtpghwaacb-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-nlpdwhbusbuc-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-nlpdwhbusbuc-con03a,6,Deep Hybrid,0.023588,0.381,0.425,0.035461,1122.34,400,,True,balanced_soft_override,balanced,test
+test-politics-nlpdwhbusbuc-pro01a,6,Deep Hybrid,0.19217,0.4835,0.3603,0.147612,1341.76,400,,False,,balanced,test
+test-politics-nlpdwhbusbuc-pro02a,6,Deep Hybrid,0.056698,0.4486,0.4094,0.036469,1234.63,400,,False,,balanced,test
+test-politics-nlpdwhbusbuc-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oapdhwinkp-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oapghwliva-con01a,6,Deep Hybrid,0.168095,0.4477,0.3738,0.133423,1114.43,400,,False,,balanced,test
+test-politics-oepdlhfcefp-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oepdlhfcefp-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oepdlhfcefp-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oepghbrnsl-con04a,6,Deep Hybrid,0.035648,0.3754,0.4084,0.037181,942.64,400,,True,balanced_soft_override,balanced,test
+test-politics-oepghbrnsl-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oepghbrnsl-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oeplhbuwhmi-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oeplhbuwhmi-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oeplhbuwhmi-con04a,6,Deep Hybrid,0.008797,0.4013,0.4256,0.006219,1033.09,400,,False,,balanced,test
+test-politics-oeplhbuwhmi-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oeplhbuwhmi-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oglilpdwhsn-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-oglilpdwhsn-pro01a,6,Deep Hybrid,0.119236,0.4956,0.379,0.133122,2538.7,400,,False,,balanced,test
+test-politics-oglilpdwhsn-pro02a,6,Deep Hybrid,0.167805,0.5438,0.3426,0.149597,2560.77,400,,False,,balanced,test
+test-politics-oglilpdwhsn-pro03a,6,Deep Hybrid,0.191412,0.5327,0.3454,0.168934,2350.14,400,,False,,balanced,test
+test-politics-pgsimhwoia-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-pgsimhwoia-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-pgsimhwoia-pro03a,6,Deep Hybrid,0.061683,0.4246,0.4352,0.049781,1031.67,400,,False,,balanced,test
+test-politics-ypppdghwid-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-ypppdghwid-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-ypppgvhwmv-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-politics-ypppgvhwmv-pro04a,6,Deep Hybrid,0.225256,0.4687,0.345,0.171712,1090.99,400,,False,,balanced,test
+test-religion-cmrsgfhbr-con02a,6,Deep Hybrid,0.013684,0.396,0.378,0.022072,1437.44,400,,True,balanced_soft_override,balanced,test
+test-religion-cmrsgfhbr-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-religion-cmrsgfhbr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-religion-frghbbgi-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-religion-frghbbgi-pro01a,6,Deep Hybrid,0.11465,0.3901,0.3949,0.095885,750.81,400,,True,balanced_soft_override,balanced,test
+test-religion-frghbbgi-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-religion-grcrgshwbr-con01a,6,Deep Hybrid,0.157446,0.4575,0.4338,0.121658,890.07,400,,False,,balanced,test
+test-religion-grcrgshwbr-con03a,6,Deep Hybrid,0.252625,0.5434,0.3751,0.169348,1092.62,400,,False,,balanced,test
+test-religion-grcrgshwbr-con04a,6,Deep Hybrid,0.052974,0.4148,0.4132,0.036743,957.37,400,,False,,balanced,test
+test-religion-grcrgshwbr-pro01a,6,Deep Hybrid,0.130129,0.4874,0.4111,0.08185,1053.04,400,,False,,balanced,test
+test-religion-grcrgshwbr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-religion-grcrgshwbr-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-religion-msgfhwbamec-con03a,6,Deep Hybrid,0.072893,0.4332,0.44,0.061697,1107.67,400,,False,,balanced,test
+test-religion-wcprrgrhbmi-con03a,6,Deep Hybrid,0.043359,0.3973,0.3876,0.027927,926.37,400,,True,balanced_soft_override,balanced,test
+test-religion-wcprrgrhbmi-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-religion-wcprrgrhbmi-pro02a,6,Deep Hybrid,0.050608,0.4236,0.4106,0.032301,1016.88,400,,False,,balanced,test
+test-religion-wcprrgrhbmi-pro03a,6,Deep Hybrid,0.133197,0.4945,0.3874,0.076363,1070.82,400,,False,,balanced,test
+test-religion-yercfrggms-con02a,6,Deep Hybrid,0.100435,0.4542,0.4023,0.078343,1289.13,400,,False,,balanced,test
+test-religion-yercfrggms-pro03a,6,Deep Hybrid,0.097709,0.4439,0.3758,0.083598,1478.16,400,,False,,balanced,test
+test-religion-yercfrggms-pro07a,6,Deep Hybrid,0.233118,0.5034,0.3748,0.166875,1034.98,400,,False,,balanced,test
+test-science-ascidfakhba-con02a,6,Deep Hybrid,0.074293,0.4453,0.351,0.065029,1712.8,400,,False,,balanced,test
+test-science-ascidfakhba-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-ascidfakhba-con04a,6,Deep Hybrid,0.117824,0.3899,0.3715,0.1078,1041.03,400,,True,balanced_soft_override,balanced,test
+test-science-ascidfakhba-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-ascidfakhba-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-ascidfakhba-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-ciidfaihwc-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-ciidfaihwc-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-ciidfaihwc-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-ciidfaihwc-pro03a,6,Deep Hybrid,0.101084,0.4788,0.3849,0.082019,1682.02,400,,False,,balanced,test
+test-science-cpisydfphwj-con01a,6,Deep Hybrid,0.180597,0.5143,0.3703,0.132395,1527.11,400,,False,,balanced,test
+test-science-cpisydfphwj-pro01a,6,Deep Hybrid,0.075304,0.444,0.3961,0.070253,1558.26,400,,False,,balanced,test
+test-science-dssghsdmd-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-dssghsdmd-pro02a,6,Deep Hybrid,0.273901,0.5586,0.3598,0.196535,1440.16,400,,False,,balanced,test
+test-science-eassgbatj-con01a,6,Deep Hybrid,0.247018,0.4578,0.3517,0.179183,662.21,400,,False,,balanced,test
+test-science-eassgbatj-con03a,6,Deep Hybrid,0.117575,0.381,0.3838,0.101457,768.42,400,,True,balanced_soft_override,balanced,test
+test-science-eassgbatj-con05a,6,Deep Hybrid,0.185365,0.4343,0.3732,0.138404,737.26,400,,False,,balanced,test
+test-science-eassgbatj-pro01a,6,Deep Hybrid,0.112799,0.3903,0.4075,0.108649,982.58,400,,True,balanced_soft_override,balanced,test
+test-science-eassgbatj-pro03a,6,Deep Hybrid,0.258016,0.4508,0.371,0.208237,857.91,400,,False,,balanced,test
+test-science-eassgbatj-pro04a,6,Deep Hybrid,0.181726,0.4391,0.3648,0.130248,737.55,400,,False,,balanced,test
+test-science-eassgbatj-pro05a,6,Deep Hybrid,0.235873,0.4468,0.3687,0.176162,630.92,400,,False,,balanced,test
+test-science-nsihwbtiss-con02a,6,Deep Hybrid,0.015717,0.4003,0.4103,0.004954,936.38,400,,False,,balanced,test
+test-science-nsihwbtiss-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-nsihwbtiss-con04a,6,Deep Hybrid,0.171284,0.4303,0.3405,0.124665,868.06,400,,False,,balanced,test
+test-science-nsihwbtiss-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-sghwbdgmo-con01a,6,Deep Hybrid,0.143743,0.4683,0.4049,0.104786,1079.77,400,,False,,balanced,test
+test-science-sghwbdgmo-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-science-sghwbdgmo-pro01a,6,Deep Hybrid,0.046991,0.4672,0.397,0.040905,1765.13,400,,False,,balanced,test
+test-science-wsihwclscaaw-con01a,6,Deep Hybrid,0.137113,0.4326,0.3692,0.10814,1100.7,400,,False,,balanced,test
+test-science-wsihwclscaaw-con03a,6,Deep Hybrid,0.065826,0.4504,0.4331,0.053601,1294.58,400,,False,,balanced,test
+test-science-wsihwclscaaw-pro02a,6,Deep Hybrid,0.067979,0.4256,0.4282,0.062877,1212.58,400,,False,,balanced,test
+test-science-wsihwclscaaw-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-asfhwapg-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-asfhwapg-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-asfhwapg-con04a,6,Deep Hybrid,0.2664,0.5441,0.3251,0.208685,1860.51,400,,False,,balanced,test
+test-society-asfhwapg-pro01a,6,Deep Hybrid,0.09665,0.3989,0.4285,0.09712,1055.24,400,,True,balanced_soft_override,balanced,test
+test-society-asfhwapg-pro02a,6,Deep Hybrid,0.004311,0.426,0.417,0.009244,1473.64,400,,False,,balanced,test
+test-society-cpisydfphwj-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-cpisydfphwj-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-epiasghbf-con01a,6,Deep Hybrid,0.050392,0.3816,0.4047,0.046941,923.69,400,,True,balanced_soft_override,balanced,test
+test-society-epiasghbf-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-epiasghbf-con03a,6,Deep Hybrid,0.166857,0.4506,0.3863,0.120778,852.79,400,,False,,balanced,test
+test-society-epiasghbf-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-epiasghbf-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-epsihbdns-con03a,6,Deep Hybrid,0.182804,0.4783,0.3597,0.12635,1054.82,400,,False,,balanced,test
+test-society-epsihbdns-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-epsihbdns-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-epsihbdns-pro04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-ghbgqeaaems-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-mmcpsgfhbf-con02a,6,Deep Hybrid,0.25715,0.5331,0.3568,0.191395,1432.0,400,,False,,balanced,test
+test-society-mmcpsgfhbf-con03a,6,Deep Hybrid,0.059151,0.3917,0.3636,0.057712,1269.68,400,,True,balanced_soft_override,balanced,test
+test-society-mmcpsgfhbf-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-mmcpsgfhbf-pro01a,6,Deep Hybrid,0.004949,0.3648,0.4301,0.027586,1150.35,400,,True,balanced_soft_override,balanced,test
+test-society-mmcpsgfhbf-pro02a,6,Deep Hybrid,0.040318,0.3468,0.3915,0.048644,877.11,400,,True,balanced_soft_override,balanced,test
+test-society-mmcpsgfhbf-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-simhbrasnba-pro01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-simhbrasnba-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-tlhrilsfhwr-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-tlhrilsfhwr-pro02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-tlhrilsfhwr-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-tsmihwurpp-con01a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-tsmihwurpp-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-society-tsmihwurpp-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-sport-aastshsrqsar-con01a,6,Deep Hybrid,0.103207,0.4039,0.4112,0.093452,987.62,400,,False,,balanced,test
+test-sport-aastshsrqsar-con02a,6,Deep Hybrid,0.111769,0.4359,0.4086,0.082333,927.33,400,,False,,balanced,test
+test-sport-aastshsrqsar-con03a,6,Deep Hybrid,0.351513,0.5325,0.3475,0.260802,973.15,400,,False,,balanced,test
+test-sport-aastshsrqsar-con04a,6,Deep Hybrid,0.295773,0.5255,0.3405,0.206648,970.15,400,,False,,balanced,test
+test-sport-aastshsrqsar-pro01a,6,Deep Hybrid,0.180052,0.5371,0.4008,0.099899,963.69,400,,False,,balanced,test
+test-sport-aastshsrqsar-pro02a,6,Deep Hybrid,0.145971,0.4597,0.3885,0.103714,1009.3,400,,False,,balanced,test
+test-sport-aastshsrqsar-pro03a,6,Deep Hybrid,0.272827,0.5138,0.3463,0.188969,929.85,400,,False,,balanced,test
+test-sport-otshwbe2uuyt-con01a,6,Deep Hybrid,0.331499,0.5584,0.3382,0.230791,1078.34,400,,False,,balanced,test
+test-sport-otshwbe2uuyt-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-sport-otshwbe2uuyt-con04a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-sport-otshwbe2uuyt-pro03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-sport-tshbmlbscac-con01a,6,Deep Hybrid,0.270797,0.5621,0.2994,0.204709,2001.76,400,,False,,balanced,test
+test-sport-tshbmlbscac-pro02a,6,Deep Hybrid,0.299967,0.5981,0.2784,0.212712,2043.51,400,,False,,balanced,test
+test-sport-tshbmlbscac-pro03a,6,Deep Hybrid,0.195246,0.5264,0.3321,0.119751,1293.36,400,,False,,balanced,test
+test-sport-ybfgsohbhog-con02a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-sport-ybfgsohbhog-con03a,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+test-sport-ybfgsohbhog-pro01a,6,Deep Hybrid,0.135816,0.4067,0.3735,0.115934,1002.07,400,,False,,balanced,test
+test-sport-ybfgsohbhog-pro03a,6,Deep Hybrid,0.042748,0.4216,0.4128,0.029038,1077.42,400,,False,,balanced,test

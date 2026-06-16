@@ -1,0 +1,42 @@
+{
+    "Dense-only": {
+        "mean_ndcg": 0.6465710417012945,
+        "mean_latency": 3.0543684217251696,
+        "hybrid_activation": 0.0
+    },
+    "Always-Hybrid": {
+        "mean_ndcg": 0.7330237288186434,
+        "mean_latency": 710.6195269763692,
+        "hybrid_activation": 1.0
+    },
+    "Random": {
+        "mean_ndcg": 0.6676151991216557,
+        "mean_latency": 197.21063487001837,
+        "hybrid_activation": 0.27631578947368424
+    },
+    "Dense-margin": {
+        "mean_ndcg": 0.7307433111654209,
+        "mean_latency": 402.6977486855577,
+        "hybrid_activation": 0.5657894736842105
+    },
+    "Dense-entropy": {
+        "mean_ndcg": 0.713231313845186,
+        "mean_latency": 416.0727157897769,
+        "hybrid_activation": 0.5855263157894737
+    },
+    "Regression-only": {
+        "mean_ndcg": 0.6956778759925231,
+        "mean_latency": 441.85003618415516,
+        "hybrid_activation": 0.6118421052631579
+    },
+    "Classification-only": {
+        "mean_ndcg": 0.7287413542804386,
+        "mean_latency": 595.8319039493758,
+        "hybrid_activation": 0.8223684210526315
+    },
+    "Oracle": {
+        "mean_ndcg": 0.7663060998155725,
+        "mean_latency": 185.13271315804386,
+        "hybrid_activation": 0.2565789473684211
+    }
+}

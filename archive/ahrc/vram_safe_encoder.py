@@ -11,6 +11,7 @@ bge_m3_mode = "dense_only"
 import os
 import gc
 import time
+import subprocess
 import numpy as np
 from typing import List, Optional
 
@@ -40,6 +41,34 @@ def _log_gpu_mem(tag: str = ""):
         pass
 
 
+def _gpu_temperature_c():
+    try:
+        r = subprocess.run(
+            ["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"],
+            capture_output=True, text=True, timeout=5
+        )
+        if r.returncode != 0:
+            return None
+        temps = [float(x.strip()) for x in r.stdout.splitlines() if x.strip()]
+        return max(temps) if temps else None
+    except Exception:
+        return None
+
+
+def _cooldown_if_needed(limit_c=None, cooldown_c=None):
+    if limit_c is None:
+        return
+    cooldown_c = cooldown_c if cooldown_c is not None else max(35.0, limit_c - 10.0)
+    while True:
+        temp = _gpu_temperature_c()
+        if temp is None or temp < limit_c - 5.0:
+            return
+        print(f"   [GPU cooldown] temp={temp:.1f} C; waiting until <= {cooldown_c:.1f} C")
+        while temp is not None and temp > cooldown_c:
+            time.sleep(10)
+            temp = _gpu_temperature_c()
+
+
 def encode_texts(
     model_name: str,
     texts: List[str],
@@ -48,6 +77,10 @@ def encode_texts(
     device: str = "auto",
     cache: Optional[EmbeddingCache] = None,
     normalize: bool = True,
+    batch_size: int = 16,
+    chunk_size: int = 0,
+    gpu_temp_limit: Optional[float] = None,
+    gpu_cooldown_temp: Optional[float] = None,
 ) -> np.ndarray:
     """
     Encode texts with FP16 and thermal-safe batch sizing.
@@ -72,8 +105,8 @@ def encode_texts(
 
     from sentence_transformers import SentenceTransformer
 
-    # BGE-M3 specific: batch=16, FP16
-    batch_size = 16
+    batch_size = max(1, int(batch_size))
+    chunk_size = max(0, int(chunk_size or 0))
     # FIX 7: Label as dense-only mode
     bge_m3_mode = "dense_only" if "bge-m3" in model_name.lower() else "n/a"
 
@@ -96,13 +129,29 @@ def encode_texts(
 
     _log_gpu_mem("after-load")
 
-    # Encode
-    embeddings = st_model.encode(
-        texts,
-        batch_size=batch_size,
-        show_progress_bar=True,
-        normalize_embeddings=normalize,
-    ).astype(np.float32)
+    # Encode. Chunking lets the runner cool down between chunks instead of
+    # running one long opaque GPU call.
+    if chunk_size and chunk_size < n:
+        chunks = []
+        for start in range(0, n, chunk_size):
+            end = min(start + chunk_size, n)
+            _cooldown_if_needed(gpu_temp_limit, gpu_cooldown_temp)
+            print(f"   [Encoder] chunk {start:,}-{end:,} / {n:,}")
+            chunks.append(st_model.encode(
+                texts[start:end],
+                batch_size=batch_size,
+                show_progress_bar=False,
+                normalize_embeddings=normalize,
+            ).astype(np.float32))
+        embeddings = np.vstack(chunks)
+    else:
+        _cooldown_if_needed(gpu_temp_limit, gpu_cooldown_temp)
+        embeddings = st_model.encode(
+            texts,
+            batch_size=batch_size,
+            show_progress_bar=True,
+            normalize_embeddings=normalize,
+        ).astype(np.float32)
 
     _log_gpu_mem("after-encode")
 

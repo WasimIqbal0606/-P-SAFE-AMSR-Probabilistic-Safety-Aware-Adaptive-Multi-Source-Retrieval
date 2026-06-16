@@ -1,0 +1,153 @@
+query_id,dataset,seed,mode,dense_ndcg,hybrid_ndcg,psafe_ndcg,delta_psafe_dense,selected_action
+1,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+100,scifact,2026,balanced,0.5,1.0,1.0,0.5,Deep Hybrid
+1012,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1019,scifact,2026,balanced,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,Deep Hybrid
+1021,scifact,2026,balanced,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,Dense
+1029,scifact,2026,balanced,0.7653606369886217,0.9674679834891693,0.9674679834891693,0.20210734650054762,Deep Hybrid
+1049,scifact,2026,balanced,0.43067655807339306,0.38685280723454163,0.38685280723454163,-0.04382375083885143,Deep Hybrid
+1104,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1107,scifact,2026,balanced,0.5,1.0,1.0,0.5,Deep Hybrid
+113,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1132,scifact,2026,balanced,0.6131471927654584,0.23719771276929622,0.23719771276929622,-0.37594947999616213,Deep Hybrid
+1140,scifact,2026,balanced,0.5,1.0,1.0,0.5,Deep Hybrid
+1150,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+1163,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1175,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1179,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+118,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1180,scifact,2026,balanced,1.0,0.43067655807339306,0.43067655807339306,-0.5693234419266069,Deep Hybrid
+1185,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1191,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1194,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1197,scifact,2026,balanced,0.5,0.6309297535714575,0.5,0.0,Dense
+1199,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1200,scifact,2026,balanced,0.0,0.31546487678572877,0.31546487678572877,0.31546487678572877,Deep Hybrid
+1202,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1204,scifact,2026,balanced,1.0,0.6309297535714575,0.6309297535714575,-0.36907024642854247,Deep Hybrid
+1213,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1216,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+1225,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1245,scifact,2026,balanced,0.38685280723454163,1.0,1.0,0.6131471927654584,Deep Hybrid
+1259,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1262,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+127,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1270,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+1271,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1272,scifact,2026,balanced,0.0,0.6309297535714575,0.6309297535714575,0.6309297535714575,Deep Hybrid
+1273,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+1274,scifact,2026,balanced,0.8385465274895063,0.8854598815714874,0.8854598815714874,0.04691335408198105,Deep Hybrid
+1278,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1279,scifact,2026,balanced,0.5,0.0,0.0,-0.5,Deep Hybrid
+128,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1281,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+129,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+1290,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+130,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+132,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1320,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+133,scifact,2026,balanced,0.615733440277688,0.29039140533630226,0.29039140533630226,-0.3253420349413857,Deep Hybrid
+1339,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1352,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+1363,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+1368,scifact,2026,balanced,0.5,1.0,1.0,0.5,Deep Hybrid
+1379,scifact,2026,balanced,0.9058653015743079,0.8547529378296287,0.8547529378296287,-0.0511123637446792,Deep Hybrid
+1385,scifact,2026,balanced,0.6309297535714575,1.0,1.0,0.36907024642854247,Deep Hybrid
+1389,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+1395,scifact,2026,balanced,1.0,0.6309297535714575,0.6309297535714575,-0.36907024642854247,Deep Hybrid
+141,scifact,2026,balanced,0.9197207891481876,0.8772153153380493,0.8772153153380493,-0.04250547381013825,Deep Hybrid
+142,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+146,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+179,scifact,2026,balanced,0.9619991470595832,0.8838242945899706,0.8838242945899706,-0.07817485246961264,Deep Hybrid
+180,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+212,scifact,2026,balanced,1.0,0.6309297535714575,0.6309297535714575,-0.36907024642854247,Deep Hybrid
+213,scifact,2026,balanced,0.3562071871080222,0.3562071871080222,0.3562071871080222,0.0,Deep Hybrid
+219,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+238,scifact,2026,balanced,0.5,0.43067655807339306,0.43067655807339306,-0.06932344192660694,Deep Hybrid
+239,scifact,2026,balanced,0.31546487678572877,0.0,0.0,-0.31546487678572877,Deep Hybrid
+261,scifact,2026,balanced,0.39564672360221187,0.5714285040141098,0.5714285040141098,0.17578178041189796,Deep Hybrid
+274,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+298,scifact,2026,balanced,1.0,0.5,0.5,-0.5,Deep Hybrid
+300,scifact,2026,balanced,0.0,0.3562071871080222,0.3562071871080222,0.3562071871080222,Deep Hybrid
+314,scifact,2026,balanced,0.0,0.5,0.5,0.5,Deep Hybrid
+327,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+350,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+362,scifact,2026,balanced,0.6309297535714575,1.0,1.0,0.36907024642854247,Deep Hybrid
+380,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+386,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+399,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+411,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+415,scifact,2026,balanced,0.3010299956639812,1.0,1.0,0.6989700043360187,Deep Hybrid
+42,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+421,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+431,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+440,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+443,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+452,scifact,2026,balanced,0.23719771276929622,0.41183384043543503,0.41183384043543503,0.1746361276661388,Deep Hybrid
+475,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+48,scifact,2026,balanced,0.0,1.0,0.0,0.0,Dense
+49,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+491,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+5,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+501,scifact,2026,balanced,0.6309297535714575,1.0,1.0,0.36907024642854247,Deep Hybrid
+507,scifact,2026,balanced,0.6309297535714575,0.5,0.5,-0.13092975357145753,Deep Hybrid
+508,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+513,scifact,2026,balanced,0.6309297535714575,0.6309297535714575,0.6309297535714575,0.0,Deep Hybrid
+514,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+521,scifact,2026,balanced,0.43067655807339306,1.0,1.0,0.5693234419266069,Deep Hybrid
+525,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+53,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+532,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+536,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+540,scifact,2026,balanced,0.6131471927654584,0.20438239758848611,0.20438239758848611,-0.4087647951769723,Deep Hybrid
+552,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+554,scifact,2026,balanced,0.5,0.31546487678572877,0.31546487678572877,-0.18453512321427123,Deep Hybrid
+560,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+569,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+575,scifact,2026,balanced,0.6309297535714575,0.43067655807339306,0.43067655807339306,-0.20025319549806447,Deep Hybrid
+587,scifact,2026,balanced,0.6309297535714575,0.43067655807339306,0.43067655807339306,-0.20025319549806447,Deep Hybrid
+589,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+613,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+623,scifact,2026,balanced,0.3010299956639812,0.0,0.0,-0.3010299956639812,Deep Hybrid
+636,scifact,2026,balanced,1.0,0.5,0.5,-0.5,Deep Hybrid
+660,scifact,2026,balanced,0.0,0.0,0.0,0.0,Dense
+674,scifact,2026,balanced,0.5,1.0,1.0,0.5,Deep Hybrid
+690,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+691,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+692,scifact,2026,balanced,0.0,1.0,1.0,1.0,Deep Hybrid
+693,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+716,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+72,scifact,2026,balanced,0.6309297535714575,1.0,1.0,0.36907024642854247,Deep Hybrid
+721,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+727,scifact,2026,balanced,0.0,0.3333333333333333,0.0,0.0,Dense
+742,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+75,scifact,2026,balanced,1.0,0.5,0.5,-0.5,Deep Hybrid
+756,scifact,2026,balanced,0.6309297535714575,0.5,0.6309297535714575,0.0,Dense
+768,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+775,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+781,scifact,2026,balanced,1.0,0.6309297535714575,0.6309297535714575,-0.36907024642854247,Deep Hybrid
+785,scifact,2026,balanced,0.0,0.6309297535714575,0.0,0.0,Dense
+800,scifact,2026,balanced,0.5,0.5,0.5,0.0,Deep Hybrid
+805,scifact,2026,balanced,1.0,1.0,1.0,0.0,Dense
+823,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+830,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+831,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+834,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+837,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+839,scifact,2026,balanced,0.6309297535714575,1.0,1.0,0.36907024642854247,Deep Hybrid
+847,scifact,2026,balanced,0.6309297535714575,1.0,1.0,0.36907024642854247,Deep Hybrid
+852,scifact,2026,balanced,0.43067655807339306,0.6309297535714575,0.6309297535714575,0.20025319549806447,Deep Hybrid
+870,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+873,scifact,2026,balanced,0.49661976912920763,0.6217937096682962,0.6217937096682962,0.12517394053908854,Deep Hybrid
+879,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+882,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+887,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+904,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+913,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+914,scifact,2026,balanced,0.0,0.0,0.0,0.0,Deep Hybrid
+936,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+94,scifact,2026,balanced,0.0,1.0,1.0,1.0,Deep Hybrid
+956,scifact,2026,balanced,0.6309297535714575,0.43067655807339306,0.43067655807339306,-0.20025319549806447,Deep Hybrid
+960,scifact,2026,balanced,1.0,1.0,1.0,0.0,Deep Hybrid
+971,scifact,2026,balanced,0.7327711443782634,0.9438661545147249,0.9438661545147249,0.21109501013646148,Deep Hybrid
+99,scifact,2026,balanced,0.3010299956639812,1.0,1.0,0.6989700043360187,Deep Hybrid

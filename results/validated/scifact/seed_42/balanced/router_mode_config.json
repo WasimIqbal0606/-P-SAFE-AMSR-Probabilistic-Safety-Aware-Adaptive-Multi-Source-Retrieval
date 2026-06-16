@@ -1,0 +1,10 @@
+{
+    "mode": "balanced",
+    "gain_threshold": 0.1,
+    "harm_threshold": 0.2,
+    "lambda_latency": 1e-06,
+    "lambda_harm": 0.1,
+    "lambda_candidate": 0.0001,
+    "lambda_recovery": 0.25,
+    "use_lcb_safety": false
+}

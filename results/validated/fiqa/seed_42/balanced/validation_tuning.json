@@ -1,0 +1,12 @@
+{
+    "gain_threshold": 0.25,
+    "harm_threshold": 0.5,
+    "lambda_latency": 1e-05,
+    "lambda_harm": 0.25,
+    "lambda_recovery": 0.25,
+    "use_lcb_safety": false,
+    "val_score": 0,
+    "best_simple_router_name": "Dense-entropy",
+    "best_simple_router_ndcg": 0.448735,
+    "psafe_minus_best_simple_ndcg": 0.0
+}

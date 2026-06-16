@@ -1,0 +1,12 @@
+{
+    "6": {
+        "gain_positive": 32,
+        "gain_negative": 87,
+        "gain_n_train": 119,
+        "gain_used": "CalibratedClassifierCV (cv=3)",
+        "harm_positive": 15,
+        "harm_negative": 104,
+        "harm_n_train": 119,
+        "harm_used": "CalibratedClassifierCV (cv=3)"
+    }
+}

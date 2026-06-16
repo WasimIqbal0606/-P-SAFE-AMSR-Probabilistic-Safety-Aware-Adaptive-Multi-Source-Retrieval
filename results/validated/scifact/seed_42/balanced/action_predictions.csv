@@ -1,0 +1,153 @@
+query_id,selected_action,action_name,expected_utility,p_gain,p_harm,pred_delta,pred_latency,candidate_count,rejected_reason,override_used,override_reason,mode,split
+100,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1014,6,Deep Hybrid,0.062586,0.2942,0.2057,0.050296,684.89,400,,True,balanced_soft_override,balanced,test
+1029,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1089,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1104,6,Deep Hybrid,0.190234,0.3149,0.1258,0.164898,818.16,400,,False,,balanced,test
+1110,6,Deep Hybrid,0.09431,0.423,0.194,0.04856,614.38,400,,False,,balanced,test
+1130,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1132,6,Deep Hybrid,0.182999,0.2408,0.1994,0.183434,685.21,400,,False,,balanced,test
+1137,6,Deep Hybrid,0.138389,0.201,0.158,0.144556,622.96,400,,False,,balanced,test
+1140,6,Deep Hybrid,0.038672,0.2926,0.2346,0.029638,658.13,400,,True,balanced_soft_override,balanced,test
+1144,6,Deep Hybrid,0.182918,0.2758,0.0652,0.161219,741.62,400,,False,,balanced,test
+1146,6,Deep Hybrid,0.009179,0.2816,0.1266,-0.007815,735.56,400,,False,,balanced,test
+115,6,Deep Hybrid,0.147514,0.4518,0.1445,0.089673,673.69,400,,False,,balanced,test
+1163,6,Deep Hybrid,0.055026,0.183,0.0993,0.0599,700.25,400,,False,,balanced,test
+1175,6,Deep Hybrid,0.151357,0.264,0.1314,0.139153,654.45,400,,False,,balanced,test
+118,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1180,6,Deep Hybrid,0.073147,0.2575,0.2197,0.071427,672.11,400,,True,balanced_soft_override,balanced,test
+1194,6,Deep Hybrid,0.237831,0.2868,0.1108,0.217939,720.2,400,,False,,balanced,test
+1197,6,Deep Hybrid,0.263032,0.3665,0.1382,0.225919,687.52,400,,False,,balanced,test
+1199,6,Deep Hybrid,0.111882,0.3129,0.1945,0.093849,749.89,400,,False,,balanced,test
+1216,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1221,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1226,6,Deep Hybrid,0.084208,0.3115,0.1417,0.061147,637.37,400,,False,,balanced,test
+124,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1241,6,Deep Hybrid,0.036897,0.2307,0.1803,0.037924,679.53,400,,False,,balanced,test
+1259,6,Deep Hybrid,0.218801,0.3727,0.2013,0.186513,761.62,400,,True,balanced_soft_override,balanced,test
+1270,6,Deep Hybrid,0.054459,0.3139,0.1747,0.034179,733.63,400,,False,,balanced,test
+1271,6,Deep Hybrid,0.249632,0.2359,0.0728,0.238645,705.2,400,,False,,balanced,test
+1273,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1274,6,Deep Hybrid,0.281308,0.3475,0.1902,0.254256,806.67,400,,False,,balanced,test
+1278,6,Deep Hybrid,0.122185,0.32,0.1404,0.096857,625.83,400,,False,,balanced,test
+1279,6,Deep Hybrid,0.194555,0.2472,0.1559,0.188997,650.75,400,,False,,balanced,test
+1280,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1281,6,Deep Hybrid,0.141042,0.3333,0.1613,0.114488,649.88,400,,False,,balanced,test
+1282,6,Deep Hybrid,0.306898,0.3307,0.0951,0.274421,691.11,400,,False,,balanced,test
+1292,6,Deep Hybrid,0.119394,0.3122,0.1624,0.098252,668.34,400,,False,,balanced,test
+130,6,Deep Hybrid,0.070899,0.2375,0.0891,0.061134,711.98,400,,False,,balanced,test
+132,6,Deep Hybrid,0.082643,0.2356,0.2139,0.085752,628.03,400,,True,balanced_soft_override,balanced,test
+133,6,Deep Hybrid,0.10697,0.3033,0.2448,0.096373,738.59,400,,True,balanced_soft_override,balanced,test
+1332,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1344,6,Deep Hybrid,0.135702,0.2314,0.1874,0.137355,754.98,400,,False,,balanced,test
+1352,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1359,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1362,6,Deep Hybrid,0.264455,0.3711,0.1393,0.226243,639.97,400,,False,,balanced,test
+1363,6,Deep Hybrid,0.265351,0.3281,0.1359,0.237569,653.01,400,,False,,balanced,test
+1368,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+137,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1379,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1385,6,Deep Hybrid,0.145394,0.2933,0.1494,0.127597,592.21,400,,False,,balanced,test
+1389,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+1395,6,Deep Hybrid,0.206728,0.331,0.1322,0.177816,609.56,400,,False,,balanced,test
+146,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+148,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+171,6,Deep Hybrid,0.191622,0.2768,0.1501,0.178135,714.07,400,,False,,balanced,test
+179,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+180,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+183,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+198,6,Deep Hybrid,0.039794,0.3801,0.1667,0.002016,567.28,400,,False,,balanced,test
+208,6,Deep Hybrid,0.008994,0.2107,0.142,0.011232,705.53,400,,False,,balanced,test
+216,6,Deep Hybrid,0.169252,0.228,0.1121,0.164099,641.76,400,,False,,balanced,test
+217,6,Deep Hybrid,0.105464,0.2065,0.12,0.106494,646.99,400,,False,,balanced,test
+218,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+238,6,Deep Hybrid,0.115939,0.2189,0.1568,0.117518,608.62,400,,False,,balanced,test
+239,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+269,6,Deep Hybrid,0.22361,0.3805,0.1159,0.180714,634.91,400,,False,,balanced,test
+279,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+294,6,Deep Hybrid,0.408888,0.5189,0.1043,0.330285,685.91,400,,False,,balanced,test
+295,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+298,6,Deep Hybrid,0.177463,0.3877,0.1492,0.136189,719.71,400,,False,,balanced,test
+3,6,Deep Hybrid,0.103408,0.3208,0.2742,0.091377,738.7,400,,True,balanced_soft_override,balanced,test
+303,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+338,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+350,6,Deep Hybrid,0.008052,0.2126,0.1274,0.008308,649.28,400,,False,,balanced,test
+354,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+362,6,Deep Hybrid,0.261661,0.4367,0.1709,0.210336,753.49,400,,False,,balanced,test
+384,6,Deep Hybrid,0.203388,0.3357,0.1761,0.177813,740.33,400,,False,,balanced,test
+385,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+386,6,Deep Hybrid,0.13593,0.2692,0.1108,0.120396,690.05,400,,False,,balanced,test
+388,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+399,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+411,6,Deep Hybrid,0.012261,0.258,0.1889,0.007378,729.49,400,,False,,balanced,test
+437,6,Deep Hybrid,0.237278,0.2792,0.1248,0.220635,668.32,400,,False,,balanced,test
+439,6,Deep Hybrid,0.253025,0.3033,0.1003,0.227894,660.44,400,,False,,balanced,test
+440,6,Deep Hybrid,0.269693,0.2942,0.0855,0.24535,648.55,400,,False,,balanced,test
+443,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+475,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+48,6,Deep Hybrid,0.185947,0.3003,0.103,0.161809,631.52,400,,False,,balanced,test
+491,6,Deep Hybrid,0.162199,0.2673,0.1159,0.147586,630.66,400,,False,,balanced,test
+5,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+502,6,Deep Hybrid,0.36724,0.4282,0.1174,0.312612,683.83,400,,False,,balanced,test
+507,6,Deep Hybrid,0.092431,0.2262,0.1743,0.094018,705.97,400,,False,,balanced,test
+513,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+514,6,Deep Hybrid,0.12698,0.2387,0.178,0.125839,732.57,400,,False,,balanced,test
+516,6,Deep Hybrid,0.015552,0.2511,0.2693,0.020461,748.68,400,,True,balanced_soft_override,balanced,test
+517,6,Deep Hybrid,0.056373,0.2323,0.2425,0.063226,685.44,400,,True,balanced_soft_override,balanced,test
+521,6,Deep Hybrid,0.162139,0.3248,0.1519,0.136831,707.76,400,,False,,balanced,test
+528,6,Deep Hybrid,0.309253,0.3552,0.0849,0.269646,702.48,400,,False,,balanced,test
+53,6,Deep Hybrid,0.075966,0.1742,0.1083,0.083928,691.98,400,,False,,balanced,test
+536,6,Deep Hybrid,0.144747,0.2188,0.1134,0.142101,717.73,400,,False,,balanced,test
+54,6,Deep Hybrid,0.140994,0.3251,0.2405,0.124551,780.49,400,,True,balanced_soft_override,balanced,test
+551,6,Deep Hybrid,0.386642,0.3709,0.0992,0.344583,743.77,400,,False,,balanced,test
+552,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+560,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+569,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+575,6,Deep Hybrid,0.318092,0.419,0.1303,0.267034,656.57,400,,False,,balanced,test
+577,6,Deep Hybrid,0.369355,0.4946,0.1189,0.298338,743.02,400,,False,,balanced,test
+613,6,Deep Hybrid,0.01143,0.1315,0.0671,0.025959,683.87,400,,False,,balanced,test
+619,6,Deep Hybrid,0.089573,0.2931,0.2212,0.079093,666.25,400,,True,balanced_soft_override,balanced,test
+628,6,Deep Hybrid,0.157058,0.3045,0.1665,0.138321,732.82,400,,False,,balanced,test
+636,6,Deep Hybrid,0.146838,0.2511,0.1253,0.137322,727.95,400,,False,,balanced,test
+644,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+649,6,Deep Hybrid,0.342274,0.4903,0.104,0.270789,685.87,400,,False,,balanced,test
+660,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+674,6,Deep Hybrid,0.11765,0.3423,0.1985,0.092642,722.33,400,,False,,balanced,test
+684,6,Deep Hybrid,0.175752,0.4073,0.1421,0.12884,689.36,400,,False,,balanced,test
+690,6,Deep Hybrid,0.336032,0.3584,0.1103,0.298141,674.91,400,,False,,balanced,test
+691,6,Deep Hybrid,0.128899,0.2969,0.1556,0.110895,655.51,400,,False,,balanced,test
+693,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+70,6,Deep Hybrid,0.180822,0.3147,0.222,0.165055,694.63,400,,True,balanced_soft_override,balanced,test
+700,6,Deep Hybrid,0.030894,0.3085,0.1824,0.012636,620.38,400,,False,,balanced,test
+702,6,Deep Hybrid,0.161444,0.2956,0.1413,0.142324,660.65,400,,False,,balanced,test
+72,6,Deep Hybrid,0.282317,0.4446,0.1504,0.226861,653.22,400,,False,,balanced,test
+729,6,Deep Hybrid,0.157465,0.2244,0.137,0.155694,623.01,400,,False,,balanced,test
+743,6,Deep Hybrid,0.192718,0.3274,0.1982,0.171343,666.71,400,,False,,balanced,test
+744,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+75,6,Deep Hybrid,0.145535,0.3975,0.2494,0.111881,771.81,400,,True,balanced_soft_override,balanced,test
+756,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+768,6,Deep Hybrid,0.50032,0.3479,0.0696,0.460931,625.41,400,,False,,balanced,test
+775,6,Deep Hybrid,0.273855,0.2985,0.088,0.248722,696.23,400,,False,,balanced,test
+784,6,Deep Hybrid,0.079889,0.2308,0.1687,0.079678,629.71,400,,False,,balanced,test
+785,6,Deep Hybrid,0.17994,0.4614,0.1357,0.118858,699.35,400,,False,,balanced,test
+805,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+808,6,Deep Hybrid,0.259239,0.3423,0.0976,0.224065,646.83,400,,False,,balanced,test
+814,6,Deep Hybrid,0.050603,0.1829,0.1107,0.056662,699.51,400,,False,,balanced,test
+823,6,Deep Hybrid,0.014862,0.1896,0.1403,0.022171,675.54,400,,False,,balanced,test
+832,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+834,6,Deep Hybrid,0.165997,0.2839,0.1058,0.14623,616.23,400,,False,,balanced,test
+845,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+852,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+859,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+870,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+882,6,Deep Hybrid,0.120736,0.3921,0.1796,0.081433,752.52,400,,False,,balanced,test
+887,6,Deep Hybrid,0.086431,0.3146,0.1946,0.067915,660.13,400,,False,,balanced,test
+903,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+904,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+907,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+911,6,Deep Hybrid,0.07606,0.2473,0.1309,0.06801,693.29,400,,False,,balanced,test
+914,6,Deep Hybrid,0.19406,0.3076,0.1167,0.169454,637.25,400,,False,,balanced,test
+94,6,Deep Hybrid,0.234793,0.3541,0.1563,0.202568,668.25,400,,False,,balanced,test
+967,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+971,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+99,6,Deep Hybrid,0.054825,0.2113,0.1665,0.059299,640.29,400,,False,,balanced,test

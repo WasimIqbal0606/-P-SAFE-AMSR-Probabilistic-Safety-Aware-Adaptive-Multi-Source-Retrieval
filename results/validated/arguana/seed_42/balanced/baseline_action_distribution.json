@@ -1,0 +1,32 @@
+{
+    "Dense-only": {
+        "Dense": 706
+    },
+    "Always-Hybrid": {
+        "Deep Hybrid": 706
+    },
+    "Random": {
+        "Dense": 446,
+        "Deep Hybrid": 260
+    },
+    "Dense-margin": {
+        "Dense": 627,
+        "Deep Hybrid": 79
+    },
+    "Dense-entropy": {
+        "Dense": 615,
+        "Deep Hybrid": 91
+    },
+    "Regression-only": {
+        "Dense": 569,
+        "Deep Hybrid": 137
+    },
+    "Classification-only": {
+        "Dense": 470,
+        "Deep Hybrid": 236
+    },
+    "Oracle": {
+        "Dense": 457,
+        "Deep Hybrid": 249
+    }
+}

@@ -1,1 +1,0 @@
-"""P-SAFE routers subpackage."""

@@ -1,7 +1,7 @@
 """Tests for FeatureExtractor — feature extraction stability."""
 import numpy as np
 import pytest
-from psafe.retrievers.feature_extractor import FeatureExtractor, FEATURE_NAMES, QueryFeatures
+from psafe.feature_extractor import FeatureExtractor, FEATURE_NAMES, QueryFeatures
 
 
 def test_feature_names_count():

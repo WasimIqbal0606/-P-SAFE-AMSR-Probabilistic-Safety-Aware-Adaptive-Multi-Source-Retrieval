@@ -1,0 +1,23 @@
+{
+    "Def_A": {
+        "easy_count": 47,
+        "hard_count": 115,
+        "EasyDeg": 0.0,
+        "HardGain": 0.03007408032537781,
+        "SafeGain": 0.03007408032537781
+    },
+    "Def_B": {
+        "easy_count": 81,
+        "hard_count": 81,
+        "EasyDeg": 0.0,
+        "HardGain": 0.037821017937956725,
+        "SafeGain": 0.037821017937956725
+    },
+    "Def_C": {
+        "easy_count": 97,
+        "hard_count": 65,
+        "EasyDeg": 0.0,
+        "HardGain": 0.03525774753730837,
+        "SafeGain": 0.03525774753730837
+    }
+}

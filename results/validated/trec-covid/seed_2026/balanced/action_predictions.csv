@@ -1,0 +1,26 @@
+query_id,selected_action,action_name,expected_utility,p_gain,p_harm,pred_delta,pred_latency,candidate_count,rejected_reason,override_used,override_reason,mode,split
+10,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+12,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+13,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+15,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+16,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+18,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+19,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+2,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+22,6,Deep Hybrid,0.396791,0.6789,0.1923,0.389093,966.47,400,,False,,balanced,test
+23,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+24,6,Deep Hybrid,0.130077,0.66,0.202,0.125327,1053.3,400,,True,balanced_soft_override,balanced,test
+26,6,Deep Hybrid,0.402033,0.7313,0.2256,0.392295,832.42,400,,True,balanced_soft_override,balanced,test
+27,6,Deep Hybrid,0.267803,0.7307,0.2547,0.261202,993.44,400,,True,balanced_soft_override,balanced,test
+28,6,Deep Hybrid,0.170175,0.6844,0.2001,0.162801,1058.41,400,,True,balanced_soft_override,balanced,test
+29,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+32,6,Deep Hybrid,0.410621,0.7366,0.2296,0.401006,1076.29,400,,True,balanced_soft_override,balanced,test
+34,6,Deep Hybrid,0.020159,0.6427,0.2784,0.024841,1109.77,400,,True,balanced_soft_override,balanced,test
+37,6,Deep Hybrid,0.276918,0.7247,0.2213,0.267783,1210.7,400,,True,balanced_soft_override,balanced,test
+39,6,Deep Hybrid,0.146977,0.7347,0.1828,0.132892,1096.32,400,,False,,balanced,test
+4,6,Deep Hybrid,0.890546,0.8431,0.2209,0.869223,889.89,400,,True,balanced_soft_override,balanced,test
+42,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+5,6,Deep Hybrid,0.316185,0.7657,0.2019,0.301016,1211.19,400,,True,balanced_soft_override,balanced,test
+50,6,Deep Hybrid,0.195533,0.7412,0.2336,0.185855,1077.61,400,,True,balanced_soft_override,balanced,test
+7,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test
+8,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,balanced,test

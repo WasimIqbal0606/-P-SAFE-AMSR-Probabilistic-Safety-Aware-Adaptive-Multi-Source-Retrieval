@@ -1,9 +1,10 @@
 """Tests for canonical action system."""
 import pytest
-from psafe.retrievers.actions import (
+from psafe.actions import (
     Action, ACTION_NAMES, ACTION_LATENCY_PRIORS, ACTION_REQUIRES_RERANKER,
-    ACTION_REQUIRES_GRAPH, ACTION_REQUIRES_BGEM3, ACTION_CE_DEPTH,
-    ACTION_IS_HYBRID, ACTION_IS_AVAILABLE,
+    ACTION_REQUIRES_BM25, ACTION_REQUIRES_GRAPH, ACTION_REQUIRES_BGEM3,
+    ACTION_CE_DEPTH, ACTION_IS_HYBRID, ACTION_AVAILABILITY,
+    ACTION_IS_AVAILABLE,
 )
 
 
@@ -14,6 +15,17 @@ def test_action_count():
 def test_action_names_complete():
     for a in Action:
         assert a in ACTION_NAMES, f"Missing ACTION_NAMES for {a}"
+
+
+def test_action_metadata_complete():
+    metadata_maps = [
+        ACTION_LATENCY_PRIORS, ACTION_REQUIRES_BM25, ACTION_REQUIRES_RERANKER,
+        ACTION_REQUIRES_GRAPH, ACTION_REQUIRES_BGEM3, ACTION_CE_DEPTH,
+        ACTION_IS_HYBRID, ACTION_AVAILABILITY,
+    ]
+    for mapping in metadata_maps:
+        for a in Action:
+            assert a in mapping
 
 
 def test_a0_is_dense_baseline():

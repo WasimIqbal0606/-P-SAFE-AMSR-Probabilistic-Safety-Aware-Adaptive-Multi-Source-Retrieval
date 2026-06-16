@@ -1,0 +1,36 @@
+{
+    "dataset": "trec-covid",
+    "seed": 2026,
+    "mode": "high_recall",
+    "router": "B-P-SAFE-AMSR",
+    "profile": "bge_m3",
+    "embedding_model": "BAAI/bge-m3",
+    "reranker_model": "BAAI/bge-reranker-v2-m3",
+    "device": "auto",
+    "python_version": "3.11.9",
+    "timestamp": "2026-05-21T00:17:44+0500",
+    "num_queries": 50,
+    "num_docs": 171332,
+    "split_sizes": {
+        "train": 20,
+        "val": 5,
+        "test": 25,
+        "easy_test": 15,
+        "hard_test": 10
+    },
+    "thresholds": {
+        "gain": 0.1,
+        "harm": 0.2
+    },
+    "lambda_values": {
+        "lat": 1e-06,
+        "harm": 0.1
+    },
+    "cache_used": true,
+    "runtime_seconds": 1051.63,
+    "cuda_available": true,
+    "gpu_name": "NVIDIA GeForce RTX 5070 Ti",
+    "git_commit": "690323995e8a16ee40f46841b29fc4d1d5494f8f",
+    "split_hash": "589790cd",
+    "bge_m3_mode": "dense_only"
+}

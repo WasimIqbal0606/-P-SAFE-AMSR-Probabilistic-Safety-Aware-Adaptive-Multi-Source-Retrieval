@@ -22,6 +22,11 @@ class Action(IntEnum):
     A4_DENSE_BM25_CE = 4
     A5_DENSE_BM25_GRAPH_CE = 5
     A6_DEEP_HYBRID = 6
+    A7_DENSE_BM25_CE_10 = 7
+    A8_DENSE_BM25_CE_20 = 8
+    A9_DENSE_BM25_CE_50 = 9
+    A10_DENSE_BM25_CE_100 = 10
+    A11_DYNAMIC_CE_DEPTH = 11
 
 ACTION_NAMES = {
     Action.A0_DENSE: "Dense",
@@ -31,6 +36,11 @@ ACTION_NAMES = {
     Action.A4_DENSE_BM25_CE: "Dense+BM25+CE",
     Action.A5_DENSE_BM25_GRAPH_CE: "Dense+BM25+Graph+CE",
     Action.A6_DEEP_HYBRID: "Deep Hybrid",
+    Action.A7_DENSE_BM25_CE_10: "Dense+BM25+CE@10",
+    Action.A8_DENSE_BM25_CE_20: "Dense+BM25+CE@20",
+    Action.A9_DENSE_BM25_CE_50: "Dense+BM25+CE@50",
+    Action.A10_DENSE_BM25_CE_100: "Dense+BM25+CE@100",
+    Action.A11_DYNAMIC_CE_DEPTH: "Dynamic CE Depth",
 }
 
 # Empirical approximate latency for each action (ms)
@@ -42,6 +52,11 @@ ACTION_LATENCY = {
     Action.A4_DENSE_BM25_CE: 600.0,
     Action.A5_DENSE_BM25_GRAPH_CE: 1300.0,
     Action.A6_DEEP_HYBRID: 2500.0,
+    Action.A7_DENSE_BM25_CE_10: 150.0,
+    Action.A8_DENSE_BM25_CE_20: 300.0,
+    Action.A9_DENSE_BM25_CE_50: 600.0,
+    Action.A10_DENSE_BM25_CE_100: 1200.0,
+    Action.A11_DYNAMIC_CE_DEPTH: 500.0,
 }
 
 @dataclass

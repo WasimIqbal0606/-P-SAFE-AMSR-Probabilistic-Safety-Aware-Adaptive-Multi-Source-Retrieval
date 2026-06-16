@@ -1,7 +1,7 @@
 """Tests for StatisticalTester — paired tests, bootstrap, Holm-Bonferroni."""
 import numpy as np
 import pytest
-from psafe.statistics.statistical_tester import (
+from psafe.statistical_tests import (
     StatisticalTester, cohens_d_pooled, cohens_dz,
     holm_bonferroni_correction, get_significance_label,
 )

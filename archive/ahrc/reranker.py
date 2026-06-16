@@ -12,6 +12,7 @@ Features:
   - Depth sweep for latency/quality tradeoff analysis
 """
 
+import subprocess
 import time
 import numpy as np
 from typing import List, Tuple, Dict, Optional
@@ -26,11 +27,15 @@ class CrossEncoderReranker:
         device: str = "auto",
         batch_size: int = 8,
         use_fp16: bool = True,
+        gpu_temp_limit: Optional[float] = None,
+        gpu_cooldown_temp: Optional[float] = None,
     ):
         self.model_name = model_name
         self.requested_device = device
         self.batch_size = batch_size
         self.use_fp16 = use_fp16
+        self.gpu_temp_limit = gpu_temp_limit
+        self.gpu_cooldown_temp = gpu_cooldown_temp
         self.model = None
         self._is_loaded = False
         self.actual_device = "cpu"
@@ -39,6 +44,34 @@ class CrossEncoderReranker:
         self._cache_misses = 0
         self._latencies: List[float] = []  # per-query latencies in ms
         self._gpu_mem_mb: float = 0.0
+
+    def _gpu_temperature_c(self) -> Optional[float]:
+        try:
+            result = subprocess.run(
+                ["nvidia-smi", "--query-gpu=temperature.gpu", "--format=csv,noheader,nounits"],
+                capture_output=True,
+                text=True,
+                timeout=5,
+            )
+            if result.returncode != 0:
+                return None
+            temps = [float(x.strip()) for x in result.stdout.splitlines() if x.strip()]
+            return max(temps) if temps else None
+        except Exception:
+            return None
+
+    def _cooldown_if_needed(self):
+        if self.gpu_temp_limit is None or self.actual_device != "cuda":
+            return
+        cooldown_c = self.gpu_cooldown_temp if self.gpu_cooldown_temp is not None else max(35.0, self.gpu_temp_limit - 10.0)
+        temp = self._gpu_temperature_c()
+        # CrossEncoder batches heat the GPU quickly, so pause slightly before the hard limit.
+        if temp is None or temp < self.gpu_temp_limit - 1.0:
+            return
+        print(f"   [CrossEncoder GPU cooldown] temp={temp:.1f} C; waiting until <= {cooldown_c:.1f} C")
+        while temp is not None and temp > cooldown_c:
+            time.sleep(10)
+            temp = self._gpu_temperature_c()
 
     def _detect_device(self) -> str:
         """Detect best available device."""
@@ -153,6 +186,7 @@ class CrossEncoderReranker:
         t0 = time.perf_counter()
 
         for start in range(0, len(pairs), self.batch_size):
+            self._cooldown_if_needed()
             batch = pairs[start:start + self.batch_size]
             batch_scores = self.model.predict(batch, show_progress_bar=False)
             all_scores.extend(batch_scores)

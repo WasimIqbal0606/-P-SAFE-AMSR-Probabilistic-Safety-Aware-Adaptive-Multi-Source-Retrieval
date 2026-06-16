@@ -1,0 +1,8 @@
+{
+    "distribution": {
+        "Deep Hybrid": 23,
+        "Dense": 2
+    },
+    "hybrid_activation_rate": 0.92,
+    "seed": 123
+}

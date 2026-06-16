@@ -1,7 +1,0 @@
-[
-    {
-        "plot_name": "per_query_delta_waterfall",
-        "reason": "no delta column in per_query_metrics.csv",
-        "missing_input_file": "per_query_metrics.csv"
-    }
-]

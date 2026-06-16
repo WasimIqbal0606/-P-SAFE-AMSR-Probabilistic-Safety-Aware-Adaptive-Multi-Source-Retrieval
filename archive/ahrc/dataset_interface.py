@@ -18,6 +18,8 @@ Interface:
 import os
 import json
 import time
+import shutil
+import zipfile
 import numpy as np
 from abc import ABC, abstractmethod
 from typing import Dict, List, Tuple, Optional, Set
@@ -169,6 +171,72 @@ class BEIRLoader(DatasetLoader):
     disk space and RAM.
     """
 
+    @staticmethod
+    def _validate_zip(zip_path: str) -> None:
+        if not os.path.exists(zip_path):
+            return
+        if not zipfile.is_zipfile(zip_path):
+            raise zipfile.BadZipFile(f"{zip_path} exists but is not a valid zip file")
+        with zipfile.ZipFile(zip_path, "r") as zf:
+            bad_member = zf.testzip()
+        if bad_member:
+            raise zipfile.BadZipFile(
+                f"{zip_path} failed zip integrity check at member {bad_member}"
+            )
+
+    @staticmethod
+    def _validate_extracted(data_path: str, split: str) -> None:
+        required = [
+            os.path.join(data_path, "corpus.jsonl"),
+            os.path.join(data_path, "queries.jsonl"),
+            os.path.join(data_path, "qrels"),
+            os.path.join(data_path, "qrels", f"{split}.tsv"),
+        ]
+        missing = [p for p in required if not os.path.exists(p)]
+        if missing:
+            raise FileNotFoundError(
+                "Extracted BEIR dataset is incomplete; missing: "
+                + ", ".join(missing)
+            )
+
+    @staticmethod
+    def _remove_dataset_cache(dataset_name: str, out_dir: str) -> None:
+        allowed_root = os.path.abspath(out_dir)
+        targets = [
+            os.path.join(out_dir, f"{dataset_name}.zip"),
+            os.path.join(out_dir, dataset_name),
+        ]
+        for target in targets:
+            abs_target = os.path.abspath(target)
+            if (
+                abs_target != allowed_root
+                and abs_target.startswith(allowed_root + os.sep)
+                and os.path.exists(abs_target)
+            ):
+                if os.path.isdir(abs_target):
+                    shutil.rmtree(abs_target)
+                else:
+                    os.remove(abs_target)
+
+    def _download_validate_and_extract(
+        self, util, url: str, out_dir: str, dataset_name: str, split: str
+    ) -> str:
+        zip_path = os.path.join(out_dir, f"{dataset_name}.zip")
+        data_path = os.path.join(out_dir, dataset_name)
+
+        if not os.path.exists(zip_path):
+            print(f"   [Downloading] {dataset_name}...")
+            util.download_url(url, zip_path)
+
+        self._validate_zip(zip_path)
+
+        if not os.path.isdir(data_path):
+            print(f"   [Unzipping] {dataset_name}...")
+            util.unzip(zip_path, out_dir)
+
+        self._validate_extracted(data_path, split)
+        return data_path
+
     def load(
         self,
         dataset_name: str = "scifact",
@@ -199,11 +267,29 @@ class BEIRLoader(DatasetLoader):
         os.makedirs(out_dir, exist_ok=True)
 
         data_path = os.path.join(out_dir, dataset_name)
-        if not os.path.exists(data_path):
-            print(f"   [Downloading] {dataset_name}...")
-            data_path = util.download_and_unzip(url, out_dir)
-        else:
-            print(f"   [Cached] Using cached {dataset_name}")
+        zip_path = os.path.join(out_dir, f"{dataset_name}.zip")
+
+        try:
+            if os.path.isdir(data_path):
+                self._validate_extracted(data_path, split)
+                print(f"   [Cached] Using cached {dataset_name}")
+            else:
+                self._validate_zip(zip_path)
+                data_path = self._download_validate_and_extract(
+                    util, url, out_dir, dataset_name, split
+                )
+        except (zipfile.BadZipFile, FileNotFoundError) as cache_error:
+            print(f"   [Cache invalid] {cache_error}")
+            print(f"   [Cache cleanup] Removing only cached files for {dataset_name}")
+            self._remove_dataset_cache(dataset_name, out_dir)
+            try:
+                data_path = self._download_validate_and_extract(
+                    util, url, out_dir, dataset_name, split
+                )
+            except Exception as redownload_error:
+                raise RuntimeError(
+                    f"Failed to redownload BEIR/{dataset_name}: {redownload_error}"
+                ) from redownload_error
 
         # Load via GenericDataLoader
         corpus, queries, qrels = GenericDataLoader(data_path).load(split=split)

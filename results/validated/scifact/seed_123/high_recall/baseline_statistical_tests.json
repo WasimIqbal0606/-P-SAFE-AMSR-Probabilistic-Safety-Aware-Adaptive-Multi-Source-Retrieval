@@ -1,0 +1,58 @@
+{
+    "Dense-only": {
+        "mean_delta": 0.0,
+        "p_value": 1.0,
+        "cohens_dz": 0.0,
+        "label": "protection mode",
+        "is_significant": false
+    },
+    "Always-Hybrid": {
+        "mean_delta": 0.08582969755497181,
+        "p_value": 0.0004207100660353391,
+        "cohens_dz": 0.2925500316664862,
+        "label": "significant improvement",
+        "is_significant": true
+    },
+    "Random": {
+        "mean_delta": 0.004243453606647644,
+        "p_value": 0.5954786127381716,
+        "cohens_dz": 0.04315433148333139,
+        "label": "positive but not significant",
+        "is_significant": false
+    },
+    "Dense-margin": {
+        "mean_delta": 0.07795736631211829,
+        "p_value": 0.0003768717062618811,
+        "cohens_dz": 0.29506036220731396,
+        "label": "significant improvement",
+        "is_significant": true
+    },
+    "Dense-entropy": {
+        "mean_delta": 0.06471160257118246,
+        "p_value": 0.0022725572084992913,
+        "cohens_dz": 0.2518518909056472,
+        "label": "significant improvement",
+        "is_significant": true
+    },
+    "Regression-only": {
+        "mean_delta": 0.0474099974352541,
+        "p_value": 0.0056797072972636885,
+        "cohens_dz": 0.2275852578017798,
+        "label": "significant improvement",
+        "is_significant": true
+    },
+    "Classification-only": {
+        "mean_delta": 0.0537929214273574,
+        "p_value": 0.00060500492429183,
+        "cohens_dz": 0.2841482436640256,
+        "label": "significant improvement",
+        "is_significant": true
+    },
+    "Oracle": {
+        "mean_delta": 0.12684041231805937,
+        "p_value": 1.3778404216193654e-09,
+        "cohens_dz": 0.5237535982104269,
+        "label": "significant improvement",
+        "is_significant": true
+    }
+}

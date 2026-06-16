@@ -1,9 +1,0 @@
-{
-  "easy_query_count": 47,
-  "hard_query_count": 115,
-  "hybrid_overtreatment_rate": 0.40425531914893614,
-  "hybrid_overtreatment_severity": 0.025504882176731573,
-  "psafe_overtreatment_avoidance_rate": 0.7368421052631579,
-  "latency_avoidance": 0.8645889273323182,
-  "harm_avoidance": 0.026258460029110166
-}

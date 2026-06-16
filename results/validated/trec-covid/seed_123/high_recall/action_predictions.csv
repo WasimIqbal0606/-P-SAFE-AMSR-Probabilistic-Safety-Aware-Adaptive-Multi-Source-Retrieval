@@ -1,0 +1,26 @@
+query_id,selected_action,action_name,expected_utility,p_gain,p_harm,pred_delta,pred_latency,candidate_count,rejected_reason,override_used,override_reason,mode,split
+12,6,Deep Hybrid,0.234491,0.8206,0.1748,0.088163,1110.61,400,,False,,high_recall,test
+14,6,Deep Hybrid,0.845177,0.7772,0.1395,0.699248,949.12,400,,False,,high_recall,test
+16,6,Deep Hybrid,0.6343,0.8248,0.14,0.476132,902.72,400,,False,,high_recall,test
+19,6,Deep Hybrid,0.343068,0.7737,0.1845,0.210042,1027.3,400,,False,,high_recall,test
+20,6,Deep Hybrid,0.802556,0.646,0.193,0.703868,1057.27,400,,False,,high_recall,test
+25,6,Deep Hybrid,0.391563,0.6998,0.2177,0.285466,1044.1,400,,False,,high_recall,test
+26,6,Deep Hybrid,0.125058,0.79,0.1914,-0.011471,913.86,400,,False,,high_recall,test
+27,6,Deep Hybrid,0.167487,0.8012,0.1873,0.028609,1059.3,400,,False,,high_recall,test
+28,6,Deep Hybrid,0.345381,0.793,0.1755,0.206686,1168.79,400,,False,,high_recall,test
+30,6,Deep Hybrid,0.609403,0.6813,0.2412,0.511712,833.22,400,,False,,high_recall,test
+32,6,Deep Hybrid,0.438335,0.7332,0.1836,0.315105,1018.57,400,,False,,high_recall,test
+33,6,Deep Hybrid,0.359811,0.7963,0.1828,0.219215,877.06,400,,False,,high_recall,test
+35,6,Deep Hybrid,0.53243,0.7494,0.1723,0.40176,962.43,400,,False,,high_recall,test
+37,6,Deep Hybrid,0.294795,0.6873,0.2206,0.193126,1102.48,400,,False,,high_recall,test
+38,6,Deep Hybrid,0.368409,0.7187,0.1921,0.252604,1183.91,400,,False,,high_recall,test
+39,6,Deep Hybrid,0.511596,0.7258,0.2481,0.406642,1048.34,400,,False,,high_recall,test
+40,6,Deep Hybrid,0.621552,0.6851,0.2047,0.519656,1419.94,400,,False,,high_recall,test
+41,6,Deep Hybrid,0.29561,0.7246,0.2427,0.19223,1310.42,400,,False,,high_recall,test
+42,6,Deep Hybrid,0.611312,0.7561,0.2484,0.494285,589.91,400,,False,,high_recall,test
+43,6,Deep Hybrid,0.414037,0.7733,0.167,0.278812,1236.33,400,,False,,high_recall,test
+45,6,Deep Hybrid,0.693028,0.6882,0.197,0.583299,906.84,400,,False,,high_recall,test
+46,6,Deep Hybrid,0.004718,0.7548,0.2419,-0.107899,1159.96,400,,False,,high_recall,test
+48,6,Deep Hybrid,0.216861,0.7521,0.2409,0.106035,1296.9,400,,False,,high_recall,test
+8,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9,6,Deep Hybrid,0.529057,0.7935,0.1533,0.382154,914.58,400,,False,,high_recall,test

@@ -1,0 +1,326 @@
+query_id,selected_action,action_name,expected_utility,p_gain,p_harm,pred_delta,pred_latency,candidate_count,rejected_reason,override_used,override_reason,mode,split
+10034,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10039,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10109,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10122,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10213,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10246,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+104,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10414,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10462,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10482,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10497,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10526,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10547,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10558,6,Deep Hybrid,0.050201,0.3065,0.1837,0.152651,744.67,400,,False,,high_recall,test
+10596,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10628,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10639,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10645,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10710,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10808,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1085,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1090,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+10994,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+11039,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+11054,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+11088,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1159,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1230,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1281,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1284,6,Deep Hybrid,0.039239,0.3621,0.1591,0.125806,784.37,400,,False,,high_recall,test
+1309,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1310,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1321,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1393,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1441,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+15,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1676,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1736,6,Deep Hybrid,0.028753,0.3611,0.1452,0.110062,815.94,400,,False,,high_recall,test
+1748,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1815,6,Deep Hybrid,0.022369,0.3286,0.0969,0.078617,733.47,400,,False,,high_recall,test
+1824,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1826,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1877,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1915,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+1920,6,Deep Hybrid,0.013577,0.3154,0.1558,0.106505,851.45,400,,False,,high_recall,test
+1948,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2010,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2051,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2075,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2108,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2154,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2183,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2204,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2306,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2334,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2384,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2385,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2388,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2395,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2445,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2551,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2580,6,Deep Hybrid,0.058626,0.305,0.1564,0.145418,701.95,400,,False,,high_recall,test
+2589,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2590,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2593,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2598,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2648,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2676,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2695,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2713,6,Deep Hybrid,0.089289,0.3063,0.1395,0.165396,659.5,400,,False,,high_recall,test
+2724,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2749,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2856,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2857,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2885,6,Deep Hybrid,0.132756,0.332,0.127,0.205653,772.01,400,,False,,high_recall,test
+2895,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2903,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2923,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+2994,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3006,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3008,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3033,6,Deep Hybrid,0.00033,0.3144,0.1606,0.089613,728.03,400,,False,,high_recall,test
+3039,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3051,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3067,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3085,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3115,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3148,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3149,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3177,6,Deep Hybrid,0.080144,0.339,0.1208,0.147098,729.03,400,,False,,high_recall,test
+3357,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3369,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3394,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+34,6,Deep Hybrid,0.060035,0.251,0.1703,0.157933,676.5,400,,False,,high_recall,test
+3453,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3480,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3490,6,Deep Hybrid,0.147539,0.3104,0.1163,0.212829,683.79,400,,False,,high_recall,test
+3530,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3534,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3566,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3615,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3625,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3682,6,Deep Hybrid,0.02437,0.2889,0.1661,0.114684,643.26,400,,False,,high_recall,test
+3694,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3724,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3771,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3789,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3791,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3801,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3829,6,Deep Hybrid,0.02034,0.2632,0.1301,0.099994,738.09,400,,False,,high_recall,test
+3830,6,Deep Hybrid,0.03034,0.2593,0.1132,0.104117,781.82,400,,False,,high_recall,test
+3859,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3875,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3888,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+3909,6,Deep Hybrid,0.016569,0.2956,0.1613,0.108073,727.85,400,,False,,high_recall,test
+3934,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4007,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4019,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4037,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4071,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4084,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4102,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4103,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4105,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4116,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4142,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4179,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4188,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4233,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4265,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4306,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4335,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4409,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4411,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4414,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4415,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4464,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4484,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4500,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4504,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4514,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4523,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4539,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4571,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4605,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4640,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4681,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4714,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4777,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4785,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4804,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4823,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4837,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4845,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4863,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4942,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4955,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4962,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+4968,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+503,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5045,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5083,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5086,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5125,6,Deep Hybrid,0.228325,0.2581,0.067,0.273936,678.88,400,,False,,high_recall,test
+5150,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5172,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5185,6,Deep Hybrid,0.026375,0.3617,0.1643,0.11956,864.27,400,,False,,high_recall,test
+5228,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5241,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5254,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5255,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5264,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5343,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5347,6,Deep Hybrid,0.099102,0.3392,0.1104,0.161944,751.57,400,,False,,high_recall,test
+5374,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5402,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5410,6,Deep Hybrid,0.010924,0.3218,0.1547,0.102726,852.93,400,,False,,high_recall,test
+5464,6,Deep Hybrid,0.027239,0.3015,0.2119,0.13937,646.98,400,,True,high_recall_soft_override,high_recall,test
+549,6,Deep Hybrid,0.003176,0.3096,0.1327,0.089529,939.58,400,,False,,high_recall,test
+5503,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5505,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5511,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5549,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5592,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+56,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5616,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5620,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5683,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+570,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5741,6,Deep Hybrid,0.055885,0.3402,0.1295,0.127945,746.67,400,,False,,high_recall,test
+5763,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5782,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+585,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5853,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5888,6,Deep Hybrid,0.001313,0.3415,0.2274,0.12422,787.05,400,,True,high_recall_soft_override,high_recall,test
+5903,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5940,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5951,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+5981,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6002,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6005,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+603,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6041,6,Deep Hybrid,0.01544,0.3314,0.1824,0.116805,786.06,400,,False,,high_recall,test
+6110,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6122,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6133,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6142,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6146,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6199,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+622,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6252,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6278,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6410,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6420,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6525,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6611,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6612,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6625,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6629,6,Deep Hybrid,0.007594,0.2417,0.1439,0.092767,667.66,400,,False,,high_recall,test
+6647,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6668,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6679,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6683,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6713,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6746,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6787,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6800,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6807,6,Deep Hybrid,0.013065,0.3504,0.137,0.095548,900.83,400,,False,,high_recall,test
+689,6,Deep Hybrid,0.025589,0.4094,0.1592,0.117256,980.63,400,,False,,high_recall,test
+6891,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6896,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6909,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+691,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+6985,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+701,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7096,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7098,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7105,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7124,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+715,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7178,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7188,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7205,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7206,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+721,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7326,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7329,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7431,6,Deep Hybrid,0.100813,0.4261,0.1255,0.16763,853.79,400,,False,,high_recall,test
+7448,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7467,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7513,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+753,6,Deep Hybrid,0.023789,0.2491,0.1651,0.119749,686.61,400,,False,,high_recall,test
+7533,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7590,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7633,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7674,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7734,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7754,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7758,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+776,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7801,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7803,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7823,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+7992,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8002,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8013,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8017,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8072,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8079,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8202,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8230,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8351,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8378,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8507,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8512,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+853,6,Deep Hybrid,0.022114,0.3456,0.1555,0.107101,756.11,400,,False,,high_recall,test
+8539,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8544,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+858,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8592,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8635,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8702,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8779,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8789,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8795,6,Deep Hybrid,0.024618,0.2751,0.184,0.131249,762.59,400,,False,,high_recall,test
+8832,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8834,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+885,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8934,6,Deep Hybrid,0.019526,0.3128,0.1931,0.123004,684.44,400,,False,,high_recall,test
+8937,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8947,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8959,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8970,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+8982,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+90,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9060,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9088,6,Deep Hybrid,0.124284,0.3135,0.1227,0.191808,670.07,400,,False,,high_recall,test
+9108,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9115,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9174,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9188,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9245,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9275,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+928,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9291,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+932,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9385,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+939,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9403,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+945,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9481,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9487,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9548,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9556,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9565,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+957,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9617,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9643,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9644,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9668,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9737,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9824,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9871,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test
+9929,0,Dense,0.0,0.0,0.0,0.0,0.0,50,,False,,high_recall,test

@@ -1,9 +1,0 @@
-{
-  "Dense": 47,
-  "Dense+BM25": 10,
-  "Dense+Graph": 0,
-  "Dense+BM25+Graph": 0,
-  "Dense+BM25+CE": 29,
-  "Dense+BM25+Graph+CE": 37,
-  "Deep Hybrid": 39
-}

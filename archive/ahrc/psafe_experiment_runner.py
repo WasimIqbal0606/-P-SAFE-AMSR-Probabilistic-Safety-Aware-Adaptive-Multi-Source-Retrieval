@@ -49,10 +49,24 @@ class ActionSimulator:
         dense_idx, dense_scores = dense_res.retrieved_indices, dense_res.retrieved_scores
         
         if action == Action.A0_DENSE:
-            return RetrievalResult(query_id=query_id, retrieved_indices=dense_idx[:k], retrieved_scores=dense_scores[:k], final_k=k, total_time_ms=(time.perf_counter()-t_total)*1000)
+            return RetrievalResult(
+                query_id=query_id,
+                retrieved_indices=dense_idx[:k],
+                retrieved_scores=dense_scores[:k],
+                final_k=k,
+                total_time_ms=(time.perf_counter()-t_total)*1000,
+                candidates_explored=len(dense_idx),
+            )
             
         bm25_idx, bm25_scores = np.array([]), np.array([])
-        if action in [Action.A1_DENSE_BM25, Action.A3_DENSE_BM25_GRAPH, Action.A4_DENSE_BM25_CE, Action.A5_DENSE_BM25_GRAPH_CE, Action.A6_DEEP_HYBRID]:
+        bm25_actions = [
+            Action.A1_DENSE_BM25, Action.A3_DENSE_BM25_GRAPH,
+            Action.A4_DENSE_BM25_CE, Action.A5_DENSE_BM25_GRAPH_CE,
+            Action.A6_DEEP_HYBRID, Action.A7_DENSE_BM25_CE_10,
+            Action.A8_DENSE_BM25_CE_20, Action.A9_DENSE_BM25_CE_50,
+            Action.A10_DENSE_BM25_CE_100, Action.A11_DYNAMIC_CE_DEPTH,
+        ]
+        if action in bm25_actions:
             b_res = self.bm25_baseline.retrieve(query_text, k=100 if action != Action.A6_DEEP_HYBRID else 200)
             bm25_idx, bm25_scores = b_res.retrieved_indices, b_res.retrieved_scores
             
@@ -68,15 +82,36 @@ class ActionSimulator:
             max_candidates=200 if action != Action.A6_DEEP_HYBRID else 400
         )
         
-        if action in [Action.A4_DENSE_BM25_CE, Action.A5_DENSE_BM25_GRAPH_CE, Action.A6_DEEP_HYBRID]:
-            rerank_depth = 50 if action != Action.A6_DEEP_HYBRID else 100
+        ce_depth = {
+            Action.A4_DENSE_BM25_CE: 50,
+            Action.A5_DENSE_BM25_GRAPH_CE: 50,
+            Action.A6_DEEP_HYBRID: 100,
+            Action.A7_DENSE_BM25_CE_10: 10,
+            Action.A8_DENSE_BM25_CE_20: 20,
+            Action.A9_DENSE_BM25_CE_50: 50,
+            Action.A10_DENSE_BM25_CE_100: 100,
+            Action.A11_DYNAMIC_CE_DEPTH: 50,
+        }
+        if action in ce_depth:
+            if action == Action.A11_DYNAMIC_CE_DEPTH:
+                dense_gap = float(dense_scores[0] - dense_scores[min(4, len(dense_scores) - 1)]) if len(dense_scores) > 4 else 0.0
+                rerank_depth = 10 if dense_gap > 0.15 else 20 if dense_gap > 0.05 else 50
+            else:
+                rerank_depth = ce_depth[action]
             rerank_idx = fused_idx[:rerank_depth]
             rerank_scores = fused_scores[:rerank_depth]
             final_idx, final_scores = self.retriever._cross_encode_rerank(query_text, rerank_idx, rerank_scores)
             fused_idx = np.concatenate([final_idx, fused_idx[rerank_depth:]])
             fused_scores = np.concatenate([final_scores, fused_scores[rerank_depth:]])
             
-        return RetrievalResult(query_id=query_id, retrieved_indices=fused_idx[:k], retrieved_scores=fused_scores[:k], final_k=k, total_time_ms=(time.perf_counter()-t_total)*1000)
+        return RetrievalResult(
+            query_id=query_id,
+            retrieved_indices=fused_idx[:k],
+            retrieved_scores=fused_scores[:k],
+            final_k=k,
+            total_time_ms=(time.perf_counter()-t_total)*1000,
+            candidates_explored=len(fused_idx),
+        )
 
 class BM25Wrap:
     def __init__(self, bm25, texts):
