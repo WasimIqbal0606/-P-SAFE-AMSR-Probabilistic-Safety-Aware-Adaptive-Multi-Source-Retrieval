@@ -264,8 +264,8 @@ The router is too conservative and misses useful Hybrid gains. This reveals a li
 ### Installation
 
 ```bash
-git clone https://github.com/WasimIqbal0606/NeuromorphiQuantum-CognitiveTaskSystem01.git
-cd NeuromorphiQuantum-CognitiveTaskSystem01
+git clone https://github.com/WasimIqbal0606/-P-SAFE-AMSR-Probabilistic-Safety-Aware-Adaptive-Multi-Source-Retrieval.git
+cd -P-SAFE-AMSR-Probabilistic-Safety-Aware-Adaptive-Multi-Source-Retrieval
 pip install -r requirements.txt
 ```
 

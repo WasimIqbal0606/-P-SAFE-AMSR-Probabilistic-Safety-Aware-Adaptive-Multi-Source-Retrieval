@@ -5,8 +5,8 @@ type: software
 authors:
   - family-names: "Iqbal"
     given-names: "Wasim"
-repository-code: "https://github.com/WasimIqbal0606/NeuromorphiQuantum-CognitiveTaskSystem01"
-url: "https://github.com/WasimIqbal0606/NeuromorphiQuantum-CognitiveTaskSystem01"
+repository-code: "https://github.com/WasimIqbal0606/-P-SAFE-AMSR-Probabilistic-Safety-Aware-Adaptive-Multi-Source-Retrieval"
+url: "https://github.com/WasimIqbal0606/-P-SAFE-AMSR-Probabilistic-Safety-Aware-Adaptive-Multi-Source-Retrieval"
 license: Apache-2.0
 version: "1.0.0"
 date-released: "2026-04-23"
