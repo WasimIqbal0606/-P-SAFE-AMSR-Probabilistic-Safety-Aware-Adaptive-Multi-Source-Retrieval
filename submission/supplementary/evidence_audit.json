@@ -1,0 +1,1104 @@
+{
+  "status": "PASS",
+  "datasets": [
+    "scifact",
+    "fiqa",
+    "nfcorpus",
+    "arguana"
+  ],
+  "seeds": [
+    42,
+    123,
+    2026
+  ],
+  "modes": [
+    "lite",
+    "balanced",
+    "high_recall"
+  ],
+  "audited_runs": 36,
+  "baseline_rows": 40,
+  "multiseed_rows": 24,
+  "run_audits": [
+    {
+      "dataset": "scifact",
+      "seed": 42,
+      "mode": "lite",
+      "n_queries": 152,
+      "split_hash": "9423e775",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 42,
+      "mode": "balanced",
+      "n_queries": 152,
+      "split_hash": "9423e775",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 42,
+      "mode": "high_recall",
+      "n_queries": 152,
+      "split_hash": "9423e775",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 123,
+      "mode": "lite",
+      "n_queries": 152,
+      "split_hash": "f801f136",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 123,
+      "mode": "balanced",
+      "n_queries": 152,
+      "split_hash": "f801f136",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 123,
+      "mode": "high_recall",
+      "n_queries": 152,
+      "split_hash": "f801f136",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 2026,
+      "mode": "lite",
+      "n_queries": 152,
+      "split_hash": "71b4e55b",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 2026,
+      "mode": "balanced",
+      "n_queries": 152,
+      "split_hash": "71b4e55b",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "scifact",
+      "seed": 2026,
+      "mode": "high_recall",
+      "n_queries": 152,
+      "split_hash": "71b4e55b",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 42,
+      "mode": "lite",
+      "n_queries": 325,
+      "split_hash": "8656eb97",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 42,
+      "mode": "balanced",
+      "n_queries": 325,
+      "split_hash": "8656eb97",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 42,
+      "mode": "high_recall",
+      "n_queries": 325,
+      "split_hash": "8656eb97",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 123,
+      "mode": "lite",
+      "n_queries": 325,
+      "split_hash": "d7658f66",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 123,
+      "mode": "balanced",
+      "n_queries": 325,
+      "split_hash": "d7658f66",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 123,
+      "mode": "high_recall",
+      "n_queries": 325,
+      "split_hash": "d7658f66",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 2026,
+      "mode": "lite",
+      "n_queries": 325,
+      "split_hash": "202ba547",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 2026,
+      "mode": "balanced",
+      "n_queries": 325,
+      "split_hash": "202ba547",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "fiqa",
+      "seed": 2026,
+      "mode": "high_recall",
+      "n_queries": 325,
+      "split_hash": "202ba547",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 42,
+      "mode": "lite",
+      "n_queries": 162,
+      "split_hash": "3efc0f16",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 42,
+      "mode": "balanced",
+      "n_queries": 162,
+      "split_hash": "3efc0f16",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 42,
+      "mode": "high_recall",
+      "n_queries": 162,
+      "split_hash": "3efc0f16",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 123,
+      "mode": "lite",
+      "n_queries": 162,
+      "split_hash": "c5473b99",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 123,
+      "mode": "balanced",
+      "n_queries": 162,
+      "split_hash": "c5473b99",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 123,
+      "mode": "high_recall",
+      "n_queries": 162,
+      "split_hash": "c5473b99",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 2026,
+      "mode": "lite",
+      "n_queries": 162,
+      "split_hash": "608d6e28",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 2026,
+      "mode": "balanced",
+      "n_queries": 162,
+      "split_hash": "608d6e28",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "nfcorpus",
+      "seed": 2026,
+      "mode": "high_recall",
+      "n_queries": 162,
+      "split_hash": "608d6e28",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 42,
+      "mode": "lite",
+      "n_queries": 706,
+      "split_hash": "3a79a1e2",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 42,
+      "mode": "balanced",
+      "n_queries": 706,
+      "split_hash": "3a79a1e2",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 42,
+      "mode": "high_recall",
+      "n_queries": 706,
+      "split_hash": "3a79a1e2",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 123,
+      "mode": "lite",
+      "n_queries": 706,
+      "split_hash": "d0f51580",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 123,
+      "mode": "balanced",
+      "n_queries": 706,
+      "split_hash": "d0f51580",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 123,
+      "mode": "high_recall",
+      "n_queries": 706,
+      "split_hash": "d0f51580",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 2026,
+      "mode": "lite",
+      "n_queries": 706,
+      "split_hash": "b11ebcbb",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 2026,
+      "mode": "balanced",
+      "n_queries": 706,
+      "split_hash": "b11ebcbb",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    },
+    {
+      "dataset": "arguana",
+      "seed": 2026,
+      "mode": "high_recall",
+      "n_queries": 706,
+      "split_hash": "b11ebcbb",
+      "checks": {
+        "P-SAFE vs Dense": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        },
+        "P-SAFE vs Hybrid": {
+          "mean_delta": true,
+          "t_statistic": true,
+          "t_p_value": true,
+          "wilcoxon_statistic": true,
+          "wilcoxon_nonzero": true,
+          "bootstrap_low": true,
+          "bootstrap_high": true,
+          "permutation_p": true
+        }
+      },
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{Seed-42 paired validation of B-P-SAFE against Dense. All tests use the same held-out queries; CIs and permutations use 5,000 and 2,000 draws, respectively.}
+\label{tab:paired_stats}
+\scriptsize
+\setlength{\tabcolsep}{3.0pt}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Dataset & Mode & $n$ & $\Delta_D$ & $t$ & $p_t$ & $W$ & $p_W$ & 95\% bootstrap CI & $p_{\rm perm}$ \\
+\midrule
+SciFact & Balanced & 152 & +0.0499 & 2.563 & 0.011 & 252.0 & 0.021 & $[+0.0139,+0.0887]$ & 0.007 \\
+SciFact & High recall & 152 & +0.0557 & 2.796 & 0.006 & 260.0 & 0.010 & $[+0.0191,+0.0955]$ & 0.004 \\
+\addlinespace[1pt]
+FiQA & Balanced & 325 & +0.0132 & 1.456 & 0.146 & 1298.0 & 0.227 & $[-0.0041,+0.0318]$ & 0.156 \\
+FiQA & High recall & 325 & +0.0200 & 2.014 & 0.045 & 2340.5 & 0.088 & $[+0.0011,+0.0401]$ & 0.048 \\
+\addlinespace[1pt]
+NFCorpus & Balanced & 162 & +0.0240 & 2.227 & 0.027 & 706.0 & 0.026 & $[+0.0042,+0.0467]$ & 0.029 \\
+NFCorpus & High recall & 162 & +0.0287 & 2.522 & 0.013 & 1292.0 & 0.008 & $[+0.0071,+0.0520]$ & 0.010 \\
+\addlinespace[1pt]
+ArguAna & Balanced & 706 & +0.0123 & 2.664 & 0.008 & 1182.5 & 0.007 & $[+0.0033,+0.0216]$ & 0.005 \\
+ArguAna & High recall & 706 & +0.0118 & 2.065 & 0.039 & 3425.0 & 0.053 & $[+0.0003,+0.0230]$ & 0.034 \\
+\bottomrule
+\end{tabular}
+\end{table*}

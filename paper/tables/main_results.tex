@@ -1,0 +1,28 @@
+\begin{table*}[t]
+\centering
+\caption{Seed-42 endpoint quality and measured end-to-end latency trade-offs. LS is relative to always-on Deep Hybrid; HGR is not applicable when Hybrid does not improve on Dense and is reported as 0.}
+\label{tab:main_results}
+\scriptsize
+\setlength{\tabcolsep}{3.2pt}
+\begin{tabular}{llrrrrrrrr}
+\toprule
+Dataset & Mode & Dense & Hybrid & B-P-SAFE & $\Delta_D$ & $\Delta_H$ & LS & HAR & HGR \\
+\midrule
+SciFact & Lite & 0.6466 & 0.7330 & 0.6466 & +0.0000 & -0.0865 & 97.4\% & 0.0\% & 0.000 \\
+SciFact & Balanced & 0.6466 & 0.7330 & 0.6965 & +0.0499 & -0.0365 & 34.3\% & 63.8\% & 0.577 \\
+SciFact & High recall & 0.6466 & 0.7330 & 0.7023 & +0.0557 & -0.0308 & 31.6\% & 66.4\% & 0.644 \\
+\addlinespace[1pt]
+FiQA & Lite & 0.4085 & 0.4327 & 0.4085 & +0.0000 & -0.0243 & 79.4\% & 0.0\% & 0.000 \\
+FiQA & Balanced & 0.4085 & 0.4327 & 0.4217 & +0.0132 & -0.0111 & 43.2\% & 45.8\% & 0.544 \\
+FiQA & High recall & 0.4085 & 0.4327 & 0.4285 & +0.0200 & -0.0043 & 28.0\% & 64.0\% & 0.823 \\
+\addlinespace[1pt]
+NFCorpus & Lite & 0.3339 & 0.3632 & 0.3339 & +0.0000 & -0.0293 & 99.0\% & 0.0\% & 0.000 \\
+NFCorpus & Balanced & 0.3339 & 0.3632 & 0.3579 & +0.0240 & -0.0053 & 45.6\% & 54.9\% & 0.819 \\
+NFCorpus & High recall & 0.3339 & 0.3632 & 0.3626 & +0.0287 & -0.0006 & 20.4\% & 79.6\% & 0.978 \\
+\addlinespace[1pt]
+ArguAna & Lite & 0.3946 & 0.3915 & 0.3946 & +0.0000 & +0.0030 & 77.5\% & 0.0\% & 0.000 \\
+ArguAna & Balanced & 0.3946 & 0.3915 & 0.4069 & +0.0123 & +0.0154 & 66.1\% & 15.0\% & 0.000 \\
+ArguAna & High recall & 0.3946 & 0.3915 & 0.4064 & +0.0118 & +0.0148 & 60.3\% & 22.8\% & 0.000 \\
+\bottomrule
+\end{tabular}
+\end{table*}

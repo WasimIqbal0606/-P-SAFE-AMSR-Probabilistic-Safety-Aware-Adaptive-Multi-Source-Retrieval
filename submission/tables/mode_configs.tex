@@ -1,0 +1,28 @@
+\begin{table}[!htbp]
+\centering
+\caption{Saved seed-42 deployment settings. Lite is fixed; balanced and high-recall settings are validation-selected or configured before test evaluation.}
+\label{tab:mode_configs}
+\scriptsize
+\setlength{\tabcolsep}{3.0pt}
+\begin{tabular}{llrrrrrrc}
+\toprule
+Dataset & Mode & $\tau_{\rm gain}$ & $\tau_{\rm harm}$ & $\lambda_{\rm lat}$ & $\lambda_{\rm harm}$ & $\lambda_{\rm rec}$ & $\lambda_{\rm cand}$ & LCB flag \\
+\midrule
+SciFact & Lite & 0.60 & 0.20 & 2.0e-04 & 0.50 & 0.10 & 1.0e-04 & on \\
+SciFact & Balanced & 0.10 & 0.20 & 1.0e-06 & 0.10 & 0.25 & 1.0e-04 & off \\
+SciFact & High recall & 0.25 & 0.50 & 1.0e-05 & 0.25 & 0.25 & 1.0e-05 & off \\
+\addlinespace[1pt]
+FiQA & Lite & 0.60 & 0.20 & 2.0e-04 & 0.50 & 0.10 & 1.0e-04 & on \\
+FiQA & Balanced & 0.25 & 0.50 & 1.0e-05 & 0.25 & 0.25 & 1.0e-04 & off \\
+FiQA & High recall & 0.25 & 0.50 & 1.0e-05 & 0.25 & 0.25 & 1.0e-05 & off \\
+\addlinespace[1pt]
+NFCorpus & Lite & 0.60 & 0.20 & 2.0e-04 & 0.50 & 0.10 & 1.0e-04 & on \\
+NFCorpus & Balanced & 0.25 & 0.50 & 1.0e-05 & 0.25 & 0.25 & 1.0e-04 & off \\
+NFCorpus & High recall & 0.25 & 0.50 & 1.0e-05 & 0.25 & 0.25 & 1.0e-05 & off \\
+\addlinespace[1pt]
+ArguAna & Lite & 0.60 & 0.20 & 2.0e-04 & 0.50 & 0.10 & 1.0e-04 & on \\
+ArguAna & Balanced & 0.10 & 0.40 & 1.0e-06 & 0.25 & 0.10 & 1.0e-04 & off \\
+ArguAna & High recall & 0.10 & 0.30 & 1.0e-06 & 0.25 & 0.10 & 1.0e-05 & off \\
+\bottomrule
+\end{tabular}
+\end{table}

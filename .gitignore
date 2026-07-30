@@ -70,6 +70,7 @@ secrets.json
 
 # ── Temporary outputs ──
 debug_outputs/
+/tmp/
 
 # ── Gitignore results except validated ──
 results/*

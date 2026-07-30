@@ -1,0 +1,24 @@
+\begin{table*}[t]
+\centering
+\caption{Three-split sensitivity analysis over seeds 42, 123, and 2026 (mean $\pm$ sample SD). Counts report seeds beating Dense and seeds with no significant negative difference from Deep Hybrid.}
+\label{tab:multiseed_summary}
+\scriptsize
+\setlength{\tabcolsep}{2.7pt}
+\begin{tabular}{llrrrrrrrrr}
+\toprule
+Dataset & Mode & nDCG@10 & LS (\%) & HAR (\%) & HGR & OGC & RC & HA & $>{D}$ & $\not<_{\rm sig}H$ \\
+\midrule
+SciFact & Balanced & 0.700 $\pm$ 0.034 & 29.7 $\pm$ 9.3 & 69.3 $\pm$ 10.1 & 0.704 $\pm$ 0.116 & 0.443 $\pm$ 0.092 & 0.742 $\pm$ 0.105 & 0.004 $\pm$ 0.004 & 3/3 & 2/3 \\
+SciFact & High recall & 0.705 $\pm$ 0.033 & 25.5 $\pm$ 9.2 & 73.5 $\pm$ 10.0 & 0.783 $\pm$ 0.121 & 0.490 $\pm$ 0.072 & 0.806 $\pm$ 0.124 & 0.004 $\pm$ 0.004 & 3/3 & 2/3 \\
+\addlinespace[1pt]
+FiQA & Balanced & 0.422 $\pm$ 0.002 & 56.4 $\pm$ 17.5 & 28.4 $\pm$ 21.8 & 0.478 $\pm$ 0.308 & 0.145 $\pm$ 0.073 & 0.360 $\pm$ 0.247 & 0.059 $\pm$ 0.011 & 3/3 & 2/3 \\
+FiQA & High recall & 0.431 $\pm$ 0.003 & 42.7 $\pm$ 24.7 & 45.4 $\pm$ 30.3 & 0.836 $\pm$ 0.457 & 0.261 $\pm$ 0.093 & 0.591 $\pm$ 0.302 & 0.049 $\pm$ 0.012 & 3/3 & 2/3 \\
+\addlinespace[1pt]
+NFCorpus & Balanced & 0.344 $\pm$ 0.014 & 43.8 $\pm$ 13.3 & 55.6 $\pm$ 13.3 & 0.823 $\pm$ 0.004 & 0.349 $\pm$ 0.077 & 0.702 $\pm$ 0.147 & 0.023 $\pm$ 0.013 & 3/3 & 3/3 \\
+NFCorpus & High recall & 0.349 $\pm$ 0.014 & 25.0 $\pm$ 6.4 & 74.7 $\pm$ 6.5 & 1.067 $\pm$ 0.108 & 0.446 $\pm$ 0.062 & 0.873 $\pm$ 0.077 & 0.016 $\pm$ 0.012 & 3/3 & 3/3 \\
+\addlinespace[1pt]
+ArguAna & Balanced & 0.411 $\pm$ 0.007 & 57.6 $\pm$ 10.0 & 26.1 $\pm$ 12.5 & 0.000 $\pm$ 0.000 & 0.122 $\pm$ 0.032 & 0.328 $\pm$ 0.135 & 0.163 $\pm$ 0.027 & 3/3 & 3/3 \\
+ArguAna & High recall & 0.411 $\pm$ 0.007 & 53.5 $\pm$ 6.6 & 31.3 $\pm$ 8.0 & 0.000 $\pm$ 0.000 & 0.129 $\pm$ 0.033 & 0.383 $\pm$ 0.109 & 0.157 $\pm$ 0.017 & 3/3 & 3/3 \\
+\bottomrule
+\end{tabular}
+\end{table*}
