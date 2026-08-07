@@ -49,18 +49,18 @@
                 "delta_vs_hybrid": -0.019792414973457406
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.6964820754872394,
-                "mean_latency": 454.54535603097236,
-                "hybrid_activation": 0.6381578947368421,
-                "delta_vs_dense": 0.04991103378594486,
-                "delta_vs_hybrid": -0.03654165333140402
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.08645268711734888
             },
             "Cost-only": {
-                "mean_ndcg": 0.6964820754872394,
-                "mean_latency": 454.54535603097236,
-                "hybrid_activation": 0.6381578947368421,
-                "delta_vs_dense": 0.04991103378594486,
-                "delta_vs_hybrid": -0.03654165333140402
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.08645268711734888
             },
             "Regression-only": {
                 "mean_ndcg": 0.6956778759925231,
@@ -147,18 +147,18 @@
                 "delta_vs_hybrid": -0.02111809498378936
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.7355518652332077,
-                "mean_latency": 450.1681452934149,
-                "hybrid_activation": 0.631578947368421,
-                "delta_vs_dense": 0.06914797834259467,
-                "delta_vs_hybrid": -0.016681719212377155
+                "mean_ndcg": 0.666403886890613,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.08582969755497183
             },
             "Cost-only": {
-                "mean_ndcg": 0.7355518652332077,
-                "mean_latency": 450.1681452934149,
-                "hybrid_activation": 0.631578947368421,
-                "delta_vs_dense": 0.06914797834259467,
-                "delta_vs_hybrid": -0.016681719212377155
+                "mean_ndcg": 0.666403886890613,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.08582969755497183
             },
             "Regression-only": {
                 "mean_ndcg": 0.7138138843258672,
@@ -245,18 +245,18 @@
                 "delta_vs_hybrid": -0.004080545490325771
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.6673848118305825,
-                "mean_latency": 571.178783693695,
-                "hybrid_activation": 0.8092105263157895,
-                "delta_vs_dense": 0.034605754854999504,
-                "delta_vs_hybrid": -0.012922783466478904
+                "mean_ndcg": 0.632779056975583,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.04752853832147841
             },
             "Cost-only": {
-                "mean_ndcg": 0.6673848118305825,
-                "mean_latency": 571.178783693695,
-                "hybrid_activation": 0.8092105263157895,
-                "delta_vs_dense": 0.034605754854999504,
-                "delta_vs_hybrid": -0.012922783466478904
+                "mean_ndcg": 0.632779056975583,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.04752853832147841
             },
             "Regression-only": {
                 "mean_ndcg": 0.676156741655144,
@@ -345,18 +345,18 @@
                 "delta_vs_hybrid": 0.0007555732471626886
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.4216747787633763,
-                "mean_latency": 404.29208198729293,
-                "hybrid_activation": 0.4584615384615385,
-                "delta_vs_dense": 0.013223932533022342,
-                "delta_vs_hybrid": -0.011071426990579891
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.024295359523602233
             },
             "Cost-only": {
-                "mean_ndcg": 0.4216747787633763,
-                "mean_latency": 404.29208198729293,
-                "hybrid_activation": 0.4584615384615385,
-                "delta_vs_dense": 0.013223932533022342,
-                "delta_vs_hybrid": -0.011071426990579891
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.024295359523602233
             },
             "Regression-only": {
                 "mean_ndcg": 0.4373247538621144,
@@ -443,18 +443,18 @@
                 "delta_vs_hybrid": 0.002819640002175716
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.42391917741060453,
-                "mean_latency": 303.5864051314974,
-                "hybrid_activation": 0.35384615384615387,
-                "delta_vs_dense": 0.014216078706072832,
-                "delta_vs_hybrid": -0.004797240650747714
+                "mean_ndcg": 0.4097030987045317,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.019013319356820546
             },
             "Cost-only": {
-                "mean_ndcg": 0.42391917741060453,
-                "mean_latency": 303.5864051314974,
-                "hybrid_activation": 0.35384615384615387,
-                "delta_vs_dense": 0.014216078706072832,
-                "delta_vs_hybrid": -0.004797240650747714
+                "mean_ndcg": 0.4097030987045317,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.019013319356820546
             },
             "Regression-only": {
                 "mean_ndcg": 0.4268975706874013,
@@ -541,18 +541,18 @@
                 "delta_vs_hybrid": -0.018527104706048014
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.41992737776297206,
-                "mean_latency": 37.14998230156933,
-                "hybrid_activation": 0.04,
-                "delta_vs_dense": 0.005367592646526975,
-                "delta_vs_hybrid": -0.032517101559490114
+                "mean_ndcg": 0.4145597851164451,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.03788469420601709
             },
             "Cost-only": {
-                "mean_ndcg": 0.41992737776297206,
-                "mean_latency": 37.14998230156933,
-                "hybrid_activation": 0.04,
-                "delta_vs_dense": 0.005367592646526975,
-                "delta_vs_hybrid": -0.032517101559490114
+                "mean_ndcg": 0.4145597851164451,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.03788469420601709
             },
             "Regression-only": {
                 "mean_ndcg": 0.41826443524312024,
@@ -641,18 +641,18 @@
                 "delta_vs_hybrid": -0.014570862462406964
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.3578996251800681,
-                "mean_latency": 397.6639889341788,
-                "hybrid_activation": 0.5493827160493827,
-                "delta_vs_dense": 0.024022803732465847,
-                "delta_vs_hybrid": -0.00529632248963835
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.029319126222104197
             },
             "Cost-only": {
-                "mean_ndcg": 0.3578996251800681,
-                "mean_latency": 397.6639889341788,
-                "hybrid_activation": 0.5493827160493827,
-                "delta_vs_dense": 0.024022803732465847,
-                "delta_vs_hybrid": -0.00529632248963835
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.029319126222104197
             },
             "Regression-only": {
                 "mean_ndcg": 0.3549176083015669,
@@ -739,18 +739,18 @@
                 "delta_vs_hybrid": -0.012567796793434338
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.3431250177447586,
-                "mean_latency": 304.71671089492116,
-                "hybrid_activation": 0.42592592592592593,
-                "delta_vs_dense": 0.02143303997196494,
-                "delta_vs_hybrid": -0.004562656802301557
+                "mean_ndcg": 0.3216919777727937,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.025995696774266497
             },
             "Cost-only": {
-                "mean_ndcg": 0.3431250177447586,
-                "mean_latency": 304.71671089492116,
-                "hybrid_activation": 0.42592592592592593,
-                "delta_vs_dense": 0.02143303997196494,
-                "delta_vs_hybrid": -0.004562656802301557
+                "mean_ndcg": 0.3216919777727937,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.025995696774266497
             },
             "Regression-only": {
                 "mean_ndcg": 0.35260263836415334,
@@ -837,18 +837,18 @@
                 "delta_vs_hybrid": -0.00432306135331656
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.3297697315506948,
-                "mean_latency": 493.6562914179655,
-                "hybrid_activation": 0.691358024691358,
-                "delta_vs_dense": 0.012303019587928787,
-                "delta_vs_hybrid": -0.00257981447726352
+                "mean_ndcg": 0.317466711962766,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.014882834065192307
             },
             "Cost-only": {
-                "mean_ndcg": 0.3297697315506948,
-                "mean_latency": 493.6562914179655,
-                "hybrid_activation": 0.691358024691358,
-                "delta_vs_dense": 0.012303019587928787,
-                "delta_vs_hybrid": -0.00257981447726352
+                "mean_ndcg": 0.317466711962766,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": -0.014882834065192307
             },
             "Regression-only": {
                 "mean_ndcg": 0.3270870969457169,
@@ -937,18 +937,18 @@
                 "delta_vs_hybrid": 0.00041504829485311534
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.406909818187856,
-                "mean_latency": 180.23860649638485,
-                "hybrid_activation": 0.1501416430594901,
-                "delta_vs_dense": 0.012330220542749959,
-                "delta_vs_hybrid": 0.015365181599556132
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": 0.0030349610568061736
             },
             "Cost-only": {
-                "mean_ndcg": 0.406909818187856,
-                "mean_latency": 180.23860649638485,
-                "hybrid_activation": 0.1501416430594901,
-                "delta_vs_dense": 0.012330220542749959,
-                "delta_vs_hybrid": 0.015365181599556132
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": 0.0030349610568061736
             },
             "Regression-only": {
                 "mean_ndcg": 0.4059204499322074,
@@ -1035,18 +1035,18 @@
                 "delta_vs_hybrid": 0.007930945480573937
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.4057138711886417,
-                "mean_latency": 476.7935817082126,
-                "hybrid_activation": 0.39660056657223797,
-                "delta_vs_dense": 0.012108579062779734,
-                "delta_vs_hybrid": 0.029383731350989928
+                "mean_ndcg": 0.393605292125862,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": 0.017275152288210194
             },
             "Cost-only": {
-                "mean_ndcg": 0.4057138711886417,
-                "mean_latency": 476.7935817082126,
-                "hybrid_activation": 0.39660056657223797,
-                "delta_vs_dense": 0.012108579062779734,
-                "delta_vs_hybrid": 0.029383731350989928
+                "mean_ndcg": 0.393605292125862,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": 0.017275152288210194
             },
             "Regression-only": {
                 "mean_ndcg": 0.4034428898224969,
@@ -1133,18 +1133,18 @@
                 "delta_vs_hybrid": -0.010775460600829512
             },
             "BM25-disagreement": {
-                "mean_ndcg": 0.419040287193426,
-                "mean_latency": 286.0600983382654,
-                "hybrid_activation": 0.23654390934844194,
-                "delta_vs_dense": 0.01809144279981889,
-                "delta_vs_hybrid": 0.04069783451572867
+                "mean_ndcg": 0.4009488443936071,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": 0.02260639171590978
             },
             "Cost-only": {
-                "mean_ndcg": 0.419040287193426,
-                "mean_latency": 286.0600983382654,
-                "hybrid_activation": 0.23654390934844194,
-                "delta_vs_dense": 0.01809144279981889,
-                "delta_vs_hybrid": 0.04069783451572867
+                "mean_ndcg": 0.4009488443936071,
+                "mean_latency": 3.1,
+                "hybrid_activation": 0.0,
+                "delta_vs_dense": 0.0,
+                "delta_vs_hybrid": 0.02260639171590978
             },
             "Regression-only": {
                 "mean_ndcg": 0.391415799887654,
