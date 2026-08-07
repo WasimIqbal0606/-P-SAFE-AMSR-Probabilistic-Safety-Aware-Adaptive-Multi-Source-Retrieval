@@ -200,3 +200,21 @@ def test_adversarial_stability_missing_hashes_fails(temp_workspace):
     auditor = SubmissionAuditor(root_dir=temp_workspace)
     assert auditor.run_full_audit() is False
     assert any("Training Stability" in f for f in auditor.failures)
+
+
+def test_feature_ablation_distinct_from_full():
+    """Verify that restricted feature group models produce distinct outputs from Full model."""
+    abl_file = "results/ablations/ablation_results.json"
+    assert os.path.exists(abl_file)
+    with open(abl_file) as f:
+        data = json.load(f)
+        
+    for ds in ["scifact", "fiqa", "nfcorpus", "arguana"]:
+        if ds in data:
+            full_entry = data[ds].get("Full B-P-SAFE", {})
+            query_entry = data[ds].get("Feature: Query Only", {})
+            assert "mean_ndcg" in full_entry
+            assert "mean_ndcg" in query_entry
+            # Restricted query-only model produces distinct routing quality from Full
+            assert query_entry["mean_ndcg"] != full_entry["mean_ndcg"]
+

@@ -45,7 +45,7 @@ class SubmissionAuditor:
         self.config_path = os.path.join(root_dir, config_path) if not os.path.isabs(config_path) else config_path
         self.config = {}
         if os.path.exists(self.config_path):
-            with open(self.config_path, "r") as f:
+            with open(self.config_path, "r", encoding="utf-8") as f:
                 self.config = yaml.safe_load(f)
                 
         self.canonical_datasets = self.config.get("datasets", ["scifact", "fiqa", "nfcorpus", "arguana"])
@@ -79,7 +79,7 @@ class SubmissionAuditor:
             self.log_check("Canonical Config", False, f"Config missing required fields or matched_budget_random_repetitions != 1000 in {self.config_path}")
 
     def audit_evidence_matrix_completeness(self, validated_dir: str = "results/validated"):
-        """Check 2 & 5: Exactly 4 datasets x 3 seeds x 3 modes = 36 primary validated runs exist without omission."""
+        """Check 2: Exactly 4 datasets x 3 seeds x 3 modes = 36 primary validated runs exist without omission."""
         val_path = os.path.join(self.root_dir, validated_dir)
         if not os.path.exists(val_path):
             self.log_check("Primary Evidence Completeness", False, f"Missing {val_path}")
@@ -162,9 +162,9 @@ class SubmissionAuditor:
         with open(mb_file) as f:
             mb_data = json.load(f)
             
-        # Semantic check: for every dataset and mode, verify matched random k matches HAR * N and n_repetitions == 1000
         mismatch_count = 0
         rep_mismatch = 0
+        pval_mismatch = 0
         for ds in self.canonical_datasets:
             for seed in [42]:
                 for mode in ["balanced", "high_recall"]:
@@ -182,18 +182,21 @@ class SubmissionAuditor:
                         if entry:
                             actual_k = entry.get("target_k")
                             n_rep = entry.get("n_repetitions", 0)
+                            pval = entry.get("empirical_p_value")
                             if actual_k is not None and actual_k != expected_k:
                                 mismatch_count += 1
                             if n_rep != 1000:
                                 rep_mismatch += 1
+                            if pval is None or not (0.0 <= pval <= 1.0):
+                                pval_mismatch += 1
                                 
-        if mismatch_count == 0 and rep_mismatch == 0 and len(comp_data) == 4:
+        if mismatch_count == 0 and rep_mismatch == 0 and pval_mismatch == 0 and len(comp_data) == 4:
             self.log_check("Baseline Suite", True, "All 12 baselines present; Matched-Budget Random matches exact escalation count over 1000 repetitions")
         else:
-            self.log_check("Baseline Suite", False, f"Matched budget escalation count mismatches: {mismatch_count}, repetition mismatches: {rep_mismatch}")
+            self.log_check("Baseline Suite", False, f"Matched budget escalation count mismatches: {mismatch_count}, repetition mismatches: {rep_mismatch}, p-value mismatches: {pval_mismatch}")
 
     def audit_calibration_diagnostics(self, cal_dir: str = "results/calibration"):
-        """Check 6: Verify calibration diagnostics (Brier, ECE, AUROC, AUPRC, slope/intercept) for P_gain and P_harm."""
+        """Check 5: Verify calibration diagnostics (Brier, ECE, AUROC, AUPRC, slope/intercept) for P_gain and P_harm."""
         c_dir = os.path.join(self.root_dir, cal_dir)
         cal_file = os.path.join(c_dir, "calibration_metrics.json")
         rel_file = os.path.join(c_dir, "reliability_data.json")
@@ -227,7 +230,7 @@ class SubmissionAuditor:
             self.log_check("Calibration Diagnostics", False, "Invalid or out-of-bounds calibration metrics")
 
     def audit_statistical_and_non_inferiority(self, stat_dir: str = "results/statistics"):
-        """Check 7: Verify paired tests, Holm-Bonferroni correction, and formal Non-Inferiority testing."""
+        """Check 6: Verify paired tests, Holm-Bonferroni correction, and formal Non-Inferiority testing."""
         s_dir = os.path.join(self.root_dir, stat_dir)
         stat_file = os.path.join(s_dir, "statistical_analysis.json")
         if not os.path.exists(stat_file):
@@ -267,7 +270,7 @@ class SubmissionAuditor:
             self.log_check("Statistical & Non-Inferiority", False, f"Non-inferiority decision mismatches: {ni_mismatch}")
 
     def audit_training_stability(self, stab_dir: str = "results/stability", validated_dir: str = "results/validated"):
-        """Check 8: Verify fixed-split repeated fitting across 10 independent training seeds."""
+        """Check 7: Verify fixed-split repeated fitting across 10 independent training seeds."""
         st_dir = os.path.join(self.root_dir, stab_dir)
         v_dir = os.path.join(self.root_dir, validated_dir)
         stab_file = os.path.join(st_dir, "fixed_split_training_seeds.json")
@@ -279,7 +282,6 @@ class SubmissionAuditor:
         with open(stab_file) as f:
             stab_data = json.load(f)
             
-        # Semantic check: verify stability matches primary P-SAFE nDCG on seed 42 and has valid model hashes
         mismatches = 0
         missing_hashes = 0
         for ds in self.canonical_datasets:
@@ -294,10 +296,9 @@ class SubmissionAuditor:
                     if not np.isclose(stab_ndcg, prim_ndcg, atol=1e-4):
                         mismatches += 1
                         
-            # Check model hashes in per_seed_runs
             runs = entry.get("per_seed_runs", [])
             for r in runs:
-                if "model_hash" not in r or "action_vector_hash" not in r:
+                if "model_hash" not in r or "action_vector_hash" not in r or not r.get("model_hash"):
                     missing_hashes += 1
                         
         if len(stab_data) == 4 and mismatches == 0 and missing_hashes == 0:
@@ -306,7 +307,7 @@ class SubmissionAuditor:
             self.log_check("Training Stability", False, f"Stability mismatches primary P-SAFE: {mismatches}, missing hashes: {missing_hashes}")
 
     def audit_ablations(self, abl_dir: str = "results/ablations", validated_dir: str = "results/validated"):
-        """Check 9: Verify router component and feature group ablations, ensuring Full control matches primary P-SAFE."""
+        """Check 8: Verify router component and feature group ablations, ensuring Full control matches primary P-SAFE."""
         ab_dir = os.path.join(self.root_dir, abl_dir)
         v_dir = os.path.join(self.root_dir, validated_dir)
         abl_file = os.path.join(ab_dir, "ablation_results.json")
@@ -318,7 +319,6 @@ class SubmissionAuditor:
         with open(abl_file) as f:
             abl_data = json.load(f)
             
-        # Semantic check: Full B-P-SAFE MUST match primary P-SAFE nDCG within 1e-4 and MUST NOT have 0% HAR if primary is non-zero
         control_mismatches = 0
         degenerate_count = 0
         for ds in self.canonical_datasets:
@@ -344,7 +344,7 @@ class SubmissionAuditor:
             self.log_check("Router Ablations", False, f"Ablation control mismatches: {control_mismatches}, degenerate controls: {degenerate_count}")
 
     def audit_manuscript_and_claim_registry(self, paper_tex: str = "paper/manuscript.tex", registry_path: str = "paper/claim_registry.json"):
-        """Check 10: Verify manuscript scope, tables, and claim registry consistency."""
+        """Check 9: Verify manuscript scope, tables, and claim registry consistency."""
         tex_path = os.path.join(self.root_dir, paper_tex)
         reg_path = os.path.join(self.root_dir, registry_path)
         
