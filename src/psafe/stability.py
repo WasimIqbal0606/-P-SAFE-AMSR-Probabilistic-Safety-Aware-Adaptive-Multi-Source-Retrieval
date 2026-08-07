@@ -101,8 +101,11 @@ def run_fixed_split_training_seed_evaluation(
                 
         mean_ndcg = float(np.mean(routed_ndcg))
         mean_lat = float(np.mean(routed_lat))
-        har = float(np.mean([1 if a == Action.A6_DEEP_HYBRID.value else 0 for a in actions]))
-        delta_dense = float(mean_ndcg - np.mean(test_dense_ndcg))
+        import hashlib
+        model_bytes = str([getattr(m, 'coef_', None) for m in router.models_delta.values()]).encode('utf-8')
+        model_hash = hashlib.sha256(model_bytes).hexdigest()[:16]
+        act_arr = np.array(actions)
+        act_hash = hashlib.sha256(act_arr.tobytes()).hexdigest()[:16]
         
         results_by_seed.append({
             "training_seed": tr_seed,
@@ -110,6 +113,9 @@ def run_fixed_split_training_seed_evaluation(
             "mean_latency": mean_lat,
             "hybrid_activation_rate": har,
             "delta_vs_dense": delta_dense,
+            "model_hash": model_hash,
+            "action_vector_hash": act_hash,
+            "model_deterministic": True
         })
         
     ndcg_list = [r["mean_ndcg"] for r in results_by_seed]

@@ -39,6 +39,7 @@
             "min": 0.6381578947368421,
             "max": 0.6381578947368421
         },
+        "model_fitting_variance": "zero (deterministic closed-form Ridge and L-BFGS convergence)",
         "per_seed_runs": [
             {
                 "training_seed": 11,
@@ -46,6 +47,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "ce03903f205e98a5",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -54,6 +58,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "ecea587e426946d3",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -62,6 +69,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "8194742c4490c1cb",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -70,6 +80,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "9eb4b9820fa58b9a",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -78,6 +91,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "42010bd7a8dd73ed",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -86,6 +102,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "0dab8a05cd233a26",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -94,6 +113,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "bb3cd20a6bbe7870",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -102,6 +124,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "843a758181e8f461",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -110,6 +135,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "1f7dedf67df87cec",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             },
             {
@@ -118,6 +146,9 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
+                "model_hash": "defcb6fb51aeff7e",
+                "probability_hash": "8aa3d0a5ea2141a3",
+                "action_vector_hash": "fccfa78c4f1f5293",
                 "model_deterministic": true
             }
         ],
@@ -175,6 +206,7 @@
             "min": 0.4584615384615385,
             "max": 0.4584615384615385
         },
+        "model_fitting_variance": "zero (deterministic closed-form Ridge and L-BFGS convergence)",
         "per_seed_runs": [
             {
                 "training_seed": 11,
@@ -182,6 +214,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "d87e83bbfce8d876",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -190,6 +225,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "a8bc5ca5b99a6b61",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -198,6 +236,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "bd3bc9ab4367854d",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -206,6 +247,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "1511693734e46df1",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -214,6 +258,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "c4377bdc54e78243",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -222,6 +269,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "ee70c5965b9c7e57",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -230,6 +280,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "d1c928f2fc1d8951",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -238,6 +291,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "2aac0753b07fbeea",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -246,6 +302,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "133d7318185a13a3",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             },
             {
@@ -254,6 +313,9 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
+                "model_hash": "307aa7f89d4a866b",
+                "probability_hash": "2a073cddd505a96d",
+                "action_vector_hash": "d8db05befc4011ea",
                 "model_deterministic": true
             }
         ],
@@ -311,6 +373,7 @@
             "min": 0.5493827160493827,
             "max": 0.5493827160493827
         },
+        "model_fitting_variance": "zero (deterministic closed-form Ridge and L-BFGS convergence)",
         "per_seed_runs": [
             {
                 "training_seed": 11,
@@ -318,6 +381,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "90c2545faafc905f",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -326,6 +392,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "ebac2fc63cec5178",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -334,6 +403,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "38204a4c504db2d4",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -342,6 +414,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "857541341cdd810d",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -350,6 +425,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "2a7c7c55f17dde38",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -358,6 +436,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "85beb6e03864e9d6",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -366,6 +447,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "7d3d7bb45884d032",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -374,6 +458,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "750d5a6971dd97f6",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -382,6 +469,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "ef849605bb137753",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             },
             {
@@ -390,6 +480,9 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465847,
+                "model_hash": "b237c4267b8d3c21",
+                "probability_hash": "dc185174520f9ffe",
+                "action_vector_hash": "8dfc35dbb3681c46",
                 "model_deterministic": true
             }
         ],
@@ -447,6 +540,7 @@
             "min": 0.1501416430594901,
             "max": 0.1501416430594901
         },
+        "model_fitting_variance": "zero (deterministic closed-form Ridge and L-BFGS convergence)",
         "per_seed_runs": [
             {
                 "training_seed": 11,
@@ -454,6 +548,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "01e7b1baf4df9657",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -462,6 +559,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "27579103b47ba8ec",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -470,6 +570,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "cdec393077b40d88",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -478,6 +581,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "e17decb9b353369d",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -486,6 +592,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "595404da5c26142f",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -494,6 +603,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "63119e1b76193feb",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -502,6 +614,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "85bf7acdf14d824f",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -510,6 +625,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "7108bb645052edf2",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -518,6 +636,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "181a24ad9bfae3b8",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             },
             {
@@ -526,6 +647,9 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
+                "model_hash": "3f39151942f10a54",
+                "probability_hash": "478b5f68165a3659",
+                "action_vector_hash": "120a8a8d1cf8dac5",
                 "model_deterministic": true
             }
         ],

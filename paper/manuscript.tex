@@ -160,7 +160,7 @@ ArguAna exhibits a clear protection regime: always-on Deep Hybrid degrades \ndcg
 
 Table~\ref{tab:statistics} reports Holm-Bonferroni corrected significance tests and formal non-inferiority testing against Deep Hybrid. Primary improvements over Dense are statistically significant after family-wise Holm correction on SciFact High Recall ($p_{\mathrm{Holm}} = 0.047$, $d_z = 0.23$, 95\% CI $[+0.0179, +0.0943]$), while uncorrected paired $t$-tests confirm significant quality gains on ArguAna Balanced ($p_{\mathrm{raw}} = 0.008$, $d_z = 0.10$), SciFact Balanced ($p_{\mathrm{raw}} = 0.011$), and NFCorpus High Recall ($p_{\mathrm{raw}} = 0.013$).
 
-Non-inferiority against Deep Hybrid within margin $\epsilon=0.010$ (1.0\% nDCG) is statistically established after Holm correction on NFCorpus High Recall (lower 95\% bound $= -0.0066 > -\epsilon$, $p_{\mathrm{NI, Holm}} = 0.042$). On ArguAna, \bpsafe{} achieves a strictly positive lower bound against Deep Hybrid (95\% LB $= -0.0043$), outperforming always-on reranking. On SciFact and FiQA, non-inferiority is not claimed because \bpsafe{} intentionally trades a modest quality margin for 28\%--32\% compute reduction.
+Non-inferiority against Deep Hybrid within margin $\epsilon=0.010$ (1.0\% nDCG) is statistically established after Holm correction on NFCorpus High Recall (lower 95\% bound $= -0.0066 > -\epsilon$, $p_{\mathrm{NI, Holm}} = 0.042$). On ArguAna Balanced, \bpsafe{} achieves a 95\% lower bound of $-0.0043$ against Deep Hybrid, outperforming always-on reranking on point estimate ($+0.0154$), though non-inferiority is not claimed after family-wise Holm correction ($p_{\mathrm{NI, Holm}} = 0.107$). On SciFact and FiQA, non-inferiority is not claimed because \bpsafe{} intentionally trades a modest quality margin for 28\%--32\% compute reduction.
 
 \input{tables/paired_stats.tex}
 
@@ -175,7 +175,7 @@ Non-inferiority against Deep Hybrid within margin $\epsilon=0.010$ (1.0\% nDCG) 
     \label{fig:calibration}
 \end{figure}
 
-Table~\ref{tab:calibration} and Fig.~\ref{fig:calibration} report the empirical calibration diagnostics for $P_{\mathrm{gain}}$ and $P_{\mathrm{harm}}$. Brier scores for $P_{\mathrm{gain}}$ range between $0.1991$ and $0.3094$, with ECE between $0.1092$ and $0.2812$ and AUROC between $0.512$ and $0.619$. For rare harm events ($P_{\mathrm{harm}}$), Brier scores remain low ($0.1033$ on SciFact), confirming that probability estimates provide effective ordinal rank signals for risk-aware routing despite compressed probability spreads under small validation samples.
+Table~\ref{tab:calibration} and Fig.~\ref{fig:calibration} report the empirical calibration diagnostics for $P_{\mathrm{gain}}$ and $P_{\mathrm{harm}}$. Post-hoc calibrated probability estimates show heterogeneous calibration and discrimination across datasets (Brier scores $0.1033 - 0.3974$, AUROC $0.512 - 0.726$) and are used as operational policy signals rather than claimed to be uniformly well calibrated across all domains. For rare harm events ($P_{\mathrm{harm}}$), Brier scores remain low ($0.1033$ on SciFact), aiding harm suppression under compressed probability spreads.
 
 \subsection{Matched-Budget Random Baseline}
 
@@ -186,7 +186,7 @@ Table~\ref{tab:calibration} and Fig.~\ref{fig:calibration} report the empirical 
     \label{fig:matched_budget}
 \end{figure}
 
-Figure~\ref{fig:matched_budget} compares \bpsafe{} against the matched-budget random baseline over 1000 random allocations at identical query escalation counts. On ArguAna, \bpsafe{} achieves $0.4069$ versus $0.3942 \pm 0.0046$ (95\% CI $[0.3850, 0.4028]$, $\Delta = +0.0128, p=0.003$), demonstrating statistically significant query-selection superiority over random allocation. On NFCorpus ($\Delta = +0.0080$) and FiQA ($\Delta = +0.0020$), \bpsafe{} achieves positive margins over random allocation. On SciFact Balanced, matched random achieves $0.7017 \pm 0.0110$ (95\% CI $[0.6786, 0.7220]$, $\Delta = -0.0052, p=0.687$). This demonstrates that while \bpsafe{} delivers substantial compute efficiency across all datasets, query-selection superiority over random compute allocation is domain-dependent and most pronounced on counterargument and lexical-mismatch corpora where always-on reranking degrades quality.
+Figure~\ref{fig:matched_budget} compares \bpsafe{} against the matched-budget random baseline over 1000 random allocations at identical query escalation counts. On ArguAna, \bpsafe{} achieves $0.4069$ versus $0.3942 \pm 0.0045$ (95\% CI $[0.3853, 0.4030]$, $\Delta = +0.0127, p=0.004$), demonstrating statistically significant query-selection superiority over random allocation. On NFCorpus ($\Delta = +0.0078, p=0.104$) and FiQA ($\Delta = +0.0021, p=0.371$), \bpsafe{} achieves positive margins over random allocation. On SciFact Balanced, matched random achieves $0.7019 \pm 0.0113$ (95\% CI $[0.6784, 0.7226]$, $\Delta = -0.0054, p=0.695$). This demonstrates that while \bpsafe{} delivers substantial compute efficiency across all datasets, query-selection superiority over random compute allocation is domain-dependent and most pronounced on counterargument and lexical-mismatch corpora where always-on reranking degrades quality.
 
 \subsection{Stability: Training Stochasticity vs Split Sensitivity}
 

@@ -93,6 +93,7 @@ statistics:
   non_inferiority_margin: 0.010  # epsilon = 0.010 (1.0% nDCG@10 margin based on IR literature)
   n_bootstrap: 5000
   n_permutation: 2000
+  matched_budget_random_repetitions: 1000
   multiple_testing_method: "holm_bonferroni"
   primary_hypothesis_families:
     family_1_dense_improvement: "P-SAFE vs Dense (4 datasets x 2 active modes = 8 tests)"

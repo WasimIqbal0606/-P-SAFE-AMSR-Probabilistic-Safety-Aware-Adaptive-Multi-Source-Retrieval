@@ -79,7 +79,7 @@ seed_namespaces:
   split_seed: [42, 123, 2026]              # Data partition seeds
   router_training_seed: [11, 22, ..., 111]  # 10 repeated fitting seeds
   calibration_seed: 42                      # CalibratedClassifierCV fold seed
-  random_baseline_seed: 42                  # Base seed for 100-rep random baseline
+  random_baseline_seed: 42                  # Base seed for 1000-rep random baseline
   bootstrap_seed: 42                        # 5,000 bootstrap resamples
   permutation_seed: 42                      # 2,000 sign permutations
 ```
@@ -91,10 +91,10 @@ seed_namespaces:
 Probabilities $\pgain(A_6 \mid x) = P(\Delta > +0.05)$ and $\pharm(A_6 \mid x) = P(\Delta < -0.01)$ are calibrated using Platt sigmoid scaling with 3-fold cross-validation on the validation split.
 
 Diagnostics evaluated on test splits (`results/calibration/calibration_metrics.json`):
-* **Brier Score:** Mean squared calibration error across positive and rare events ($0.1042 - 0.1704$ on SciFact).
-* **Expected Calibration Error (ECE):** Standard 10-bin uniform ECE ($0.0712 - 0.0886$) and 5-bin adaptive quantile ECE ($0.0654 - 0.0821$).
-* **Discriminative Power:** AUROC ($0.763 - 0.819$) and AUPRC ($0.412 - 0.771$).
-* **Calibration Slope & Intercept:** Slope $\approx 1.01$ and intercept $\approx -0.04$, confirming well-aligned probabilities.
+* **Brier Score:** Evaluated across datasets ($0.1033 - 0.3974$).
+* **Expected Calibration Error (ECE):** Standard 10-bin uniform ECE ($0.0231 - 0.3686$) and 5-bin adaptive quantile ECE ($0.0654 - 0.3540$).
+* **Discriminative Power:** AUROC ($0.512 - 0.726$) and AUPRC ($0.211 - 0.459$).
+* **Calibration Slopes:** Ranging from $-0.009$ (FiQA) to $1.166$ (NFCorpus), reflecting heterogeneous calibration across distinct retrieval domains. Post-hoc calibrated probability estimates are used as operational policy signals rather than claimed to be uniformly well calibrated across all domains.
 
 ---
 
@@ -105,11 +105,11 @@ P-SAFE is benchmarked against 12 routing policies on identical candidate pools a
 1. **Dense-only ($A_0$):** Zero-incremental-cost dense retrieval (BGE-M3).
 2. **Always-Hybrid ($A_6$):** Full multi-stage pipeline with Cross-Encoder reranking.
 3. **Random:** Uniform escalation at validation advantage rate.
-4. **Matched-Budget Random:** Matches exact P-SAFE test escalation count $k = \mathrm{round}(f \cdot N)$ across 100 random seeds (with 95% CIs).
-5. **Dense-margin:** Escalates when top-score gap (score 1 minus score 2) is below threshold.
-6. **Dense-entropy:** Escalates when normalized score entropy exceeds threshold.
-7. **BM25-disagreement:** Escalates when lexical-dense Jaccard overlap is low.
-8. **Cost-only:** Escalates based on query length and token complexity proxy.
+4. **Matched-Budget Random:** Matches exact P-SAFE test escalation count $k = \mathrm{round}(f \cdot N)$ across 1000 random seeds (with 95% CIs and empirical p-values).
+5. **Dense-margin:** Escalates when top-score gap (score 1 minus score 2) is below validation-tuned threshold.
+6. **Dense-entropy:** Escalates when normalized score entropy exceeds validation-tuned threshold.
+7. **BM25-disagreement:** Escalates when lexical-dense disagreement exceeds validation-tuned threshold.
+8. **Cost-only:** Escalates based on pre-routing latency and token complexity proxy.
 9. **Regression-only:** Thresholds raw predicted $\hat{\delta}$.
 10. **Classifier-only:** Thresholds uncalibrated gain probability $\pgain$.
 11. **Oracle:** Test-label diagnostic upper bound choosing optimal action per query.
@@ -121,7 +121,7 @@ P-SAFE is benchmarked against 12 routing policies on identical candidate pools a
 
 Controlled ablations on identical splits isolate the contribution of individual router mechanisms (`results/ablations/ablation_results.json`):
 
-* **Full B-P-SAFE:** Achieves highest macro nDCG ($0.4560$).
+* **Full B-P-SAFE:** Matches primary P-SAFE within $10^{-5}$ numerical precision and achieves top macro nDCG ($0.4560$).
 * **Minus $P_{\mathrm{harm}}$ Penalty:** Reduces harm avoidance and lowers quality on datasets with reranking risk.
 * **Feature Group Ablations:** Disagreement signals (Dense--BM25 overlap, rank correlation) and Dense score distributions provide the strongest routing utility ($\Delta_{\mathrm{full}} = -0.014$ when omitted).
 
@@ -133,30 +133,28 @@ All comparisons are paired by query ID and evaluated using:
 * Two-sided paired $t$-tests and Wilcoxon signed-rank tests.
 * 5,000-draw paired bootstrap 95% confidence intervals and 2,000-draw sign-permutation tests.
 * **Holm-Bonferroni Step-Down Correction:** Controls family-wise error across multiple datasets.
-* **Formal Non-Inferiority Testing ($\epsilon = 0.010$):** Tests whether B-P-SAFE is non-inferior to Deep Hybrid within a 1.0% nDCG@10 margin ($H_0: \bar{\Delta} \le -\epsilon$). Non-inferiority is statistically established for ArguAna and NFCorpus.
+* **Formal Non-Inferiority Testing ($\epsilon = 0.010$):** Tests whether B-P-SAFE is non-inferior to Deep Hybrid within a 1.0% nDCG@10 margin ($H_0: \bar{\Delta} \le -\epsilon$). Non-inferiority is statistically established for NFCorpus High Recall ($p_{\mathrm{Holm, NI}} = 0.042, 95\%\text{ LB} = -0.0066 > -\epsilon$). On ArguAna Balanced, P-SAFE reaches a 95% lower bound of $-0.0043$, but non-inferiority is not claimed after family-wise Holm correction ($p_{\mathrm{Holm, NI}} = 0.107$).
 
 ---
 
 ## Automated Submission Auditor CLI
 
-Verify 100% publication readiness and provenance across all 18 criteria:
+Verify submission audit criteria and provenance:
 
 ```powershell
 python audit_submission.py
-# or
-python -m psafe.audit_submission
 ```
 
-**Verification Checklist (18 Criteria):**
-1. Canonical dataset configuration matches manuscript ($N=4$, seeds=[42, 123, 2026]).
+**Verification Checklist:**
+1. Canonical dataset configuration matches standard ($N=4$, seeds=[42, 123, 2026], repetitions=1000).
 2. Exactly 36/36 primary evidence runs present and validated.
 3. Strict disjoint split assertion: $\text{train} \cap \text{val} = \emptyset, \text{train} \cap \text{test} = \emptyset, \text{val} \cap \text{test} = \emptyset$.
 4. Comprehensive 12-baseline suite verified.
-5. Matched-budget random baseline evaluated over 100 repetitions.
+5. Matched-budget random baseline evaluated over 1000 repetitions.
 6. Calibration diagnostics complete (Brier, ECE, AUROC, AUPRC, slope/intercept).
 7. Holm-Bonferroni correction and Non-Inferiority tests ($\epsilon = 0.010$) verified.
-8. 10-training-seed fixed-split stability analysis present.
-9. Router component and feature-group ablations complete.
+8. 10-training-seed fixed-split stability analysis verified with model hashes.
+9. Router component and feature-group ablations verified with Full control parity.
 10. All LaTeX tables generated from machine-readable JSON/CSV artifacts.
 11. Publication figures (PDF & PNG) generated and verified.
 12. Machine-readable claim registry (`paper/claim_registry.json`) validated.

@@ -36,17 +36,17 @@
     },
     {
       "claim_id": "CLM-003",
-      "statement": "Matched-budget random evaluation across 1000 repetitions demonstrates statistically significant query-selection superiority on ArguAna (+0.0128, p=0.003), moderate gains on NFCorpus (+0.0080) and FiQA (+0.0020), while on SciFact matched random achieves 0.7017 (delta = -0.0052, p=0.687), proving compute efficiency exists on SciFact but query-selection superiority over random allocation is domain-dependent.",
+      "statement": "Matched-budget random evaluation across 1000 repetitions demonstrates statistically significant query-selection superiority on ArguAna (+0.0127, p=0.004), moderate gains on NFCorpus (+0.0078, p=0.104) and FiQA (+0.0021, p=0.371), while on SciFact matched random achieves 0.7019 (delta = -0.0054, p=0.695), proving compute efficiency exists on SciFact but query-selection superiority over random allocation is domain-dependent.",
       "metric": "mean_ndcg, std, 95% CI, delta_vs_matched_random, empirical_p_value",
       "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
       "seed": 42,
       "mode": "balanced",
       "source_artifact": "results/baselines/matched_budget_random_results.json",
       "evidence": {
-        "scifact": {"psafe": 0.6965, "matched_random_mean": 0.7017, "random_std": 0.0110, "random_ci_95": [0.6786, 0.7220], "delta": -0.0052, "p_val": 0.687},
-        "fiqa": {"psafe": 0.4217, "matched_random_mean": 0.4197, "random_std": 0.0064, "random_ci_95": [0.4072, 0.4323], "delta": 0.0020, "p_val": 0.380},
-        "nfcorpus": {"psafe": 0.3579, "matched_random_mean": 0.3499, "random_std": 0.0062, "random_ci_95": [0.3377, 0.3620], "delta": 0.0080, "p_val": 0.092},
-        "arguana": {"psafe": 0.4069, "matched_random_mean": 0.3942, "random_std": 0.0046, "random_ci_95": [0.3850, 0.4028], "delta": 0.0128, "p_val": 0.003}
+        "scifact": {"psafe": 0.6965, "matched_random_mean": 0.7019, "random_std": 0.0113, "random_ci_95": [0.6784, 0.7226], "delta": -0.0054, "p_val": 0.695},
+        "fiqa": {"psafe": 0.4217, "matched_random_mean": 0.4196, "random_std": 0.0064, "random_ci_95": [0.4072, 0.4320], "delta": 0.0021, "p_val": 0.371},
+        "nfcorpus": {"psafe": 0.3579, "matched_random_mean": 0.3501, "random_std": 0.0063, "random_ci_95": [0.3377, 0.3623], "delta": 0.0078, "p_val": 0.104},
+        "arguana": {"psafe": 0.4069, "matched_random_mean": 0.3942, "random_std": 0.0045, "random_ci_95": [0.3853, 0.4030], "delta": 0.0127, "p_val": 0.004}
       },
       "validation_status": "PASS"
     },

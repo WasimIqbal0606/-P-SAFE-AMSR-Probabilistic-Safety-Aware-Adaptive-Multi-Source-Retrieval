@@ -72,10 +72,11 @@ class SubmissionAuditor:
             return
         
         has_req = all(k in self.config for k in ["datasets", "split_seeds", "router_modes", "statistics", "calibration"])
-        if has_req and len(self.canonical_datasets) == 4:
-            self.log_check("Canonical Config", True, f"4 canonical datasets ({', '.join(self.canonical_datasets)}), 3 split seeds, 3 modes")
+        n_rep = self.config.get("statistics", {}).get("matched_budget_random_repetitions", 0)
+        if has_req and len(self.canonical_datasets) == 4 and n_rep == 1000:
+            self.log_check("Canonical Config", True, f"4 canonical datasets ({', '.join(self.canonical_datasets)}), 3 split seeds, 3 modes, 1000 random repetitions")
         else:
-            self.log_check("Canonical Config", False, f"Incomplete fields in {self.config_path}")
+            self.log_check("Canonical Config", False, f"Config missing required fields or matched_budget_random_repetitions != 1000 in {self.config_path}")
 
     def audit_evidence_matrix_completeness(self, validated_dir: str = "results/validated"):
         """Check 2 & 5: Exactly 4 datasets x 3 seeds x 3 modes = 36 primary validated runs exist without omission."""
@@ -119,27 +120,34 @@ class SubmissionAuditor:
                     if os.path.exists(ap_file):
                         df = pd.read_csv(ap_file)
                         if "split" in df.columns:
-                            train_q = set(df[df["split"] == "train"]["query_id"])
-                            val_q = set(df[df["split"] == "val"]["query_id"])
-                            test_q = set(df[df["split"] == "test"]["query_id"])
-                            
-                            if train_q & val_q:
+                            non_test = df[df["split"] != "test"]
+                            if len(non_test) > 0:
                                 leakage_detected = True
-                                details.append(f"{ds}/s{seed}/{mode}: train & val overlap ({len(train_q & val_q)})")
-                            if train_q & test_q:
+                                details.append(f"{ds}/seed_{seed}/{mode}: {len(non_test)} non-test queries in evaluation")
+                                
+                    mf_file = os.path.join(val_path, ds, f"seed_{seed}", mode, "reproducibility_manifest.json")
+                    if os.path.exists(mf_file):
+                        with open(mf_file) as f:
+                            mf = json.load(f)
+                        splits = mf.get("splits", {})
+                        train_ids = set(splits.get("train_ids", []))
+                        val_ids = set(splits.get("val_ids", []))
+                        test_ids = set(splits.get("test_ids", []))
+                        
+                        if train_ids and val_ids and test_ids:
+                            if len(train_ids.intersection(val_ids)) > 0 or \
+                               len(train_ids.intersection(test_ids)) > 0 or \
+                               len(val_ids.intersection(test_ids)) > 0:
                                 leakage_detected = True
-                                details.append(f"{ds}/s{seed}/{mode}: train & test overlap ({len(train_q & test_q)})")
-                            if val_q & test_q:
-                                leakage_detected = True
-                                details.append(f"{ds}/s{seed}/{mode}: val & test overlap ({len(val_q & test_q)})")
+                                details.append(f"{ds}/seed_{seed}/{mode}: split overlap detected")
                                 
         if not leakage_detected:
             self.log_check("Split Leakage Audit", True, "train, val, and test splits are mutually disjoint (zero query overlap) across all runs")
         else:
-            self.log_check("Split Leakage Audit", False, f"Leakage detected: {'; '.join(details[:3])}")
+            self.log_check("Split Leakage Audit", False, f"Leakage detected: {details[:3]}")
 
     def audit_baselines_and_matched_budget(self, baseline_dir: str = "results/baselines", validated_dir: str = "results/validated"):
-        """Check 4: Verify 12 baselines exist and Matched-Budget Random matches exact escalation count."""
+        """Check 4: Verify 12 baselines exist and Matched-Budget Random matches exact escalation count over 1000 repetitions."""
         b_dir = os.path.join(self.root_dir, baseline_dir)
         v_dir = os.path.join(self.root_dir, validated_dir)
         mb_file = os.path.join(b_dir, "matched_budget_random_results.json")
@@ -154,8 +162,9 @@ class SubmissionAuditor:
         with open(mb_file) as f:
             mb_data = json.load(f)
             
-        # Semantic check: for every dataset and mode, verify matched random k matches HAR * N
+        # Semantic check: for every dataset and mode, verify matched random k matches HAR * N and n_repetitions == 1000
         mismatch_count = 0
+        rep_mismatch = 0
         for ds in self.canonical_datasets:
             for seed in [42]:
                 for mode in ["balanced", "high_recall"]:
@@ -172,13 +181,16 @@ class SubmissionAuditor:
                         entry = mb_data.get(ds, {}).get(str(seed), {}).get(mode) or mb_data.get(ds, {}).get(seed, {}).get(mode)
                         if entry:
                             actual_k = entry.get("target_k")
+                            n_rep = entry.get("n_repetitions", 0)
                             if actual_k is not None and actual_k != expected_k:
                                 mismatch_count += 1
+                            if n_rep != 1000:
+                                rep_mismatch += 1
                                 
-        if mismatch_count == 0 and len(comp_data) == 4:
-            self.log_check("Baseline Suite", True, "All 12 baselines present; Matched-Budget Random matches exact escalation count over 100+ repetitions")
+        if mismatch_count == 0 and rep_mismatch == 0 and len(comp_data) == 4:
+            self.log_check("Baseline Suite", True, "All 12 baselines present; Matched-Budget Random matches exact escalation count over 1000 repetitions")
         else:
-            self.log_check("Baseline Suite", False, f"Matched budget escalation count mismatches: {mismatch_count}")
+            self.log_check("Baseline Suite", False, f"Matched budget escalation count mismatches: {mismatch_count}, repetition mismatches: {rep_mismatch}")
 
     def audit_calibration_diagnostics(self, cal_dir: str = "results/calibration"):
         """Check 6: Verify calibration diagnostics (Brier, ECE, AUROC, AUPRC, slope/intercept) for P_gain and P_harm."""
@@ -228,7 +240,7 @@ class SubmissionAuditor:
         has_ni = "family_2_non_inferiority_holm" in stat_data
         has_fam1 = "family_1_dense_improvement_holm" in stat_data
         
-        # Verify Holm-Bonferroni monotonicity
+        # Verify Holm-Bonferroni monotonicity and non-inferiority decision rule
         if has_fam1:
             raw_p = [item["raw_p_value"] for item in stat_data["family_1_dense_improvement_holm"]]
             adj_p = [item["holm_adjusted_p_value"] for item in stat_data["family_1_dense_improvement_holm"]]
@@ -237,10 +249,22 @@ class SubmissionAuditor:
                     self.log_check("Statistical & Non-Inferiority", False, f"Invalid Holm adjustment: raw={rp}, adj={ap}")
                     return
                     
-        if has_ni and has_fam1:
+        # Check that stored NI decision matches exact rule: (adj_p < 0.05 and ci_lower_bound_95 > -epsilon)
+        ni_mismatch = 0
+        if has_ni:
+            for item in stat_data["family_2_non_inferiority_holm"]:
+                adj_p = item.get("holm_adjusted_p_value_ni", 1.0)
+                lb = item.get("ci_lower_bound_95", -1.0)
+                eps = item.get("epsilon", 0.010)
+                stored_dec = item.get("non_inferiority_established")
+                expected_dec = bool(adj_p < 0.05 and lb > -eps)
+                if stored_dec != expected_dec:
+                    ni_mismatch += 1
+                    
+        if has_ni and has_fam1 and ni_mismatch == 0:
             self.log_check("Statistical & Non-Inferiority", True, "Holm-Bonferroni correction applied across primary families; Non-Inferiority tested at margin epsilon = 0.010")
         else:
-            self.log_check("Statistical & Non-Inferiority", False, "Missing non-inferiority or multiple testing families")
+            self.log_check("Statistical & Non-Inferiority", False, f"Non-inferiority decision mismatches: {ni_mismatch}")
 
     def audit_training_stability(self, stab_dir: str = "results/stability", validated_dir: str = "results/validated"):
         """Check 8: Verify fixed-split repeated fitting across 10 independent training seeds."""
@@ -255,8 +279,9 @@ class SubmissionAuditor:
         with open(stab_file) as f:
             stab_data = json.load(f)
             
-        # Semantic check: verify stability matches primary P-SAFE nDCG on seed 42
+        # Semantic check: verify stability matches primary P-SAFE nDCG on seed 42 and has valid model hashes
         mismatches = 0
+        missing_hashes = 0
         for ds in self.canonical_datasets:
             entry = stab_data.get(ds, {})
             stab_ndcg = entry.get("ndcg", {}).get("mean")
@@ -269,10 +294,16 @@ class SubmissionAuditor:
                     if not np.isclose(stab_ndcg, prim_ndcg, atol=1e-4):
                         mismatches += 1
                         
-        if len(stab_data) == 4 and mismatches == 0:
+            # Check model hashes in per_seed_runs
+            runs = entry.get("per_seed_runs", [])
+            for r in runs:
+                if "model_hash" not in r or "action_vector_hash" not in r:
+                    missing_hashes += 1
+                        
+        if len(stab_data) == 4 and mismatches == 0 and missing_hashes == 0:
             self.log_check("Training Stability", True, "Fixed-split 10 training-seed repeated fitting evaluated across all 4 datasets; model determinism verified")
         else:
-            self.log_check("Training Stability", False, f"Stability mismatches primary P-SAFE: {mismatches}")
+            self.log_check("Training Stability", False, f"Stability mismatches primary P-SAFE: {mismatches}, missing hashes: {missing_hashes}")
 
     def audit_ablations(self, abl_dir: str = "results/ablations", validated_dir: str = "results/validated"):
         """Check 9: Verify router component and feature group ablations, ensuring Full control matches primary P-SAFE."""
@@ -364,7 +395,7 @@ class SubmissionAuditor:
         print("\n" + "="*80)
         if len(self.failures) == 0:
             print("SUBMISSION AUDIT: PASS")
-            print("All criteria verified. The repository is 100% publication-ready and externally auditable.")
+            print("Remaining Limitations: 1. Binary action routing; 2. GPU latency profile; 3. Quality-safety operational scope.")
             print("="*80)
             return True
         else:

@@ -152,4 +152,51 @@ def test_adversarial_data_split_leakage_fails(temp_workspace):
     
     auditor = SubmissionAuditor(root_dir=temp_workspace)
     assert auditor.run_full_audit() is False
-    assert any("Split Leakage Audit" in f for f in auditor.failures)
+    assert any("Split Leakage" in f for f in auditor.failures)
+
+
+def test_adversarial_matched_random_repetitions_mismatch_fails(temp_workspace):
+    """Fixture: Claiming 1000 repetitions when artifact has 100 must FAIL."""
+    mb_file = os.path.join(temp_workspace, "results/baselines/matched_budget_random_results.json")
+    with open(mb_file) as f:
+        data = json.load(f)
+    data["scifact"]["42"]["balanced"]["n_repetitions"] = 100
+    with open(mb_file, "w") as f:
+        json.dump(data, f, indent=4)
+        
+    auditor = SubmissionAuditor(root_dir=temp_workspace)
+    assert auditor.run_full_audit() is False
+    assert any("Baseline Suite" in f for f in auditor.failures)
+
+
+def test_adversarial_non_inferiority_decision_mismatch_fails(temp_workspace):
+    """Fixture: Fabricating Non-Inferiority on ArguAna when adjusted p > 0.05 must FAIL."""
+    stat_file = os.path.join(temp_workspace, "results/statistics/statistical_analysis.json")
+    with open(stat_file) as f:
+        data = json.load(f)
+    # Tamper decision to True for ArguAna where adjusted p is 0.1068
+    for item in data["family_2_non_inferiority_holm"]:
+        if item["dataset"] == "arguana":
+            item["non_inferiority_established"] = True
+    with open(stat_file, "w") as f:
+        json.dump(data, f, indent=4)
+        
+    auditor = SubmissionAuditor(root_dir=temp_workspace)
+    assert auditor.run_full_audit() is False
+    assert any("Statistical & Non-Inferiority" in f for f in auditor.failures)
+
+
+def test_adversarial_stability_missing_hashes_fails(temp_workspace):
+    """Fixture: Stability runs without model/action hashes must FAIL."""
+    stab_file = os.path.join(temp_workspace, "results/stability/fixed_split_training_seeds.json")
+    with open(stab_file) as f:
+        data = json.load(f)
+    # Remove model hashes
+    for r in data["scifact"]["per_seed_runs"]:
+        r.pop("model_hash", None)
+    with open(stab_file, "w") as f:
+        json.dump(data, f, indent=4)
+        
+    auditor = SubmissionAuditor(root_dir=temp_workspace)
+    assert auditor.run_full_audit() is False
+    assert any("Training Stability" in f for f in auditor.failures)

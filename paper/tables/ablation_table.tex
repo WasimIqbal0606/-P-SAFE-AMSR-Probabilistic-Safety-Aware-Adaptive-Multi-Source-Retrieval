@@ -8,19 +8,19 @@
 \toprule
 Ablation Variant & Mean nDCG & $\Delta$ vs Full & Lat. (ms) & HAR \\
 \midrule
-Full B-P-SAFE (Balanced) & 0.4707 & +0.0000 & 359.2 & 44.9\% \\
-w/o Harm Penalty ($\lambda_{\rm harm}=0$) & 0.4681 & -0.0026 & 338.8 & 42.0\% \\
-w/o Gain Recovery ($\lambda_{\rm rec}=0$) & 0.4541 & -0.0167 & 96.4 & 12.4\% \\
-w/o Predicted $\hat{\delta}$ & 0.4476 & -0.0232 & 11.2 & 1.2\% \\
-w/o Latency/Cost Penalty & 0.4681 & -0.0026 & 341.1 & 42.4\% \\
-w/o Soft Overrides (Pure $\mathcal{U}>0$) & 0.4544 & -0.0163 & 75.3 & 7.7\% \\
+Full B-P-SAFE (Balanced) & 0.4707 & +0.0000 & 346.0 & 44.9\% \\
+w/o Harm Penalty ($\lambda_{\rm harm}=0$) & 0.4681 & -0.0026 & 326.9 & 42.0\% \\
+w/o Gain Recovery ($\lambda_{\rm rec}=0$) & 0.4541 & -0.0167 & 92.3 & 12.4\% \\
+w/o Predicted $\hat{\delta}$ & 0.4476 & -0.0232 & 11.0 & 1.2\% \\
+w/o Latency/Cost Penalty & 0.4681 & -0.0026 & 329.1 & 42.4\% \\
+w/o Soft Overrides (Pure $\mathcal{U}>0$) & 0.4544 & -0.0163 & 73.3 & 7.7\% \\
 \midrule
-Feature: Query-only (Tokens, IDF, Specificity) & 0.4547 & -0.0160 & 262.1 & 29.7\% \\
-Feature: Dense-only Score Distribution & 0.4641 & -0.0067 & 280.3 & 36.3\% \\
-Feature: BM25-only Score Distribution & 0.4640 & -0.0067 & 256.3 & 31.0\% \\
-Feature: Dense + BM25 Combined & 0.4660 & -0.0047 & 303.7 & 39.0\% \\
-Feature: Lexical-Dense Disagreement & 0.4678 & -0.0029 & 310.0 & 38.4\% \\
-Feature: Graph Expansion Signals & 0.4604 & -0.0104 & 171.3 & 20.5\% \\
+Feature: Query-only (Tokens, IDF, Specificity) & 0.4707 & +0.0000 & 346.0 & 44.9\% \\
+Feature: Dense-only Score Distribution & 0.4707 & +0.0000 & 346.0 & 44.9\% \\
+Feature: BM25-only Score Distribution & 0.0000 & +0.0000 & 0.0 & 0.0\% \\
+Feature: Dense + BM25 Combined & 0.0000 & +0.0000 & 0.0 & 0.0\% \\
+Feature: Lexical-Dense Disagreement & 0.4707 & +0.0000 & 346.0 & 44.9\% \\
+Feature: Graph Expansion Signals & 0.4707 & +0.0000 & 346.0 & 44.9\% \\
 \bottomrule
 \end{tabular}
 \end{table}
