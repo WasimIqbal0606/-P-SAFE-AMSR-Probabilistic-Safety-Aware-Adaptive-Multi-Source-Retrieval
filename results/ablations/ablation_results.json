@@ -1,0 +1,374 @@
+{
+    "scifact": {
+        "Full B-P-SAFE": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Minus P_harm": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Minus P_gain": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Minus Delta nDCG": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Minus Latency & Cost": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Minus Soft Overrides": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Feature: Query Only": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Feature: Dense Only": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Feature: Bm25 Only": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Feature: Dense Plus Bm25": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Feature: Disagreement Only": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Feature: Graph Only": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        },
+        "Feature: Complete": {
+            "mean_ndcg": 0.6465710417012945,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04108526463531305
+        }
+    },
+    "fiqa": {
+        "Full B-P-SAFE": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Minus P_harm": {
+            "mean_ndcg": 0.4096630208654411,
+            "mean_latency": 35.3144640113669,
+            "hybrid_activation_rate": 0.036923076923076927,
+            "delta_vs_full": 0.0012121746350871598,
+            "harm_avoidance": 0.07394586774116756
+        },
+        "Minus P_gain": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Minus Delta nDCG": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Minus Latency & Cost": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Minus Soft Overrides": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Feature: Query Only": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Feature: Dense Only": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Feature: Bm25 Only": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Feature: Dense Plus Bm25": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Feature: Disagreement Only": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Feature: Graph Only": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        },
+        "Feature: Complete": {
+            "mean_ndcg": 0.40845084623035394,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.07905941769201412
+        }
+    },
+    "nfcorpus": {
+        "Full B-P-SAFE": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Minus P_harm": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 7.433920530402065,
+            "hybrid_activation_rate": 0.006172839506172839,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Minus P_gain": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Minus Delta nDCG": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Minus Latency & Cost": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 7.433920530402065,
+            "hybrid_activation_rate": 0.006172839506172839,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Minus Soft Overrides": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Feature: Query Only": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Feature: Dense Only": {
+            "mean_ndcg": 0.33480682480785723,
+            "mean_latency": 11.86784106080413,
+            "hybrid_activation_rate": 0.012345679012345678,
+            "delta_vs_full": 0.0009300033602549496,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Feature: Bm25 Only": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Feature: Dense Plus Bm25": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Feature: Disagreement Only": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Feature: Graph Only": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        },
+        "Feature: Complete": {
+            "mean_ndcg": 0.3338768214476023,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.04568127788017261
+        }
+    },
+    "arguana": {
+        "Full B-P-SAFE": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Minus P_harm": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Minus P_gain": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Minus Delta nDCG": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Minus Latency & Cost": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Minus Soft Overrides": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Feature: Query Only": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Feature: Dense Only": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Feature: Bm25 Only": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Feature: Dense Plus Bm25": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Feature: Disagreement Only": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Feature: Graph Only": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        },
+        "Feature: Complete": {
+            "mean_ndcg": 0.39457959764510603,
+            "mean_latency": 3.0,
+            "hybrid_activation_rate": 0.0,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.20359576404976407
+        }
+    }
+}

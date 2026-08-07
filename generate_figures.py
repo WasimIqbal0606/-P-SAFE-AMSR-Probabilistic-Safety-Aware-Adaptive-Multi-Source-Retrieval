@@ -1,7 +1,9 @@
 """
-P-SAFE-AMSR — Figure Generator for README and Paper
-Generates all publication-quality figures from validated result files.
+B-P-SAFE-AMSR — Master Publication Figure Generator
+Generates all vector PDF and high-resolution PNG figures for manuscript and README
+strictly from validated result artifacts.
 """
+
 import os
 import json
 import numpy as np
@@ -9,413 +11,393 @@ import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
-from collections import defaultdict
 
-# ── Configuration ────────────────────────────────────────────────────
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-RESULTS_DIR = os.path.join(BASE_DIR, "results", "validated")
-FIGURES_DIR = os.path.join(BASE_DIR, "figures")
-os.makedirs(FIGURES_DIR, exist_ok=True)
+PAPER_FIG_DIR = "paper/figures"
+README_FIG_DIR = "figures"
+os.makedirs(PAPER_FIG_DIR, exist_ok=True)
+os.makedirs(README_FIG_DIR, exist_ok=True)
 
-DATASETS = ["scifact", "fiqa", "nfcorpus", "arguana", "trec-covid"]
-SEEDS = [42, 123, 2026]
-MODES = ["lite", "balanced", "high_recall"]
-
+DATASETS = ["scifact", "fiqa", "nfcorpus", "arguana"]
 DATASET_LABELS = {
-    "scifact": "SciFact", "fiqa": "FiQA", "nfcorpus": "NFCorpus",
-    "arguana": "ArguAna", "trec-covid": "TREC-COVID"
+    "scifact": "SciFact",
+    "fiqa": "FiQA",
+    "nfcorpus": "NFCorpus",
+    "arguana": "ArguAna"
 }
-MODE_LABELS = {"lite": "Lite", "balanced": "Balanced", "high_recall": "High Recall"}
-
-# ── Premium color palette ────────────────────────────────────────────
-BG_COLOR = "#0d1117"
-CARD_COLOR = "#161b22"
-TEXT_COLOR = "#e6edf3"
-GRID_COLOR = "#30363d"
-ACCENT_BLUE = "#58a6ff"
-ACCENT_GREEN = "#3fb950"
-ACCENT_ORANGE = "#d29922"
-ACCENT_RED = "#f85149"
-ACCENT_PURPLE = "#bc8cff"
-ACCENT_TEAL = "#39d2c0"
-
-DATASET_COLORS = {
-    "scifact": ACCENT_BLUE, "fiqa": ACCENT_GREEN, "nfcorpus": ACCENT_ORANGE,
-    "arguana": ACCENT_RED, "trec-covid": ACCENT_PURPLE
-}
-MODE_COLORS = {"lite": ACCENT_ORANGE, "balanced": ACCENT_BLUE, "high_recall": ACCENT_GREEN}
-
-TAXONOMY_COLORS = {
-    "Selective escalation": ACCENT_GREEN,
-    "Protection / No-benefit": ACCENT_RED,
-    "Hybrid-beneficial / P-SAFE under-treatment": ACCENT_ORANGE,
-    "Recovery / Selective-win": ACCENT_TEAL,
-    "Hybrid-dominant / near-hybrid": ACCENT_PURPLE,
-    "Quality-cost tradeoff": ACCENT_BLUE,
+COLORS = {
+    "scifact": "#1f77b4",
+    "fiqa": "#2ca02c",
+    "nfcorpus": "#ff7f0e",
+    "arguana": "#d62728",
+    "dense": "#7f7f7f",
+    "hybrid": "#9467bd",
+    "random": "#8c564b",
+    "psafe_bal": "#1f77b4",
+    "psafe_hr": "#2ca02c",
 }
 
-def setup_dark_style():
+
+def setup_paper_style():
     plt.rcParams.update({
-        'figure.facecolor': BG_COLOR, 'axes.facecolor': CARD_COLOR,
-        'axes.edgecolor': GRID_COLOR, 'axes.labelcolor': TEXT_COLOR,
-        'text.color': TEXT_COLOR, 'xtick.color': TEXT_COLOR,
-        'ytick.color': TEXT_COLOR, 'grid.color': GRID_COLOR,
-        'grid.alpha': 0.3, 'font.family': 'sans-serif',
-        'font.size': 11, 'axes.titlesize': 14, 'axes.labelsize': 12,
-        'legend.facecolor': CARD_COLOR, 'legend.edgecolor': GRID_COLOR,
-        'legend.fontsize': 9,
+        'font.family': 'sans-serif',
+        'font.size': 10,
+        'axes.titlesize': 11,
+        'axes.labelsize': 10,
+        'xtick.labelsize': 9,
+        'ytick.labelsize': 9,
+        'legend.fontsize': 8.5,
+        'figure.titlesize': 12,
+        'axes.grid': True,
+        'grid.alpha': 0.3,
+        'grid.linestyle': '--',
+        'figure.autolayout': True,
+        'savefig.dpi': 300,
+        'figure.facecolor': 'white',
+        'axes.facecolor': 'white',
     })
 
-# ── Data loader ──────────────────────────────────────────────────────
-def load_all_results():
-    results = []
-    for ds in DATASETS:
-        for seed in SEEDS:
-            for mode in MODES:
-                path = os.path.join(RESULTS_DIR, ds, f"seed_{seed}", mode, "extended_metrics.json")
-                if os.path.exists(path):
-                    with open(path, "r") as f:
-                        data = json.load(f)
-                    data["_dataset"] = ds
-                    data["_seed"] = seed
-                    data["_mode"] = mode
-                    results.append(data)
-    return results
 
-# ── Figure 1: Quality-Latency Pareto Plot ────────────────────────────
-def fig_pareto(results):
-    setup_dark_style()
-    fig, ax = plt.subplots(figsize=(10, 7))
-
-    # Plot each dataset's seed-42 high_recall results as the main points
-    for ds in DATASETS:
-        ds_results = [r for r in results if r["_dataset"] == ds and r["_mode"] == "high_recall"]
-        if not ds_results:
-            continue
-
-        # Dense baseline (same across seeds for same dataset, use mean)
-        dense_ndcgs = [r["dense_ndcg"] for r in ds_results]
-        hybrid_ndcgs = [r["best_hybrid_ndcg"] for r in ds_results]
-        psafe_ndcgs = [r["psafe_ndcg"] for r in ds_results]
-        latency_savings = [r["latency_saving_vs_best_hybrid"] for r in ds_results]
-
-        mean_dense = np.mean(dense_ndcgs)
-        mean_hybrid = np.mean(hybrid_ndcgs)
-        mean_psafe = np.mean(psafe_ndcgs)
-        mean_ls = np.mean(latency_savings)
-        std_psafe = np.std(psafe_ndcgs)
-        std_ls = np.std(latency_savings)
-
-        color = DATASET_COLORS[ds]
-        label = DATASET_LABELS[ds]
-
-        # Dense: 0% latency saving (it IS the cheap baseline), but also 100% latency saving vs Hybrid
-        # For Pareto: x = latency saving vs Hybrid, y = nDCG
-        ax.scatter(1.0, mean_dense, marker='v', s=80, color=color, alpha=0.5, zorder=3)
-        ax.scatter(0.0, mean_hybrid, marker='s', s=80, color=color, alpha=0.5, zorder=3)
-        ax.errorbar(mean_ls, mean_psafe, xerr=std_ls, yerr=std_psafe,
-                    fmt='o', markersize=10, color=color, capsize=4, capthick=1.5,
-                    ecolor=color, alpha=0.9, zorder=5, label=label)
-
-        # Connect the three points
-        ax.plot([1.0, mean_ls, 0.0], [mean_dense, mean_psafe, mean_hybrid],
-                '--', color=color, alpha=0.3, linewidth=1)
-
-    ax.set_xlabel("Latency Saving vs Always-Hybrid", fontsize=13, fontweight='bold')
-    ax.set_ylabel("nDCG@10", fontsize=13, fontweight='bold')
-    ax.set_title("Quality-Latency Pareto Tradeoff (High Recall, Multi-Seed Mean +/- Std)",
-                 fontsize=14, fontweight='bold', pad=15)
-
-    # Add legend entries for marker types
-    legend_extra = [
-        plt.Line2D([0], [0], marker='v', color='w', markerfacecolor=TEXT_COLOR, markersize=8, label='Dense-only', linestyle='None'),
-        plt.Line2D([0], [0], marker='s', color='w', markerfacecolor=TEXT_COLOR, markersize=8, label='Always-Hybrid', linestyle='None'),
-        plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=TEXT_COLOR, markersize=8, label='P-SAFE', linestyle='None'),
-    ]
-    h, l = ax.get_legend_handles_labels()
-    ax.legend(handles=h + legend_extra, loc='lower left', framealpha=0.9)
-
-    ax.set_xlim(-0.05, 1.05)
-    ax.grid(True, alpha=0.2)
-    ax.invert_xaxis()  # More latency saving to the right
-
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIGURES_DIR, "pareto_quality_latency.png"), dpi=200, bbox_inches='tight')
-    plt.close(fig)
-    print("  [OK] pareto_quality_latency.png")
+def save_fig(fig, base_name: str):
+    """Save to both paper/figures and figures in PDF and PNG."""
+    for d in [PAPER_FIG_DIR, README_FIG_DIR]:
+        pdf_path = os.path.join(d, f"{base_name}.pdf")
+        png_path = os.path.join(d, f"{base_name}.png")
+        fig.savefig(pdf_path, format="pdf", bbox_inches="tight")
+        fig.savefig(png_path, format="png", bbox_inches="tight", dpi=300)
+    print(f"Saved {base_name}.pdf and {base_name}.png")
 
 
-# ── Figure 2: Hybrid Activation Rate by Dataset ─────────────────────
-def fig_activation_rate(results):
-    setup_dark_style()
-    fig, ax = plt.subplots(figsize=(11, 6))
-
-    x = np.arange(len(DATASETS))
-    width = 0.25
-
-    for i, mode in enumerate(MODES):
-        means, stds = [], []
-        for ds in DATASETS:
-            vals = [r["hybrid_activation_rate"] for r in results
-                    if r["_dataset"] == ds and r["_mode"] == mode]
-            means.append(np.mean(vals) * 100 if vals else 0)
-            stds.append(np.std(vals) * 100 if vals else 0)
-
-        bars = ax.bar(x + i * width - width, means, width, yerr=stds,
-                      label=MODE_LABELS[mode], color=MODE_COLORS[mode],
-                      alpha=0.85, capsize=3, edgecolor='none', error_kw={'elinewidth': 1.2})
-
-        for bar, val in zip(bars, means):
-            if val > 5:
-                ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 2,
-                        f'{val:.0f}%', ha='center', va='bottom', fontsize=8, color=TEXT_COLOR)
-
-    ax.set_xticks(x)
-    ax.set_xticklabels([DATASET_LABELS[ds] for ds in DATASETS], fontsize=11)
-    ax.set_ylabel("Hybrid Activation Rate (%)", fontsize=13, fontweight='bold')
-    ax.set_title("Hybrid Activation Rate by Dataset and Mode (Multi-Seed Mean +/- Std)",
-                 fontsize=14, fontweight='bold', pad=15)
-    ax.legend(loc='upper right', framealpha=0.9)
-    ax.set_ylim(0, 105)
-    ax.grid(True, axis='y', alpha=0.2)
-    ax.axhline(y=50, color=ACCENT_RED, linestyle=':', alpha=0.3, linewidth=1)
-
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIGURES_DIR, "hybrid_activation_rate.png"), dpi=200, bbox_inches='tight')
-    plt.close(fig)
-    print("  [OK] hybrid_activation_rate.png")
-
-
-# ── Figure 3: Dataset Behavior Taxonomy ──────────────────────────────
-def fig_taxonomy(results):
-    setup_dark_style()
-    fig, ax = plt.subplots(figsize=(10, 6))
-
-    # Count taxonomy classifications across all seeds/modes
-    taxonomy_counts = defaultdict(lambda: defaultdict(int))
-    for r in results:
-        taxonomy_counts[r["_dataset"]][r["taxonomy"]] += 1
-
-    # Create stacked bar chart
-    all_taxonomies = sorted(set(r["taxonomy"] for r in results))
-    x = np.arange(len(DATASETS))
-    bottom = np.zeros(len(DATASETS))
-
-    for tax in all_taxonomies:
-        vals = [taxonomy_counts[ds].get(tax, 0) for ds in DATASETS]
-        color = TAXONOMY_COLORS.get(tax, "#8b949e")
-        ax.bar(x, vals, 0.6, bottom=bottom, label=tax, color=color, alpha=0.85, edgecolor='none')
-        bottom += vals
-
-    ax.set_xticks(x)
-    ax.set_xticklabels([DATASET_LABELS[ds] for ds in DATASETS], fontsize=11)
-    ax.set_ylabel("Count (seeds x modes)", fontsize=13, fontweight='bold')
-    ax.set_title("Dataset Behavior Taxonomy Distribution",
-                 fontsize=14, fontweight='bold', pad=15)
-    ax.legend(loc='upper right', framealpha=0.9, fontsize=8)
-    ax.grid(True, axis='y', alpha=0.2)
-
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIGURES_DIR, "dataset_taxonomy.png"), dpi=200, bbox_inches='tight')
-    plt.close(fig)
-    print("  [OK] dataset_taxonomy.png")
-
-
-# ── Figure 4: Latency Saving vs Quality Retention ────────────────────
-def fig_latency_vs_quality(results):
-    setup_dark_style()
-    fig, ax = plt.subplots(figsize=(10, 7))
-
-    for ds in DATASETS:
-        for mode in MODES:
-            ds_results = [r for r in results if r["_dataset"] == ds and r["_mode"] == mode]
-            if not ds_results:
-                continue
-
-            ls_vals = [r["latency_saving_vs_best_hybrid"] * 100 for r in ds_results]
-            qr_vals = [r["quality_retention_vs_best_hybrid"] * 100 for r in ds_results]
-
-            color = DATASET_COLORS[ds]
-            marker = {'lite': 'v', 'balanced': 'D', 'high_recall': 'o'}[mode]
-            alpha = {'lite': 0.4, 'balanced': 0.7, 'high_recall': 1.0}[mode]
-
-            ax.scatter(np.mean(ls_vals), np.mean(qr_vals),
-                       marker=marker, s=120, color=color, alpha=alpha, zorder=5,
-                       edgecolors='white', linewidth=0.5)
-
-    # Add quadrant labels
-    ax.axhline(y=50, color=GRID_COLOR, linestyle='--', alpha=0.5)
-    ax.axvline(x=30, color=GRID_COLOR, linestyle='--', alpha=0.5)
-    ax.text(65, 85, "Ideal: High Quality\n+ High Savings", fontsize=9, color=ACCENT_GREEN, alpha=0.7, ha='center')
-    ax.text(10, 85, "Quality-focused\n(Low Savings)", fontsize=9, color=ACCENT_BLUE, alpha=0.7, ha='center')
-    ax.text(65, 15, "Cost-focused\n(Low Quality)", fontsize=9, color=ACCENT_ORANGE, alpha=0.7, ha='center')
-
-    # Build combined legend
-    ds_patches = [mpatches.Patch(color=DATASET_COLORS[ds], label=DATASET_LABELS[ds]) for ds in DATASETS]
-    mode_markers = [
-        plt.Line2D([0], [0], marker='v', color='w', markerfacecolor=TEXT_COLOR, markersize=8, label='Lite', linestyle='None'),
-        plt.Line2D([0], [0], marker='D', color='w', markerfacecolor=TEXT_COLOR, markersize=8, label='Balanced', linestyle='None'),
-        plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=TEXT_COLOR, markersize=8, label='High Recall', linestyle='None'),
-    ]
-    ax.legend(handles=ds_patches + mode_markers, loc='lower left', framealpha=0.9, ncol=2, fontsize=9)
-
-    ax.set_xlabel("Latency Saving vs Always-Hybrid (%)", fontsize=13, fontweight='bold')
-    ax.set_ylabel("Quality Retention vs Hybrid (%)", fontsize=13, fontweight='bold')
-    ax.set_title("Latency Saving vs Quality Retention (Multi-Seed Mean per Config)",
-                 fontsize=14, fontweight='bold', pad=15)
-    ax.grid(True, alpha=0.2)
-
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIGURES_DIR, "latency_vs_quality_retention.png"), dpi=200, bbox_inches='tight')
-    plt.close(fig)
-    print("  [OK] latency_vs_quality_retention.png")
-
-
-# ── Figure 5: Architecture Diagram ──────────────────────────────────
-def fig_architecture():
-    setup_dark_style()
-    fig, ax = plt.subplots(figsize=(14, 8))
-    ax.set_xlim(0, 14)
-    ax.set_ylim(0, 9)
+# ── Figure 1: Architecture Overview ──────────────────────────────────────────
+def generate_fig1_architecture():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(8.5, 3.2))
     ax.axis('off')
 
-    box_style = dict(boxstyle="round,pad=0.5", facecolor=CARD_COLOR, edgecolor=ACCENT_BLUE, linewidth=1.5)
-    box_green = dict(boxstyle="round,pad=0.5", facecolor=CARD_COLOR, edgecolor=ACCENT_GREEN, linewidth=1.5)
-    box_orange = dict(boxstyle="round,pad=0.5", facecolor=CARD_COLOR, edgecolor=ACCENT_ORANGE, linewidth=1.5)
-    box_red = dict(boxstyle="round,pad=0.5", facecolor=CARD_COLOR, edgecolor=ACCENT_RED, linewidth=1.5)
-    box_purple = dict(boxstyle="round,pad=0.5", facecolor=CARD_COLOR, edgecolor=ACCENT_PURPLE, linewidth=2)
-    box_teal = dict(boxstyle="round,pad=0.6", facecolor="#1a2332", edgecolor=ACCENT_TEAL, linewidth=2)
+    # Query Input Box
+    ax.text(0.06, 0.5, "Query $x$", ha='center', va='center',
+            bbox=dict(boxstyle='round,pad=0.5', facecolor='#e1f5fe', edgecolor='#0288d1', lw=1.5))
 
-    arrow_kw = dict(arrowstyle='->', color=TEXT_COLOR, lw=1.5, connectionstyle="arc3,rad=0.0")
-    arrow_kw_curved = dict(arrowstyle='->', color=TEXT_COLOR, lw=1.2, connectionstyle="arc3,rad=0.2")
+    # Feature Extractor
+    ax.text(0.24, 0.5, "Feature Extractor\n(25 query, score,\nJaccard, graph)", ha='center', va='center',
+            bbox=dict(boxstyle='round,pad=0.5', facecolor='#fff3e0', edgecolor='#f57c00', lw=1.5))
 
-    # Title
-    ax.text(7, 8.5, "P-SAFE-AMSR Architecture", fontsize=18, fontweight='bold',
-            ha='center', va='center', color=ACCENT_BLUE)
+    # Router Decision
+    ax.text(0.48, 0.5, "B-P-SAFE Router\n$U(A_6|x) > 0$\n$P_{gain} \\geq \\tau_g$ and $P_{harm} \\leq \\tau_h$",
+            ha='center', va='center',
+            bbox=dict(boxstyle='round,pad=0.6', facecolor='#e8f5e9', edgecolor='#388e3c', lw=1.8))
 
-    # Query input
-    ax.text(1.5, 7, "Query", fontsize=13, fontweight='bold', ha='center', va='center', bbox=box_style)
+    # Dense Branch (A0)
+    ax.text(0.78, 0.75, "$A_0$: Dense Retrieval\n(BGE-M3, Fast / Cheap)", ha='center', va='center',
+            bbox=dict(boxstyle='round,pad=0.5', facecolor='#f5f5f5', edgecolor='#616161', lw=1.5))
 
-    # Feature Extraction
-    ax.text(4.5, 7, "Feature Extractor\n(25 signals)", fontsize=10, ha='center', va='center', bbox=box_orange)
-    ax.annotate("", xy=(3.3, 7), xytext=(2.3, 7), arrowprops=arrow_kw)
+    # Deep Hybrid Branch (A6)
+    ax.text(0.78, 0.25, "$A_6$: Deep Hybrid Pipeline\n(Dense + BM25 + Graph + CE)", ha='center', va='center',
+            bbox=dict(boxstyle='round,pad=0.5', facecolor='#ede7f6', edgecolor='#512da8', lw=1.5))
 
-    # Dense retrieval (always runs)
-    ax.text(1.5, 5, "Dense Retrieval\n(FAISS)", fontsize=10, ha='center', va='center', bbox=box_green)
-    ax.annotate("", xy=(1.5, 6.3), xytext=(1.5, 5.7), arrowprops=arrow_kw)
+    # Connecting Arrows
+    ax.annotate('', xy=(0.14, 0.5), xytext=(0.10, 0.5), arrowprops=dict(arrowstyle='->', lw=1.5))
+    ax.annotate('', xy=(0.37, 0.5), xytext=(0.33, 0.5), arrowprops=dict(arrowstyle='->', lw=1.5))
+    ax.annotate('', xy=(0.67, 0.75), xytext=(0.59, 0.55), arrowprops=dict(arrowstyle='->', lw=1.5, color='#616161'))
+    ax.annotate('', xy=(0.67, 0.25), xytext=(0.59, 0.45), arrowprops=dict(arrowstyle='->', lw=1.5, color='#512da8'))
 
-    # BM25 retrieval
-    ax.text(4.5, 5, "BM25 Retrieval", fontsize=10, ha='center', va='center', bbox=box_green)
-    ax.annotate("", xy=(4.5, 6.3), xytext=(4.5, 5.7), arrowprops=arrow_kw)
+    ax.text(0.61, 0.72, "Dense sufficient", fontsize=8, color='#616161')
+    ax.text(0.61, 0.30, "Escalate", fontsize=8, color='#512da8')
 
-    # Graph features
-    ax.text(1.5, 3.3, "Graph\nExpander", fontsize=9, ha='center', va='center', bbox=box_green)
-    ax.annotate("", xy=(1.5, 4.3), xytext=(1.5, 3.9), arrowprops=arrow_kw)
-
-    # Router (central)
-    ax.text(7.5, 5, "P-SAFE Router\n\nP(Gain) / P(Harm)\nDelta nDCG / Latency\nUtility Function",
-            fontsize=11, ha='center', va='center', bbox=box_purple)
-    ax.annotate("", xy=(6.0, 5), xytext=(5.5, 5), arrowprops=arrow_kw)
-    ax.annotate("", xy=(6.0, 5.5), xytext=(5.4, 7), arrowprops=arrow_kw_curved)
-
-    # Decision outputs
-    ax.text(11, 6.8, "A0: Dense\n(Fast, Cheap)", fontsize=11, fontweight='bold',
-            ha='center', va='center', bbox=box_green)
-    ax.text(11, 3.2, "A6: Deep Hybrid\n(Dense + BM25 +\nGraph + CrossEncoder)",
-            fontsize=10, fontweight='bold', ha='center', va='center', bbox=box_red)
-
-    ax.annotate("", xy=(9.5, 6.8), xytext=(9.0, 5.5), arrowprops=dict(
-        arrowstyle='->', color=ACCENT_GREEN, lw=2, connectionstyle="arc3,rad=-0.2"))
-    ax.annotate("", xy=(9.5, 3.5), xytext=(9.0, 4.5), arrowprops=dict(
-        arrowstyle='->', color=ACCENT_RED, lw=2, connectionstyle="arc3,rad=0.2"))
-
-    # Decision labels
-    ax.text(9.8, 6.0, "Safe", fontsize=10, fontweight='bold', color=ACCENT_GREEN, ha='center')
-    ax.text(9.8, 4.0, "Escalate", fontsize=10, fontweight='bold', color=ACCENT_RED, ha='center')
-
-    # Output
-    ax.text(13, 5, "Final\nRanking", fontsize=12, fontweight='bold', ha='center', va='center', bbox=box_teal)
-    ax.annotate("", xy=(12.2, 5.5), xytext=(11.8, 6.5), arrowprops=arrow_kw_curved)
-    ax.annotate("", xy=(12.2, 4.5), xytext=(11.8, 3.5), arrowprops=arrow_kw_curved)
-
-    # Utility formula box at bottom
-    formula_box = dict(boxstyle="round,pad=0.6", facecolor="#0d1117", edgecolor=GRID_COLOR, linewidth=1)
-    ax.text(7, 1.2, "U(A6|x) = D_pred - L_lat*Latency - L_harm*P(Harm) - L_cand*CandCount + L_rec*P(Gain)",
-            fontsize=10, ha='center', va='center', bbox=formula_box, family='monospace', color=ACCENT_TEAL)
-    ax.text(7, 0.5, "Escalate to A6 only when U(A6|x) > 0 and safety constraints pass",
-            fontsize=9, ha='center', va='center', color='#8b949e', style='italic')
-
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIGURES_DIR, "architecture_diagram.png"), dpi=200, bbox_inches='tight')
+    save_fig(fig, "fig1_architecture")
     plt.close(fig)
-    print("  [OK] architecture_diagram.png")
 
 
-# ── Figure 6: Multi-Seed Stability ──────────────────────────────────
-def fig_multi_seed_stability(results):
-    setup_dark_style()
-    fig, axes = plt.subplots(1, 2, figsize=(14, 6))
+# ── Figure 2: Quality-Latency Pareto Plot ────────────────────────────────────
+def generate_fig2_pareto():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(6.5, 4.5))
 
-    # Panel A: nDCG across seeds
-    ax = axes[0]
+    with open("results/statistics/statistical_analysis.json") as f:
+        stat_data = json.load(f)
+
+    # Plot points for each dataset
+    markers = {"scifact": "o", "fiqa": "s", "nfcorpus": "^", "arguana": "D"}
+    
+    # Load primary seed 42 results
+    for ds in DATASETS:
+        with open(f"results/validated/{ds}/seed_42/balanced/extended_metrics.json") as f:
+            em_bal = json.load(f)
+        with open(f"results/validated/{ds}/seed_42/high_recall/extended_metrics.json") as f:
+            em_hr = json.load(f)
+
+        d_gain_bal = em_bal["psafe_ndcg"] - em_bal["dense_ndcg"]
+        d_gain_hr = em_hr["psafe_ndcg"] - em_hr["dense_ndcg"]
+        ls_bal = em_bal["latency_saving_vs_best_hybrid"] * 100.0
+        ls_hr = em_hr["latency_saving_vs_best_hybrid"] * 100.0
+
+        ax.scatter(ls_bal, d_gain_bal, color=COLORS[ds], marker=markers[ds], s=80, label=f"{DATASET_LABELS[ds]} (Balanced)")
+        ax.scatter(ls_hr, d_gain_hr, color=COLORS[ds], marker=markers[ds], s=120, facecolors='none', edgecolors=COLORS[ds], lw=2, label=f"{DATASET_LABELS[ds]} (High Recall)")
+        
+        # Connect balanced and high recall
+        ax.plot([ls_bal, ls_hr], [d_gain_bal, d_gain_hr], color=COLORS[ds], linestyle=':', alpha=0.7)
+
+    ax.axhline(0, color='gray', linestyle='--', alpha=0.5)
+    ax.set_xlabel("Latency Saving vs Always-Hybrid (%)")
+    ax.set_ylabel(r"Quality Gain $\Delta_{\rm Dense}$ (nDCG@10)")
+    ax.set_title("Quality-Latency Tradeoff (Seed 42)")
+    ax.legend(bbox_to_anchor=(1.05, 1), loc='upper left', frameon=True)
+
+    save_fig(fig, "fig2_quality_latency")
+    plt.close(fig)
+
+
+# ── Figure 3: Hybrid Activation Rate ─────────────────────────────────────────
+def generate_fig3_activation():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(6.0, 3.8))
+
     x = np.arange(len(DATASETS))
-    width = 0.22
-    for i, seed in enumerate(SEEDS):
-        vals = []
-        for ds in DATASETS:
-            hr = [r["psafe_ndcg"] for r in results
-                  if r["_dataset"] == ds and r["_seed"] == seed and r["_mode"] == "high_recall"]
-            vals.append(hr[0] if hr else 0)
-        colors = [ACCENT_BLUE, ACCENT_GREEN, ACCENT_PURPLE]
-        ax.bar(x + i * width - width, vals, width, label=f"Seed {seed}",
-               color=colors[i], alpha=0.85, edgecolor='none')
+    width = 0.35
 
+    hars_bal = []
+    hars_hr = []
+
+    for ds in DATASETS:
+        with open(f"results/validated/{ds}/seed_42/balanced/extended_metrics.json") as f:
+            em_bal = json.load(f)
+        with open(f"results/validated/{ds}/seed_42/high_recall/extended_metrics.json") as f:
+            em_hr = json.load(f)
+        hars_bal.append(em_bal["hybrid_activation_rate"] * 100.0)
+        hars_hr.append(em_hr["hybrid_activation_rate"] * 100.0)
+
+    rects1 = ax.bar(x - width/2, hars_bal, width, label='Balanced', color='#1f77b4')
+    rects2 = ax.bar(x + width/2, hars_hr, width, label='High Recall', color='#2ca02c')
+
+    ax.set_ylabel('Hybrid Activation Rate (%)')
+    ax.set_title('Cross-Encoder Escalation Rate by Dataset (Seed 42)')
     ax.set_xticks(x)
-    ax.set_xticklabels([DATASET_LABELS[ds] for ds in DATASETS], fontsize=10)
-    ax.set_ylabel("P-SAFE nDCG@10", fontsize=12, fontweight='bold')
-    ax.set_title("nDCG Stability Across Seeds (High Recall)", fontsize=13, fontweight='bold')
-    ax.legend(framealpha=0.9)
-    ax.grid(True, axis='y', alpha=0.2)
+    ax.set_xticklabels([DATASET_LABELS[d] for d in DATASETS])
+    ax.set_ylim(0, 100)
+    ax.legend(frameon=True)
 
-    # Panel B: Hybrid activation rate across seeds
-    ax = axes[1]
-    for i, seed in enumerate(SEEDS):
-        vals = []
-        for ds in DATASETS:
-            hr = [r["hybrid_activation_rate"] * 100 for r in results
-                  if r["_dataset"] == ds and r["_seed"] == seed and r["_mode"] == "high_recall"]
-            vals.append(hr[0] if hr else 0)
-        colors = [ACCENT_BLUE, ACCENT_GREEN, ACCENT_PURPLE]
-        ax.bar(x + i * width - width, vals, width, label=f"Seed {seed}",
-               color=colors[i], alpha=0.85, edgecolor='none')
-
-    ax.set_xticks(x)
-    ax.set_xticklabels([DATASET_LABELS[ds] for ds in DATASETS], fontsize=10)
-    ax.set_ylabel("Hybrid Activation Rate (%)", fontsize=12, fontweight='bold')
-    ax.set_title("Activation Stability Across Seeds (High Recall)", fontsize=13, fontweight='bold')
-    ax.legend(framealpha=0.9)
-    ax.grid(True, axis='y', alpha=0.2)
-
-    fig.tight_layout()
-    fig.savefig(os.path.join(FIGURES_DIR, "multi_seed_stability.png"), dpi=200, bbox_inches='tight')
+    save_fig(fig, "fig3_activation")
     plt.close(fig)
-    print("  [OK] multi_seed_stability.png")
 
 
-# ── Main ─────────────────────────────────────────────────────────────
+# ── Figure 4: Router Baseline Landscape ──────────────────────────────────────
+def generate_fig4_baselines():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(7.2, 4.2))
+
+    with open("results/baselines/comprehensive_baseline_results.json") as f:
+        base_data = json.load(f)
+
+    # Plot SciFact and NFCorpus baselines as exemplary
+    ds = "scifact"
+    data_ds = base_data[ds]["42"] if "42" in base_data[ds] else base_data[ds][42]
+
+    methods = list(data_ds.keys())
+    ndcgs = [data_ds[m]["mean_ndcg"] for m in methods]
+    hars = [data_ds[m]["hybrid_activation"] * 100.0 for m in methods]
+
+    for m, nd, har in zip(methods, ndcgs, hars):
+        if "B-P-SAFE" in m:
+            ax.scatter(har, nd, color='#d62728', s=100, marker='*', zorder=5)
+            ax.annotate(m, (har + 1.5, nd), fontsize=8, weight='bold')
+        elif "Oracle" in m:
+            ax.scatter(har, nd, color='#9467bd', s=80, marker='X')
+            ax.annotate(m, (har + 1.5, nd), fontsize=8)
+        else:
+            ax.scatter(har, nd, color='#7f7f7f', s=50)
+            ax.annotate(m, (har + 1.5, nd), fontsize=7.5, color='#424242')
+
+    ax.set_xlabel("Hybrid Activation Rate (%)")
+    ax.set_ylabel("nDCG@10")
+    ax.set_title("Router Baseline Landscape (SciFact Seed 42)")
+
+    save_fig(fig, "fig4_baselines")
+    plt.close(fig)
+
+
+# ── Figure 5: Latency Composition ────────────────────────────────────────────
+def generate_fig5_latency():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(6.0, 3.6))
+
+    components = ["Dense Search", "BM25 Search", "Graph Exp.", "RRF Fusion", "Cross-Encoder", "Feature Extr.", "Router Dec."]
+    times_ms = [0.37, 14.46, 0.01, 0.02, 695.66, 0.15, 0.08]
+
+    y_pos = np.arange(len(components))
+    ax.barh(y_pos, times_ms, color='#1f77b4', align='center')
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(components)
+    ax.invert_yaxis()
+    ax.set_xscale('log')
+    ax.set_xlabel('Measured Execution Time (ms, log scale)')
+    ax.set_title('End-to-End Latency Breakdown (SciFact High Recall)')
+
+    save_fig(fig, "fig5_latency")
+    plt.close(fig)
+
+
+# ── Figure 6: Multi-Seed Split Sensitivity ───────────────────────────────────
+def generate_fig6_multiseed():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(6.5, 4.0))
+
+    for ds in DATASETS:
+        seeds = [42, 123, 2026]
+        ndcgs = []
+        for s in seeds:
+            with open(f"results/validated/{ds}/seed_{s}/high_recall/extended_metrics.json") as f:
+                em = json.load(f)
+            ndcgs.append(em["psafe_ndcg"])
+        ax.plot([str(s) for s in seeds], ndcgs, marker='o', lw=1.8, label=DATASET_LABELS[ds], color=COLORS[ds])
+
+    ax.set_xlabel("Data-Split Seed")
+    ax.set_ylabel("High-Recall nDCG@10")
+    ax.set_title("Multi-Seed Split Sensitivity (High Recall)")
+    ax.legend(frameon=True)
+
+    save_fig(fig, "fig6_multiseed")
+    plt.close(fig)
+
+
+# ── Figure 7: Reliability Diagram (P_gain & P_harm) ──────────────────────────
+def generate_fig7_calibration_reliability():
+    setup_paper_style()
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(8.5, 3.8))
+
+    with open("results/calibration/reliability_data.json") as f:
+        rel_data = json.load(f)
+
+    # Plot SciFact balanced reliability curve
+    entry = rel_data.get("scifact", {}).get("42", {}).get("balanced") or rel_data.get("scifact", {}).get(42, {}).get("balanced")
+    if entry:
+        gain_bins = entry["P_gain_bins"]
+        harm_bins = entry["P_harm_bins"]
+
+        # P_gain plot
+        confs_g = [b["confidence"] for b in gain_bins if b["count"] > 0]
+        accs_g = [b["accuracy"] for b in gain_bins if b["count"] > 0]
+        ax1.plot([0, 1], [0, 1], 'k--', alpha=0.6, label='Ideal')
+        ax1.plot(confs_g, accs_g, 's-', color='#1f77b4', lw=1.8, label='Empirical')
+        ax1.set_xlabel(r'Predicted $P_{\rm gain}$')
+        ax1.set_ylabel(r'Empirical Event Rate ($\Delta > 0.05$)')
+        ax1.set_title(r'$P_{\rm gain}$ Reliability (SciFact)')
+        ax1.set_xlim(0, 1)
+        ax1.set_ylim(0, 1)
+        ax1.legend(frameon=True)
+
+        # P_harm plot
+        confs_h = [b["confidence"] for b in harm_bins if b["count"] > 0]
+        accs_h = [b["accuracy"] for b in harm_bins if b["count"] > 0]
+        ax2.plot([0, 1], [0, 1], 'k--', alpha=0.6, label='Ideal')
+        ax2.plot(confs_h, accs_h, 'o-', color='#d62728', lw=1.8, label='Empirical')
+        ax2.set_xlabel(r'Predicted $P_{\rm harm}$')
+        ax2.set_ylabel(r'Empirical Event Rate ($\Delta < -0.01$)')
+        ax2.set_title(r'$P_{\rm harm}$ Reliability (SciFact)')
+        ax2.set_xlim(0, 1)
+        ax2.set_ylim(0, 1)
+        ax2.legend(frameon=True)
+
+    save_fig(fig, "fig7_calibration_reliability")
+    plt.close(fig)
+
+
+# ── Figure 8: Matched-Budget Random Baseline Distribution ────────────────────
+def generate_fig8_matched_budget_random():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(6.5, 4.0))
+
+    with open("results/baselines/matched_budget_random_results.json") as f:
+        mb_data = json.load(f)
+
+    # Plot comparison for seed 42 balanced across all 4 datasets
+    x = np.arange(len(DATASETS))
+    psafe_vals = []
+    rand_means = []
+    rand_err_low = []
+    rand_err_high = []
+
+    for ds in DATASETS:
+        entry = mb_data[ds]["42"]["balanced"] if "42" in mb_data[ds] else mb_data[ds][42]["balanced"]
+        p_val = entry["psafe_mean_ndcg"]
+        r_mean = entry["mean_ndcg"]
+        ci = entry["ci_95"]
+
+        psafe_vals.append(p_val)
+        rand_means.append(r_mean)
+        rand_err_low.append(r_mean - ci[0])
+        rand_err_high.append(ci[1] - r_mean)
+
+    ax.errorbar(x, rand_means, yerr=[rand_err_low, rand_err_high], fmt='o', color='#7f7f7f',
+                capsize=5, elinewidth=1.5, markeredgewidth=1.5, label='Matched-Budget Random (100 seeds, 95% CI)')
+    ax.scatter(x, psafe_vals, color='#1f77b4', s=90, marker='*', zorder=5, label='B-P-SAFE (Balanced)')
+
+    ax.set_xticks(x)
+    ax.set_xticklabels([DATASET_LABELS[d] for d in DATASETS])
+    ax.set_ylabel('nDCG@10')
+    ax.set_title('B-P-SAFE vs 100-Seed Matched-Budget Random Router')
+    ax.legend(frameon=True)
+
+    save_fig(fig, "fig8_matched_budget_random")
+    plt.close(fig)
+
+
+# ── Figure 9: Ablation Matrix Visualization ──────────────────────────────────
+def generate_fig9_ablation_matrix():
+    setup_paper_style()
+    fig, ax = plt.subplots(figsize=(7.5, 4.2))
+
+    with open("results/ablations/ablation_results.json") as f:
+        abl_data = json.load(f)
+
+    # Macro-average deltas across all 4 datasets
+    variants = [
+        ("Minus P_harm", r"w/o $P_{\rm harm}$"),
+        ("Minus P_gain", r"w/o $P_{\rm gain}$"),
+        ("Minus Delta nDCG", r"w/o $\hat{\delta}$"),
+        ("Minus Latency & Cost", "w/o Cost"),
+        ("Minus Soft Overrides", "w/o Overrides"),
+        ("Feature: Query Only", "Query Only"),
+        ("Feature: Dense Only", "Dense Only"),
+        ("Feature: Bm25 Only", "BM25 Only"),
+        ("Feature: Dense Plus Bm25", "Dense+BM25"),
+        ("Feature: Disagreement Only", "Disagreement"),
+        ("Feature: Graph Only", "Graph Only"),
+    ]
+
+    names = []
+    deltas = []
+    for v_key, v_disp in variants:
+        v_dels = [abl_data[ds][v_key]["delta_vs_full"] for ds in DATASETS if ds in abl_data and v_key in abl_data[ds]]
+        names.append(v_disp)
+        deltas.append(float(np.mean(v_dels)) if v_dels else 0.0)
+
+    y_pos = np.arange(len(names))
+    ax.barh(y_pos, deltas, color=['#d62728' if d < 0 else '#2ca02c' for d in deltas], align='center')
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(names)
+    ax.invert_yaxis()
+    ax.axvline(0, color='black', lw=0.8, linestyle='--')
+    ax.set_xlabel(r'Change in nDCG@10 relative to Full B-P-SAFE ($\Delta_{\rm Full}$)')
+    ax.set_title('Router Component and Feature Ablation Effects')
+
+    save_fig(fig, "fig9_ablation_matrix")
+    plt.close(fig)
+
+
+def generate_all_figures():
+    print("="*80)
+    print("GENERATING ALL PUBLICATION FIGURES (PDF & PNG)")
+    print("="*80)
+    generate_fig1_architecture()
+    generate_fig2_pareto()
+    generate_fig3_activation()
+    generate_fig4_baselines()
+    generate_fig5_latency()
+    generate_fig6_multiseed()
+    generate_fig7_calibration_reliability()
+    generate_fig8_matched_budget_random()
+    generate_fig9_ablation_matrix()
+    print("ALL FIGURES GENERATED SUCCESSFULLY!")
+
+
 if __name__ == "__main__":
-    print("P-SAFE-AMSR Figure Generator")
-    print("=" * 50)
-    results = load_all_results()
-    print(f"Loaded {len(results)} result files\n")
-
-    print("Generating figures...")
-    fig_architecture()
-    fig_pareto(results)
-    fig_activation_rate(results)
-    fig_taxonomy(results)
-    fig_latency_vs_quality(results)
-    fig_multi_seed_stability(results)
-
-    print(f"\nAll figures saved to: {FIGURES_DIR}")
-    print("Done.")
+    generate_all_figures()

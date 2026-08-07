@@ -1,21 +1,22 @@
 """
 B-P-SAFE-AMSR — Canonical Statistical Testing Module
-Merged from archive/ahrc/statistical_tests.py (rich) + psafe stub.
+Publication-grade paired statistical testing, multiple-comparison control, and formal non-inferiority testing.
 
 Tests per pair:
   1. Paired t-test
-  2. Wilcoxon signed-rank
-  3. Bootstrap 95% CI
-  4. Permutation test
+  2. Wilcoxon signed-rank test
+  3. Paired Bootstrap 95% CI (5,000 draws)
+  4. Sign-permutation test (2,000 draws)
   5. Cohen's d (pooled) and Cohen's dz (paired)
-  6. Win/Tie/Loss
-  7. Holm-Bonferroni correction
-  8. Significance labels
+  6. Win / Tie / Loss counts
+  7. Holm-Bonferroni multi-testing correction
+  8. Formal Non-Inferiority Testing against Deep Hybrid (margin epsilon = 0.010)
   9. Multi-seed aggregation
 """
+
 import numpy as np
 from scipy import stats as scipy_stats
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Tuple
 import itertools
 import json
 import os
@@ -23,22 +24,40 @@ import os
 
 def cohens_d_pooled(baseline, system):
     """Cohen's d with pooled standard deviation."""
-    pooled_std = np.sqrt((np.var(baseline) + np.var(system)) / 2)
-    if pooled_std == 0:
+    baseline = np.asarray(baseline, dtype=float)
+    system = np.asarray(system, dtype=float)
+    pooled_var = (np.var(baseline, ddof=1) + np.var(system, ddof=1)) / 2.0
+    if pooled_var <= 0:
         return 0.0
-    return float(np.mean(system - baseline) / pooled_std)
+    return float(np.mean(system - baseline) / np.sqrt(pooled_var))
 
 
 def cohens_dz(deltas):
     """Paired Cohen's dz: mean(delta) / std(delta)."""
+    deltas = np.asarray(deltas, dtype=float)
     d_std = np.std(deltas, ddof=1)
-    if d_std == 0:
+    if d_std <= 0:
         return 0.0
     return float(np.mean(deltas) / d_std)
 
 
-def holm_bonferroni_correction(p_values):
-    """Apply Holm-Bonferroni correction to a list of p-values."""
+def _effect_label(d_val):
+    d_abs = abs(d_val)
+    if d_abs < 0.2:
+        return "negligible"
+    elif d_abs < 0.5:
+        return "small"
+    elif d_abs < 0.8:
+        return "medium"
+    else:
+        return "large"
+
+
+def holm_bonferroni_correction(p_values: List[float]) -> List[float]:
+    """
+    Apply Holm-Bonferroni step-down correction to a list of p-values.
+    Guarantees monotonic adjustments and valid bounds in [0, 1].
+    """
     p_values = np.asarray(p_values, dtype=np.float64)
     m = len(p_values)
     if m == 0:
@@ -51,7 +70,85 @@ def holm_bonferroni_correction(p_values):
         idx = sorted_indices[rank]
         prev_idx = sorted_indices[rank - 1]
         corrected[idx] = max(corrected[idx], corrected[prev_idx])
-    return list(corrected)
+    return [float(p) for p in corrected]
+
+
+def evaluate_non_inferiority(
+    system_scores: np.ndarray,
+    reference_scores: np.ndarray,
+    epsilon: float = 0.010,
+    alpha: float = 0.05,
+    n_bootstrap: int = 5000
+) -> Dict:
+    """
+    Formal Non-Inferiority Analysis against reference (Deep Hybrid).
+    H0: mean(system) - mean(reference) <= -epsilon  (System is inferior by more than epsilon)
+    H1: mean(system) - mean(reference) >  -epsilon  (System is non-inferior within margin epsilon)
+
+    Parameters:
+      system_scores: query nDCG scores for candidate method (P-SAFE)
+      reference_scores: query nDCG scores for reference method (Deep Hybrid)
+      epsilon: non-inferiority margin (default 0.010 = 1.0% nDCG@10)
+      alpha: significance level (default 0.05)
+      n_bootstrap: bootstrap draws for empirical confidence bound
+    """
+    sys_arr = np.asarray(system_scores, dtype=np.float64)
+    ref_arr = np.asarray(reference_scores, dtype=np.float64)
+    deltas = sys_arr - ref_arr
+    n = len(deltas)
+
+    if n < 2:
+        return {
+            "mean_delta": float(np.mean(deltas)) if n > 0 else 0.0,
+            "epsilon": float(epsilon),
+            "non_inferiority_established": False,
+            "p_value_non_inferiority": 1.0,
+            "ci_lower_bound_95": -999.0,
+            "conclusion": "insufficient samples"
+        }
+
+    mean_delta = float(np.mean(deltas))
+    std_delta = float(np.std(deltas, ddof=1))
+    se_delta = std_delta / np.sqrt(n)
+
+    # 1. Parametric One-sided t-test against margin -epsilon
+    if se_delta > 0:
+        t_ni = (mean_delta - (-epsilon)) / se_delta
+        df = n - 1
+        p_val_ni = float(1.0 - scipy_stats.t.cdf(t_ni, df=df))
+        t_crit = float(scipy_stats.t.ppf(1.0 - alpha, df=df))
+        ci_lower_param = float(mean_delta - t_crit * se_delta)
+    else:
+        t_ni = 999.0 if mean_delta >= -epsilon else -999.0
+        p_val_ni = 0.0 if mean_delta >= -epsilon else 1.0
+        ci_lower_param = mean_delta
+
+    # 2. Bootstrap One-sided Lower Bound (5th percentile of bootstrap mean deltas)
+    rng = np.random.RandomState(42)
+    boot_indices = rng.randint(0, n, size=(n_bootstrap, n))
+    boot_means = np.mean(deltas[boot_indices], axis=1)
+    ci_lower_boot = float(np.percentile(boot_means, alpha * 100))
+
+    non_inferior_established = bool(ci_lower_param > -epsilon and p_val_ni < alpha)
+
+    if non_inferior_established:
+        conclusion = f"Non-inferiority demonstrated: 95% lower bound ({ci_lower_param:+.4f}) remains above -{epsilon:.3f}"
+    else:
+        conclusion = f"Non-inferiority NOT demonstrated: 95% lower bound ({ci_lower_param:+.4f}) falls below -{epsilon:.3f}"
+
+    return {
+        "mean_delta": mean_delta,
+        "std_delta": std_delta,
+        "se_delta": se_delta,
+        "n_queries": n,
+        "epsilon_margin": float(epsilon),
+        "t_statistic_ni": float(t_ni),
+        "p_value_non_inferiority": float(p_val_ni),
+        "ci_lower_bound_95_param": float(ci_lower_param),
+        "ci_lower_bound_95_bootstrap": float(ci_lower_boot),
+        "non_inferiority_established": non_inferior_established,
+        "conclusion": conclusion,
+    }
 
 
 def get_significance_label(p_value, mean_delta, latency_saving=None):
@@ -74,39 +171,51 @@ def get_significance_label(p_value, mean_delta, latency_saving=None):
 class StatisticalTester:
     """Publication-grade paired statistical tests for IR experiments."""
 
-    def __init__(self, alpha=0.05, n_bootstrap=10000, n_permutation=5000):
+    def __init__(self, alpha=0.05, n_bootstrap=5000, n_permutation=2000):
         self.alpha = alpha
         self.n_bootstrap = n_bootstrap
         self.n_permutation = n_permutation
 
-    def test_paired(self, baseline_scores, test_scores, latency_saving=None):
-        """Quick paired test returning summary dict."""
-        baseline = np.array(baseline_scores, dtype=np.float64)
-        test = np.array(test_scores, dtype=np.float64)
-        deltas = test - baseline
-        mean_delta = float(np.mean(deltas))
+    def _bootstrap_ci(self, deltas: np.ndarray, seed: int = 42) -> np.ndarray:
+        n = len(deltas)
+        if n == 0:
+            return np.array([0.0])
+        rng = np.random.RandomState(seed)
+        indices = rng.randint(0, n, size=(self.n_bootstrap, n))
+        return np.mean(deltas[indices], axis=1)
 
-        t_stat, p_val = scipy_stats.ttest_rel(test, baseline)
-        if np.isnan(p_val):
-            p_val = 1.0
+    def _permutation_test(self, baseline: np.ndarray, system: np.ndarray, seed: int = 42) -> float:
+        deltas = system - baseline
+        n = len(deltas)
+        if n == 0:
+            return 1.0
+        observed_mean = abs(float(np.mean(deltas)))
+        rng = np.random.RandomState(seed)
+        signs = rng.choice([-1.0, 1.0], size=(self.n_permutation, n))
+        perm_means = np.abs(np.mean(signs * deltas, axis=1))
+        p_val = (np.sum(perm_means >= observed_mean) + 1) / (self.n_permutation + 1)
+        return float(p_val)
 
-        dz = cohens_dz(deltas)
-        label = get_significance_label(p_val, mean_delta, latency_saving)
-
+    def _group_stats(self, baseline: np.ndarray, system: np.ndarray, deltas: np.ndarray, mask: np.ndarray) -> Dict:
+        sub_base = baseline[mask]
+        sub_sys = system[mask]
+        sub_deltas = deltas[mask]
+        if len(sub_deltas) == 0:
+            return {"count": 0, "mean_delta": 0.0}
         return {
-            "mean_delta": mean_delta,
-            "p_value": float(p_val),
-            "cohens_dz": dz,
-            "label": label,
-            "is_significant": bool(p_val < self.alpha),
+            "count": int(np.sum(mask)),
+            "baseline_mean": float(np.mean(sub_base)),
+            "system_mean": float(np.mean(sub_sys)),
+            "mean_delta": float(np.mean(sub_deltas)),
+            "std_delta": float(np.std(sub_deltas)),
         }
 
     def full_comparison(self, baseline_scores, system_scores,
                         baseline_name="Dense", system_name="B-P-SAFE",
-                        easy_mask=None):
-        """Run all significance tests and produce a full comparison report."""
-        baseline = np.array(baseline_scores, dtype=np.float64)
-        system = np.array(system_scores, dtype=np.float64)
+                        easy_mask=None, latency_saving=None):
+        """Run full significance testing suite and produce a structured report."""
+        baseline = np.asarray(baseline_scores, dtype=np.float64)
+        system = np.asarray(system_scores, dtype=np.float64)
         deltas = system - baseline
         eps = 1e-8
 
@@ -123,16 +232,18 @@ class StatisticalTester:
             "losses": int(np.sum(deltas < -eps)),
         }
 
-        # Cohen's d (pooled) and dz (paired)
+        # Effect size
         report["effect_size"] = {
             "cohens_d": cohens_d_pooled(baseline, system),
             "cohens_dz": cohens_dz(deltas),
-            "magnitude": _effect_label(cohens_d_pooled(baseline, system)),
+            "magnitude": _effect_label(cohens_dz(deltas)),
         }
 
         # 1. Paired t-test
         if np.std(deltas) > 0:
             t_stat, p_ttest = scipy_stats.ttest_rel(system, baseline)
+            if np.isnan(p_ttest):
+                t_stat, p_ttest = 0.0, 1.0
         else:
             t_stat, p_ttest = 0.0, 1.0
         report["paired_ttest"] = {
@@ -157,7 +268,7 @@ class StatisticalTester:
         except Exception as e:
             report["wilcoxon"] = {"p_value": 1.0, "error": str(e)}
 
-        # 3. Bootstrap CI
+        # 3. Bootstrap CI (5,000 draws)
         bootstrap_means = self._bootstrap_ci(deltas)
         ci_low = float(np.percentile(bootstrap_means, 2.5))
         ci_high = float(np.percentile(bootstrap_means, 97.5))
@@ -167,7 +278,7 @@ class StatisticalTester:
             "n_bootstrap": self.n_bootstrap,
         }
 
-        # 4. Permutation test
+        # 4. Permutation test (2,000 draws)
         p_perm = self._permutation_test(baseline, system)
         report["permutation_test"] = {
             "p_value": float(p_perm),
@@ -175,7 +286,12 @@ class StatisticalTester:
             "n_permutations": self.n_permutation,
         }
 
-        # 5. Easy vs Hard breakdown
+        # 5. Non-Inferiority test against baseline/reference (margin epsilon = 0.010)
+        report["non_inferiority"] = evaluate_non_inferiority(
+            system, baseline, epsilon=0.010, alpha=self.alpha, n_bootstrap=self.n_bootstrap
+        )
+
+        # 6. Easy vs Hard breakdown
         if easy_mask is not None:
             easy_mask = np.array(easy_mask, dtype=bool)
             report["easy_queries"] = self._group_stats(baseline, system, deltas, easy_mask)
@@ -183,8 +299,8 @@ class StatisticalTester:
 
         return report
 
-    def pairwise_comparison_matrix(self, method_ndcg, easy_mask=None):
-        """Run pairwise significance tests between ALL methods with Holm-Bonferroni."""
+    def pairwise_comparison_matrix(self, method_ndcg: Dict[str, np.ndarray], easy_mask=None) -> Dict:
+        """Run pairwise significance tests with Holm-Bonferroni correction."""
         methods = list(method_ndcg.keys())
         pairs = list(itertools.combinations(range(len(methods)), 2))
 
@@ -195,7 +311,7 @@ class StatisticalTester:
         for i, j in pairs:
             m_a, m_b = methods[i], methods[j]
             key = f"{m_a} vs {m_b}"
-            report = self.full_comparison(method_ndcg[m_a], method_ndcg[m_b], m_a, m_b, easy_mask)
+            report = self.full_comparison(method_ndcg[m_b], method_ndcg[m_a], m_b, m_a, easy_mask)
             pairwise_results[key] = report
             raw_p_values.append(report["paired_ttest"]["p_value"])
             pair_keys.append(key)
@@ -212,23 +328,17 @@ class StatisticalTester:
             "correction": "holm_bonferroni",
         }
 
-    def aggregate_multi_seed(self, seed_results_list, out_dir):
+    def aggregate_multi_seed(self, seed_results_list: List[Dict], out_dir: str = ".") -> Dict:
         """
         Aggregate results across multiple seeds (e.g. 42, 123, 2026).
-        Each entry in seed_results_list is a dict with at least:
-          - seed: int
-          - dense_ndcg_mean: float
-          - psafe_ndcg_mean: float
-          - mean_delta: float
-          - p_value: float
-          - hybrid_activation_rate: float
         """
         os.makedirs(out_dir, exist_ok=True)
 
         if not seed_results_list:
+            res = {"error": "no seed results provided"}
             with open(os.path.join(out_dir, "multi_seed_summary.json"), "w") as f:
-                json.dump({"error": "no seed results provided"}, f, indent=4)
-            return {}
+                json.dump(res, f, indent=4)
+            return res
 
         keys = [k for k in seed_results_list[0].keys() if k != "seed"]
         summary = {}
@@ -237,7 +347,7 @@ class StatisticalTester:
             if vals:
                 summary[k] = {
                     "mean": float(np.mean(vals)),
-                    "std": float(np.std(vals)),
+                    "std": float(np.std(vals, ddof=1)) if len(vals) > 1 else 0.0,
                     "min": float(np.min(vals)),
                     "max": float(np.max(vals)),
                     "values": vals,
@@ -248,81 +358,4 @@ class StatisticalTester:
 
         with open(os.path.join(out_dir, "multi_seed_summary.json"), "w") as f:
             json.dump(summary, f, indent=4)
-
         return summary
-
-    def save_results(self, results, out_dir, prefix=""):
-        """Save test results to JSON files."""
-        os.makedirs(out_dir, exist_ok=True)
-        if isinstance(results, dict):
-            fname = f"{prefix}statistical_tests.json" if prefix else "statistical_tests.json"
-            with open(os.path.join(out_dir, fname), "w") as f:
-                json.dump(results, f, indent=4, default=str)
-
-    # ── Private helpers ──
-
-    def _group_stats(self, baseline, system, deltas, mask):
-        n = int(np.sum(mask))
-        if n == 0:
-            return {"n": 0}
-        eps = 1e-8
-        return {
-            "n": n,
-            "baseline_mean": float(np.mean(baseline[mask])),
-            "system_mean": float(np.mean(system[mask])),
-            "mean_delta": float(np.mean(deltas[mask])),
-            "degradation": bool(np.mean(deltas[mask]) < -eps),
-            "improvement": bool(np.mean(deltas[mask]) > eps),
-        }
-
-    def _bootstrap_ci(self, deltas):
-        rng = np.random.default_rng(42)
-        n = len(deltas)
-        means = np.empty(self.n_bootstrap)
-        for i in range(self.n_bootstrap):
-            means[i] = np.mean(rng.choice(deltas, size=n, replace=True))
-        return means
-
-    def _permutation_test(self, baseline, system):
-        rng = np.random.default_rng(42)
-        observed = np.mean(system - baseline)
-        n = len(baseline)
-        count = 0
-        for _ in range(self.n_permutation):
-            signs = rng.choice([-1, 1], size=n)
-            perm_diff = np.mean(signs * (system - baseline))
-            if abs(perm_diff) >= abs(observed):
-                count += 1
-        return count / self.n_permutation
-
-    @staticmethod
-    def format_report(report):
-        """Pretty-print a statistical test report."""
-        lines = ["=" * 60]
-        lines.append(f"  Statistical Significance: {report['comparison']}")
-        lines.append("=" * 60)
-        lines.append(f"  N queries:       {report['n_queries']}")
-        lines.append(f"  Mean Delta:      {report['mean_delta']:+.4f}")
-        lines.append(f"  Win/Tie/Loss:    {report['wins']}/{report['ties']}/{report['losses']}")
-        es = report.get("effect_size", {})
-        lines.append(f"  Cohen's d:       {es.get('cohens_d', 0):.3f} ({es.get('magnitude', '?')})")
-        lines.append(f"  Cohen's dz:      {es.get('cohens_dz', 0):.3f}")
-        tt = report.get("paired_ttest", {})
-        lines.append(f"  Paired t-test:   p={tt.get('p_value', 1):.4e} -> {'YES' if tt.get('significant') else 'NO'}")
-        wt = report.get("wilcoxon", {})
-        if "error" not in wt:
-            lines.append(f"  Wilcoxon:        p={wt.get('p_value', 1):.4e} -> {'YES' if wt.get('significant') else 'NO'}")
-        bc = report.get("bootstrap_ci", {})
-        lines.append(f"  Bootstrap 95%CI: [{bc.get('ci_low', 0):.4f}, {bc.get('ci_high', 0):.4f}]")
-        pt = report.get("permutation_test", {})
-        lines.append(f"  Permutation:     p={pt.get('p_value', 1):.4e}")
-        lines.append("=" * 60)
-        return "\n".join(lines)
-
-
-def _effect_label(d):
-    d = abs(d)
-    if d >= 0.8: return "large"
-    if d >= 0.5: return "medium"
-    if d >= 0.2: return "small"
-    return "negligible"

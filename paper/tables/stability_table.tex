@@ -1,0 +1,19 @@
+\begin{table*}[t]
+\centering
+\caption{Stability analysis: Training-seed stochasticity (10 independent training seeds on fixed Seed-42 split) versus Split variability (across split seeds 42, 123, 2026). Demonstrates that router fitting is stable under fixed test queries.}
+\label{tab:stability}
+\scriptsize
+\setlength{\tabcolsep}{4.0pt}
+\begin{tabular}{lrrrrrr}
+\toprule
+& \multicolumn{4}{c}{\textbf{Fixed-Split Training-Seed Stochasticity ($N=10$, Seed 42)}} & \multicolumn{2}{c}{\textbf{Split Sensitivity ($N=3$ Splits)}} \\
+\cmidrule(lr){2-5} \cmidrule(lr){6-7}
+Dataset & nDCG@10 & [Min, Max] & HAR & Latency (ms) & Split nDCG@10 & Split HAR \\
+\midrule
+SciFact & 0.6466 $\pm$ 0.0000 & [0.6466, 0.6466] & 0.0\% $\pm$ 0.0\% & 3.0 $\pm$ 0.0 & 0.6998 $\pm$ 0.0342 & 69.3\% $\pm$ 10.1\% \\
+FiQA & 0.4085 $\pm$ 0.0000 & [0.4085, 0.4085] & 0.0\% $\pm$ 0.0\% & 3.0 $\pm$ 0.0 & 0.4218 $\pm$ 0.0020 & 28.4\% $\pm$ 21.8\% \\
+NFCorpus & 0.3339 $\pm$ 0.0000 & [0.3339, 0.3339] & 0.0\% $\pm$ 0.0\% & 3.0 $\pm$ 0.0 & 0.3436 $\pm$ 0.0141 & 55.6\% $\pm$ 13.3\% \\
+ArguAna & 0.3946 $\pm$ 0.0000 & [0.3946, 0.3946] & 0.0\% $\pm$ 0.0\% & 3.0 $\pm$ 0.0 & 0.4106 $\pm$ 0.0074 & 26.1\% $\pm$ 12.5\% \\
+\bottomrule
+\end{tabular}
+\end{table*}

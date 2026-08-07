@@ -1,0 +1,27 @@
+\begin{table*}[t]
+\centering
+\caption{Comprehensive statistical inference: Primary improvement over Dense with Holm-Bonferroni correction and formal Non-Inferiority testing against Deep Hybrid with pre-specified margin $\epsilon=0.010$ ($1.0\%$ nDCG@10). Lower 95\% bound $> -\epsilon$ and Holm-adjusted $p_{\rm NI}<0.05$ establish non-inferiority.}
+\label{tab:statistics}
+\scriptsize
+\setlength{\tabcolsep}{3.0pt}
+\begin{tabular}{llrrrrrrrrr}
+\toprule
+& & \multicolumn{5}{c}{\textbf{Primary Improvement vs Dense}} & \multicolumn{4}{c}{\textbf{Non-Inferiority vs Deep Hybrid ($\epsilon=0.010$)}} \\
+\cmidrule(lr){3-7} \cmidrule(lr){8-11}
+Dataset & Mode & $\Delta_D$ & 95\% Boot CI & $d_z$ & $p_{\rm raw}$ & $p_{\rm Holm}$ & $\Delta_H$ & 95\% LB & $p_{\rm NI, Holm}$ & Non-Inf? \\
+\midrule
+SciFact & Balanced & +0.0499 & [+0.0137, +0.0883] & 0.21 & 0.011 & 0.068 & -0.0365 & -0.0576 & 1.000 & No \\
+SciFact & High recall & +0.0557 & [+0.0179, +0.0943] & 0.23 & 0.006 & 0.047 & -0.0308 & -0.0506 & 1.000 & No \\
+\addlinespace[2pt]
+FiQA & Balanced & +0.0132 & [-0.0040, +0.0308] & 0.08 & 0.146 & 0.146 & -0.0111 & -0.0260 & 1.000 & No \\
+FiQA & High recall & +0.0200 & [+0.0008, +0.0390] & 0.11 & 0.045 & 0.118 & -0.0043 & -0.0176 & 0.960 & No \\
+\addlinespace[2pt]
+NFCorpus & Balanced & +0.0240 & [+0.0038, +0.0462] & 0.17 & 0.027 & 0.109 & -0.0053 & -0.0140 & 0.928 & No \\
+NFCorpus & High recall & +0.0287 & [+0.0074, +0.0515] & 0.20 & 0.013 & 0.068 & -0.0006 & -0.0066 & 0.042 & Yes \\
+\addlinespace[2pt]
+ArguAna & Balanced & +0.0123 & [+0.0034, +0.0214] & 0.10 & 0.008 & 0.055 & +0.0154 & -0.0043 & 0.107 & No \\
+ArguAna & High recall & +0.0118 & [+0.0005, +0.0229] & 0.08 & 0.039 & 0.118 & +0.0148 & -0.0040 & 0.107 & No \\
+\addlinespace[2pt]
+\bottomrule
+\end{tabular}
+\end{table*}

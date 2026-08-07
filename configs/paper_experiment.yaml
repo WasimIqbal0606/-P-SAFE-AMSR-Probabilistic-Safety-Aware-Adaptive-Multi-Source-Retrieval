@@ -1,0 +1,147 @@
+# ==============================================================================
+# CANONICAL PAPER EXPERIMENT SPECIFICATION
+# B-P-SAFE-AMSR: Probabilistic Safety-Aware Adaptive Multi-Source Retrieval
+# ==============================================================================
+
+# Canonical paper datasets evaluated across all primary tables and claims
+datasets:
+  - scifact
+  - fiqa
+  - nfcorpus
+  - arguana
+
+# Exploratory / out-of-primary-paper datasets (incomplete modes/sample size)
+exploratory_datasets:
+  - trec-covid
+
+# Split seeds (evaluate split sensitivity across different train/val/test partitions)
+split_seeds:
+  - 42
+  - 123
+  - 2026
+
+# Primary split seed for deep diagnostics and fixed-split experiments
+primary_split_seed: 42
+
+# Training seeds (evaluate repeated-fitting stochasticity on fixed train/val/test split 42)
+training_seeds:
+  - 11
+  - 22
+  - 33
+  - 44
+  - 55
+  - 66
+  - 77
+  - 88
+  - 99
+  - 111
+
+# Router operating modes evaluated
+router_modes:
+  lite:
+    gain_threshold: 0.60
+    harm_threshold: 0.20
+    lambda_latency: 0.00020
+    lambda_harm: 0.50
+    lambda_candidate: 0.0001
+    lambda_recovery: 0.10
+    use_lcb_safety: true
+  balanced:
+    gain_threshold: 0.40
+    harm_threshold: 0.40
+    lambda_latency: 0.00005
+    lambda_harm: 0.25
+    lambda_candidate: 0.0001
+    lambda_recovery: 0.25
+    use_lcb_safety: false
+  high_recall:
+    gain_threshold: 0.25
+    harm_threshold: 0.55
+    lambda_latency: 0.00001
+    lambda_harm: 0.15
+    lambda_candidate: 0.00001
+    lambda_recovery: 0.35
+    use_lcb_safety: false
+
+# Primary evaluation metrics
+metrics:
+  - ndcg_at_10
+  - latency_ms
+  - hybrid_activation_rate
+  - harm_avoidance
+  - recovery_capture
+  - oracle_gap_closed
+  - latency_saving
+
+# Comprehensive baseline router suite
+baselines:
+  - Dense-only
+  - Always-Hybrid
+  - Random
+  - Matched-Budget-Random
+  - Dense-margin
+  - Dense-entropy
+  - BM25-disagreement
+  - Cost-only
+  - Regression-only
+  - Classifier-only
+  - Oracle
+
+# Statistical testing parameters
+statistics:
+  alpha: 0.05
+  non_inferiority_margin: 0.010  # epsilon = 0.010 (1.0% nDCG@10 margin based on IR literature)
+  n_bootstrap: 5000
+  n_permutation: 2000
+  multiple_testing_method: "holm_bonferroni"
+  primary_hypothesis_families:
+    family_1_dense_improvement: "P-SAFE vs Dense (4 datasets x 2 active modes = 8 tests)"
+    family_2_non_inferiority: "P-SAFE Non-Inferiority vs Deep Hybrid (4 datasets x 2 active modes = 8 tests)"
+    family_3_matched_budget_random: "P-SAFE vs Matched-Budget Random (4 datasets x 2 active modes = 8 tests)"
+
+# Calibration evaluation parameters
+calibration:
+  methods:
+    - sigmoid_platt
+    - isotonic
+    - uncalibrated
+  cv_folds: 3
+  n_bins_standard: 10
+  n_bins_adaptive: 5
+  metrics:
+    - brier_score
+    - expected_calibration_error_standard
+    - expected_calibration_error_adaptive
+    - auroc
+    - auprc
+    - calibration_slope
+    - calibration_intercept
+
+# Seed namespaces documentation
+seed_namespaces:
+  split_seed: "Controls random partition of dataset queries into train (40%), val (10%), test (50%)"
+  router_training_seed: "Controls classifier/regressor random state and cross-validation folding during router training"
+  calibration_seed: "Controls calibration fold splitting in CalibratedClassifierCV"
+  random_baseline_seed: "Controls stochastic pseudo-random choices in random and matched-budget baseline routers"
+  bootstrap_seed: "Controls bootstrap resampling index draws for confidence interval estimation"
+  permutation_seed: "Controls sign-permutation draws for paired permutation significance tests"
+
+# Timing and latency boundary specification
+timing:
+  boundary_formula: "T_total = T_feature_extraction + T_router_inference + T_retrieval_action"
+  dense_action_latency_includes: "Dense semantic vector retrieval"
+  deep_hybrid_action_latency_includes: "Dense + BM25 + Graph Expansion + RRF + CrossEncoder Reranking"
+  psafe_total_latency_includes: "Feature extraction + Router inference + Selected Action retrieval"
+  warmup_queries: 10
+  hardware_spec: "NVIDIA GeForce RTX 5070 Ti / Intel/AMD Host"
+
+# Data splitting protocol
+splitting:
+  train_ratio: 0.40
+  val_ratio: 0.10
+  test_ratio: 0.50
+  stratification: "dense_ndcg_quartiles"
+  leakage_assertions:
+    - "train_intersection_val_is_empty"
+    - "train_intersection_test_is_empty"
+    - "val_intersection_test_is_empty"

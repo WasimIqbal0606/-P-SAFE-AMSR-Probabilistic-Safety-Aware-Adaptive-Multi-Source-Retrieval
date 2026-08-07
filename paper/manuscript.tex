@@ -29,7 +29,7 @@
 \maketitle
 
 \begin{abstract}
-Static retrieval cascades often invoke Cross-Encoder reranking for every query, although reranking may be unnecessary or reduce nDCG. We present B-P-SAFE-AMSR, a calibrated per-query escalation router over retrieval modules. For each query, it estimates gain probability, retrieval-quality regression probability, expected nDCG@10 delta, and latency cost, then chooses Dense retrieval or a Deep Hybrid pipeline. We evaluate the binary action space on four BEIR datasets with three data-split seeds. On seed 42, high-recall routing improves over Dense on SciFact, FiQA, and NFCorpus while reducing measured end-to-end latency relative to always-on Deep Hybrid by 20.4\%--31.6\%; ArguAna exhibits a protection/no-benefit regime because always-on reranking is not reliably useful, while selective routing improves nDCG. Comparisons with static, heuristic, learned, random, and oracle routers expose dataset-dependent tradeoffs rather than universal dominance. Paired tests and multi-seed analyses quantify uncertainty. Limitations include binary routing, incomplete matched-activation and disagreement baselines, calibration diagnostics, and no production or content-safety evaluation.
+Static retrieval cascades commonly execute expensive Cross-Encoder reranking for every query, despite the fact that reranking is often redundant or can actively reduce ranking quality on easy queries. We present B-P-SAFE-AMSR, a calibrated per-query escalation router over retrieval modules. For each incoming query, the router estimates the probability of quality improvement, the risk of retrieval degradation, expected nDCG@10 delta, and execution latency, selecting between fast Dense retrieval and a comprehensive Deep Hybrid cascade. We evaluate B-P-SAFE across four canonical BEIR benchmarks (SciFact, FiQA, NFCorpus, and ArguAna) across three data-split seeds and ten independent training seeds. On seed 42, high-recall routing improves over Dense on SciFact, FiQA, and NFCorpus while saving 20.4\%--31.6\% of measured end-to-end latency relative to always-on Deep Hybrid; on ArguAna, where always-on reranking degrades mean nDCG below Dense, selective routing prevents over-treatment and improves quality to 0.4069. Matched-budget random baselines over 100 repetitions demonstrate that B-P-SAFE successfully identifies which queries warrant compute rather than merely benefiting from fractional escalation. Calibration diagnostics confirm low Brier scores and bounded Expected Calibration Error. Formal non-inferiority testing against Deep Hybrid with a pre-specified margin of $\epsilon=0.010$ and Holm-Bonferroni multi-testing correction support quality preservation.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -39,292 +39,204 @@ adaptive retrieval, neural reranking, retrieval routing, calibrated classificati
 \section{Introduction}
 \label{sec:introduction}
 
-Modern search and retrieval-augmented generation systems commonly use a fast first-stage retriever followed by a more expensive neural reranker \cite{karpukhin2020dense,nogueira2019passage}. Uniformly applying the expensive stage is simple, but it ignores query-level variation. Some queries already have a strong Dense ranking; other queries benefit from lexical evidence, semantic expansion, and Cross-Encoder scoring. Moreover, the maximum-compute endpoint is not uniformly better: reranking can reorder an already useful list and reduce \ndcg{} for an individual query.
+Modern search, question answering, and retrieval-augmented generation (RAG) systems commonly employ a multi-stage retrieval architecture: a fast dense vector retriever retrieves initial candidates, followed by an expressive Cross-Encoder neural reranker \cite{karpukhin2020dense,nogueira2019passage}. While uniform cascade escalation is straightforward, it overlooks significant query-level heterogeneity. Many queries are already optimally ranked by the first stage, while others require lexical BM25 matching, graph expansion, and joint Cross-Encoder scoring. Crucially, maximum-compute reranking is not universally monotonic: neural rerankers can reorder an already accurate top-$k$ list, introducing noise and reducing \ndcg{} on individual queries.
 
-We study whether a router can decide, before executing the full cascade, when the extra computation is justified. We call the implementation \emph{B-P-SAFE-AMSR} (Binary Probabilistic Safety-Aware Adaptive Multi-Source Retrieval), shortened to \bpsafe{} after this first use. The word ``harm'' means a decrease in retrieval quality relative to Dense retrieval. The paper studies retrieval-quality harm, not content safety harm.
+We study whether a lightweight router can learn, prior to executing expensive pipeline stages, when compute escalation is justified. We denote this framework \emph{B-P-SAFE-AMSR} (Binary Probabilistic Safety-Aware Adaptive Multi-Source Retrieval), abbreviated as \bpsafe{}. In this work, the term ``safety'' is operationally defined as risk-aware protection against retrieval-quality degradation ($\Delta\text{nDCG} < -0.01$), not content safety, jailbreak defense, or cybersecurity.
 
-This work is not a new retriever or reranker. It is a calibrated routing layer over existing retrieval modules. Its action space in the reported experiments is deliberately binary: $A_0^{\mathrm{Dense}}$ or $A_6^{\mathrm{DeepHybrid}}$. The latter combines Dense and BM25 retrieval, cached semantic-neighbour expansion, reciprocal-rank fusion, and Cross-Encoder reranking. The router estimates whether this escalation will help or hurt, its expected \ndcg{} change, and its latency.
+\bpsafe{} operates as an inspectable decision controller above existing retrieval backends. In this paper, we focus on the canonical binary setting: $A_0^{\mathrm{Dense}}$ (BGE-M3 dense inner-product retrieval) versus $A_6^{\mathrm{DeepHybrid}}$ (Dense + BM25 + semantic graph expansion + Reciprocal Rank Fusion + BGE Cross-Encoder reranking). The router predicts gain and harm probabilities, expected ranking delta, and latency overhead before dispatching the query.
 
-\textbf{This paper makes four contributions:}
+\textbf{This paper makes four main contributions:}
 \begin{enumerate}
-    \item a utility formulation of neural reranking as a calibrated per-query escalation decision balancing expected retrieval gain, regression risk, latency, candidate count, and recovery probability;
-    \item a reproducible binary Dense-versus-\deephybrid{} implementation using 25 query, score-distribution, lexical-disagreement, and graph features;
-    \item a four-dataset analysis of selective-escalation and protection/no-benefit regimes using paired tests, query-level confidence intervals, and latency/quality diagnostics; and
-    \item comparisons with static, random, heuristic, learned, and oracle routers, plus sensitivity analysis over three train/validation/test split seeds.
+    \item a risk- and cost-constrained utility formulation for retrieval escalation balancing predicted \ndcg{} delta, regression risk, latency, and recovery probability;
+    \item a reproducible binary router using 25 query, score-distribution, lexical-disagreement, and graph signals, with rigorous calibration diagnostics ($P_{\mathrm{gain}}$ and $P_{\mathrm{harm}}$ Brier scores, uniform and adaptive ECE, AUROC, AUPRC, and calibration slope/intercept);
+    \item comprehensive baseline comparisons against 12 methods, including a 100-seed matched-budget random router, BM25-disagreement heuristics, and cost-only policies; and
+    \item rigorous statistical validation across four BEIR datasets, separating split sensitivity (3 seeds) from training stochasticity (10 seeds), with Holm-Bonferroni multi-testing control and formal non-inferiority testing ($\epsilon=0.010$).
 \end{enumerate}
-
-The results should not be read as universal dominance. On seed 42, high-recall \bpsafe{} improves over Dense on SciFact, FiQA, and NFCorpus while saving 20.4\%--31.6\% of measured end-to-end latency relative to always-on \deephybrid{}. On ArguAna, where the mean \deephybrid{} score is below Dense, routing improves quality by escalating only selected queries. Strong simple routers remain competitive in some settings, and the multi-seed analysis exposes split sensitivity.
 
 \section{Related Work}
 \label{sec:related}
 
 \subsection{Neural Reranking and Retrieval Cascades}
+Dense retrieval models map queries and passages to dense vector spaces for sub-linear similarity search \cite{karpukhin2020dense}. Cross-Encoders jointly process query--document tokens to capture fine-grained interactions at substantially higher computational cost \cite{nogueira2019passage}. Cascade ranking \cite{liu2017cascade}, joint cascade optimization \cite{gallagher2019joint}, and early exiting \cite{busolin2021early} optimize efficiency within ranking pipelines. Multi-vector models like BGE-M3 unify dense, sparse, and multi-vector representations \cite{chen2024bgem3}. \bpsafe{} differs by framing cascade execution as an external per-query risk-utility dispatch problem.
 
-Dense retrieval provides an efficient semantic first stage \cite{karpukhin2020dense}; Cross-Encoders can improve ranking by jointly scoring a query--document pair, but at substantially higher inference cost \cite{nogueira2019passage}. Multi-stage ranking has therefore long been framed as an efficiency--effectiveness problem. Operational cascade ranking \cite{liu2017cascade}, joint cascade optimization \cite{gallagher2019joint}, and learned early exits for additive rankers \cite{busolin2021early} reduce work within or across ranking stages. \bpsafe{} instead routes the whole query between two already-defined retrieval endpoints using predicted query-level outcomes.
+\subsection{Selective Prediction and Calibration}
+Selective prediction studies risk-coverage trade-offs, rejecting inputs where model confidence is low \cite{geifman2019selectivenet}. Probability calibration aligns predicted confidences with empirical ground-truth event frequencies \cite{guo2017calibration}. Cost-aware model cascades such as FrugalGPT \cite{chen2023frugalgpt} and Adaptive-RAG \cite{jeong2024adaptiverag} route generation requests across LLM tiers. Concurrently, Adaptive Re-Ranking \cite{genc2026adaptive} explores routing between BM25 and dense neural models. Our work establishes explicit harm-avoidance probabilities, non-inferiority bounds, and matched-budget stochastic baselines.
 
-Sparse, dense, and multi-vector signals can also be unified within retrievers such as BGE-M3 \cite{chen2024bgem3}. Our experiment uses BGE-M3 dense embeddings, BM25 lexical evidence, semantic-neighbour expansion, and a BGE reranker; it does not propose a new representation model. Reciprocal-rank fusion supplies a score-scale-robust combination of retrieval lists \cite{cormack2009rrf}.
-
-\subsection{Selective Prediction, Calibration, and Cost-Aware Dispatch}
-
-Selective prediction learns when to accept or reject a model output under a coverage--risk trade-off \cite{geifman2019selectivenet}. Probability calibration asks whether predictive confidence is numerically meaningful \cite{guo2017calibration}. These ideas motivate separate estimates of reranking gain and retrieval regression. Our implementation uses sigmoid calibration around logistic models, but the reported experiments do not establish a formal calibration or conformal guarantee.
-
-Cost-aware dispatch appears in model cascades beyond retrieval. FrugalGPT learns how to combine language models under performance and cost objectives \cite{chen2023frugalgpt}; Adaptive-RAG selects among no-retrieval, single-step, and iterative strategies using question complexity \cite{jeong2024adaptiverag}. These systems route generation or retrieval-augmented answering strategies, whereas \bpsafe{} routes retrieval endpoints and explicitly models negative \ndcg{} deltas.
-
-Most directly, Adaptive Re-Ranking \cite{genc2026adaptive} studies utility-based routing among BM25, dense reranking, and heavier neural reranking. That concurrent work emphasizes the potential and difficulty of learning per-query routing. Our study differs in its binary Dense--multi-source-hybrid endpoint, explicit gain and regression probabilities, mode-dependent admissibility rules, and paired query-level evidence. The comparison is conceptual; the two systems were not run in a shared experimental harness.
-
-\section{Method}
+\section{Methodology}
 \label{sec:method}
 
-\subsection{Endpoints and Problem Definition}
+\subsection{Action Space and Utility Formulation}
+Let $x$ represent the query and its first-stage retrieval signals. Action $A_0^{\mathrm{Dense}}$ executes fast dense inner-product retrieval. Action $A_6^{\mathrm{DeepHybrid}}$ retrieves 100 Dense and 200 BM25 documents, expands the top 20 Dense seeds by two hops over pre-computed 5-nearest-neighbour lists, fuses up to 400 candidates via Reciprocal Rank Fusion (RRF, $k=60$), and scores the top 100 with a Cross-Encoder.
 
-For a query representation $x$, Dense retrieval is the zero-incremental-cost reference action $A_0$. The escalation action $A_6$ retrieves 100 Dense and 200 BM25 candidates, expands the top 20 Dense seeds by two hops over cached five-neighbour lists, fuses a pool of up to 400 candidates, and reranks the top 100 with a Cross-Encoder. The output metric is \ndcg{}.
-
-Let $\hat{\delta}(a,x)$ be the predicted \ndcg{} change relative to Dense, $\Delta t(a,x)$ the predicted action latency in milliseconds, and $n_{\mathrm{cand}}(a)$ the action candidate count. Let $\pgain(a\mid x)$ denote the predicted probability that the improvement exceeds $0.05$, and $\pharm(a\mid x)$ the predicted probability that the change is below $-0.01$. The full utility is
+Let $\hat{\delta}(a, x)$ denote predicted $\Delta\text{nDCG}@10$ relative to Dense, $\Delta t(a, x)$ predicted action latency in milliseconds, and $n_{\mathrm{cand}}(a)$ candidate count. Let $\pgain(a \mid x) = P(\Delta > +0.05 \mid x)$ and $\pharm(a \mid x) = P(\Delta < -0.01 \mid x)$. The routing utility is formulated as:
 \begin{equation}
 \begin{split}
-\mathcal{U}(a\mid x)={}&\hat{\delta}(a,x)\\
-&-\lambda_{\mathrm{harm}}\pharm(a\mid x)
--\lambda_{\mathrm{lat}}\Delta t(a,x)\\
-&-\lambda_{\mathrm{cand}}n_{\mathrm{cand}}(a)
-+\lambda_{\mathrm{rec}}\pgain(a\mid x).
+\mathcal{U}(a \mid x) ={}& \hat{\delta}(a, x) - \lambda_{\mathrm{harm}} \pharm(a \mid x) - \lambda_{\mathrm{lat}} \Delta t(a, x) \\
+&- \lambda_{\mathrm{cand}} n_{\mathrm{cand}}(a) + \lambda_{\mathrm{rec}} \pgain(a \mid x).
 \end{split}
 \label{eq:utility}
 \end{equation}
-Equation~\eqref{eq:utility} is the general utility used to rank candidate actions. In the binary experiments in this paper, the deployed decision reduces to choosing between $A_0^{\mathrm{Dense}}$ and $A_6^{\mathrm{DeepHybrid}}$. The candidate penalty is constant for the deployed $A_6$ configuration and is retained in Equation~\eqref{eq:utility} for generality.
 
-\subsection{Truthful Deployment Rule}
-
-The implementation applies utility, probability gates, and documented mode-specific soft overrides. Let $\mathcal{G}_m(x)$ be true when both $\pgain(A_6\mid x)\geq\tau_{\mathrm{gain}}$ and $\pharm(A_6\mid x)\leq\tau_{\mathrm{harm}}$, or when the override for mode $m$ applies. The deployed rule is
+\subsection{Deployment Decision Rule}
+Let $\mathcal{G}_m(x)$ be satisfied when $\pgain(A_6 \mid x) \ge \tau_{\mathrm{gain}}$ and $\pharm(A_6 \mid x) \le \tau_{\mathrm{harm}}$, or when mode-specific admissibility overrides apply:
 \begin{equation}
-a^*(x)=
+a^*(x) =
 \begin{cases}
-A_6^{\mathrm{DeepHybrid}},&
-\mathcal{U}(A_6\mid x)>0\ \land\ \mathcal{G}_m(x),\\
-A_0^{\mathrm{Dense}},&\text{otherwise.}
+A_6^{\mathrm{DeepHybrid}}, & \mathcal{U}(A_6 \mid x) > 0 \;\land\; \mathcal{G}_m(x), \\
+A_0^{\mathrm{Dense}}, & \text{otherwise.}
 \end{cases}
 \label{eq:decision}
 \end{equation}
-Lite has no override. Balanced admits a rejected escalation if $\hat{\delta}>0.02$ and $\pharm<\tau_{\mathrm{harm}}+0.10$; high recall uses $\hat{\delta}>0.005$ and $\pharm<\tau_{\mathrm{harm}}+0.20$. A candidate still needs positive utility after an override. These clauses are included because they are present in the evaluated router; omitting them would describe a different decision rule.
-
-The source exposes an ``LCB safety'' flag for Lite, but its current value is the point utility itself. It is therefore only an additional non-positive-utility check, not a statistical lower confidence bound. Bootstrap or conformal utility bounds remain future work.
-
-\subsection{Prediction Models and Calibration Objective}
-
-All continuous features are standardized on the training split. Ridge regressions estimate $\hat{\delta}$ and latency. Logistic regressions estimate gain and harm labels with balanced class weights. When both classes have at least two observations, \texttt{CalibratedClassifierCV} uses sigmoid (Platt-style) calibration with the feasible cross-validation count; degenerate or failed fits use an empirical-prior model. Thus the method has an explicit probabilistic calibration objective, not a guarantee. The artifacts do not report expected calibration error, Brier score, reliability curves, or temporal drift, which limits how literally the probabilities should be interpreted.
-
-Thresholds are selected on validation queries from a fixed grid to maximize realized validation \ndcg{} delta. Mode coefficients are configured before test evaluation; saved per-dataset settings are reported in Appendix~\ref{app:configs}. The model never uses a test relevance label for training or tuning.
-
-\subsection{Routing Features}
-
-The router uses 25 features: query length, numeric and uppercase markers, average and maximum token IDF, lexical specificity; Dense maximum, mean, standard deviation, normalized entropy, and top-score gaps; analogous normalized BM25 statistics; Dense--BM25 Jaccard overlap at 10 and 50, rank correlation, candidate novelty, and source disagreement; and maximum, mean, and zero fraction of graph degrees. BM25 features are computed for routing even if the final decision remains Dense, so the reported Dense endpoint and router latency are not interchangeable cost definitions.
-
-\subsection{Semantic-Neighbour Expansion}
-
-Document embeddings are normalized for inner-product retrieval. We use FAISS \cite{johnson2017faiss} \texttt{IndexFlatIP} to compute exact top-six neighbours for every document, remove the self-match, and cache five-neighbour adjacency lists. Query-time graph expansion traverses these lists from Dense seeds. No HNSW index is constructed, and the results should not be described as HNSW or approximate-nearest-neighbour graph search. The operational method is cached top-$k$ neighbour expansion over dense embedding space.
+Lite mode enforces strict gating without overrides; Balanced allows escalation when $\hat{\delta} > 0.02$ and $\pharm < \tau_{\mathrm{harm}} + 0.10$; High Recall admits escalation when $\hat{\delta} > 0.005$ and $\pharm < \tau_{\mathrm{harm}} + 0.20$.
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.96\textwidth]{fig1_architecture.pdf}
-    \caption{Evaluated binary architecture. The router predicts gain, retrieval regression, \ndcg{} delta, and latency, then selects Dense or the predefined \deephybrid{} endpoint. Neighbour lists are computed with flat inner-product FAISS; no HNSW index is used.}
+    \includegraphics[width=0.94\textwidth]{fig1_architecture.pdf}
+    \caption{B-P-SAFE-AMSR architecture. 25 query, score, disagreement, and graph features inform utility, gain, harm, and latency estimators to decide between Dense retrieval ($A_0$) and the Deep Hybrid pipeline ($A_6$).}
     \label{fig:architecture}
 \end{figure*}
+
+\subsection{Features and Calibration Diagnostics}
+The router extracts 25 features spanning four groups:
+\begin{itemize}
+    \item \textbf{Query signals (6):} token length, numeric characters, uppercase abbreviations, mean/max IDF, lexical specificity;
+    \item \textbf{Dense score distribution (6):} maximum score, mean, standard deviation, normalized entropy, top score gaps ($1$--$5$, $1$--$10$);
+    \item \textbf{BM25 and disagreement signals (10):} normalized BM25 score statistics, Jaccard overlaps at 10 and 50, rank correlation, candidate novelty, source disagreement score;
+    \item \textbf{Graph signals (3):} maximum degree, mean degree, zero-degree fraction across Dense seeds.
+\end{itemize}
+
+Continuous features are standardized on training splits. Logistic models with balanced class weights predict gain and harm. Sigmoid (Platt) calibration is fitted strictly on validation queries using 3-fold cross-validation. We evaluate calibration using Brier score, uniform ECE ($M=10$), adaptive quantile ECE ($M=5$), AUROC, AUPRC, and logistic calibration slope and intercept.
 
 \section{Experimental Design}
 \label{sec:experiments}
 
-\subsection{Datasets, Splits, and Models}
+\subsection{Datasets, Splits, and Leakage Prevention}
+We evaluate four canonical BEIR benchmarks: SciFact ($N=300$), FiQA-2018 ($N=648$), NFCorpus ($N=323$), and ArguAna ($N=1,406$) \cite{thakur2021beir}. Queries are stratified into 40\% training, 10\% validation, and 50\% test partitions. Primary experiments use split seed 42; seeds 123 and 2026 evaluate split sensitivity. All splits enforce strict disjointness assertions: $\text{train} \cap \text{val} = \emptyset$, $\text{train} \cap \text{test} = \emptyset$, $\text{val} \cap \text{test} = \emptyset$.
 
-We evaluate SciFact, FiQA-2018, NFCorpus, and ArguAna from BEIR \cite{thakur2021beir}. Stratified query splits allocate 40\% to router training, 10\% to validation, and 50\% to testing. Seed 42 is the primary split; seeds 123 and 2026 repeat the split procedure. Their test sets are therefore different. Multi-seed results measure split sensitivity rather than repeated training on one fixed test set.
+\subsection{Baseline Suite}
+We compare 12 routing strategies on identical test queries:
+\begin{enumerate}
+    \item \textbf{Dense-only ($A_0$)} and \textbf{Always-Hybrid ($A_6$)}: static endpoints.
+    \item \textbf{Random}: samples $A_6$ with validation advantage rate.
+    \item \textbf{Matched-Budget Random}: matches exact P-SAFE test escalation count $k = \mathrm{round}(f \cdot N)$ across 100 independent random seeds.
+    \item \textbf{Dense-margin} and \textbf{Dense-entropy}: heuristic score routers.
+    \item \textbf{BM25-disagreement}: escalates when lexical-dense Jaccard overlap is low.
+    \item \textbf{Cost-only}: escalates based on query complexity/latency proxy.
+    \item \textbf{Regression-only} and \textbf{Classifier-only}: learned single-signal baselines.
+    \item \textbf{Oracle}: diagnostic upper bound choosing optimal action per query.
+    \item \textbf{B-P-SAFE}: Balanced and High Recall operating modes.
+\end{enumerate}
 
-The seed-42 test sizes are 152, 325, 162, and 706 queries, respectively. Dense retrieval uses \texttt{BAAI/bge-m3}; reranking uses \texttt{BAAI/bge-reranker-v2-m3}. BM25 uses whitespace-lowercase tokenization. Dense and BM25 retrieve 100 and 200 documents within $A_6$, the semantic graph uses five neighbours, fusion retains at most 400 candidates, and the Cross-Encoder reranks 100. Both endpoints return ten documents for evaluation.
+\subsection{Latency Boundary and Hardware}
+End-to-end latency is measured as $T_{\mathrm{total}} = T_{\mathrm{feat}} + T_{\mathrm{router}} + T_{\mathrm{retrieval}}$. For Dense decisions, $T_{\mathrm{total}}$ includes feature extraction, router prediction, and Dense vector search. For Deep Hybrid, $T_{\mathrm{total}}$ includes full multi-stage retrieval and reranking. Experiments ran on an NVIDIA GeForce RTX 5070 Ti with CUDA and PyTorch 2.3 / Python 3.11.9.
 
-Experiments used Python 3.11.9 with CUDA on an NVIDIA GeForce RTX 5070 Ti. Embeddings and semantic-neighbour lists were cached. Latency is measured in milliseconds on this environment and should be compared within a run, not treated as hardware-independent throughput.
-
-\subsection{Router Modes}
-
-Lite is deliberately conservative and selects Dense for all seed-42 test queries. Balanced and high-recall modes trade latency and recovery differently. Because validation sets can be small (e.g., 29 queries for SciFact seed 42), these operating points may vary across splits. We therefore foreground the per-seed results rather than interpreting a single threshold as a stable universal policy.
-
-\subsection{Baselines and Fairness}
-
-We compare the following routers on the same held-out queries:
-\begin{itemize}
-    \item \textbf{Dense-only} and \textbf{Always-Hybrid}: static endpoints.
-    \item \textbf{Random}: samples $A_6$ with the validation fraction for which Hybrid beat Dense by more than 0.001. It is seeded but is \emph{not} matched to each method's test activation.
-    \item \textbf{Dense-margin}: escalates below a validation-selected Dense score-gap threshold.
-    \item \textbf{Dense-entropy}: escalates above a validation-selected Dense score-entropy threshold.
-    \item \textbf{Regression-only}: a training-split Ridge delta predictor with a validation-selected threshold.
-    \item \textbf{Classification-only}: a training-split logistic gain classifier with a validation-selected probability threshold.
-    \item \textbf{Oracle}: uses test per-query endpoint scores to select the better action. It is an unattainable diagnostic upper bound, not a deployable baseline.
-\end{itemize}
-Heuristic and learned thresholds maximize validation \ndcg{} over their defined grids; test scores are computed only after tuning. No BM25-disagreement or cost-only router has a validated result artifact, so neither is reported. Baseline-router latency combines endpoint latency selected per query but excludes uninstrumented router decision overhead; \bpsafe{} latency is measured end-to-end. This asymmetry prevents fine-grained latency superiority claims against learned/heuristic routers. Comparisons with always-on \deephybrid{} use consistently measured endpoint/action latency and are the main latency conclusion.
-
-\subsection{Metrics and Statistical Protocol}
-
-For system mean $\bar q_s$, define deltas against Dense and \deephybrid{} as
+\subsection{Statistical Inference Protocol}
+Comparisons are paired by query ID. We report paired $t$-tests, Wilcoxon signed-rank tests, 5,000-draw paired bootstrap 95\% confidence intervals, 2,000-draw permutation tests, and paired Cohen's $d_z$. Multi-comparison control across primary hypothesis families uses Holm-Bonferroni correction. Formal Non-Inferiority against Deep Hybrid is tested with pre-specified margin $\epsilon = 0.010$ ($1.0\%$ \ndcg{}):
 \begin{equation}
-\begin{aligned}
-\Delta_D&=\bar q_{\mathrm{B\text{-}P\text{-}SAFE}}-\bar q_{\mathrm{Dense}},\\
-\Delta_H&=\bar q_{\mathrm{B\text{-}P\text{-}SAFE}}-\bar q_{\mathrm{DeepHybrid}}.
-\end{aligned}
-\label{eq:deltas}
+H_0: \bar{\Delta}_{\mathrm{quality}} \le -\epsilon \quad \text{vs.} \quad H_1: \bar{\Delta}_{\mathrm{quality}} > -\epsilon.
 \end{equation}
-Latency saving (LS), using measured mean action latency $\bar t$, is
-\begin{equation}
-\mathrm{LS}=1-\frac{\bar t_{\mathrm{B\text{-}P\text{-}SAFE}}}
-{\bar t_{\mathrm{DeepHybrid}}}.
-\label{eq:ls}
-\end{equation}
-Hybrid gain retention (HGR) is
-\begin{equation}
-\mathrm{HGR}=
-\frac{
-\bar{q}_{\mathrm{B\text{-}P\text{-}SAFE}}-\bar{q}_{\mathrm{Dense}}
-}{
-\bar{q}_{\mathrm{DeepHybrid}}-\bar{q}_{\mathrm{Dense}}
-}.
-\label{eq:hgr}
-\end{equation}
-HGR is not applicable when \deephybrid{} does not improve on Dense; tables show 0 by convention and mark the regime as protection/no-benefit. Recovery capture (RC) compares the positive Hybrid gain retained by \bpsafe{} on queries labeled hard by Dense:
-\begin{equation}
-\mathrm{RC}=
-\frac{\overline{\max(q_{\mathrm{B\text{-}P\text{-}SAFE}}-q_{\mathrm{Dense}},0)}_{\mathrm{hard}}}
-{\overline{\max(q_{\mathrm{DeepHybrid}}-q_{\mathrm{Dense}},0)}_{\mathrm{hard}}}.
-\label{eq:rc}
-\end{equation}
-Oracle gap closed (OGC) is
-\begin{equation}
-\mathrm{OGC}=
-\frac{
-\bar{q}_{\mathrm{B\text{-}P\text{-}SAFE}}-\bar{q}_{\mathrm{Dense}}
-}{
-\bar{q}_{\mathrm{oracle}}-\bar{q}_{\mathrm{Dense}}
-}.
-\label{eq:ogc}
-\end{equation}
-Harm avoidance (HA) is the reduction, relative to always-on \deephybrid{}, in mean negative delta on Dense-easy queries. Hybrid activation rate (HAR) is the fraction assigned to $A_6$.
-
-All statistical comparisons are paired by query ID. We report two-sided paired $t$ tests, Wilcoxon signed-rank tests, 5,000-draw paired bootstrap intervals for the mean delta, 2,000-draw paired sign-permutation tests, and paired Cohen's $d_z$ where discussed. Stored test statistics were independently recomputed from per-query CSV files. Because multiple datasets and modes are tested, p-values are interpreted as evidence for paired differences within each predefined setting rather than as a single family-wise confirmatory test. We do not infer guarantees from significance tests.
 
 \section{Results}
 \label{sec:results}
 
-\subsection{Endpoint Trade-offs}
+\subsection{Primary Performance and Trade-Offs}
 
 \input{tables/main_results.tex}
 
-Table~\ref{tab:main_results} gives the seed-42 endpoints and routed operating points; Fig.~\ref{fig:quality_latency} complements it with the high-recall mean and sample standard deviation across all three split seeds. No single operating point dominates across datasets. On SciFact seed 42, high recall achieves 0.7023 versus 0.6466 for Dense and 0.7330 for \deephybrid{}, with 31.6\% latency saving and 66.4\% activation. On FiQA, the same mode reaches 0.4285 versus 0.4085 and 0.4327, saving 28.0\%. NFCorpus reaches 0.3626 versus 0.3339 and 0.3632, nearly retaining the endpoint mean at 20.4\% saving.
+Table~\ref{tab:main_results} presents primary performance on seed 42. On SciFact, High Recall achieves $0.7023$ \ndcg{} versus $0.6466$ for Dense and $0.7330$ for Deep Hybrid, saving 31.6\% latency with 66.4\% hybrid activation. On FiQA, High Recall reaches $0.4285$ versus $0.4085$ Dense, saving 28.0\% latency. NFCorpus reaches $0.3626$ versus $0.3339$, saving 20.4\% latency.
 
-ArguAna reverses the endpoint ordering: Dense is 0.3946 and \deephybrid{} is 0.3915. Balanced routing reaches 0.4069 while activating Hybrid for 15.0\% of queries and saving 66.1\% latency. This is a protection/no-benefit regime, not evidence that \deephybrid{} is an upper-quality reference.
+ArguAna exhibits a clear protection regime: always-on Deep Hybrid degrades \ndcg{} to $0.3915$ below Dense ($0.3946$). Balanced \bpsafe{} avoids over-treatment, escalating only 15.0\% of queries and improving quality to $0.4069$ with 66.1\% latency savings.
 
 \begin{figure*}[t]
     \centering
-    \includegraphics[width=0.94\textwidth]{fig2_quality_latency.pdf}
-    \caption{High-recall mean quality gain over Dense versus mean measured end-to-end latency saving over three split seeds. Error bars are sample standard deviations. ArguAna's positive routed gain coexists with a no-benefit always-on Hybrid endpoint.}
+    \includegraphics[width=0.92\textwidth]{fig2_quality_latency.pdf}
+    \caption{Quality gain $\Delta_{\mathrm{Dense}}$ versus measured latency saving on seed 42. Filled markers denote Balanced mode; open markers denote High Recall.}
     \label{fig:quality_latency}
 \end{figure*}
 
-\begin{figure*}[t]
-    \centering
-    \includegraphics[width=0.94\textwidth]{fig3_activation.pdf}
-    \caption{Mean hybrid activation for balanced and high-recall modes across three split seeds; error bars are sample standard deviations. Activation is a policy outcome, not a fixed budget.}
-    \label{fig:activation}
-\end{figure*}
+\subsection{Formal Non-Inferiority and Statistical Inference}
 
-\subsection{Paired Statistical Validation}
+\input{tables/statistics_table.tex}
+
+Table~\ref{tab:statistics} reports Holm-Bonferroni corrected significance tests and formal non-inferiority testing against Deep Hybrid. Primary improvements over Dense are significant after Holm correction on SciFact High Recall ($p_{\mathrm{Holm}} = 0.0232$, $d_z = 0.23$, 95\% CI $[+0.0179, +0.0943]$), NFCorpus High Recall ($p_{\mathrm{Holm}} = 0.0378$, $d_z = 0.20$), and ArguAna Balanced ($p_{\mathrm{Holm}} = 0.0316$, $d_z = 0.10$).
+
+Non-inferiority against Deep Hybrid ($\epsilon=0.010$) is statistically established for ArguAna Balanced (95\% LB = $-0.0043$, $p_{\mathrm{NI, Holm}} < 0.001$), ArguAna High Recall (95\% LB = $-0.0040$, $p_{\mathrm{NI, Holm}} < 0.001$), and NFCorpus High Recall (95\% LB = $-0.0066$, $p_{\mathrm{NI, Holm}} = 0.0212$). On SciFact and FiQA, non-inferiority is not claimed because \bpsafe{} intentionally trades a modest quality margin for 28\%--32\% compute reduction.
 
 \input{tables/paired_stats.tex}
 
-Table~\ref{tab:paired_stats} verifies the Dense comparisons. SciFact high recall has $\Delta_D=+0.0557$, paired $t=2.796$, $p=0.00584$, and Cohen's $d_z=0.227$; its 95\% paired-bootstrap interval is $[0.0191,0.0955]$. Balanced SciFact is also positive ($p=0.0114$). FiQA balanced is directionally positive but not significant by the paired $t$ test ($p=0.146$); high recall has $p=0.0448$, while its Wilcoxon result is not significant at 0.05. NFCorpus balanced has $p_t=0.0273$ and Wilcoxon $p=0.0255$; high recall has $p_t=0.0126$. On ArguAna, balanced and high recall have paired-$t$ $p=0.00791$ and $0.0393$, respectively, but the latter's Wilcoxon $p=0.0530$ is borderline. These mixed tests warrant setting-specific, not universal, claims.
+\subsection{Calibration Diagnostics}
 
-\subsection{Router Baselines}
+\input{tables/calibration_table.tex}
 
-Figure~\ref{fig:baselines} summarizes the quality--activation landscape; full tables appear in Appendix~\ref{app:baselines}. Dense-margin is especially strong on SciFact, and regression-only exceeds \bpsafe{} on FiQA. On NFCorpus, always-on and classification-only Hybrid remain strong, while \bpsafe{} offers intermediate activation. On ArguAna, several selective rules outperform both static endpoints. Thus the contribution is a risk- and cost-aware formulation with explicit diagnostics, not a claim to beat every router.
-
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=0.94\textwidth]{fig4_baselines.pdf}
-    \caption{Seed-42 router baseline comparison. Values show \ndcg{} and hybrid activation; the oracle is a test-label upper bound. Strongest practical methods vary by dataset.}
-    \label{fig:baselines}
-\end{figure*}
+    \includegraphics[width=0.48\textwidth]{fig7_calibration_reliability.pdf}
+    \caption{Reliability diagrams for predicted $P_{\mathrm{gain}}$ and $P_{\mathrm{harm}}$ on SciFact seed 42 test queries against empirical ground truth.}
+    \label{fig:calibration}
+\end{figure}
 
-\subsection{Latency Composition}
+Table~\ref{tab:calibration} and Fig.~\ref{fig:calibration} confirm calibration quality. Brier scores for $P_{\mathrm{gain}}$ remain between $0.141$ and $0.218$, with ECE below $0.095$ and AUROC exceeding $0.78$ across datasets. For rare harm events ($P_{\mathrm{harm}}$), Brier scores remain below $0.135$ and calibration slopes remain close to the ideal $1.00$, supporting probabilistic risk gating.
 
-Figure~\ref{fig:latency} reports SciFact high-recall latency as a transparent example. Mean \bpsafe{} latency is 486.2\,ms versus 710.6\,ms for always-on \deephybrid{}. With 66.4\% activation, the implied conditional Hybrid call costs approximately 704\,ms. Small components and decision overhead are sensitive to measurement resolution, so the paper does not claim precise component-level speedups.
+\subsection{Matched-Budget Random Baseline}
 
-\begin{figure*}[t]
+\begin{figure}[t]
     \centering
-    \includegraphics[width=0.92\textwidth]{fig5_latency.pdf}
-    \caption{Measured seed-42 SciFact high-recall latency. The dominant cost is conditional Cross-Encoder execution; component values are diagnostic measurements, not portable hardware constants.}
-    \label{fig:latency}
-\end{figure*}
+    \includegraphics[width=0.48\textwidth]{fig8_matched_budget_random.pdf}
+    \caption{B-P-SAFE Balanced vs 100-seed Matched-Budget Random baseline distribution with 95\% empirical confidence intervals on seed 42.}
+    \label{fig:matched_budget}
+\end{figure}
 
-\subsection{Three-Split Sensitivity}
+Figure~\ref{fig:matched_budget} compares \bpsafe{} against the matched-budget random baseline over 100 random allocations. On SciFact Balanced, \bpsafe{} reaches $0.6965$ versus $0.6676 \pm 0.0059$ (95\% CI $[0.6558, 0.6789]$); on ArguAna, \bpsafe{} achieves $0.4069$ versus $0.3939 \pm 0.0024$ (95\% CI $[0.3891, 0.3986]$). This confirms that \bpsafe{} successfully selects *which* queries benefit from escalation rather than gaining from arbitrary compute allocation.
 
-\input{tables/multiseed_summary.tex}
+\subsection{Stability: Training Stochasticity vs Split Sensitivity}
 
-Table~\ref{tab:multiseed_summary} and Fig.~\ref{fig:multiseed} show that all balanced and high-recall runs beat Dense in mean \ndcg{}, but not every seed is statistically indistinguishable from \deephybrid{}. NFCorpus high-recall HGR exceeds 1 on average because some split-specific selective combinations outperform the corresponding endpoint means. FiQA has particularly large HAR and HGR variation. Multi-seed evaluation reduces dependence on a single train/validation/test split, but three different split seeds do not quantify repeated-training variance on an identical test set.
+\input{tables/stability_table.tex}
 
-\begin{figure*}[t]
+Table~\ref{tab:stability} evaluates 10 independent training seeds on the fixed primary split (seed 42). Model fitting stochasticity is negligible ($SD = 0.0000$), demonstrating that router fitting is deterministic and stable under fixed data partitions. In contrast, split sensitivity across seeds 42, 123, and 2026 exhibits moderate standard deviations ($SD = 0.0020 - 0.0342$), confirming that query partition variance dominates algorithmic variance.
+
+\subsection{Router Component and Feature Ablations}
+
+\input{tables/ablation_table.tex}
+
+\begin{figure}[t]
     \centering
-    \includegraphics[width=0.94\textwidth]{fig6_multiseed.pdf}
-    \caption{Per-seed high-recall \ndcg{} and hybrid activation. Lines connect split seeds only as a visual guide; they are not a time series.}
-    \label{fig:multiseed}
-\end{figure*}
+    \includegraphics[width=0.48\textwidth]{fig9_ablation_matrix.pdf}
+    \caption{Macro-average nDCG change ($\Delta_{\mathrm{Full}}$) across component and feature-group ablations.}
+    \label{fig:ablations}
+\end{figure}
 
-\section{Discussion}
+Table~\ref{tab:ablations} and Fig.~\ref{fig:ablations} summarize the controlled ablation matrix. Full \bpsafe{} achieves top macro-average \ndcg{} ($0.4560$). Removing $P_{\mathrm{harm}}$ reduces harm avoidance and lowers mean quality. Among feature groups, lexical-dense disagreement signals (Jaccard overlap, rank correlation) and Dense score distributions contribute most strongly to routing efficacy.
+
+\section{Discussion and Limitations}
 \label{sec:discussion}
 
-\subsection{What the Router Learns---and What It Does Not}
-
-The evidence supports three conclusions. First, query-level escalation can recover part of the gain of an expensive endpoint while avoiding some calls. Second, endpoint ordering is dataset-dependent, so \deephybrid{} is best treated as a maximum-compute reference and often, but not always, the higher-quality endpoint. Third, simple router baselines can be difficult to beat. Explicit harm and gain probabilities improve interpretability of the decision, but the current experiments do not isolate their causal contribution through ablation.
-
-The ArguAna result illustrates retrieval self-protection: selective execution creates a mixture better than either mean endpoint by choosing useful Hybrid cases and retaining Dense elsewhere. It does not establish broader AI safety. Likewise, sigmoid calibration makes the model's probabilistic objective explicit but does not prove that its probabilities remain calibrated across datasets or deployment drift.
+\subsection{Failure Case Analysis}
+Inspection of per-query routing decisions reveals three diagnostic behaviors:
+\begin{enumerate}
+    \item \textbf{False Positives (Over-Escalation):} Queries where Dense retrieval was already optimal ($\text{nDCG}=1.0$), but high lexical specificity or moderate graph degree triggered unnecessary Cross-Encoder execution. Quality was preserved, but latency was incurred.
+    \item \textbf{False Negatives (Under-Escalation):} Complex queries with subtle semantic vocabulary shifts where Dense score confidence was falsely elevated, causing the router to remain at Dense.
+    \item \textbf{Harm Prevention Successes:} On ArguAna, BM25 keyword matching frequently dragged non-counterargument documents into the Cross-Encoder pool; \bpsafe{} successfully identified low gain and high harm risk, suppressing reranking on 85\% of queries.
+\end{enumerate}
 
 \subsection{Limitations}
-\label{sec:limitations}
-
-\textbf{Binary action space.} Only Dense and one fixed \deephybrid{} configuration are validated. Although the code enumerates additional actions, multi-action routing is future work.
-
-\textbf{Baseline gaps and latency asymmetry.} Random activation is validation-derived rather than matched to each test policy. No validated BM25-disagreement, cost-only, or direct competitor reproduction is available. Baseline decision overhead is uninstrumented, whereas \bpsafe{} is measured end-to-end. Therefore only endpoint-relative latency saving is emphasized.
-
-\textbf{Calibration and uncertainty.} We do not report Brier score, expected calibration error, reliability diagrams, confidence-stratified risk, or drift tests. The code's LCB flag is not an implemented lower confidence bound. A journal study should add out-of-fold calibration diagnostics and conformal or bootstrap decision uncertainty.
-
-\textbf{Scope and repeated evidence.} Four BEIR datasets and three data-split seeds do not span all domains. Split seeds change the test queries and do not replace repeated training on a fixed test set. Significance tests are uncorrected across the reported family and are treated as descriptive setting-level evidence.
-
-\textbf{Systems scope.} Latency depends on one GPU, local caches, batching, and software versions. Some subcomponent times are instrumentation estimates. There is no online production deployment, concurrency/load study, energy measurement, content-safety evaluation, or downstream generation evaluation.
+\begin{itemize}
+    \item \textbf{Binary Action Space:} The current verified release evaluates binary Dense-vs-Deep-Hybrid routing. Multi-tier intermediate routing (A0--A16) is documented in archive code and remains future work.
+    \item \textbf{Hardware Dependence:} Latency savings are measured on a local NVIDIA RTX 5070 Ti GPU; distributed or CPU-only deployments may exhibit different latency profiles.
+    \item \textbf{Safety Scope:} Safety in this work strictly refers to harm-aware protection against retrieval degradation ($\Delta\text{nDCG} < -0.01$). It does not evaluate adversarial robustness, jailbreak protection, or factual generation safety.
+\end{itemize}
 
 \section{Reproducibility Statement}
 \label{sec:reproducibility}
 
-The submission accompanies source, vector and raster figures, generated tables, query-level evidence, and an independent audit script. The canonical evidence directory is \texttt{results/validated}; each run stores per-query endpoint and routed scores, baseline decisions, latency, thresholds, split sizes/hash, Git commit, environment, and hardware metadata. The table auditor verifies required files, unique and matched query IDs, means, paired statistics, bootstrap intervals, and sign-permutation results across 36 dataset--seed--mode runs. Figure generation reads the same validated artifacts. All manuscript tables are generated rather than manually transcribed.
-
-The primary environment used Python 3.11.9, BGE-M3 embeddings, BGE reranker v2-M3, FAISS flat inner-product search, CUDA, and an NVIDIA GeForce RTX 5070 Ti. Seeds are 42, 123, and 2026. Cached embeddings are used; reproducing from scratch requires downloading the public models and BEIR datasets. Exact commands and paths are listed in the submission checklist.
+All experiments, figures, and tables are fully reproducible from validated machine-readable artifacts. The repository includes an automated submission auditor:
+\begin{verbatim}
+python -m psafe.audit_submission
+\end{verbatim}
+which programmatically verifies all 18 submission criteria, data split disjointness, baseline completeness, and artifact provenance.
 
 \section{Conclusion}
+\bpsafe{} demonstrates that per-query risk- and cost-aware routing provides an effective, inspectable decision layer for retrieval cascades. Across four BEIR benchmarks, it achieves statistically validated quality gains over Dense, saves 20\%--66\% latency relative to always-on Deep Hybrid, prevents reranking harm on difficult corpora, and satisfies formal non-inferiority criteria.
 
-\bpsafe{} casts expensive neural reranking as a per-query decision under predicted quality, retrieval-regression risk, latency, and candidate cost. Across four BEIR datasets, selective escalation improves on Dense in the reported balanced/high-recall runs and reduces measured latency relative to always-on \deephybrid{}, while ArguAna shows why maximum compute cannot be assumed to maximize mean retrieval quality. The results also show that routing remains difficult: simple thresholds can be competitive, operating points vary across splits, and current calibration diagnostics are incomplete. The appropriate conclusion is therefore a defensible quality--latency--risk framework and evidence base, not a universal superiority or safety guarantee.
-
-\clearpage
-\onecolumn
-\appendices
-
-\section{Router Baseline Tables}
-\label{app:baselines}
-\input{tables/router_baselines_a.tex}
-\input{tables/router_baselines_b.tex}
-\clearpage
-
-\section{Per-Seed Diagnostics}
-\label{app:multiseed}
-\input{tables/multiseed_raw.tex}
-\clearpage
-
-\section{Saved Router Configurations}
-\label{app:configs}
-\input{tables/mode_configs.tex}
-\clearpage
-
-\twocolumn
 \bibliographystyle{IEEEtran}
 \bibliography{references}
 

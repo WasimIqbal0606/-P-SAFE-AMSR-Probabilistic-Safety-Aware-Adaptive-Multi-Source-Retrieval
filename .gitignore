@@ -66,15 +66,88 @@ secrets.json
 *.pt
 *.pth
 *.bin
+# =====================================================
+# B-P-SAFE-AMSR Research Repository
+# =====================================================
+
+# ── Python bytecode and caches ──
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# ── Virtual environments ──
+.venv/
+venv/
+env/
+
+# ── Tool caches and coverage ──
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ── Build and packaging artifacts ──
+build/
+dist/
+*.egg-info/
+
+# ── IDE and OS files ──
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ── LaTeX intermediate files ──
+*.aux
+*.log
+*.out
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+*.toc
+
+# ── Jupyter ──
+.ipynb_checkpoints/
+
+# ── Large downloaded datasets ──
+datasets/
+data/
+
+# ── Archives and old runs ──
+archive/
+
+# ── FAISS index caches ──
+*/cache/
+*.faiss
+
+# ── Secrets and Local Configs ──
+.env
+.env.*
+secrets.json
+*.key
+
+# ── Models and Weights ──
+*.pt
+*.pth
+*.bin
 *.safetensors
 
 # ── Temporary outputs ──
 debug_outputs/
 /tmp/
 
-# ── Gitignore results except validated ──
+# ── Gitignore results except verified evidence directories ──
 results/*
 !results/validated/
+!results/baselines/
+!results/calibration/
+!results/ablations/
+!results/stability/
+!results/statistics/
 
 # ── Replit & Gemini ──
 replit.nix

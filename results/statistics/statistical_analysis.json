@@ -1,0 +1,3128 @@
+{
+    "full_per_run_statistics": {
+        "scifact": {
+            "42": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 152,
+                        "mean_delta": 0.049911033785944824,
+                        "median_delta": 0.0,
+                        "std_delta": 0.23930623980976704,
+                        "baseline_mean": 0.6465710417012945,
+                        "system_mean": 0.6964820754872394,
+                        "wins": 27,
+                        "ties": 111,
+                        "losses": 14,
+                        "effect_size": {
+                            "cohens_d": 0.1265870639946927,
+                            "cohens_dz": 0.20787833140818263,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.562896194092853,
+                            "p_value": 0.011358120722639595,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 252.0,
+                            "p_value": 0.020535109853924764,
+                            "significant": true,
+                            "n_nonzero": 41
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.013668097975117782,
+                            "ci_high": 0.08825892664298403,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.010994502748625687,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.049911033785944824,
+                            "std_delta": 0.240097336975162,
+                            "se_delta": 0.01947446560691118,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.076389103312973,
+                            "p_value_non_inferiority": 0.0012441165165927304,
+                            "ci_lower_bound_95_param": 0.017680649356803968,
+                            "ci_lower_bound_95_bootstrap": 0.018694948908087494,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0177) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 152,
+                        "mean_delta": -0.036541653331404036,
+                        "median_delta": 0.0,
+                        "std_delta": 0.15649823098554994,
+                        "baseline_mean": 0.7330237288186434,
+                        "system_mean": 0.6964820754872394,
+                        "wins": 4,
+                        "ties": 136,
+                        "losses": 12,
+                        "effect_size": {
+                            "cohens_d": -0.09529303680881458,
+                            "cohens_dz": -0.232726286680829,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -2.8692423609485496,
+                            "p_value": 0.004704713554135287,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 13.5,
+                            "p_value": 0.0047951027801978,
+                            "significant": true,
+                            "n_nonzero": 16
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.06422833468327982,
+                            "ci_high": -0.013928184617215027,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0024987506246876563,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.036541653331404036,
+                            "std_delta": 0.15701558192057116,
+                            "se_delta": 0.012735645419414361,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -2.0840446210086565,
+                            "p_value_non_inferiority": 0.9805797507681767,
+                            "ci_lower_bound_95_param": -0.057619240573401606,
+                            "ci_lower_bound_95_bootstrap": -0.05926935558979453,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0576) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.036541653331404036,
+                        "std_delta": 0.15701558192057116,
+                        "se_delta": 0.012735645419414361,
+                        "n_queries": 152,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -2.0840446210086565,
+                        "p_value_non_inferiority": 0.9805797507681767,
+                        "ci_lower_bound_95_param": -0.057619240573401606,
+                        "ci_lower_bound_95_bootstrap": -0.05926935558979453,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0576) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 152,
+                        "mean_delta": 0.05568578165964961,
+                        "median_delta": 0.0,
+                        "std_delta": 0.24469332477191033,
+                        "baseline_mean": 0.6465710417012945,
+                        "system_mean": 0.7022568233609441,
+                        "wins": 29,
+                        "ties": 109,
+                        "losses": 14,
+                        "effect_size": {
+                            "cohens_d": 0.14121064631142125,
+                            "cohens_dz": 0.226823933693632,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.7964732661390634,
+                            "p_value": 0.00583880437413635,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 260.0,
+                            "p_value": 0.010018057731658665,
+                            "significant": true,
+                            "n_nonzero": 43
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.01789527734792714,
+                            "ci_high": 0.09433665587406001,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.005497251374312844,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.05568578165964961,
+                            "std_delta": 0.24550223053120857,
+                            "se_delta": 0.019912860363772367,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.2986612902259034,
+                            "p_value_non_inferiority": 0.0006058382768239223,
+                            "ci_lower_bound_95_param": 0.022729850669665444,
+                            "ci_lower_bound_95_bootstrap": 0.02327563814644264,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0227) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 152,
+                        "mean_delta": -0.03076690545769924,
+                        "median_delta": 0.0,
+                        "std_delta": 0.1471843894468763,
+                        "baseline_mean": 0.7330237288186434,
+                        "system_mean": 0.7022568233609441,
+                        "wins": 4,
+                        "ties": 138,
+                        "losses": 10,
+                        "effect_size": {
+                            "cohens_d": -0.08022009399454957,
+                            "cohens_dz": -0.20834771702699156,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -2.5686831686556095,
+                            "p_value": 0.011178169769358558,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 12.5,
+                            "p_value": 0.011931715346446877,
+                            "significant": true,
+                            "n_nonzero": 14
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.05662636808191211,
+                            "ci_high": -0.009703503086795146,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.009995002498750625,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.03076690545769924,
+                            "std_delta": 0.14767095073911163,
+                            "se_delta": 0.01197769574431476,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -1.7337980443823096,
+                            "p_value_non_inferiority": 0.9575025075068162,
+                            "ci_lower_bound_95_param": -0.05059008038875088,
+                            "ci_lower_bound_95_bootstrap": -0.05158633747728659,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0506) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.03076690545769924,
+                        "std_delta": 0.14767095073911163,
+                        "se_delta": 0.01197769574431476,
+                        "n_queries": 152,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -1.7337980443823096,
+                        "p_value_non_inferiority": 0.9575025075068162,
+                        "ci_lower_bound_95_param": -0.05059008038875088,
+                        "ci_lower_bound_95_bootstrap": -0.05158633747728659,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0506) falls below -0.010"
+                    }
+                }
+            },
+            "123": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 152,
+                        "mean_delta": 0.06914797834259455,
+                        "median_delta": 0.0,
+                        "std_delta": 0.2647523744531551,
+                        "baseline_mean": 0.666403886890613,
+                        "system_mean": 0.7355518652332077,
+                        "wins": 33,
+                        "ties": 101,
+                        "losses": 18,
+                        "effect_size": {
+                            "cohens_d": 0.18132369580415603,
+                            "cohens_dz": 0.26031926127788957,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 3.2094313989279244,
+                            "p_value": 0.0016246778074372544,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 318.5,
+                            "p_value": 0.0012259070659599125,
+                            "significant": true,
+                            "n_nonzero": 51
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.02884539391101888,
+                            "ci_high": 0.11215006926788554,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0014992503748125937,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.06914797834259455,
+                            "std_delta": 0.2656275913013575,
+                            "se_delta": 0.021545242676223795,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.6735709841847415,
+                            "p_value_non_inferiority": 0.0001657599907131102,
+                            "ci_lower_bound_95_param": 0.03349044256778034,
+                            "ci_lower_bound_95_bootstrap": 0.03473218200021486,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0335) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 152,
+                        "mean_delta": -0.016681719212377256,
+                        "median_delta": 0.0,
+                        "std_delta": 0.13312206875264254,
+                        "baseline_mean": 0.7522335844455849,
+                        "system_mean": 0.7355518652332077,
+                        "wins": 4,
+                        "ties": 138,
+                        "losses": 10,
+                        "effect_size": {
+                            "cohens_d": -0.04454454089560004,
+                            "cohens_dz": -0.12489855919672979,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -1.5398528545259418,
+                            "p_value": 0.1256891899224581,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 31.0,
+                            "p_value": 0.17690062150398822,
+                            "significant": false,
+                            "n_nonzero": 14
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.03911817925586235,
+                            "ci_high": 0.0025237791418280483,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.13693153423288357,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.016681719212377256,
+                            "std_delta": 0.13356214290752227,
+                            "se_delta": 0.01083332031586413,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -0.6167748222668779,
+                            "p_value_non_inferiority": 0.73084395956449,
+                            "ci_lower_bound_95_param": -0.03461094435632218,
+                            "ci_lower_bound_95_bootstrap": -0.035027044351834666,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0346) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.016681719212377256,
+                        "std_delta": 0.13356214290752227,
+                        "se_delta": 0.01083332031586413,
+                        "n_queries": 152,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -0.6167748222668779,
+                        "p_value_non_inferiority": 0.73084395956449,
+                        "ci_lower_bound_95_param": -0.03461094435632218,
+                        "ci_lower_bound_95_bootstrap": -0.035027044351834666,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0346) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 152,
+                        "mean_delta": 0.07243745202680507,
+                        "median_delta": 0.0,
+                        "std_delta": 0.2726896166343362,
+                        "baseline_mean": 0.666403886890613,
+                        "system_mean": 0.7388413389174182,
+                        "wins": 35,
+                        "ties": 97,
+                        "losses": 20,
+                        "effect_size": {
+                            "cohens_d": 0.18992185665898023,
+                            "cohens_dz": 0.2647654084579011,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 3.264247182799372,
+                            "p_value": 0.001357747830086699,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 381.0,
+                            "p_value": 0.001105491456712936,
+                            "significant": true,
+                            "n_nonzero": 55
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.030882233124022686,
+                            "ci_high": 0.11589583987313551,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0014992503748125937,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.07243745202680507,
+                            "std_delta": 0.2735910723712345,
+                            "se_delta": 0.02219116628437548,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.7148769456451793,
+                            "p_value_non_inferiority": 0.00014281762067036574,
+                            "ci_lower_bound_95_param": 0.03571090790933326,
+                            "ci_lower_bound_95_bootstrap": 0.03670096322632548,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0357) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 152,
+                        "mean_delta": -0.013392245528166728,
+                        "median_delta": 0.0,
+                        "std_delta": 0.11440657286935837,
+                        "baseline_mean": 0.7522335844455849,
+                        "system_mean": 0.7388413389174182,
+                        "wins": 2,
+                        "ties": 142,
+                        "losses": 8,
+                        "effect_size": {
+                            "cohens_d": -0.03575538440018062,
+                            "cohens_dz": -0.1166726618804446,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -1.438437181318955,
+                            "p_value": 0.15237947213986866,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 15.0,
+                            "p_value": 0.220703125,
+                            "significant": false,
+                            "n_nonzero": 10
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.03266182493208113,
+                            "ci_high": 0.0029379690502218596,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.18590704647676162,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.013392245528166728,
+                            "std_delta": 0.11478477744760694,
+                            "se_delta": 0.00931027486086455,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -0.364355035577513,
+                            "p_value_non_inferiority": 0.6419486850538605,
+                            "ci_lower_bound_95_param": -0.028800819193989878,
+                            "ci_lower_bound_95_bootstrap": -0.029488450889875787,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0288) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.013392245528166728,
+                        "std_delta": 0.11478477744760694,
+                        "se_delta": 0.00931027486086455,
+                        "n_queries": 152,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -0.364355035577513,
+                        "p_value_non_inferiority": 0.6419486850538605,
+                        "ci_lower_bound_95_param": -0.028800819193989878,
+                        "ci_lower_bound_95_bootstrap": -0.029488450889875787,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0288) falls below -0.010"
+                    }
+                }
+            },
+            "2026": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 152,
+                        "mean_delta": 0.034605754854999525,
+                        "median_delta": 0.0,
+                        "std_delta": 0.24740553297418888,
+                        "baseline_mean": 0.632779056975583,
+                        "system_mean": 0.6673848118305825,
+                        "wins": 28,
+                        "ties": 100,
+                        "losses": 24,
+                        "effect_size": {
+                            "cohens_d": 0.08426005599419585,
+                            "cohens_dz": 0.13941374662827852,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.7188081038434582,
+                            "p_value": 0.0876987111958205,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 516.5,
+                            "p_value": 0.11554483392451645,
+                            "significant": false,
+                            "n_nonzero": 52
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.004175401228177807,
+                            "ci_high": 0.07393467253054152,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0864567716141929,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.034605754854999525,
+                            "std_delta": 0.24822340473547058,
+                            "se_delta": 0.020133576737052246,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.2154908408753133,
+                            "p_value_non_inferiority": 0.01411156184843465,
+                            "ci_lower_bound_95_param": 0.0012845366368979608,
+                            "ci_lower_bound_95_bootstrap": 0.001598385545752102,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0013) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 152,
+                        "mean_delta": -0.012922783466478887,
+                        "median_delta": 0.0,
+                        "std_delta": 0.09993698406766363,
+                        "baseline_mean": 0.6803075952970614,
+                        "system_mean": 0.6673848118305825,
+                        "wins": 1,
+                        "ties": 147,
+                        "losses": 4,
+                        "effect_size": {
+                            "cohens_d": -0.03179284055657461,
+                            "cohens_dz": -0.12888325861730116,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -1.5889795283375265,
+                            "p_value": 0.1141566437052991,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1.5,
+                            "p_value": 0.1875,
+                            "significant": false,
+                            "n_nonzero": 5
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.03109291180294543,
+                            "ci_high": 0.0,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.17041479260369816,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.012922783466478887,
+                            "std_delta": 0.10026735516403328,
+                            "se_delta": 0.00813275642386619,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -0.35938411457913055,
+                            "p_value_non_inferiority": 0.6400950840305376,
+                            "ci_lower_bound_95_param": -0.026382555421235333,
+                            "ci_lower_bound_95_bootstrap": -0.027184971738722034,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0264) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.012922783466478887,
+                        "std_delta": 0.10026735516403328,
+                        "se_delta": 0.00813275642386619,
+                        "n_queries": 152,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -0.35938411457913055,
+                        "p_value_non_inferiority": 0.6400950840305376,
+                        "ci_lower_bound_95_param": -0.026382555421235333,
+                        "ci_lower_bound_95_bootstrap": -0.027184971738722034,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0264) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 152,
+                        "mean_delta": 0.04094959095305736,
+                        "median_delta": 0.0,
+                        "std_delta": 0.2531404318427956,
+                        "baseline_mean": 0.632779056975583,
+                        "system_mean": 0.6737286479286403,
+                        "wins": 30,
+                        "ties": 98,
+                        "losses": 24,
+                        "effect_size": {
+                            "cohens_d": 0.10048263392066209,
+                            "cohens_dz": 0.16123329557428517,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.9878175699659189,
+                            "p_value": 0.04863996079903148,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 527.5,
+                            "p_value": 0.06371581189178081,
+                            "significant": false,
+                            "n_nonzero": 54
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.0013759913017332415,
+                            "ci_high": 0.08156618057877481,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.047476261869065464,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.04094959095305736,
+                            "std_delta": 0.2539772619991546,
+                            "se_delta": 0.020600276188201438,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.4732479549103394,
+                            "p_value_non_inferiority": 0.007248672991784999,
+                            "ci_lower_bound_95_param": 0.0068559816959909425,
+                            "ci_lower_bound_95_bootstrap": 0.007139877603966177,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0069) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 152,
+                        "mean_delta": -0.006578947368421052,
+                        "median_delta": 0.0,
+                        "std_delta": 0.08222667055847831,
+                        "baseline_mean": 0.6803075952970614,
+                        "system_mean": 0.6737286479286403,
+                        "wins": 1,
+                        "ties": 149,
+                        "losses": 2,
+                        "effect_size": {
+                            "cohens_d": -0.01631431286311505,
+                            "cohens_dz": -0.07974627134815694,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -0.9831780635662848,
+                            "p_value": 0.3270925051105377,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1.5,
+                            "p_value": 0.75,
+                            "significant": false,
+                            "n_nonzero": 3
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.020598222062970118,
+                            "ci_high": 0.001722759915413915,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.7536231884057971,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.006578947368421052,
+                            "std_delta": 0.08249849500421942,
+                            "se_delta": 0.0066915115503667945,
+                            "n_queries": 152,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 0.5112525930544681,
+                            "p_value_non_inferiority": 0.30496047224148226,
+                            "ci_lower_bound_95_param": -0.017653448411665093,
+                            "ci_lower_bound_95_bootstrap": -0.019736842105263157,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0177) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.006578947368421052,
+                        "std_delta": 0.08249849500421942,
+                        "se_delta": 0.0066915115503667945,
+                        "n_queries": 152,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 0.5112525930544681,
+                        "p_value_non_inferiority": 0.30496047224148226,
+                        "ci_lower_bound_95_param": -0.017653448411665093,
+                        "ci_lower_bound_95_bootstrap": -0.019736842105263157,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0177) falls below -0.010"
+                    }
+                }
+            }
+        },
+        "fiqa": {
+            "42": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 325,
+                        "mean_delta": 0.013223932533022327,
+                        "median_delta": 0.0,
+                        "std_delta": 0.16343065080156355,
+                        "baseline_mean": 0.40845084623035394,
+                        "system_mean": 0.4216747787633763,
+                        "wins": 46,
+                        "ties": 247,
+                        "losses": 32,
+                        "effect_size": {
+                            "cohens_d": 0.036891815915492746,
+                            "cohens_dz": 0.08079006161284709,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.4564635484650756,
+                            "p_value": 0.14623288960810407,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1299.0,
+                            "p_value": 0.22901711503462563,
+                            "significant": false,
+                            "n_nonzero": 78
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.004036389340024725,
+                            "ci_high": 0.030800549271697727,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.16941529235382308,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.013223932533022327,
+                            "std_delta": 0.1636826642909687,
+                            "se_delta": 0.009079480600086865,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.557848136467205,
+                            "p_value_non_inferiority": 0.005493453694585981,
+                            "ci_lower_bound_95_param": -0.0017533078777572323,
+                            "ci_lower_bound_95_bootstrap": -0.001759708837645228,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0018) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 325,
+                        "mean_delta": -0.01107142699057998,
+                        "median_delta": 0.0,
+                        "std_delta": 0.16269242182935473,
+                        "baseline_mean": 0.43274620575395617,
+                        "system_mean": 0.4216747787633763,
+                        "wins": 48,
+                        "ties": 220,
+                        "losses": 57,
+                        "effect_size": {
+                            "cohens_d": -0.030635503242029766,
+                            "cohens_dz": -0.06794650162069117,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -1.2249229779089954,
+                            "p_value": 0.22149402380449143,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 2417.5,
+                            "p_value": 0.24325779648688228,
+                            "significant": false,
+                            "n_nonzero": 105
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.028722073317751902,
+                            "ci_high": 0.006051935336346419,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.22488755622188905,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.01107142699057998,
+                            "std_delta": 0.1629432969542098,
+                            "se_delta": 0.009038467879408596,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -0.11854077536978369,
+                            "p_value_non_inferiority": 0.547143676387895,
+                            "ci_lower_bound_95_param": -0.025981014040495184,
+                            "ci_lower_bound_95_bootstrap": -0.02579057716481151,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0260) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.01107142699057998,
+                        "std_delta": 0.1629432969542098,
+                        "se_delta": 0.009038467879408596,
+                        "n_queries": 325,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -0.11854077536978369,
+                        "p_value_non_inferiority": 0.547143676387895,
+                        "ci_lower_bound_95_param": -0.025981014040495184,
+                        "ci_lower_bound_95_bootstrap": -0.02579057716481151,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0260) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 325,
+                        "mean_delta": 0.020004878017146156,
+                        "median_delta": 0.0,
+                        "std_delta": 0.17875024087700978,
+                        "baseline_mean": 0.40845084623035394,
+                        "system_mean": 0.4284557242475001,
+                        "wins": 63,
+                        "ties": 218,
+                        "losses": 44,
+                        "effect_size": {
+                            "cohens_d": 0.055757501918810376,
+                            "cohens_dz": 0.11174294072461828,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.014474512268722,
+                            "p_value": 0.04478568832573077,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 2342.5,
+                            "p_value": 0.0893990051919241,
+                            "significant": false,
+                            "n_nonzero": 107
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.0008012726677580694,
+                            "ci_high": 0.03900414027428713,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.051974012993503245,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.020004878017146156,
+                            "std_delta": 0.17902587749544385,
+                            "se_delta": 0.009930568937611654,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.0214661622763446,
+                            "p_value_non_inferiority": 0.001357931345359109,
+                            "ci_lower_bound_95_param": 0.0036237076677093673,
+                            "ci_lower_bound_95_bootstrap": 0.0039291469724735155,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0036) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 325,
+                        "mean_delta": -0.004290481506456146,
+                        "median_delta": 0.0,
+                        "std_delta": 0.1452776604978956,
+                        "baseline_mean": 0.43274620575395617,
+                        "system_mean": 0.4284557242475001,
+                        "wins": 36,
+                        "ties": 249,
+                        "losses": 40,
+                        "effect_size": {
+                            "cohens_d": -0.011861290818167525,
+                            "cohens_dz": -0.029487504587255846,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -0.5315935488741527,
+                            "p_value": 0.5953718051744317,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1363.0,
+                            "p_value": 0.6046278584124593,
+                            "significant": false,
+                            "n_nonzero": 76
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.019951507893785587,
+                            "ci_high": 0.011315180089015858,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.6011994002998501,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.004290481506456146,
+                            "std_delta": 0.1455016816957255,
+                            "se_delta": 0.008070981138771976,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 0.7074131874891947,
+                            "p_value_non_inferiority": 0.23990912770553974,
+                            "ci_lower_bound_95_param": -0.01760413128341572,
+                            "ci_lower_bound_95_bootstrap": -0.017676282796459428,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0176) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.004290481506456146,
+                        "std_delta": 0.1455016816957255,
+                        "se_delta": 0.008070981138771976,
+                        "n_queries": 325,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 0.7074131874891947,
+                        "p_value_non_inferiority": 0.23990912770553974,
+                        "ci_lower_bound_95_param": -0.01760413128341572,
+                        "ci_lower_bound_95_bootstrap": -0.017676282796459428,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0176) falls below -0.010"
+                    }
+                }
+            },
+            "123": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 325,
+                        "mean_delta": 0.014216078706072766,
+                        "median_delta": 0.0,
+                        "std_delta": 0.1336372602363681,
+                        "baseline_mean": 0.4097030987045317,
+                        "system_mean": 0.42391917741060453,
+                        "wins": 36,
+                        "ties": 266,
+                        "losses": 23,
+                        "effect_size": {
+                            "cohens_d": 0.03820926699871571,
+                            "cohens_dz": 0.10621432182129208,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.914805917576511,
+                            "p_value": 0.05639763042045416,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 649.5,
+                            "p_value": 0.07547182226316757,
+                            "significant": false,
+                            "n_nonzero": 59
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -3.924816033620235e-05,
+                            "ci_high": 0.02891877249786126,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.05897051474262868,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.014216078706072766,
+                            "std_delta": 0.1338433316929861,
+                            "se_delta": 0.0074242922353537815,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.261735656196031,
+                            "p_value_non_inferiority": 0.0006126226475390295,
+                            "ci_lower_bound_95_param": 0.001969187657292539,
+                            "ci_lower_bound_95_bootstrap": 0.002173369951006659,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0020) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 325,
+                        "mean_delta": -0.004797240650747776,
+                        "median_delta": 0.0,
+                        "std_delta": 0.16850539729451058,
+                        "baseline_mean": 0.42871641806135224,
+                        "system_mean": 0.42391917741060453,
+                        "wins": 54,
+                        "ties": 215,
+                        "losses": 56,
+                        "effect_size": {
+                            "cohens_d": -0.012767733149221708,
+                            "cohens_dz": -0.028425526252938767,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -0.5124484621850923,
+                            "p_value": 0.6086863362511666,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 2954.0,
+                            "p_value": 0.7689402775898708,
+                            "significant": false,
+                            "n_nonzero": 110
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.023665850202109213,
+                            "ci_high": 0.014269736132509965,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.6046976511744128,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.004797240650747776,
+                            "std_delta": 0.1687652361493858,
+                            "se_delta": 0.009361410960806144,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 0.5557665795289684,
+                            "p_value_non_inferiority": 0.28937699838764486,
+                            "ci_lower_bound_95_param": -0.02023954497625722,
+                            "ci_lower_bound_95_bootstrap": -0.02031705313187757,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0202) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.004797240650747776,
+                        "std_delta": 0.1687652361493858,
+                        "se_delta": 0.009361410960806144,
+                        "n_queries": 325,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 0.5557665795289684,
+                        "p_value_non_inferiority": 0.28937699838764486,
+                        "ci_lower_bound_95_param": -0.02023954497625722,
+                        "ci_lower_bound_95_bootstrap": -0.02031705313187757,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0202) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 325,
+                        "mean_delta": 0.024699281798933184,
+                        "median_delta": 0.0,
+                        "std_delta": 0.17837822267988523,
+                        "baseline_mean": 0.4097030987045317,
+                        "system_mean": 0.4344023805034649,
+                        "wins": 62,
+                        "ties": 220,
+                        "losses": 43,
+                        "effect_size": {
+                            "cohens_d": 0.06633339166192533,
+                            "cohens_dz": 0.13825260313945129,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.4923842479283262,
+                            "p_value": 0.01318806396669576,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 2131.0,
+                            "p_value": 0.037273691227747444,
+                            "significant": true,
+                            "n_nonzero": 105
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.005185407636717588,
+                            "ci_high": 0.04443520910371764,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.015992003998001,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.024699281798933184,
+                            "std_delta": 0.17865328563846103,
+                            "se_delta": 0.009909901259993624,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.50147603781024,
+                            "p_value_non_inferiority": 0.00026379158670020164,
+                            "ci_lower_bound_95_param": 0.008352204234100699,
+                            "ci_lower_bound_95_bootstrap": 0.007971723981123866,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0084) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 325,
+                        "mean_delta": 0.00568596244211264,
+                        "median_delta": 0.0,
+                        "std_delta": 0.11839308103006316,
+                        "baseline_mean": 0.42871641806135224,
+                        "system_mean": 0.4344023805034649,
+                        "wins": 34,
+                        "ties": 261,
+                        "losses": 30,
+                        "effect_size": {
+                            "cohens_d": 0.015121396452571134,
+                            "cohens_dz": 0.047952194662650105,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 0.864470483136078,
+                            "p_value": 0.3879690437750695,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 946.5,
+                            "p_value": 0.5317678438550179,
+                            "significant": false,
+                            "n_nonzero": 64
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.006882265162685738,
+                            "ci_high": 0.019046537264088798,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.39080459770114945,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.00568596244211264,
+                            "std_delta": 0.11857564564279323,
+                            "se_delta": 0.006577393390559064,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.3848295990061446,
+                            "p_value_non_inferiority": 0.008830889633657857,
+                            "ci_lower_bound_95_param": -0.005163909530270132,
+                            "ci_lower_bound_95_bootstrap": -0.004826790275102973,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0052) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.00568596244211264,
+                        "std_delta": 0.11857564564279323,
+                        "se_delta": 0.006577393390559064,
+                        "n_queries": 325,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 2.3848295990061446,
+                        "p_value_non_inferiority": 0.008830889633657857,
+                        "ci_lower_bound_95_param": -0.005163909530270132,
+                        "ci_lower_bound_95_bootstrap": -0.004826790275102973,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0052) remains above -0.010"
+                    }
+                }
+            },
+            "2026": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 325,
+                        "mean_delta": 0.005367592646526985,
+                        "median_delta": 0.0,
+                        "std_delta": 0.06288771849335394,
+                        "baseline_mean": 0.4145597851164451,
+                        "system_mean": 0.41992737776297206,
+                        "wins": 4,
+                        "ties": 320,
+                        "losses": 1,
+                        "effect_size": {
+                            "cohens_d": 0.01500206672785659,
+                            "cohens_dz": 0.08522058961767692,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.5363360279590412,
+                            "p_value": 0.12543193117286192,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1.0,
+                            "p_value": 0.125,
+                            "significant": false,
+                            "n_nonzero": 5
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.00010529970407061607,
+                            "ci_high": 0.013060150022313427,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.11894052973513243,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.005367592646526985,
+                            "std_delta": 0.06298469267353683,
+                            "se_delta": 0.0034937621385196633,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.398580108558382,
+                            "p_value_non_inferiority": 7.400470996565822e-06,
+                            "ci_lower_bound_95_param": -0.0003956131789458611,
+                            "ci_lower_bound_95_bootstrap": 0.0005679252208602098,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0004) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 325,
+                        "mean_delta": -0.032517101559490065,
+                        "median_delta": 0.0,
+                        "std_delta": 0.21312813987457324,
+                        "baseline_mean": 0.4524444793224622,
+                        "system_mean": 0.41992737776297206,
+                        "wins": 72,
+                        "ties": 157,
+                        "losses": 96,
+                        "effect_size": {
+                            "cohens_d": -0.09098234716188874,
+                            "cohens_dz": -0.15233575785633796,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -2.7462719301884637,
+                            "p_value": 0.00636449801018632,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 5530.0,
+                            "p_value": 0.013014178542201419,
+                            "significant": true,
+                            "n_nonzero": 168
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.056625719944482775,
+                            "ci_high": -0.009447193930679738,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.008995502248875561,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.032517101559490065,
+                            "std_delta": 0.21345678793389863,
+                            "se_delta": 0.01184045221525407,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -1.9017095926861014,
+                            "p_value_non_inferiority": 0.9709520320895585,
+                            "ci_lower_bound_95_param": -0.05204875840322086,
+                            "ci_lower_bound_95_bootstrap": -0.05250265635605301,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0520) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.032517101559490065,
+                        "std_delta": 0.21345678793389863,
+                        "se_delta": 0.01184045221525407,
+                        "n_queries": 325,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -1.9017095926861014,
+                        "p_value_non_inferiority": 0.9709520320895585,
+                        "ci_lower_bound_95_param": -0.05204875840322086,
+                        "ci_lower_bound_95_bootstrap": -0.05250265635605301,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0520) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 325,
+                        "mean_delta": 0.014584246420870757,
+                        "median_delta": 0.0,
+                        "std_delta": 0.12152074837958858,
+                        "baseline_mean": 0.4145597851164451,
+                        "system_mean": 0.42914403153731584,
+                        "wins": 14,
+                        "ties": 307,
+                        "losses": 4,
+                        "effect_size": {
+                            "cohens_d": 0.040856358035493305,
+                            "cohens_dz": 0.1198296753993928,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.1602601948735827,
+                            "p_value": 0.03148541955822254,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 35.0,
+                            "p_value": 0.0277830284121906,
+                            "significant": true,
+                            "n_nonzero": 18
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.0021964250619726632,
+                            "ci_high": 0.028762364192420717,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.030984507746126936,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.014584246420870757,
+                            "std_delta": 0.12170813592093448,
+                            "se_delta": 0.0067511526877549214,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.6414887290967473,
+                            "p_value_non_inferiority": 0.00015772990608831083,
+                            "ci_lower_bound_95_param": 0.0034477462940442644,
+                            "ci_lower_bound_95_bootstrap": 0.003936502397751898,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0034) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 325,
+                        "mean_delta": -0.0233004477851463,
+                        "median_delta": 0.0,
+                        "std_delta": 0.18692709458758494,
+                        "baseline_mean": 0.4524444793224622,
+                        "system_mean": 0.42914403153731584,
+                        "wins": 69,
+                        "ties": 170,
+                        "losses": 86,
+                        "effect_size": {
+                            "cohens_d": -0.06534553050244003,
+                            "cohens_dz": -0.12445800528130928,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -2.2436985984186433,
+                            "p_value": 0.0255269222653234,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 4896.0,
+                            "p_value": 0.04010348505075542,
+                            "significant": true,
+                            "n_nonzero": 155
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.043784726309231956,
+                            "ci_high": -0.0027141826926241125,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.02948525737131434,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.0233004477851463,
+                            "std_delta": 0.18721534008584573,
+                            "se_delta": 0.010384838588199163,
+                            "n_queries": 325,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": -1.2807563326270952,
+                            "p_value_non_inferiority": 0.899402350754047,
+                            "ci_lower_bound_95_param": -0.04043096780201945,
+                            "ci_lower_bound_95_bootstrap": -0.040716930697441284,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0404) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.0233004477851463,
+                        "std_delta": 0.18721534008584573,
+                        "se_delta": 0.010384838588199163,
+                        "n_queries": 325,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": -1.2807563326270952,
+                        "p_value_non_inferiority": 0.899402350754047,
+                        "ci_lower_bound_95_param": -0.04043096780201945,
+                        "ci_lower_bound_95_bootstrap": -0.040716930697441284,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0404) falls below -0.010"
+                    }
+                }
+            }
+        },
+        "nfcorpus": {
+            "42": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 162,
+                        "mean_delta": 0.024022803732465837,
+                        "median_delta": 0.0,
+                        "std_delta": 0.13686115715888553,
+                        "baseline_mean": 0.3338768214476023,
+                        "system_mean": 0.3578996251800681,
+                        "wins": 41,
+                        "ties": 98,
+                        "losses": 23,
+                        "effect_size": {
+                            "cohens_d": 0.07755440554478467,
+                            "cohens_dz": 0.17498423218593942,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.227185669229184,
+                            "p_value": 0.027321699161681794,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 706.0,
+                            "p_value": 0.02550765413881958,
+                            "significant": true,
+                            "n_nonzero": 64
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.00381501124671089,
+                            "ci_high": 0.046226004417184344,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.02448775612193903,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.024022803732465837,
+                            "std_delta": 0.1372855338584967,
+                            "se_delta": 0.010786170216684265,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.1542987964197597,
+                            "p_value_non_inferiority": 0.0009600012203957453,
+                            "ci_lower_bound_95_param": 0.0061784543328412475,
+                            "ci_lower_bound_95_bootstrap": 0.006693277295354126,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0062) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 162,
+                        "mean_delta": -0.005296322489638296,
+                        "median_delta": 0.0,
+                        "std_delta": 0.06654051394727256,
+                        "baseline_mean": 0.3631959476697065,
+                        "system_mean": 0.3578996251800681,
+                        "wins": 18,
+                        "ties": 119,
+                        "losses": 25,
+                        "effect_size": {
+                            "cohens_d": -0.017256992232740086,
+                            "cohens_dz": -0.07934940981912698,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -1.009953103792592,
+                            "p_value": 0.31403319114726297,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 376.5,
+                            "p_value": 0.24392043071859337,
+                            "significant": false,
+                            "n_nonzero": 43
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.015706375945063206,
+                            "ci_high": 0.005189377576607759,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.2843578210894553,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.005296322489638296,
+                            "std_delta": 0.0667468416174865,
+                            "se_delta": 0.005244127147834352,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 0.896941927181183,
+                            "p_value_non_inferiority": 0.18554457046257922,
+                            "ci_lower_bound_95_param": -0.013972065152892815,
+                            "ci_lower_bound_95_bootstrap": -0.014015668563584913,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0140) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.005296322489638296,
+                        "std_delta": 0.0667468416174865,
+                        "se_delta": 0.005244127147834352,
+                        "n_queries": 162,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 0.896941927181183,
+                        "p_value_non_inferiority": 0.18554457046257922,
+                        "ci_lower_bound_95_param": -0.013972065152892815,
+                        "ci_lower_bound_95_bootstrap": -0.014015668563584913,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0140) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 162,
+                        "mean_delta": 0.0286873144179162,
+                        "median_delta": 0.0,
+                        "std_delta": 0.14432069907586953,
+                        "baseline_mean": 0.3338768214476023,
+                        "system_mean": 0.36256413586551844,
+                        "wins": 55,
+                        "ties": 75,
+                        "losses": 32,
+                        "effect_size": {
+                            "cohens_d": 0.09281167593511379,
+                            "cohens_dz": 0.1981603224368677,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.5221691396299946,
+                            "p_value": 0.012634386444856307,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1292.0,
+                            "p_value": 0.008474747005068372,
+                            "significant": true,
+                            "n_nonzero": 87
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.007448751533077113,
+                            "ci_high": 0.05153869420908068,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.011494252873563218,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.0286873144179162,
+                            "std_delta": 0.1447682061935267,
+                            "se_delta": 0.011374064477739454,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.401362326864982,
+                            "p_value_non_inferiority": 0.00042287494644555057,
+                            "ci_lower_bound_95_param": 0.009870368592168478,
+                            "ci_lower_bound_95_bootstrap": 0.010173822708938596,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0099) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 162,
+                        "mean_delta": -0.0006318118041879362,
+                        "median_delta": 0.0,
+                        "std_delta": 0.04595581671457024,
+                        "baseline_mean": 0.3631959476697065,
+                        "system_mean": 0.36256413586551844,
+                        "wins": 9,
+                        "ties": 142,
+                        "losses": 11,
+                        "effect_size": {
+                            "cohens_d": -0.002063125850232024,
+                            "cohens_dz": -0.013705745956552202,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -0.174445666327767,
+                            "p_value": 0.8617343964269822,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 93.0,
+                            "p_value": 0.6742229461669922,
+                            "significant": false,
+                            "n_nonzero": 20
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.007593362000447033,
+                            "ci_high": 0.006629318790762261,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.855072463768116,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.0006318118041879362,
+                            "std_delta": 0.04609831571304521,
+                            "se_delta": 0.0036218257379969604,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.5865927500402357,
+                            "p_value_non_inferiority": 0.005288828735511841,
+                            "ci_lower_bound_95_param": -0.006623662723933418,
+                            "ci_lower_bound_95_bootstrap": -0.006458458762170911,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0066) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.0006318118041879362,
+                        "std_delta": 0.04609831571304521,
+                        "se_delta": 0.0036218257379969604,
+                        "n_queries": 162,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 2.5865927500402357,
+                        "p_value_non_inferiority": 0.005288828735511841,
+                        "ci_lower_bound_95_param": -0.006623662723933418,
+                        "ci_lower_bound_95_bootstrap": -0.006458458762170911,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0066) remains above -0.010"
+                    }
+                }
+            },
+            "123": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 162,
+                        "mean_delta": 0.021433039971964916,
+                        "median_delta": 0.0,
+                        "std_delta": 0.08750336731239346,
+                        "baseline_mean": 0.3216919777727937,
+                        "system_mean": 0.3431250177447586,
+                        "wins": 28,
+                        "ties": 122,
+                        "losses": 12,
+                        "effect_size": {
+                            "cohens_d": 0.06693076443830873,
+                            "cohens_dz": 0.24418244541398612,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 3.1079351339809844,
+                            "p_value": 0.002227846411356939,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 195.0,
+                            "p_value": 0.0032013230738812126,
+                            "significant": true,
+                            "n_nonzero": 40
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.00858575765263198,
+                            "ci_high": 0.03600484064964915,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0004997501249375312,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.021433039971964916,
+                            "std_delta": 0.08777469623431533,
+                            "se_delta": 0.006896231435985965,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.558002477692496,
+                            "p_value_non_inferiority": 5.082450252102966e-06,
+                            "ci_lower_bound_95_param": 0.01002410048628365,
+                            "ci_lower_bound_95_bootstrap": 0.010624382279210663,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0100) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 162,
+                        "mean_delta": -0.0045626568023015785,
+                        "median_delta": 0.0,
+                        "std_delta": 0.10078917968034688,
+                        "baseline_mean": 0.3476876745470602,
+                        "system_mean": 0.3431250177447586,
+                        "wins": 28,
+                        "ties": 96,
+                        "losses": 38,
+                        "effect_size": {
+                            "cohens_d": -0.014308789435817535,
+                            "cohens_dz": -0.04512937542906913,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -0.5744031731389501,
+                            "p_value": 0.5664966970829844,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 970.0,
+                            "p_value": 0.3867177792558002,
+                            "significant": false,
+                            "n_nonzero": 66
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.0204532566447518,
+                            "ci_high": 0.01072610342600412,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.5547226386806596,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.0045626568023015785,
+                            "std_delta": 0.1011017050185596,
+                            "se_delta": 0.007943300134238388,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 0.6845194196127099,
+                            "p_value_non_inferiority": 0.24731571256724516,
+                            "ci_lower_bound_95_param": -0.017703838531677937,
+                            "ci_lower_bound_95_bootstrap": -0.01767519854508586,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0177) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.0045626568023015785,
+                        "std_delta": 0.1011017050185596,
+                        "se_delta": 0.007943300134238388,
+                        "n_queries": 162,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 0.6845194196127099,
+                        "p_value_non_inferiority": 0.24731571256724516,
+                        "ci_lower_bound_95_param": -0.017703838531677937,
+                        "ci_lower_bound_95_bootstrap": -0.01767519854508586,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0177) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 162,
+                        "mean_delta": 0.02693122430199654,
+                        "median_delta": 0.0,
+                        "std_delta": 0.10877188320052891,
+                        "baseline_mean": 0.3216919777727937,
+                        "system_mean": 0.34862320207479025,
+                        "wins": 47,
+                        "ties": 96,
+                        "losses": 19,
+                        "effect_size": {
+                            "cohens_d": 0.08395806406529589,
+                            "cohens_dz": 0.24682825909298534,
+                            "magnitude": "small"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 3.1416108442761606,
+                            "p_value": 0.0020000760822977883,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 618.0,
+                            "p_value": 0.001844509142983815,
+                            "significant": true,
+                            "n_nonzero": 66
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.010286489747397135,
+                            "ci_high": 0.04429953126200429,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0024987506246876563,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.02693122430199654,
+                            "std_delta": 0.10910916116720244,
+                            "se_delta": 0.008572425305656085,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.308141860113884,
+                            "p_value_non_inferiority": 1.4274862788266063e-05,
+                            "ci_lower_bound_95_param": 0.012749234839258902,
+                            "ci_lower_bound_95_bootstrap": 0.013272693913527471,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0127) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 162,
+                        "mean_delta": 0.0009355275277300418,
+                        "median_delta": 0.0,
+                        "std_delta": 0.07574960357672662,
+                        "baseline_mean": 0.3476876745470602,
+                        "system_mean": 0.34862320207479025,
+                        "wins": 21,
+                        "ties": 122,
+                        "losses": 19,
+                        "effect_size": {
+                            "cohens_d": 0.0029288673877308534,
+                            "cohens_dz": 0.012312085916418684,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 0.15670726995691872,
+                            "p_value": 0.8756718938857265,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 394.0,
+                            "p_value": 0.8367550107286661,
+                            "significant": false,
+                            "n_nonzero": 40
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.011340820645464156,
+                            "ci_high": 0.012883999078676473,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.8800599700149925,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.0009355275277300418,
+                            "std_delta": 0.07598448663215357,
+                            "se_delta": 0.005969905084730484,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 1.831775777424062,
+                            "p_value_non_inferiority": 0.034416418937201154,
+                            "ci_lower_bound_95_param": -0.008940922600021963,
+                            "ci_lower_bound_95_bootstrap": -0.008999610960164188,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0089) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.0009355275277300418,
+                        "std_delta": 0.07598448663215357,
+                        "se_delta": 0.005969905084730484,
+                        "n_queries": 162,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 1.831775777424062,
+                        "p_value_non_inferiority": 0.034416418937201154,
+                        "ci_lower_bound_95_param": -0.008940922600021963,
+                        "ci_lower_bound_95_bootstrap": -0.008999610960164188,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0089) remains above -0.010"
+                    }
+                }
+            },
+            "2026": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 162,
+                        "mean_delta": 0.01230301958792871,
+                        "median_delta": 0.0,
+                        "std_delta": 0.11010667795318985,
+                        "baseline_mean": 0.317466711962766,
+                        "system_mean": 0.3297697315506948,
+                        "wins": 41,
+                        "ties": 91,
+                        "losses": 30,
+                        "effect_size": {
+                            "cohens_d": 0.04031591697036609,
+                            "cohens_dz": 0.11139186789106462,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.4177870127865413,
+                            "p_value": 0.1581854646019952,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1049.0,
+                            "p_value": 0.18947546321907738,
+                            "significant": false,
+                            "n_nonzero": 71
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.004822945384063942,
+                            "ci_high": 0.029496194019210893,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.1539230384807596,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.01230301958792871,
+                            "std_delta": 0.11044809482825456,
+                            "se_delta": 0.008677621869132627,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.570176475108152,
+                            "p_value_non_inferiority": 0.005535517623675101,
+                            "ci_lower_bound_95_param": -0.002053004235161554,
+                            "ci_lower_bound_95_bootstrap": -0.0018200234470976697,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0021) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 162,
+                        "mean_delta": -0.00257981447726353,
+                        "median_delta": 0.0,
+                        "std_delta": 0.06504583806098789,
+                        "baseline_mean": 0.3323495460279583,
+                        "system_mean": 0.3297697315506948,
+                        "wins": 13,
+                        "ties": 130,
+                        "losses": 19,
+                        "effect_size": {
+                            "cohens_d": -0.008466707062352839,
+                            "cohens_dz": -0.039538882699597204,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": -0.5032478173936437,
+                            "p_value": 0.6154778485116535,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 208.0,
+                            "p_value": 0.30378718534484506,
+                            "significant": false,
+                            "n_nonzero": 32
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.012436604590876576,
+                            "ci_high": 0.0074666890544513856,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.6461769115442278,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": -0.00257981447726353,
+                            "std_delta": 0.06524753106616772,
+                            "se_delta": 0.005126330185840792,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 1.4474653901989056,
+                            "p_value_non_inferiority": 0.0748555029696425,
+                            "ci_lower_bound_95_param": -0.01106067702034565,
+                            "ci_lower_bound_95_bootstrap": -0.010781830757378196,
+                            "non_inferiority_established": false,
+                            "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0111) falls below -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": -0.00257981447726353,
+                        "std_delta": 0.06524753106616772,
+                        "se_delta": 0.005126330185840792,
+                        "n_queries": 162,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 1.4474653901989056,
+                        "p_value_non_inferiority": 0.0748555029696425,
+                        "ci_lower_bound_95_param": -0.01106067702034565,
+                        "ci_lower_bound_95_bootstrap": -0.010781830757378196,
+                        "non_inferiority_established": false,
+                        "conclusion": "Non-inferiority NOT demonstrated: 95% lower bound (-0.0111) falls below -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 162,
+                        "mean_delta": 0.017673693983662468,
+                        "median_delta": 0.0,
+                        "std_delta": 0.12005880139316195,
+                        "baseline_mean": 0.317466711962766,
+                        "system_mean": 0.3351404059464285,
+                        "wins": 48,
+                        "ties": 82,
+                        "losses": 32,
+                        "effect_size": {
+                            "cohens_d": 0.05808666525631362,
+                            "cohens_dz": 0.14675359824086676,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.8678683606335755,
+                            "p_value": 0.0635978524487435,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1245.0,
+                            "p_value": 0.07208075893702251,
+                            "significant": false,
+                            "n_nonzero": 80
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.0011210204184016134,
+                            "ci_high": 0.03634409554562233,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.062468765617191405,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.017673693983662468,
+                            "std_delta": 0.12043107763977702,
+                            "se_delta": 0.009461959073854437,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.9247319469105753,
+                            "p_value_non_inferiority": 0.001972645678626206,
+                            "ci_lower_bound_95_param": 0.0020200838211195254,
+                            "ci_lower_bound_95_bootstrap": 0.0020517176563661583,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0020) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 162,
+                        "mean_delta": 0.002790859918470229,
+                        "median_delta": 0.0,
+                        "std_delta": 0.04216867513435063,
+                        "baseline_mean": 0.3323495460279583,
+                        "system_mean": 0.3351404059464285,
+                        "wins": 11,
+                        "ties": 139,
+                        "losses": 12,
+                        "effect_size": {
+                            "cohens_d": 0.00918654722724347,
+                            "cohens_dz": 0.06597866331801298,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 0.8397712844242398,
+                            "p_value": 0.4022819168857522,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 137.0,
+                            "p_value": 0.988100528717041,
+                            "significant": false,
+                            "n_nonzero": 23
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.0033245970043573455,
+                            "ci_high": 0.009643623399298865,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.43728135932033985,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.002790859918470229,
+                            "std_delta": 0.04229943102997496,
+                            "se_delta": 0.0033233571690697737,
+                            "n_queries": 162,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.84877678436545,
+                            "p_value_non_inferiority": 8.543103081493086e-05,
+                            "ci_lower_bound_95_param": -0.002707212642344451,
+                            "ci_lower_bound_95_bootstrap": -0.0023796555181023697,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0027) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.002790859918470229,
+                        "std_delta": 0.04229943102997496,
+                        "se_delta": 0.0033233571690697737,
+                        "n_queries": 162,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 3.84877678436545,
+                        "p_value_non_inferiority": 8.543103081493086e-05,
+                        "ci_lower_bound_95_param": -0.002707212642344451,
+                        "ci_lower_bound_95_bootstrap": -0.0023796555181023697,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0027) remains above -0.010"
+                    }
+                }
+            }
+        },
+        "arguana": {
+            "42": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 706,
+                        "mean_delta": 0.012330220542750027,
+                        "median_delta": 0.0,
+                        "std_delta": 0.1229170018841773,
+                        "baseline_mean": 0.39457959764510603,
+                        "system_mean": 0.406909818187856,
+                        "wins": 49,
+                        "ties": 622,
+                        "losses": 35,
+                        "effect_size": {
+                            "cohens_d": 0.05177728205790299,
+                            "cohens_dz": 0.10024231643016743,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.6635045587195427,
+                            "p_value": 0.007909728021918038,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 1182.5,
+                            "p_value": 0.007180979223806466,
+                            "significant": true,
+                            "n_nonzero": 84
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.003435808768578778,
+                            "ci_high": 0.02139161539215975,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.009995002498750625,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.012330220542750027,
+                            "std_delta": 0.12300414617153947,
+                            "se_delta": 0.004629322109618493,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.8236480447869035,
+                            "p_value_non_inferiority": 8.641232205341964e-07,
+                            "ci_lower_bound_95_param": 0.004705644339981206,
+                            "ci_lower_bound_95_bootstrap": 0.004847945279362799,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0047) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 706,
+                        "mean_delta": 0.0153651815995561,
+                        "median_delta": 0.0,
+                        "std_delta": 0.3165904739980284,
+                        "baseline_mean": 0.39154463658829985,
+                        "system_mean": 0.406909818187856,
+                        "wins": 257,
+                        "ties": 249,
+                        "losses": 200,
+                        "effect_size": {
+                            "cohens_d": 0.05269008482599308,
+                            "cohens_dz": 0.0484989194176282,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.2886483230045278,
+                            "p_value": 0.19794308971054897,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 48180.0,
+                            "p_value": 0.14190676254924484,
+                            "significant": false,
+                            "n_nonzero": 457
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.00781023654391108,
+                            "ci_high": 0.038253935214826174,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.1934032983508246,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.0153651815995561,
+                            "std_delta": 0.3168149266841443,
+                            "se_delta": 0.011923487056368998,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.1273291512491848,
+                            "p_value_non_inferiority": 0.01686961984066193,
+                            "ci_lower_bound_95_param": -0.004273014557743751,
+                            "ci_lower_bound_95_bootstrap": -0.004222367171401528,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0043) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.0153651815995561,
+                        "std_delta": 0.3168149266841443,
+                        "se_delta": 0.011923487056368998,
+                        "n_queries": 706,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 2.1273291512491848,
+                        "p_value_non_inferiority": 0.01686961984066193,
+                        "ci_lower_bound_95_param": -0.004273014557743751,
+                        "ci_lower_bound_95_bootstrap": -0.004222367171401528,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0043) remains above -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 706,
+                        "mean_delta": 0.01178293510803033,
+                        "median_delta": 0.0,
+                        "std_delta": 0.15148193552871614,
+                        "baseline_mean": 0.39457959764510603,
+                        "system_mean": 0.4063625327531363,
+                        "wins": 71,
+                        "ties": 576,
+                        "losses": 59,
+                        "effect_size": {
+                            "cohens_d": 0.048764284725147114,
+                            "cohens_dz": 0.07772931640310546,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.065319277912454,
+                            "p_value": 0.039257776317425386,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 3424.5,
+                            "p_value": 0.05282643736911389,
+                            "significant": false,
+                            "n_nonzero": 130
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.0005462456373917041,
+                            "ci_high": 0.02292758548316949,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.044977511244377814,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.01178293510803033,
+                            "std_delta": 0.15158933145537834,
+                            "se_delta": 0.00570513974959846,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.8181247198306507,
+                            "p_value_non_inferiority": 7.315204761204619e-05,
+                            "ci_lower_bound_95_param": 0.0023864680361281535,
+                            "ci_lower_bound_95_bootstrap": 0.0024567568441153133,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0024) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 706,
+                        "mean_delta": 0.014817896164836404,
+                        "median_delta": 0.0,
+                        "std_delta": 0.3040083162097269,
+                        "baseline_mean": 0.39154463658829985,
+                        "system_mean": 0.4063625327531363,
+                        "wins": 233,
+                        "ties": 295,
+                        "losses": 178,
+                        "effect_size": {
+                            "cohens_d": 0.05032023951914066,
+                            "cohens_dz": 0.04870721423011696,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.294182853753405,
+                            "p_value": 0.1960260389959007,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 38821.0,
+                            "p_value": 0.1447353384623653,
+                            "significant": false,
+                            "n_nonzero": 411
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.007665177313006353,
+                            "ci_high": 0.03648197156954088,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.19640179910044978,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.014817896164836404,
+                            "std_delta": 0.30422384854180606,
+                            "se_delta": 0.011449615579329737,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 2.167574622299175,
+                            "p_value_non_inferiority": 0.015262538208933862,
+                            "ci_lower_bound_95_param": -0.004039825205561608,
+                            "ci_lower_bound_95_bootstrap": -0.00408840947610727,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0040) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.014817896164836404,
+                        "std_delta": 0.30422384854180606,
+                        "se_delta": 0.011449615579329737,
+                        "n_queries": 706,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 2.167574622299175,
+                        "p_value_non_inferiority": 0.015262538208933862,
+                        "ci_lower_bound_95_param": -0.004039825205561608,
+                        "ci_lower_bound_95_bootstrap": -0.00408840947610727,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (-0.0040) remains above -0.010"
+                    }
+                }
+            },
+            "123": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 706,
+                        "mean_delta": 0.012108579062779642,
+                        "median_delta": 0.0,
+                        "std_delta": 0.19278526654440303,
+                        "baseline_mean": 0.393605292125862,
+                        "system_mean": 0.4057138711886417,
+                        "wins": 107,
+                        "ties": 496,
+                        "losses": 103,
+                        "effect_size": {
+                            "cohens_d": 0.04883071792605289,
+                            "cohens_dz": 0.06276413524720358,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 1.667684529930784,
+                            "p_value": 0.09582244969680571,
+                            "significant": false
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 9704.5,
+                            "p_value": 0.11923477507761729,
+                            "significant": false,
+                            "n_nonzero": 210
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": -0.0019415703956348542,
+                            "ci_high": 0.02618540112580461,
+                            "ci_level": 0.95,
+                            "significant": false,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.09195402298850575,
+                            "significant": false,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.012108579062779642,
+                            "std_delta": 0.19292194523335096,
+                            "se_delta": 0.007260713189731514,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.044959700934995,
+                            "p_value_non_inferiority": 0.0012068957845527972,
+                            "ci_lower_bound_95_param": 0.0001500547495689418,
+                            "ci_lower_bound_95_bootstrap": 0.00031581940631786006,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0002) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 706,
+                        "mean_delta": 0.029383731350989907,
+                        "median_delta": 0.0,
+                        "std_delta": 0.25296187591434444,
+                        "baseline_mean": 0.3763301398376518,
+                        "system_mean": 0.4057138711886417,
+                        "wins": 189,
+                        "ties": 387,
+                        "losses": 130,
+                        "effect_size": {
+                            "cohens_d": 0.09976231052954009,
+                            "cohens_dz": 0.11607643982956188,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 3.08422767605687,
+                            "p_value": 0.0021205299337239383,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 20343.5,
+                            "p_value": 0.0016799682209330492,
+                            "significant": true,
+                            "n_nonzero": 319
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.010810956435469974,
+                            "ci_high": 0.048323116679423024,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.001999000499750125,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.029383731350989907,
+                            "std_delta": 0.2531412179261771,
+                            "se_delta": 0.009527095414874325,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.133865531513566,
+                            "p_value_non_inferiority": 1.9982275967111995e-05,
+                            "ci_lower_bound_95_param": 0.013692435031204316,
+                            "ci_lower_bound_95_bootstrap": 0.013811668389332779,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0137) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.029383731350989907,
+                        "std_delta": 0.2531412179261771,
+                        "se_delta": 0.009527095414874325,
+                        "n_queries": 706,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 4.133865531513566,
+                        "p_value_non_inferiority": 1.9982275967111995e-05,
+                        "ci_lower_bound_95_param": 0.013692435031204316,
+                        "ci_lower_bound_95_bootstrap": 0.013811668389332779,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0137) remains above -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 706,
+                        "mean_delta": 0.014738955298039522,
+                        "median_delta": 0.0,
+                        "std_delta": 0.18889240228836854,
+                        "baseline_mean": 0.393605292125862,
+                        "system_mean": 0.4083442474239015,
+                        "wins": 106,
+                        "ties": 502,
+                        "losses": 98,
+                        "effect_size": {
+                            "cohens_d": 0.059520787550935865,
+                            "cohens_dz": 0.07797303156229171,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.071794950668618,
+                            "p_value": 0.038647663311998405,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 8817.0,
+                            "p_value": 0.05224388023799737,
+                            "significant": false,
+                            "n_nonzero": 204
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.0010536338167724591,
+                            "ci_high": 0.02871356831627769,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.03648175912043978,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.014738955298039522,
+                            "std_delta": 0.18902632105902858,
+                            "se_delta": 0.007114099439851856,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.47745424522133,
+                            "p_value_non_inferiority": 0.00026863366470109007,
+                            "ci_lower_bound_95_param": 0.0030219064496724776,
+                            "ci_lower_bound_95_bootstrap": 0.003454583059008698,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0030) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 706,
+                        "mean_delta": 0.032014107586249785,
+                        "median_delta": 0.0,
+                        "std_delta": 0.2554278988044082,
+                        "baseline_mean": 0.3763301398376518,
+                        "system_mean": 0.4083442474239015,
+                        "wins": 194,
+                        "ties": 381,
+                        "losses": 131,
+                        "effect_size": {
+                            "cohens_d": 0.10879965127977367,
+                            "cohens_dz": 0.12524640738515655,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 3.3278797708750463,
+                            "p_value": 0.0009205485794627515,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 20749.5,
+                            "p_value": 0.0007075704104408243,
+                            "significant": true,
+                            "n_nonzero": 325
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.013055666625320782,
+                            "ci_high": 0.05122104340465995,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0014992503748125937,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.032014107586249785,
+                            "std_delta": 0.2556089891488888,
+                            "se_delta": 0.009619971210027178,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.3673839213216405,
+                            "p_value_non_inferiority": 7.230769536348269e-06,
+                            "ci_lower_bound_95_param": 0.016169843172914526,
+                            "ci_lower_bound_95_bootstrap": 0.016130969752927767,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0162) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.032014107586249785,
+                        "std_delta": 0.2556089891488888,
+                        "se_delta": 0.009619971210027178,
+                        "n_queries": 706,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 4.3673839213216405,
+                        "p_value_non_inferiority": 7.230769536348269e-06,
+                        "ci_lower_bound_95_param": 0.016169843172914526,
+                        "ci_lower_bound_95_bootstrap": 0.016130969752927767,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0162) remains above -0.010"
+                    }
+                }
+            },
+            "2026": {
+                "balanced": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (balanced) vs Dense",
+                        "n_queries": 706,
+                        "mean_delta": 0.018091442799818943,
+                        "median_delta": 0.0,
+                        "std_delta": 0.16186357332586085,
+                        "baseline_mean": 0.4009488443936071,
+                        "system_mean": 0.419040287193426,
+                        "wins": 77,
+                        "ties": 570,
+                        "losses": 59,
+                        "effect_size": {
+                            "cohens_d": 0.07633419531345752,
+                            "cohens_dz": 0.111690513508008,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.9676907167398454,
+                            "p_value": 0.0031020850262066814,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 3357.5,
+                            "p_value": 0.004715994025621708,
+                            "significant": true,
+                            "n_nonzero": 136
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.0067295494789321245,
+                            "ci_high": 0.030191728343034234,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.001999000499750125,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.018091442799818943,
+                            "std_delta": 0.1619783295071145,
+                            "se_delta": 0.006096134849150751,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.608074377444643,
+                            "p_value_non_inferiority": 2.4118459940325465e-06,
+                            "ci_lower_bound_95_param": 0.008050999815060855,
+                            "ci_lower_bound_95_bootstrap": 0.008267155492592555,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0081) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (balanced) vs DeepHybrid",
+                        "n_queries": 706,
+                        "mean_delta": 0.040697834515728594,
+                        "median_delta": 0.0,
+                        "std_delta": 0.28654216276894034,
+                        "baseline_mean": 0.37834245267769734,
+                        "system_mean": 0.419040287193426,
+                        "wins": 237,
+                        "ties": 299,
+                        "losses": 170,
+                        "effect_size": {
+                            "cohens_d": 0.1416861557524754,
+                            "cohens_dz": 0.1419302523584527,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 3.7711805516815358,
+                            "p_value": 0.00017610356607701766,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 32453.0,
+                            "p_value": 0.00013470560477846916,
+                            "significant": true,
+                            "n_nonzero": 407
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.018921586787393304,
+                            "ci_high": 0.06199684849048234,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0004997501249375312,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.040697834515728594,
+                            "std_delta": 0.2867453121477158,
+                            "se_delta": 0.010791802184486181,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 4.697809842049326,
+                            "p_value_non_inferiority": 1.5809957432111332e-06,
+                            "ci_lower_bound_95_param": 0.02292354355639785,
+                            "ci_lower_bound_95_bootstrap": 0.02270216404922779,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0229) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.040697834515728594,
+                        "std_delta": 0.2867453121477158,
+                        "se_delta": 0.010791802184486181,
+                        "n_queries": 706,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 4.697809842049326,
+                        "p_value_non_inferiority": 1.5809957432111332e-06,
+                        "ci_lower_bound_95_param": 0.02292354355639785,
+                        "ci_lower_bound_95_bootstrap": 0.02270216404922779,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0229) remains above -0.010"
+                    }
+                },
+                "high_recall": {
+                    "vs_dense": {
+                        "comparison": "B-P-SAFE (high_recall) vs Dense",
+                        "n_queries": 706,
+                        "mean_delta": 0.018162570485454926,
+                        "median_delta": 0.0,
+                        "std_delta": 0.1906760900939507,
+                        "baseline_mean": 0.4009488443936071,
+                        "system_mean": 0.41911141487906206,
+                        "wins": 100,
+                        "ties": 525,
+                        "losses": 81,
+                        "effect_size": {
+                            "cohens_d": 0.07498941277681039,
+                            "cohens_dz": 0.09518604513095631,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 2.5291560905758175,
+                            "p_value": 0.011650632545394593,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 6573.5,
+                            "p_value": 0.01851235532951431,
+                            "significant": true,
+                            "n_nonzero": 181
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.004594780528949808,
+                            "ci_high": 0.03288140511303069,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.008995502248875561,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.018162570485454926,
+                            "std_delta": 0.19081127344315005,
+                            "se_delta": 0.007181277009012055,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 3.921666083916921,
+                            "p_value_non_inferiority": 4.826606099994635e-05,
+                            "ci_lower_bound_95_param": 0.006334878980765804,
+                            "ci_lower_bound_95_bootstrap": 0.007031294441647452,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0063) remains above -0.010"
+                        }
+                    },
+                    "vs_hybrid": {
+                        "comparison": "B-P-SAFE (high_recall) vs DeepHybrid",
+                        "n_queries": 706,
+                        "mean_delta": 0.04076896220136458,
+                        "median_delta": 0.0,
+                        "std_delta": 0.26821723075118636,
+                        "baseline_mean": 0.37834245267769734,
+                        "system_mean": 0.41911141487906206,
+                        "wins": 215,
+                        "ties": 344,
+                        "losses": 147,
+                        "effect_size": {
+                            "cohens_d": 0.1398383164947052,
+                            "cohens_dz": 0.15189210123862598,
+                            "magnitude": "negligible"
+                        },
+                        "paired_ttest": {
+                            "t_statistic": 4.035873456340228,
+                            "p_value": 6.035218659584274e-05,
+                            "significant": true
+                        },
+                        "wilcoxon": {
+                            "w_statistic": 24856.5,
+                            "p_value": 5.9430674949918525e-05,
+                            "significant": true,
+                            "n_nonzero": 362
+                        },
+                        "bootstrap_ci": {
+                            "ci_low": 0.02107080346808557,
+                            "ci_high": 0.06068766519787072,
+                            "ci_level": 0.95,
+                            "significant": true,
+                            "n_bootstrap": 5000
+                        },
+                        "permutation_test": {
+                            "p_value": 0.0004997501249375312,
+                            "significant": true,
+                            "n_permutations": 2000
+                        },
+                        "non_inferiority": {
+                            "mean_delta": 0.04076896220136458,
+                            "std_delta": 0.2684073883296644,
+                            "se_delta": 0.010101645317277688,
+                            "n_queries": 706,
+                            "epsilon_margin": 0.01,
+                            "t_statistic_ni": 5.025811202708749,
+                            "p_value_non_inferiority": 3.1810704248513844e-07,
+                            "ci_lower_bound_95_param": 0.02413137192980019,
+                            "ci_lower_bound_95_bootstrap": 0.02421179435067176,
+                            "non_inferiority_established": true,
+                            "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0241) remains above -0.010"
+                        }
+                    },
+                    "non_inferiority_vs_hybrid": {
+                        "mean_delta": 0.04076896220136458,
+                        "std_delta": 0.2684073883296644,
+                        "se_delta": 0.010101645317277688,
+                        "n_queries": 706,
+                        "epsilon_margin": 0.01,
+                        "t_statistic_ni": 5.025811202708749,
+                        "p_value_non_inferiority": 3.1810704248513844e-07,
+                        "ci_lower_bound_95_param": 0.02413137192980019,
+                        "ci_lower_bound_95_bootstrap": 0.02421179435067176,
+                        "non_inferiority_established": true,
+                        "conclusion": "Non-inferiority demonstrated: 95% lower bound (+0.0241) remains above -0.010"
+                    }
+                }
+            }
+        }
+    },
+    "family_1_dense_improvement_holm": [
+        {
+            "dataset": "scifact",
+            "mode": "balanced",
+            "mean_delta": 0.049911033785944824,
+            "raw_p_value": 0.011358120722639595,
+            "holm_adjusted_p_value": 0.06814872433583757,
+            "significant_after_correction": false,
+            "cohens_dz": 0.20787833140818263,
+            "bootstrap_ci_95": [
+                0.013668097975117782,
+                0.08825892664298403
+            ]
+        },
+        {
+            "dataset": "scifact",
+            "mode": "high_recall",
+            "mean_delta": 0.05568578165964961,
+            "raw_p_value": 0.00583880437413635,
+            "holm_adjusted_p_value": 0.0467104349930908,
+            "significant_after_correction": true,
+            "cohens_dz": 0.226823933693632,
+            "bootstrap_ci_95": [
+                0.01789527734792714,
+                0.09433665587406001
+            ]
+        },
+        {
+            "dataset": "fiqa",
+            "mode": "balanced",
+            "mean_delta": 0.013223932533022327,
+            "raw_p_value": 0.14623288960810407,
+            "holm_adjusted_p_value": 0.14623288960810407,
+            "significant_after_correction": false,
+            "cohens_dz": 0.08079006161284709,
+            "bootstrap_ci_95": [
+                -0.004036389340024725,
+                0.030800549271697727
+            ]
+        },
+        {
+            "dataset": "fiqa",
+            "mode": "high_recall",
+            "mean_delta": 0.020004878017146156,
+            "raw_p_value": 0.04478568832573077,
+            "holm_adjusted_p_value": 0.11777332895227616,
+            "significant_after_correction": false,
+            "cohens_dz": 0.11174294072461828,
+            "bootstrap_ci_95": [
+                0.0008012726677580694,
+                0.03900414027428713
+            ]
+        },
+        {
+            "dataset": "nfcorpus",
+            "mode": "balanced",
+            "mean_delta": 0.024022803732465837,
+            "raw_p_value": 0.027321699161681794,
+            "holm_adjusted_p_value": 0.10928679664672718,
+            "significant_after_correction": false,
+            "cohens_dz": 0.17498423218593942,
+            "bootstrap_ci_95": [
+                0.00381501124671089,
+                0.046226004417184344
+            ]
+        },
+        {
+            "dataset": "nfcorpus",
+            "mode": "high_recall",
+            "mean_delta": 0.0286873144179162,
+            "raw_p_value": 0.012634386444856307,
+            "holm_adjusted_p_value": 0.06814872433583757,
+            "significant_after_correction": false,
+            "cohens_dz": 0.1981603224368677,
+            "bootstrap_ci_95": [
+                0.007448751533077113,
+                0.05153869420908068
+            ]
+        },
+        {
+            "dataset": "arguana",
+            "mode": "balanced",
+            "mean_delta": 0.012330220542750027,
+            "raw_p_value": 0.007909728021918038,
+            "holm_adjusted_p_value": 0.05536809615342626,
+            "significant_after_correction": false,
+            "cohens_dz": 0.10024231643016743,
+            "bootstrap_ci_95": [
+                0.003435808768578778,
+                0.02139161539215975
+            ]
+        },
+        {
+            "dataset": "arguana",
+            "mode": "high_recall",
+            "mean_delta": 0.01178293510803033,
+            "raw_p_value": 0.039257776317425386,
+            "holm_adjusted_p_value": 0.11777332895227616,
+            "significant_after_correction": false,
+            "cohens_dz": 0.07772931640310546,
+            "bootstrap_ci_95": [
+                0.0005462456373917041,
+                0.02292758548316949
+            ]
+        }
+    ],
+    "family_2_non_inferiority_holm": [
+        {
+            "dataset": "scifact",
+            "mode": "balanced",
+            "mean_delta_vs_hybrid": -0.036541653331404036,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.057619240573401606,
+            "raw_p_value_ni": 0.9805797507681767,
+            "holm_adjusted_p_value_ni": 1.0,
+            "non_inferiority_established": false
+        },
+        {
+            "dataset": "scifact",
+            "mode": "high_recall",
+            "mean_delta_vs_hybrid": -0.03076690545769924,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.05059008038875088,
+            "raw_p_value_ni": 0.9575025075068162,
+            "holm_adjusted_p_value_ni": 1.0,
+            "non_inferiority_established": false
+        },
+        {
+            "dataset": "fiqa",
+            "mode": "balanced",
+            "mean_delta_vs_hybrid": -0.01107142699057998,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.025981014040495184,
+            "raw_p_value_ni": 0.547143676387895,
+            "holm_adjusted_p_value_ni": 1.0,
+            "non_inferiority_established": false
+        },
+        {
+            "dataset": "fiqa",
+            "mode": "high_recall",
+            "mean_delta_vs_hybrid": -0.004290481506456146,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.01760413128341572,
+            "raw_p_value_ni": 0.23990912770553974,
+            "holm_adjusted_p_value_ni": 0.959636510822159,
+            "non_inferiority_established": false
+        },
+        {
+            "dataset": "nfcorpus",
+            "mode": "balanced",
+            "mean_delta_vs_hybrid": -0.005296322489638296,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.013972065152892815,
+            "raw_p_value_ni": 0.18554457046257922,
+            "holm_adjusted_p_value_ni": 0.9277228523128961,
+            "non_inferiority_established": false
+        },
+        {
+            "dataset": "nfcorpus",
+            "mode": "high_recall",
+            "mean_delta_vs_hybrid": -0.0006318118041879362,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.006623662723933418,
+            "raw_p_value_ni": 0.005288828735511841,
+            "holm_adjusted_p_value_ni": 0.04231062988409473,
+            "non_inferiority_established": true
+        },
+        {
+            "dataset": "arguana",
+            "mode": "balanced",
+            "mean_delta_vs_hybrid": 0.0153651815995561,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.004273014557743751,
+            "raw_p_value_ni": 0.01686961984066193,
+            "holm_adjusted_p_value_ni": 0.10683776746253704,
+            "non_inferiority_established": false
+        },
+        {
+            "dataset": "arguana",
+            "mode": "high_recall",
+            "mean_delta_vs_hybrid": 0.014817896164836404,
+            "epsilon": 0.01,
+            "ci_lower_bound_95": -0.004039825205561608,
+            "raw_p_value_ni": 0.015262538208933862,
+            "holm_adjusted_p_value_ni": 0.10683776746253704,
+            "non_inferiority_established": false
+        }
+    ]
+}

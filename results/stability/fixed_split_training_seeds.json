@@ -1,0 +1,506 @@
+{
+    "scifact": {
+        "mode": "balanced",
+        "n_training_seeds": 10,
+        "training_seeds": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88,
+            99,
+            111
+        ],
+        "ndcg": {
+            "mean": 0.6465710417012945,
+            "std": 0.0,
+            "median": 0.6465710417012945,
+            "min": 0.6465710417012945,
+            "max": 0.6465710417012945,
+            "ci_95": [
+                0.6465710417012945,
+                0.6465710417012945
+            ]
+        },
+        "latency": {
+            "mean": 3.0,
+            "std": 0.0,
+            "median": 3.0,
+            "min": 3.0,
+            "max": 3.0
+        },
+        "hybrid_activation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        "per_seed_runs": [
+            {
+                "training_seed": 11,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 22,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 33,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 44,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 55,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 66,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 77,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 88,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 99,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 111,
+                "mean_ndcg": 0.6465710417012945,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            }
+        ],
+        "split_variability_comparison": {
+            "split_seeds": [
+                42,
+                123,
+                2026
+            ],
+            "ndcg_mean": 0.6998062508503432,
+            "ndcg_std": 0.034204888521709706,
+            "latency_mean": 498.26408728404203,
+            "latency_std": 63.5228863930502,
+            "har_mean": 0.6929824561403509,
+            "har_std": 0.10071019739653539
+        }
+    },
+    "fiqa": {
+        "mode": "balanced",
+        "n_training_seeds": 10,
+        "training_seeds": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88,
+            99,
+            111
+        ],
+        "ndcg": {
+            "mean": 0.4084508462303539,
+            "std": 5.851389114294502e-17,
+            "median": 0.40845084623035394,
+            "min": 0.40845084623035394,
+            "max": 0.40845084623035394,
+            "ci_95": [
+                0.40845084623035394,
+                0.40845084623035394
+            ]
+        },
+        "latency": {
+            "mean": 3.0,
+            "std": 0.0,
+            "median": 3.0,
+            "min": 3.0,
+            "max": 3.0
+        },
+        "hybrid_activation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        "per_seed_runs": [
+            {
+                "training_seed": 11,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 22,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 33,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 44,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 55,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 66,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 77,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 88,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 99,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 111,
+                "mean_ndcg": 0.40845084623035394,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            }
+        ],
+        "split_variability_comparison": {
+            "split_seeds": [
+                42,
+                123,
+                2026
+            ],
+            "ndcg_mean": 0.42184044464565096,
+            "ndcg_std": 0.0020010497233007617,
+            "latency_mean": 376.4909026655966,
+            "latency_std": 154.35343641079646,
+            "har_mean": 0.2841025641025641,
+            "har_std": 0.2177742891749185
+        }
+    },
+    "nfcorpus": {
+        "mode": "balanced",
+        "n_training_seeds": 10,
+        "training_seeds": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88,
+            99,
+            111
+        ],
+        "ndcg": {
+            "mean": 0.33387682144760233,
+            "std": 5.851389114294502e-17,
+            "median": 0.3338768214476023,
+            "min": 0.3338768214476023,
+            "max": 0.3338768214476023,
+            "ci_95": [
+                0.3338768214476023,
+                0.3338768214476023
+            ]
+        },
+        "latency": {
+            "mean": 3.0,
+            "std": 0.0,
+            "median": 3.0,
+            "min": 3.0,
+            "max": 3.0
+        },
+        "hybrid_activation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        "per_seed_runs": [
+            {
+                "training_seed": 11,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 22,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 33,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 44,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 55,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 66,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 77,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 88,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 99,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 111,
+                "mean_ndcg": 0.3338768214476023,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            }
+        ],
+        "split_variability_comparison": {
+            "split_seeds": [
+                42,
+                123,
+                2026
+            ],
+            "ndcg_mean": 0.3435981248251738,
+            "ndcg_std": 0.014070913319046488,
+            "latency_mean": 401.7926868293942,
+            "latency_std": 94.59709092732051,
+            "har_mean": 0.5555555555555555,
+            "har_std": 0.13282367155154326
+        }
+    },
+    "arguana": {
+        "mode": "balanced",
+        "n_training_seeds": 10,
+        "training_seeds": [
+            11,
+            22,
+            33,
+            44,
+            55,
+            66,
+            77,
+            88,
+            99,
+            111
+        ],
+        "ndcg": {
+            "mean": 0.39457959764510603,
+            "std": 0.0,
+            "median": 0.39457959764510603,
+            "min": 0.39457959764510603,
+            "max": 0.39457959764510603,
+            "ci_95": [
+                0.39457959764510603,
+                0.39457959764510603
+            ]
+        },
+        "latency": {
+            "mean": 3.0,
+            "std": 0.0,
+            "median": 3.0,
+            "min": 3.0,
+            "max": 3.0
+        },
+        "hybrid_activation_rate": {
+            "mean": 0.0,
+            "std": 0.0,
+            "median": 0.0,
+            "min": 0.0,
+            "max": 0.0
+        },
+        "per_seed_runs": [
+            {
+                "training_seed": 11,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 22,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 33,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 44,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 55,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 66,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 77,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 88,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 99,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            },
+            {
+                "training_seed": 111,
+                "mean_ndcg": 0.39457959764510603,
+                "mean_latency": 3.0,
+                "hybrid_activation_rate": 0.0,
+                "delta_vs_dense": 0.0
+            }
+        ],
+        "split_variability_comparison": {
+            "split_seeds": [
+                42,
+                123,
+                2026
+            ],
+            "ndcg_mean": 0.4105546588566413,
+            "ndcg_std": 0.007373058287357148,
+            "latency_mean": 506.50002771481303,
+            "latency_std": 121.65554211200266,
+            "har_mean": 0.26109537299339,
+            "har_std": 0.1250503139544141
+        }
+    }
+}

@@ -1,0 +1,562 @@
+{
+    "scifact": {
+        "42": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.6381578947368421,
+                "target_k": 97,
+                "n_queries": 152,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.7019106824667131,
+                "std_ndcg": 0.010714209209767393,
+                "ci_95": [
+                    0.6832206417230527,
+                    0.7252365319303989
+                ],
+                "p5_p95": [
+                    0.684854239897003,
+                    0.7217063316647886
+                ],
+                "min_ndcg": 0.6815081930188952,
+                "max_ndcg": 0.7339421156754395,
+                "psafe_mean_ndcg": 0.6964820754872394,
+                "delta_psafe_vs_matched_random": -0.005428606979473671,
+                "psafe_beats_random_ci": false
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.6644736842105263,
+                "target_k": 101,
+                "n_queries": 152,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.7035981932967533,
+                "std_ndcg": 0.010014033848431365,
+                "ci_95": [
+                    0.6878001380868758,
+                    0.726205374625442
+                ],
+                "p5_p95": [
+                    0.688189986891375,
+                    0.7194427610948083
+                ],
+                "min_ndcg": 0.683762708133307,
+                "max_ndcg": 0.7330154932620454,
+                "psafe_mean_ndcg": 0.7022568233609441,
+                "delta_psafe_vs_matched_random": -0.0013413699358092446,
+                "psafe_beats_random_ci": false
+            }
+        },
+        "123": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.631578947368421,
+                "target_k": 96,
+                "n_queries": 152,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.7222836352741031,
+                "std_ndcg": 0.010381920156918507,
+                "ci_95": [
+                    0.7031692721960873,
+                    0.7439425244234341
+                ],
+                "p5_p95": [
+                    0.7068692482295682,
+                    0.7379213890519685
+                ],
+                "min_ndcg": 0.6921399303136976,
+                "max_ndcg": 0.7469492674975736,
+                "psafe_mean_ndcg": 0.7355518652332077,
+                "delta_psafe_vs_matched_random": 0.013268229959104594,
+                "psafe_beats_random_ci": false
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.6907894736842105,
+                "target_k": 105,
+                "n_queries": 152,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.726660772758794,
+                "std_ndcg": 0.01082421045643174,
+                "ci_95": [
+                    0.7084408221479186,
+                    0.7503106683008226
+                ],
+                "p5_p95": [
+                    0.7103816390876746,
+                    0.748148616791553
+                ],
+                "min_ndcg": 0.6965258952259784,
+                "max_ndcg": 0.7510824748970341,
+                "psafe_mean_ndcg": 0.7388413389174182,
+                "delta_psafe_vs_matched_random": 0.012180566158624173,
+                "psafe_beats_random_ci": false
+            }
+        },
+        "2026": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.8092105263157895,
+                "target_k": 123,
+                "n_queries": 152,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.671949835397178,
+                "std_ndcg": 0.009108480727343994,
+                "ci_95": [
+                    0.6518113707334594,
+                    0.6869134143857042
+                ],
+                "p5_p95": [
+                    0.6572687437147239,
+                    0.6848681988122792
+                ],
+                "min_ndcg": 0.6465423201475451,
+                "max_ndcg": 0.6875764649786238,
+                "psafe_mean_ndcg": 0.6673848118305825,
+                "delta_psafe_vs_matched_random": -0.004565023566595494,
+                "psafe_beats_random_ci": false
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.8486842105263158,
+                "target_k": 129,
+                "n_queries": 152,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.6742151610359359,
+                "std_ndcg": 0.008345355380699918,
+                "ci_95": [
+                    0.6537830262133701,
+                    0.6865106912071517
+                ],
+                "p5_p95": [
+                    0.6610395770140546,
+                    0.6861255022651486
+                ],
+                "min_ndcg": 0.6503948438576463,
+                "max_ndcg": 0.6913193302288743,
+                "psafe_mean_ndcg": 0.6737286479286403,
+                "delta_psafe_vs_matched_random": -0.00048651310729563857,
+                "psafe_beats_random_ci": false
+            }
+        }
+    },
+    "fiqa": {
+        "42": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.4584615384615385,
+                "target_k": 149,
+                "n_queries": 325,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.4191339989254715,
+                "std_ndcg": 0.006112237342547444,
+                "ci_95": [
+                    0.408092609501516,
+                    0.4298832706391414
+                ],
+                "p5_p95": [
+                    0.4087824829721293,
+                    0.42865550320393103
+                ],
+                "min_ndcg": 0.40213045988420415,
+                "max_ndcg": 0.4336949065390193,
+                "psafe_mean_ndcg": 0.4216747787633763,
+                "delta_psafe_vs_matched_random": 0.002540779837904794,
+                "psafe_beats_random_ci": false
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.64,
+                "target_k": 208,
+                "n_queries": 325,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.4235957704593508,
+                "std_ndcg": 0.005798959018453831,
+                "ci_95": [
+                    0.41251772378999046,
+                    0.43370405497651376
+                ],
+                "p5_p95": [
+                    0.41324960930217036,
+                    0.4323203858237159
+                ],
+                "min_ndcg": 0.40771957382561874,
+                "max_ndcg": 0.440226003783063,
+                "psafe_mean_ndcg": 0.4284557242475001,
+                "delta_psafe_vs_matched_random": 0.004859953788149296,
+                "psafe_beats_random_ci": false
+            }
+        },
+        "123": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.35384615384615387,
+                "target_k": 115,
+                "n_queries": 325,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.41640168021252194,
+                "std_ndcg": 0.005615013875598826,
+                "ci_95": [
+                    0.4058886503574501,
+                    0.42742110611815465
+                ],
+                "p5_p95": [
+                    0.40786251909332755,
+                    0.42526647959700375
+                ],
+                "min_ndcg": 0.402135280434191,
+                "max_ndcg": 0.4310354557854346,
+                "psafe_mean_ndcg": 0.42391917741060453,
+                "delta_psafe_vs_matched_random": 0.00751749719808259,
+                "psafe_beats_random_ci": false
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.6184615384615385,
+                "target_k": 201,
+                "n_queries": 325,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.42147798295675953,
+                "std_ndcg": 0.005454805198234366,
+                "ci_95": [
+                    0.4106121233677043,
+                    0.4317772716275877
+                ],
+                "p5_p95": [
+                    0.4124232997959405,
+                    0.42837364326086463
+                ],
+                "min_ndcg": 0.40782043957568015,
+                "max_ndcg": 0.43663858729939786,
+                "psafe_mean_ndcg": 0.4344023805034649,
+                "delta_psafe_vs_matched_random": 0.01292439754670538,
+                "psafe_beats_random_ci": true
+            }
+        },
+        "2026": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.04,
+                "target_k": 13,
+                "n_queries": 325,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.41577988405788907,
+                "std_ndcg": 0.0023600940008751668,
+                "ci_95": [
+                    0.4116800150113433,
+                    0.41971816189167804
+                ],
+                "p5_p95": [
+                    0.4120949764068379,
+                    0.4191668763384795
+                ],
+                "min_ndcg": 0.4103479749854734,
+                "max_ndcg": 0.4207148123037809,
+                "psafe_mean_ndcg": 0.41992737776297206,
+                "delta_psafe_vs_matched_random": 0.004147493705082994,
+                "psafe_beats_random_ci": true
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.10461538461538461,
+                "target_k": 34,
+                "n_queries": 325,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.4179420627177305,
+                "std_ndcg": 0.0037637871129395793,
+                "ci_95": [
+                    0.4104148880961891,
+                    0.42438391062701264
+                ],
+                "p5_p95": [
+                    0.4121077998282161,
+                    0.4237274491643472
+                ],
+                "min_ndcg": 0.40829636836812633,
+                "max_ndcg": 0.4289583693202763,
+                "psafe_mean_ndcg": 0.42914403153731584,
+                "delta_psafe_vs_matched_random": 0.01120196881958535,
+                "psafe_beats_random_ci": true
+            }
+        }
+    },
+    "nfcorpus": {
+        "42": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.5493827160493827,
+                "target_k": 89,
+                "n_queries": 162,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.34956565102656034,
+                "std_ndcg": 0.005945606023856025,
+                "ci_95": [
+                    0.33767372405087975,
+                    0.36054964253131633
+                ],
+                "p5_p95": [
+                    0.33924278428919036,
+                    0.358667525439518
+                ],
+                "min_ndcg": 0.3364702807000389,
+                "max_ndcg": 0.36585703402691966,
+                "psafe_mean_ndcg": 0.3578996251800681,
+                "delta_psafe_vs_matched_random": 0.008333974153507784,
+                "psafe_beats_random_ci": false
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.7962962962962963,
+                "target_k": 129,
+                "n_queries": 162,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.35649222520773416,
+                "std_ndcg": 0.004829818163600963,
+                "ci_95": [
+                    0.3481802940784113,
+                    0.366649943287374
+                ],
+                "p5_p95": [
+                    0.3495725510452048,
+                    0.36444429311457954
+                ],
+                "min_ndcg": 0.3440804760232922,
+                "max_ndcg": 0.36906016000144426,
+                "psafe_mean_ndcg": 0.36256413586551844,
+                "delta_psafe_vs_matched_random": 0.006071910657784285,
+                "psafe_beats_random_ci": false
+            }
+        },
+        "123": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.42592592592592593,
+                "target_k": 69,
+                "n_queries": 162,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.33235865519248103,
+                "std_ndcg": 0.004434629857543149,
+                "ci_95": [
+                    0.3245570291039457,
+                    0.34038610050168777
+                ],
+                "p5_p95": [
+                    0.32543355719161227,
+                    0.3396296899342422
+                ],
+                "min_ndcg": 0.32233527167662857,
+                "max_ndcg": 0.3419608163666109,
+                "psafe_mean_ndcg": 0.3431250177447586,
+                "delta_psafe_vs_matched_random": 0.010766362552277586,
+                "psafe_beats_random_ci": true
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.6728395061728395,
+                "target_k": 109,
+                "n_queries": 162,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.338511622393113,
+                "std_ndcg": 0.00446694880213314,
+                "ci_95": [
+                    0.33074971805700853,
+                    0.34560607949162964
+                ],
+                "p5_p95": [
+                    0.3312470055103594,
+                    0.344696697759798
+                ],
+                "min_ndcg": 0.3296923320623597,
+                "max_ndcg": 0.35436405397690673,
+                "psafe_mean_ndcg": 0.34862320207479025,
+                "delta_psafe_vs_matched_random": 0.010111579681677252,
+                "psafe_beats_random_ci": true
+            }
+        },
+        "2026": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.691358024691358,
+                "target_k": 112,
+                "n_queries": 162,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.3275344854850205,
+                "std_ndcg": 0.0037378750928653472,
+                "ci_95": [
+                    0.32080497367697874,
+                    0.33672767410858695
+                ],
+                "p5_p95": [
+                    0.32201884737006353,
+                    0.33372191529409984
+                ],
+                "min_ndcg": 0.31802592576591143,
+                "max_ndcg": 0.33806693684376976,
+                "psafe_mean_ndcg": 0.3297697315506948,
+                "delta_psafe_vs_matched_random": 0.002235246065674268,
+                "psafe_beats_random_ci": false
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.7716049382716049,
+                "target_k": 125,
+                "n_queries": 162,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.32872417917202773,
+                "std_ndcg": 0.003926685221073694,
+                "ci_95": [
+                    0.3201983625487718,
+                    0.3358347306404304
+                ],
+                "p5_p95": [
+                    0.32261844041641596,
+                    0.3345061925686682
+                ],
+                "min_ndcg": 0.3189700588684927,
+                "max_ndcg": 0.33892958525787176,
+                "psafe_mean_ndcg": 0.3351404059464285,
+                "delta_psafe_vs_matched_random": 0.006416226774400791,
+                "psafe_beats_random_ci": false
+            }
+        }
+    },
+    "arguana": {
+        "42": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.1501416430594901,
+                "target_k": 106,
+                "n_queries": 706,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.3940697328410263,
+                "std_ndcg": 0.004396514427184969,
+                "ci_95": [
+                    0.385744541642655,
+                    0.4047241724446599
+                ],
+                "p5_p95": [
+                    0.3879214962572912,
+                    0.4014267923759897
+                ],
+                "min_ndcg": 0.38302881711836534,
+                "max_ndcg": 0.4069860670936359,
+                "psafe_mean_ndcg": 0.406909818187856,
+                "delta_psafe_vs_matched_random": 0.012840085346829677,
+                "psafe_beats_random_ci": true
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.22804532577903683,
+                "target_k": 161,
+                "n_queries": 706,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.3941992312796231,
+                "std_ndcg": 0.005456956250548925,
+                "ci_95": [
+                    0.38377301103132455,
+                    0.40409116424498676
+                ],
+                "p5_p95": [
+                    0.3854421190547814,
+                    0.40371336035922106
+                ],
+                "min_ndcg": 0.3805249576040356,
+                "max_ndcg": 0.409192522081149,
+                "psafe_mean_ndcg": 0.4063625327531363,
+                "delta_psafe_vs_matched_random": 0.012163301473513188,
+                "psafe_beats_random_ci": true
+            }
+        },
+        "123": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.39660056657223797,
+                "target_k": 280,
+                "n_queries": 706,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.387560283106114,
+                "std_ndcg": 0.005798898876906791,
+                "ci_95": [
+                    0.3753512830399303,
+                    0.3980785231261545
+                ],
+                "p5_p95": [
+                    0.3777456912252621,
+                    0.3954291673462018
+                ],
+                "min_ndcg": 0.37382770803395127,
+                "max_ndcg": 0.4060488179085016,
+                "psafe_mean_ndcg": 0.4057138711886417,
+                "delta_psafe_vs_matched_random": 0.018153588082527705,
+                "psafe_beats_random_ci": true
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.386685552407932,
+                "target_k": 273,
+                "n_queries": 706,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.3877605407604294,
+                "std_ndcg": 0.005684990696431478,
+                "ci_95": [
+                    0.37628492390610163,
+                    0.39831668049493263
+                ],
+                "p5_p95": [
+                    0.3788212403064632,
+                    0.3972172698068771
+                ],
+                "min_ndcg": 0.37401316094269277,
+                "max_ndcg": 0.40541945510136995,
+                "psafe_mean_ndcg": 0.4083442474239015,
+                "delta_psafe_vs_matched_random": 0.020583706663472146,
+                "psafe_beats_random_ci": true
+            }
+        },
+        "2026": {
+            "balanced": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.23654390934844194,
+                "target_k": 167,
+                "n_queries": 706,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.39581227218057763,
+                "std_ndcg": 0.0051608329610268264,
+                "ci_95": [
+                    0.3858682889457664,
+                    0.4071752262278355
+                ],
+                "p5_p95": [
+                    0.38777953814260996,
+                    0.40437455280722034
+                ],
+                "min_ndcg": 0.3831351034100141,
+                "max_ndcg": 0.408634382110922,
+                "psafe_mean_ndcg": 0.419040287193426,
+                "delta_psafe_vs_matched_random": 0.02322801501284838,
+                "psafe_beats_random_ci": true
+            },
+            "high_recall": {
+                "router_name": "Matched-Budget-Random",
+                "target_activation_rate": 0.32294617563739375,
+                "target_k": 228,
+                "n_queries": 706,
+                "n_repetitions": 100,
+                "mean_ndcg": 0.3934493113014988,
+                "std_ndcg": 0.005888153636761684,
+                "ci_95": [
+                    0.3816528169699436,
+                    0.4049572260138283
+                ],
+                "p5_p95": [
+                    0.38289335991742,
+                    0.4036597935594241
+                ],
+                "min_ndcg": 0.38002719919708006,
+                "max_ndcg": 0.40812148771659257,
+                "psafe_mean_ndcg": 0.41911141487906206,
+                "delta_psafe_vs_matched_random": 0.025662103577563267,
+                "psafe_beats_random_ci": true
+            }
+        }
+    }
+}
