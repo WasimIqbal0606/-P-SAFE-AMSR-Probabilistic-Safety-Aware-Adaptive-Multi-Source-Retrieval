@@ -1,7 +1,7 @@
 # P-SAFE-AMSR: Probabilistic Safety-Aware Adaptive Multi-Source Retrieval
 
-[![Submission Audit](https://img.shields.io/badge/Submission%20Audit-PASS%20(18%2F18)-brightgreen.svg)](docs/SUBMISSION_AUDIT.md)
-[![Tests](https://img.shields.io/badge/pytest-54%20passed-brightgreen.svg)](tests/)
+[![Submission Audit](https://img.shields.io/badge/Submission%20Audit-PASS%20(18%2F18)-brightgreen.svg)](docs/INDEPENDENT_REAUDIT.md)
+[![Tests](https://img.shields.io/badge/pytest-60%20passed-brightgreen.svg)](tests/)
 [![Paper](https://img.shields.io/badge/Manuscript-PDF%20Built-blue.svg)](paper/manuscript.pdf)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
@@ -42,8 +42,8 @@ Modern search and RAG systems commonly execute expensive Cross-Encoder reranking
 
 * **SciFact, FiQA, NFCorpus:** P-SAFE captures the majority of neural reranking quality while saving **20.4%--31.6%** of measured end-to-end latency.
 * **ArguAna (Protection Regime):** Always-on reranking causes net harm (0.3915 vs 0.3946). P-SAFE selectively suppresses escalation on 85% of queries, saving **66.1%** latency and achieving higher nDCG (**0.4069**) than either static endpoint.
-* **Matched-Budget Random Baseline (100 Repetitions):** P-SAFE statistically outperforms random query allocation at identical escalation budgets across all four datasets (e.g. SciFact: 0.6965 vs 0.6676; ArguAna: 0.4069 vs 0.3939).
-* **Deterministic Training Stability:** 10 independent training seeds on the fixed primary split yield $SD = 0.0000$, confirming that model fitting variance is negligible.
+* **Matched-Budget Random Baseline (1000 Repetitions):** On ArguAna, P-SAFE ($0.4069$) demonstrates statistically significant query-selection superiority over matched random ($0.3942 \pm 0.0046, \Delta = +0.0128, p=0.003$). On SciFact Balanced, matched random achieves $0.7017 \pm 0.0110$ ($\Delta = -0.0052, p=0.687$), confirming that compute allocation efficiency exists across all sets, while query-selection superiority over random allocation is domain-dependent.
+* **Deterministic Training Stability:** 10 independent training seeds on the fixed primary split yield $SD = 0.0000$, confirming closed-form deterministic model convergence. Sample partition sensitivity across split seeds is $SD = 0.0020 - 0.0342$.
 
 ---
 

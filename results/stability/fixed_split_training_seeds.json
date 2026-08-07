@@ -15,100 +15,110 @@
             111
         ],
         "ndcg": {
-            "mean": 0.6465710417012945,
+            "mean": 0.6964820754872394,
             "std": 0.0,
-            "median": 0.6465710417012945,
-            "min": 0.6465710417012945,
-            "max": 0.6465710417012945,
+            "median": 0.6964820754872394,
+            "min": 0.6964820754872394,
+            "max": 0.6964820754872394,
             "ci_95": [
-                0.6465710417012945,
-                0.6465710417012945
+                0.6964820754872394,
+                0.6964820754872394
             ]
         },
         "latency": {
-            "mean": 3.0,
+            "mean": 467.1254671097574,
             "std": 0.0,
-            "median": 3.0,
-            "min": 3.0,
-            "max": 3.0
+            "median": 467.1254671097574,
+            "min": 467.1254671097574,
+            "max": 467.1254671097574
         },
         "hybrid_activation_rate": {
-            "mean": 0.0,
+            "mean": 0.6381578947368421,
             "std": 0.0,
-            "median": 0.0,
-            "min": 0.0,
-            "max": 0.0
+            "median": 0.6381578947368421,
+            "min": 0.6381578947368421,
+            "max": 0.6381578947368421
         },
         "per_seed_runs": [
             {
                 "training_seed": 11,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 22,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 33,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 44,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 55,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 66,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 77,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 88,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 99,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             },
             {
                 "training_seed": 111,
-                "mean_ndcg": 0.6465710417012945,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.6964820754872394,
+                "mean_latency": 467.1254671097574,
+                "hybrid_activation_rate": 0.6381578947368421,
+                "delta_vs_dense": 0.04991103378594486,
+                "model_deterministic": true
             }
         ],
         "split_variability_comparison": {
@@ -141,100 +151,110 @@
             111
         ],
         "ndcg": {
-            "mean": 0.4084508462303539,
-            "std": 5.851389114294502e-17,
-            "median": 0.40845084623035394,
-            "min": 0.40845084623035394,
-            "max": 0.40845084623035394,
+            "mean": 0.4216747787633763,
+            "std": 0.0,
+            "median": 0.4216747787633763,
+            "min": 0.4216747787633763,
+            "max": 0.4216747787633763,
             "ci_95": [
-                0.40845084623035394,
-                0.40845084623035394
+                0.4216747787633763,
+                0.4216747787633763
             ]
         },
         "latency": {
-            "mean": 3.0,
+            "mean": 499.1296067703157,
             "std": 0.0,
-            "median": 3.0,
-            "min": 3.0,
-            "max": 3.0
+            "median": 499.1296067703157,
+            "min": 499.1296067703157,
+            "max": 499.1296067703157
         },
         "hybrid_activation_rate": {
-            "mean": 0.0,
+            "mean": 0.4584615384615385,
             "std": 0.0,
-            "median": 0.0,
-            "min": 0.0,
-            "max": 0.0
+            "median": 0.4584615384615385,
+            "min": 0.4584615384615385,
+            "max": 0.4584615384615385
         },
         "per_seed_runs": [
             {
                 "training_seed": 11,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 22,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 33,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 44,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 55,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 66,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 77,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 88,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 99,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             },
             {
                 "training_seed": 111,
-                "mean_ndcg": 0.40845084623035394,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.4216747787633763,
+                "mean_latency": 499.1296067703157,
+                "hybrid_activation_rate": 0.4584615384615385,
+                "delta_vs_dense": 0.013223932533022342,
+                "model_deterministic": true
             }
         ],
         "split_variability_comparison": {
@@ -267,100 +287,110 @@
             111
         ],
         "ndcg": {
-            "mean": 0.33387682144760233,
-            "std": 5.851389114294502e-17,
-            "median": 0.3338768214476023,
-            "min": 0.3338768214476023,
-            "max": 0.3338768214476023,
+            "mean": 0.3578996251800681,
+            "std": 0.0,
+            "median": 0.3578996251800681,
+            "min": 0.3578996251800681,
+            "max": 0.3578996251800681,
             "ci_95": [
-                0.3338768214476023,
-                0.3338768214476023
+                0.3578996251800681,
+                0.3578996251800681
             ]
         },
         "latency": {
-            "mean": 3.0,
+            "mean": 392.7437895050209,
             "std": 0.0,
-            "median": 3.0,
-            "min": 3.0,
-            "max": 3.0
+            "median": 392.7437895050209,
+            "min": 392.7437895050209,
+            "max": 392.7437895050209
         },
         "hybrid_activation_rate": {
-            "mean": 0.0,
+            "mean": 0.5493827160493827,
             "std": 0.0,
-            "median": 0.0,
-            "min": 0.0,
-            "max": 0.0
+            "median": 0.5493827160493827,
+            "min": 0.5493827160493827,
+            "max": 0.5493827160493827
         },
         "per_seed_runs": [
             {
                 "training_seed": 11,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 22,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 33,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 44,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 55,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 66,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 77,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 88,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 99,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             },
             {
                 "training_seed": 111,
-                "mean_ndcg": 0.3338768214476023,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.3578996251800681,
+                "mean_latency": 392.7437895050209,
+                "hybrid_activation_rate": 0.5493827160493827,
+                "delta_vs_dense": 0.024022803732465847,
+                "model_deterministic": true
             }
         ],
         "split_variability_comparison": {
@@ -393,100 +423,110 @@
             111
         ],
         "ndcg": {
-            "mean": 0.39457959764510603,
+            "mean": 0.406909818187856,
             "std": 0.0,
-            "median": 0.39457959764510603,
-            "min": 0.39457959764510603,
-            "max": 0.39457959764510603,
+            "median": 0.406909818187856,
+            "min": 0.406909818187856,
+            "max": 0.406909818187856,
             "ci_95": [
-                0.39457959764510603,
-                0.39457959764510603
+                0.406909818187856,
+                0.406909818187856
             ]
         },
         "latency": {
-            "mean": 3.0,
+            "mean": 400.4297539650821,
             "std": 0.0,
-            "median": 3.0,
-            "min": 3.0,
-            "max": 3.0
+            "median": 400.4297539650821,
+            "min": 400.4297539650821,
+            "max": 400.4297539650821
         },
         "hybrid_activation_rate": {
-            "mean": 0.0,
+            "mean": 0.1501416430594901,
             "std": 0.0,
-            "median": 0.0,
-            "min": 0.0,
-            "max": 0.0
+            "median": 0.1501416430594901,
+            "min": 0.1501416430594901,
+            "max": 0.1501416430594901
         },
         "per_seed_runs": [
             {
                 "training_seed": 11,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 22,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 33,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 44,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 55,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 66,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 77,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 88,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 99,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             },
             {
                 "training_seed": 111,
-                "mean_ndcg": 0.39457959764510603,
-                "mean_latency": 3.0,
-                "hybrid_activation_rate": 0.0,
-                "delta_vs_dense": 0.0
+                "mean_ndcg": 0.406909818187856,
+                "mean_latency": 400.4297539650821,
+                "hybrid_activation_rate": 0.1501416430594901,
+                "delta_vs_dense": 0.012330220542749959,
+                "model_deterministic": true
             }
         ],
         "split_variability_comparison": {

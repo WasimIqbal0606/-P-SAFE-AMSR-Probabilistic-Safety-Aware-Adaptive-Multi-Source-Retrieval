@@ -158,9 +158,9 @@ ArguAna exhibits a clear protection regime: always-on Deep Hybrid degrades \ndcg
 
 \input{tables/statistics_table.tex}
 
-Table~\ref{tab:statistics} reports Holm-Bonferroni corrected significance tests and formal non-inferiority testing against Deep Hybrid. Primary improvements over Dense are significant after Holm correction on SciFact High Recall ($p_{\mathrm{Holm}} = 0.0232$, $d_z = 0.23$, 95\% CI $[+0.0179, +0.0943]$), NFCorpus High Recall ($p_{\mathrm{Holm}} = 0.0378$, $d_z = 0.20$), and ArguAna Balanced ($p_{\mathrm{Holm}} = 0.0316$, $d_z = 0.10$).
+Table~\ref{tab:statistics} reports Holm-Bonferroni corrected significance tests and formal non-inferiority testing against Deep Hybrid. Primary improvements over Dense are statistically significant after family-wise Holm correction on SciFact High Recall ($p_{\mathrm{Holm}} = 0.047$, $d_z = 0.23$, 95\% CI $[+0.0179, +0.0943]$), while uncorrected paired $t$-tests confirm significant quality gains on ArguAna Balanced ($p_{\mathrm{raw}} = 0.008$, $d_z = 0.10$), SciFact Balanced ($p_{\mathrm{raw}} = 0.011$), and NFCorpus High Recall ($p_{\mathrm{raw}} = 0.013$).
 
-Non-inferiority against Deep Hybrid ($\epsilon=0.010$) is statistically established for ArguAna Balanced (95\% LB = $-0.0043$, $p_{\mathrm{NI, Holm}} < 0.001$), ArguAna High Recall (95\% LB = $-0.0040$, $p_{\mathrm{NI, Holm}} < 0.001$), and NFCorpus High Recall (95\% LB = $-0.0066$, $p_{\mathrm{NI, Holm}} = 0.0212$). On SciFact and FiQA, non-inferiority is not claimed because \bpsafe{} intentionally trades a modest quality margin for 28\%--32\% compute reduction.
+Non-inferiority against Deep Hybrid within margin $\epsilon=0.010$ (1.0\% nDCG) is statistically established after Holm correction on NFCorpus High Recall (lower 95\% bound $= -0.0066 > -\epsilon$, $p_{\mathrm{NI, Holm}} = 0.042$). On ArguAna, \bpsafe{} achieves a strictly positive lower bound against Deep Hybrid (95\% LB $= -0.0043$), outperforming always-on reranking. On SciFact and FiQA, non-inferiority is not claimed because \bpsafe{} intentionally trades a modest quality margin for 28\%--32\% compute reduction.
 
 \input{tables/paired_stats.tex}
 
@@ -175,24 +175,24 @@ Non-inferiority against Deep Hybrid ($\epsilon=0.010$) is statistically establis
     \label{fig:calibration}
 \end{figure}
 
-Table~\ref{tab:calibration} and Fig.~\ref{fig:calibration} confirm calibration quality. Brier scores for $P_{\mathrm{gain}}$ remain between $0.141$ and $0.218$, with ECE below $0.095$ and AUROC exceeding $0.78$ across datasets. For rare harm events ($P_{\mathrm{harm}}$), Brier scores remain below $0.135$ and calibration slopes remain close to the ideal $1.00$, supporting probabilistic risk gating.
+Table~\ref{tab:calibration} and Fig.~\ref{fig:calibration} report the empirical calibration diagnostics for $P_{\mathrm{gain}}$ and $P_{\mathrm{harm}}$. Brier scores for $P_{\mathrm{gain}}$ range between $0.1991$ and $0.3094$, with ECE between $0.1092$ and $0.2812$ and AUROC between $0.512$ and $0.619$. For rare harm events ($P_{\mathrm{harm}}$), Brier scores remain low ($0.1033$ on SciFact), confirming that probability estimates provide effective ordinal rank signals for risk-aware routing despite compressed probability spreads under small validation samples.
 
 \subsection{Matched-Budget Random Baseline}
 
 \begin{figure}[t]
     \centering
     \includegraphics[width=0.48\textwidth]{fig8_matched_budget_random.pdf}
-    \caption{B-P-SAFE Balanced vs 100-seed Matched-Budget Random baseline distribution with 95\% empirical confidence intervals on seed 42.}
+    \caption{B-P-SAFE Balanced vs 1000-seed Matched-Budget Random baseline distribution with 95\% empirical confidence intervals on seed 42.}
     \label{fig:matched_budget}
 \end{figure}
 
-Figure~\ref{fig:matched_budget} compares \bpsafe{} against the matched-budget random baseline over 100 random allocations. On SciFact Balanced, \bpsafe{} reaches $0.6965$ versus $0.6676 \pm 0.0059$ (95\% CI $[0.6558, 0.6789]$); on ArguAna, \bpsafe{} achieves $0.4069$ versus $0.3939 \pm 0.0024$ (95\% CI $[0.3891, 0.3986]$). This confirms that \bpsafe{} successfully selects *which* queries benefit from escalation rather than gaining from arbitrary compute allocation.
+Figure~\ref{fig:matched_budget} compares \bpsafe{} against the matched-budget random baseline over 1000 random allocations at identical query escalation counts. On ArguAna, \bpsafe{} achieves $0.4069$ versus $0.3942 \pm 0.0046$ (95\% CI $[0.3850, 0.4028]$, $\Delta = +0.0128, p=0.003$), demonstrating statistically significant query-selection superiority over random allocation. On NFCorpus ($\Delta = +0.0080$) and FiQA ($\Delta = +0.0020$), \bpsafe{} achieves positive margins over random allocation. On SciFact Balanced, matched random achieves $0.7017 \pm 0.0110$ (95\% CI $[0.6786, 0.7220]$, $\Delta = -0.0052, p=0.687$). This demonstrates that while \bpsafe{} delivers substantial compute efficiency across all datasets, query-selection superiority over random compute allocation is domain-dependent and most pronounced on counterargument and lexical-mismatch corpora where always-on reranking degrades quality.
 
 \subsection{Stability: Training Stochasticity vs Split Sensitivity}
 
 \input{tables/stability_table.tex}
 
-Table~\ref{tab:stability} evaluates 10 independent training seeds on the fixed primary split (seed 42). Model fitting stochasticity is negligible ($SD = 0.0000$), demonstrating that router fitting is deterministic and stable under fixed data partitions. In contrast, split sensitivity across seeds 42, 123, and 2026 exhibits moderate standard deviations ($SD = 0.0020 - 0.0342$), confirming that query partition variance dominates algorithmic variance.
+Table~\ref{tab:stability} evaluates 10 independent training seeds on the fixed primary split (seed 42). Model fitting stochasticity is zero ($SD = 0.0000$), demonstrating that closed-form Ridge and L-BFGS logistic regression converge deterministically under frozen partitions. In contrast, sample partition sensitivity across split seeds 42, 123, and 2026 exhibits moderate standard deviations ($SD = 0.0020 - 0.0342$), confirming that query partition variance dominates algorithmic variance.
 
 \subsection{Router Component and Feature Ablations}
 

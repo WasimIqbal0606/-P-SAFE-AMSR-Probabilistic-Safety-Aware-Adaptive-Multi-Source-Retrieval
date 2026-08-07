@@ -139,8 +139,10 @@ secrets.json
 # ── Temporary outputs ──
 debug_outputs/
 /tmp/
+cache/
+scratch/
 
-# ── Gitignore results except verified evidence directories ──
+# ── Verified evidence tracking ──
 results/*
 !results/validated/
 !results/baselines/

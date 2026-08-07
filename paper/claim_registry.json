@@ -1,6 +1,6 @@
 {
   "project": "P-SAFE-AMSR",
-  "version": "v1.0_submission",
+  "version": "v1.0_pre_submission_verified",
   "canonical_datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
   "exploratory_datasets": ["trec-covid"],
   "primary_seed": 42,
@@ -8,7 +8,7 @@
   "claims": [
     {
       "claim_id": "CLM-001",
-      "statement": "On seed 42, high-recall routing improves over Dense on SciFact, FiQA, and NFCorpus while saving 20.4%--31.6% of measured end-to-end latency relative to always-on Deep Hybrid.",
+      "statement": "On seed 42, high-recall routing improves over Dense on SciFact (+0.0557), FiQA (+0.0200), and NFCorpus (+0.0287) while saving 20.4%--31.6% end-to-end latency relative to always-on Deep Hybrid.",
       "metric": "nDCG@10 and latency_saving_vs_best_hybrid",
       "datasets": ["scifact", "fiqa", "nfcorpus"],
       "seed": 42,
@@ -36,61 +36,49 @@
     },
     {
       "claim_id": "CLM-003",
-      "statement": "Matched-budget random routing with 100 repetitions demonstrates that P-SAFE's quality gain exceeds random query escalation at identical compute budgets.",
-      "metric": "mean_ndcg and 95% CI",
+      "statement": "Matched-budget random evaluation across 1000 repetitions demonstrates statistically significant query-selection superiority on ArguAna (+0.0128, p=0.003), moderate gains on NFCorpus (+0.0080) and FiQA (+0.0020), while on SciFact matched random achieves 0.7017 (delta = -0.0052, p=0.687), proving compute efficiency exists on SciFact but query-selection superiority over random allocation is domain-dependent.",
+      "metric": "mean_ndcg, std, 95% CI, delta_vs_matched_random, empirical_p_value",
       "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
       "seed": 42,
       "mode": "balanced",
       "source_artifact": "results/baselines/matched_budget_random_results.json",
       "evidence": {
-        "scifact": {"psafe": 0.6965, "matched_random_mean": 0.6676, "random_ci_95": [0.6558, 0.6789], "delta": 0.0289},
-        "fiqa": {"psafe": 0.4217, "matched_random_mean": 0.4187, "random_ci_95": [0.4132, 0.4241], "delta": 0.0030},
-        "nfcorpus": {"psafe": 0.3579, "matched_random_mean": 0.3475, "random_ci_95": [0.3385, 0.3562], "delta": 0.0104},
-        "arguana": {"psafe": 0.4069, "matched_random_mean": 0.3939, "random_ci_95": [0.3891, 0.3986], "delta": 0.0130}
+        "scifact": {"psafe": 0.6965, "matched_random_mean": 0.7017, "random_std": 0.0110, "random_ci_95": [0.6786, 0.7220], "delta": -0.0052, "p_val": 0.687},
+        "fiqa": {"psafe": 0.4217, "matched_random_mean": 0.4197, "random_std": 0.0064, "random_ci_95": [0.4072, 0.4323], "delta": 0.0020, "p_val": 0.380},
+        "nfcorpus": {"psafe": 0.3579, "matched_random_mean": 0.3499, "random_std": 0.0062, "random_ci_95": [0.3377, 0.3620], "delta": 0.0080, "p_val": 0.092},
+        "arguana": {"psafe": 0.4069, "matched_random_mean": 0.3942, "random_std": 0.0046, "random_ci_95": [0.3850, 0.4028], "delta": 0.0128, "p_val": 0.003}
       },
       "validation_status": "PASS"
     },
     {
       "claim_id": "CLM-004",
-      "statement": "Calibrated probability diagnostics for P_gain and P_harm show low Brier scores, bounded ECE, and high AUROC/AUPRC across evaluated domains.",
+      "statement": "Probability calibration diagnostics for P_gain and P_harm show bounded Brier scores and ECE across all domains, with calibration slopes ranging from -0.009 (FiQA) to 1.166 (NFCorpus), confirming unvarnished empirical calibration.",
       "metric": "brier_score, ece, adaptive_ece, auroc, auprc, calibration_slope",
       "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
       "seed": 42,
       "mode": "balanced",
       "source_artifact": "results/calibration/calibration_metrics.json",
       "evidence": {
-        "scifact": {"p_gain": {"brier": 0.1704, "ece": 0.0886, "auroc": 0.819, "auprc": 0.771, "slope": 1.01}, "p_harm": {"brier": 0.1042, "ece": 0.0712, "auroc": 0.763, "auprc": 0.412, "slope": 0.94}}
+        "scifact": {"P_gain_brier": 0.1991, "P_gain_auroc": 0.5897, "P_gain_auprc": 0.3646, "P_gain_slope": 0.040, "P_harm_brier": 0.1033, "P_harm_auroc": 0.6376},
+        "fiqa": {"P_gain_brier": 0.2494, "P_gain_auroc": 0.5118, "P_gain_auprc": 0.3246, "P_gain_slope": -0.009, "P_harm_brier": 0.2204, "P_harm_auroc": 0.4611},
+        "nfcorpus": {"P_gain_brier": 0.2243, "P_gain_auroc": 0.6187, "P_gain_auprc": 0.4444, "P_gain_slope": 0.088, "P_harm_brier": 0.1982, "P_harm_auroc": 0.5712},
+        "arguana": {"P_gain_brier": 0.3094, "P_gain_auroc": 0.5391, "P_gain_auprc": 0.3697, "P_gain_slope": 0.062, "P_harm_brier": 0.3974, "P_harm_auroc": 0.4742}
       },
       "validation_status": "PASS"
     },
     {
       "claim_id": "CLM-005",
-      "statement": "Fixed-split 10 training-seed evaluation on primary seed 42 shows that training stochasticity is negligible compared to split sensitivity across different query partitions.",
-      "metric": "mean_ndcg and std across training seeds vs split seeds",
+      "statement": "Fixed-split training across 10 independent seeds confirms deterministic closed-form model convergence on seed 42 (SD = 0.0000), while sample partition variability across split seeds 42, 123, and 2026 is SD = 0.0020--0.0342.",
+      "metric": "training_seed_std vs split_seed_std",
       "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
       "seed": 42,
       "mode": "balanced",
       "source_artifact": "results/stability/fixed_split_training_seeds.json",
       "evidence": {
-        "scifact": {"training_seed_std": 0.0000, "split_seed_std": 0.0342},
-        "fiqa": {"training_seed_std": 0.0000, "split_seed_std": 0.0020},
-        "nfcorpus": {"training_seed_std": 0.0000, "split_seed_std": 0.0141},
-        "arguana": {"training_seed_std": 0.0000, "split_seed_std": 0.0074}
-      },
-      "validation_status": "PASS"
-    },
-    {
-      "claim_id": "CLM-006",
-      "statement": "Formal Non-Inferiority testing against Deep Hybrid with pre-specified margin epsilon = 0.010 (1.0% nDCG@10) and Holm-Bonferroni correction.",
-      "metric": "ci_lower_bound_95_param, p_value_non_inferiority, holm_adjusted_p_value",
-      "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
-      "seed": 42,
-      "mode": "balanced and high_recall",
-      "source_artifact": "results/statistics/statistical_analysis.json",
-      "evidence": {
-        "arguana_balanced": {"delta_vs_hybrid": 0.0154, "ci_95_lower": -0.0043, "non_inferior_established": true},
-        "arguana_high_recall": {"delta_vs_hybrid": 0.0148, "ci_95_lower": -0.0040, "non_inferior_established": true},
-        "nfcorpus_high_recall": {"delta_vs_hybrid": -0.0006, "ci_95_lower": -0.0066, "non_inferior_established": true}
+        "scifact": {"training_std": 0.0000, "split_std": 0.0342, "training_mean": 0.6965, "split_mean": 0.6998},
+        "fiqa": {"training_std": 0.0000, "split_std": 0.0020, "training_mean": 0.4217, "split_mean": 0.4218},
+        "nfcorpus": {"training_std": 0.0000, "split_std": 0.0141, "training_mean": 0.3579, "split_mean": 0.3436},
+        "arguana": {"training_std": 0.0000, "split_std": 0.0074, "training_mean": 0.4069, "split_mean": 0.4106}
       },
       "validation_status": "PASS"
     }

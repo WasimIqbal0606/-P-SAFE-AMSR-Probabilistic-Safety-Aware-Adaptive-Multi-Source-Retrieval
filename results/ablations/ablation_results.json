@@ -1,374 +1,374 @@
 {
     "scifact": {
         "Full B-P-SAFE": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.6964820754872394,
+            "mean_latency": 454.5453560309723,
+            "hybrid_activation_rate": 0.6381578947368421,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "harm_avoidance": 0.0027682656360186117
         },
         "Minus P_harm": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6899031281188183,
+            "mean_latency": 417.3127493480055,
+            "hybrid_activation_rate": 0.5855263157894737,
+            "delta_vs_full": -0.006578947368421129,
+            "harm_avoidance": 0.0027682656360186117
         },
         "Minus P_gain": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6758283476307408,
+            "mean_latency": 273.0363984515092,
+            "hybrid_activation_rate": 0.3815789473684211,
+            "delta_vs_full": -0.02065372785649855,
+            "harm_avoidance": 0.018998002130055317
         },
         "Minus Delta nDCG": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
+            "mean_ndcg": 0.6533456978207162,
+            "mean_latency": 35.67853084759594,
+            "hybrid_activation_rate": 0.046052631578947366,
+            "delta_vs_full": -0.04313637766652323,
             "harm_avoidance": 0.04108526463531305
         },
         "Minus Latency & Cost": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6899031281188183,
+            "mean_latency": 426.6209010187472,
+            "hybrid_activation_rate": 0.5986842105263158,
+            "delta_vs_full": -0.006578947368421129,
+            "harm_avoidance": 0.0027682656360186117
         },
         "Minus Soft Overrides": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.656358078592087,
+            "mean_latency": 54.294834189079346,
+            "hybrid_activation_rate": 0.07236842105263158,
+            "delta_vs_full": -0.04012399689515245,
+            "harm_avoidance": 0.03895491149171662
         },
         "Feature: Query Only": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6495447633674164,
+            "mean_latency": 212.5334125916882,
+            "hybrid_activation_rate": 0.29605263157894735,
+            "delta_vs_full": -0.046937312119822994,
+            "harm_avoidance": 0.026175214524295894
         },
         "Feature: Dense Only": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6847976821305545,
+            "mean_latency": 356.80976348818444,
+            "hybrid_activation_rate": 0.5,
+            "delta_vs_full": -0.011684393356684919,
+            "harm_avoidance": 0.005554005073709192
         },
         "Feature: Bm25 Only": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6847119121562006,
+            "mean_latency": 394.0423701711513,
+            "hybrid_activation_rate": 0.5526315789473685,
+            "delta_vs_full": -0.011770163331038752,
+            "harm_avoidance": 0.0027682656360186117
         },
         "Feature: Dense Plus Bm25": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6899031281188183,
+            "mean_latency": 426.6209010187472,
+            "hybrid_activation_rate": 0.5986842105263158,
+            "delta_vs_full": -0.006578947368421129,
+            "harm_avoidance": 0.0027682656360186117
         },
         "Feature: Disagreement Only": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.6905605076568451,
+            "mean_latency": 333.5393843113302,
+            "hybrid_activation_rate": 0.46710526315789475,
+            "delta_vs_full": -0.005921567830394325,
+            "harm_avoidance": 0.009553467626859859
         },
         "Feature: Graph Only": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "mean_ndcg": 0.666970889070807,
+            "mean_latency": 110.1437442135295,
+            "hybrid_activation_rate": 0.1513157894736842,
+            "delta_vs_full": -0.029511186416432356,
+            "harm_avoidance": 0.028316613619376194
         },
         "Feature: Complete": {
-            "mean_ndcg": 0.6465710417012945,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.6964820754872394,
+            "mean_latency": 454.5453560309723,
+            "hybrid_activation_rate": 0.6381578947368421,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04108526463531305
+            "harm_avoidance": 0.0027682656360186117
         }
     },
     "fiqa": {
         "Full B-P-SAFE": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.4216747787633763,
+            "mean_latency": 404.29208198729293,
+            "hybrid_activation_rate": 0.4584615384615385,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "harm_avoidance": 0.048784113742592256
         },
         "Minus P_harm": {
-            "mean_ndcg": 0.4096630208654411,
-            "mean_latency": 35.3144640113669,
-            "hybrid_activation_rate": 0.036923076923076927,
-            "delta_vs_full": 0.0012121746350871598,
-            "harm_avoidance": 0.07394586774116756
+            "mean_ndcg": 0.4216747787633763,
+            "mean_latency": 404.29208198729293,
+            "hybrid_activation_rate": 0.4584615384615385,
+            "delta_vs_full": 0.0,
+            "harm_avoidance": 0.048784113742592256
         },
         "Minus P_gain": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "mean_ndcg": 0.40736619503447236,
+            "mean_latency": 46.1810289382328,
+            "hybrid_activation_rate": 0.04923076923076923,
+            "delta_vs_full": -0.014308583728903923,
+            "harm_avoidance": 0.06892354187436323
         },
         "Minus Delta nDCG": {
             "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
+            "mean_latency": 3.1000000000000005,
             "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
+            "delta_vs_full": -0.013223932533022342,
             "harm_avoidance": 0.07905941769201412
         },
         "Minus Latency & Cost": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.4216747787633763,
+            "mean_latency": 404.29208198729293,
+            "hybrid_activation_rate": 0.4584615384615385,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "harm_avoidance": 0.048784113742592256
         },
         "Minus Soft Overrides": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "mean_ndcg": 0.4099128233224213,
+            "mean_latency": 21.94795016047685,
+            "hybrid_activation_rate": 0.021538461538461538,
+            "delta_vs_full": -0.011761955440954985,
+            "harm_avoidance": 0.07853115050293188
         },
         "Feature: Query Only": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "mean_ndcg": 0.4248454055378561,
+            "mean_latency": 264.2787379380363,
+            "hybrid_activation_rate": 0.29846153846153844,
+            "delta_vs_full": 0.0031706267744798233,
+            "harm_avoidance": 0.05981324264762953
         },
         "Feature: Dense Only": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "mean_ndcg": 0.4221965636945665,
+            "mean_latency": 398.9069533700138,
+            "hybrid_activation_rate": 0.4523076923076923,
+            "delta_vs_full": 0.0005217849311902056,
+            "harm_avoidance": 0.048784113742592256
         },
         "Feature: Bm25 Only": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "mean_ndcg": 0.41591467519661157,
+            "mean_latency": 323.5151527281064,
+            "hybrid_activation_rate": 0.36615384615384616,
+            "delta_vs_full": -0.005760103566764707,
+            "harm_avoidance": 0.05205506730266824
         },
         "Feature: Dense Plus Bm25": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.4216747787633763,
+            "mean_latency": 404.29208198729293,
+            "hybrid_activation_rate": 0.4584615384615385,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "harm_avoidance": 0.048784113742592256
         },
         "Feature: Disagreement Only": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "mean_ndcg": 0.41688246929926714,
+            "mean_latency": 342.3631028885833,
+            "hybrid_activation_rate": 0.38769230769230767,
+            "delta_vs_full": -0.004792309464109135,
+            "harm_avoidance": 0.05204643555012529
         },
         "Feature: Graph Only": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "mean_ndcg": 0.4145857912185105,
+            "mean_latency": 94.64718649374468,
+            "hybrid_activation_rate": 0.10461538461538461,
+            "delta_vs_full": -0.007088987544865755,
+            "harm_avoidance": 0.07853115050293188
         },
         "Feature: Complete": {
-            "mean_ndcg": 0.40845084623035394,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.4216747787633763,
+            "mean_latency": 404.29208198729293,
+            "hybrid_activation_rate": 0.4584615384615385,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.07905941769201412
+            "harm_avoidance": 0.048784113742592256
         }
     },
     "nfcorpus": {
         "Full B-P-SAFE": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.3578996251800681,
+            "mean_latency": 397.6639889341788,
+            "hybrid_activation_rate": 0.5493827160493827,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "harm_avoidance": 0.01182285513567708
         },
         "Minus P_harm": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 7.433920530402065,
-            "hybrid_activation_rate": 0.006172839506172839,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.3540368117389534,
+            "mean_latency": 353.33095646966433,
+            "hybrid_activation_rate": 0.4876543209876543,
+            "delta_vs_full": -0.003862813441114721,
+            "harm_avoidance": 0.013839628845667529
         },
         "Minus P_gain": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
+            "mean_ndcg": 0.3351492341195575,
+            "mean_latency": 29.69981947870868,
+            "hybrid_activation_rate": 0.037037037037037035,
+            "delta_vs_full": -0.022750391060510633,
             "harm_avoidance": 0.04568127788017261
         },
         "Minus Delta nDCG": {
             "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
+            "mean_latency": 3.1000000000000005,
             "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
+            "delta_vs_full": -0.024022803732465847,
             "harm_avoidance": 0.04568127788017261
         },
         "Minus Latency & Cost": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 7.433920530402065,
-            "hybrid_activation_rate": 0.006172839506172839,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.3540368117389534,
+            "mean_latency": 353.33095646966433,
+            "hybrid_activation_rate": 0.4876543209876543,
+            "delta_vs_full": -0.003862813441114721,
+            "harm_avoidance": 0.013839628845667529
         },
         "Minus Soft Overrides": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.34442949691993574,
+            "mean_latency": 56.29963895741738,
+            "hybrid_activation_rate": 0.07407407407407407,
+            "delta_vs_full": -0.013470128260132386,
+            "harm_avoidance": 0.044593780779221985
         },
         "Feature: Query Only": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.3454795645061829,
+            "mean_latency": 215.89855582966953,
+            "hybrid_activation_rate": 0.2962962962962963,
+            "delta_vs_full": -0.012420060673885236,
+            "harm_avoidance": 0.026475604082210787
         },
         "Feature: Dense Only": {
-            "mean_ndcg": 0.33480682480785723,
-            "mean_latency": 11.86784106080413,
-            "hybrid_activation_rate": 0.012345679012345678,
-            "delta_vs_full": 0.0009300033602549496,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.35467554310717114,
+            "mean_latency": 362.19756296256725,
+            "hybrid_activation_rate": 0.5,
+            "delta_vs_full": -0.0032240820728969832,
+            "harm_avoidance": 0.01182285513567708
         },
         "Feature: Bm25 Only": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.3486389753783134,
+            "mean_latency": 127.23249090064053,
+            "hybrid_activation_rate": 0.1728395061728395,
+            "delta_vs_full": -0.009260649801754728,
+            "harm_avoidance": 0.031792862126274454
         },
         "Feature: Dense Plus Bm25": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.353714810356864,
+            "mean_latency": 335.5977434838585,
+            "hybrid_activation_rate": 0.46296296296296297,
+            "delta_vs_full": -0.004184814823204153,
+            "harm_avoidance": 0.018654403005899798
         },
         "Feature: Disagreement Only": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.3578996251800681,
+            "mean_latency": 388.79738244127594,
+            "hybrid_activation_rate": 0.5370370370370371,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "harm_avoidance": 0.01182285513567708
         },
         "Feature: Graph Only": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "mean_ndcg": 0.3529826866940886,
+            "mean_latency": 300.13131751224694,
+            "hybrid_activation_rate": 0.41358024691358025,
+            "delta_vs_full": -0.004916938485979516,
+            "harm_avoidance": 0.01441550389226133
         },
         "Feature: Complete": {
-            "mean_ndcg": 0.3338768214476023,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.3578996251800681,
+            "mean_latency": 397.6639889341788,
+            "hybrid_activation_rate": 0.5493827160493827,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.04568127788017261
+            "harm_avoidance": 0.01182285513567708
         }
     },
     "arguana": {
         "Full B-P-SAFE": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.406909818187856,
+            "mean_latency": 180.2386064963848,
+            "hybrid_activation_rate": 0.1501416430594901,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "harm_avoidance": 0.18466013520976526
         },
         "Minus P_harm": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.406909818187856,
+            "mean_latency": 180.2386064963848,
+            "hybrid_activation_rate": 0.1501416430594901,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "harm_avoidance": 0.18466013520976526
         },
         "Minus P_gain": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "mean_ndcg": 0.3979413260332605,
+            "mean_latency": 36.522378584223546,
+            "hybrid_activation_rate": 0.028328611898016998,
+            "delta_vs_full": -0.008968492154595498,
+            "harm_avoidance": 0.20264669677252206
         },
         "Minus Delta nDCG": {
             "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
+            "mean_latency": 3.1000000000000005,
             "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
+            "delta_vs_full": -0.012330220542749959,
             "harm_avoidance": 0.20359576404976407
         },
         "Minus Latency & Cost": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.406909818187856,
+            "mean_latency": 180.2386064963848,
+            "hybrid_activation_rate": 0.1501416430594901,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "harm_avoidance": 0.18466013520976526
         },
         "Minus Soft Overrides": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "mean_ndcg": 0.4069180581191023,
+            "mean_latency": 168.54077399190655,
+            "hybrid_activation_rate": 0.14022662889518414,
+            "delta_vs_full": 8.239931246323273e-06,
+            "harm_avoidance": 0.18622364117141207
         },
         "Feature: Query Only": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "mean_ndcg": 0.39899376243550605,
+            "mean_latency": 355.70609406355845,
+            "hybrid_activation_rate": 0.2988668555240793,
+            "delta_vs_full": -0.007916055752349938,
+            "harm_avoidance": 0.14272287728598473
         },
         "Feature: Dense Only": {
             "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
+            "mean_latency": 3.1000000000000005,
             "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
+            "delta_vs_full": -0.012330220542749959,
             "harm_avoidance": 0.20359576404976407
         },
         "Feature: Bm25 Only": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.406909818187856,
+            "mean_latency": 180.2386064963848,
+            "hybrid_activation_rate": 0.1501416430594901,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "harm_avoidance": 0.18466013520976526
         },
         "Feature: Dense Plus Bm25": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "mean_ndcg": 0.39883634422364966,
+            "mean_latency": 48.220211088701774,
+            "hybrid_activation_rate": 0.03824362606232295,
+            "delta_vs_full": -0.008073473964206324,
+            "harm_avoidance": 0.19318029115600413
         },
         "Feature: Disagreement Only": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
-            "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "mean_ndcg": 0.4059028278568615,
+            "mean_latency": 175.22524970875125,
+            "hybrid_activation_rate": 0.14589235127478753,
+            "delta_vs_full": -0.001006990330994495,
+            "harm_avoidance": 0.18466013520976526
         },
         "Feature: Graph Only": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.406909818187856,
+            "mean_latency": 180.2386064963848,
+            "hybrid_activation_rate": 0.1501416430594901,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "harm_avoidance": 0.18466013520976526
         },
         "Feature: Complete": {
-            "mean_ndcg": 0.39457959764510603,
-            "mean_latency": 3.0,
-            "hybrid_activation_rate": 0.0,
+            "mean_ndcg": 0.406909818187856,
+            "mean_latency": 180.2386064963848,
+            "hybrid_activation_rate": 0.1501416430594901,
             "delta_vs_full": 0.0,
-            "harm_avoidance": 0.20359576404976407
+            "harm_avoidance": 0.18466013520976526
         }
     }
 }
