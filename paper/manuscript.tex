@@ -29,7 +29,7 @@
 \maketitle
 
 \begin{abstract}
-Static retrieval cascades commonly execute expensive Cross-Encoder reranking for every query, despite the fact that reranking is often redundant or can actively reduce ranking quality on easy queries. We present B-P-SAFE-AMSR, a calibrated per-query escalation router over retrieval modules. For each incoming query, the router estimates the probability of quality improvement, the risk of retrieval degradation, expected nDCG@10 delta, and execution latency, selecting between fast Dense retrieval and a comprehensive Deep Hybrid cascade. We evaluate B-P-SAFE across four canonical BEIR benchmarks (SciFact, FiQA, NFCorpus, and ArguAna) across three data-split seeds and ten independent training seeds. On seed 42, high-recall routing improves over Dense on SciFact, FiQA, and NFCorpus while saving 20.4\%--31.6\% of measured end-to-end latency relative to always-on Deep Hybrid; on ArguAna, where always-on reranking degrades mean nDCG below Dense, selective routing prevents over-treatment and improves quality to 0.4069. Matched-budget random baselines over 100 repetitions demonstrate that B-P-SAFE successfully identifies which queries warrant compute rather than merely benefiting from fractional escalation. Calibration diagnostics confirm low Brier scores and bounded Expected Calibration Error. Formal non-inferiority testing against Deep Hybrid with a pre-specified margin of $\epsilon=0.010$ and Holm-Bonferroni multi-testing correction support quality preservation.
+Static retrieval cascades commonly execute expensive Cross-Encoder reranking for every query, despite the fact that reranking is often redundant or can reduce ranking quality on individual queries. We present B-P-SAFE-AMSR, a per-query escalation router over retrieval modules. For each query, the router estimates quality improvement, retrieval-degradation risk, expected nDCG@10 delta, and execution latency, selecting between Dense retrieval and a Deep Hybrid cascade. We evaluate B-P-SAFE on four BEIR benchmarks (SciFact, FiQA, NFCorpus, and ArguAna) across three data-split seeds. On seed 42, High Recall improves over Dense on SciFact, FiQA, and NFCorpus while saving 20.4\%--31.6\% of measured end-to-end latency relative to always-on Deep Hybrid; on ArguAna, where always-on reranking is below Dense, Balanced routing reaches 0.4069. Exactly 1000 matched-budget random allocations show significant query-selection benefit on ArguAna but not uniformly across datasets. Held-out calibration diagnostics are heterogeneous. After Holm correction, non-inferiority to Deep Hybrid at $\epsilon=0.010$ is established only for NFCorpus High Recall.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -49,8 +49,8 @@ We study whether a lightweight router can learn, prior to executing expensive pi
 \begin{enumerate}
     \item a risk- and cost-constrained utility formulation for retrieval escalation balancing predicted \ndcg{} delta, regression risk, latency, and recovery probability;
     \item a reproducible binary router using 25 query, score-distribution, lexical-disagreement, and graph signals, with rigorous calibration diagnostics ($P_{\mathrm{gain}}$ and $P_{\mathrm{harm}}$ Brier scores, uniform and adaptive ECE, AUROC, AUPRC, and calibration slope/intercept);
-    \item comprehensive baseline comparisons against 12 methods, including a 100-seed matched-budget random router, BM25-disagreement heuristics, and cost-only policies; and
-    \item rigorous statistical validation across four BEIR datasets, separating split sensitivity (3 seeds) from training stochasticity (10 seeds), with Holm-Bonferroni multi-testing control and formal non-inferiority testing ($\epsilon=0.010$).
+    \item comparisons against eight baselines with genuine per-run artifacts, plus an exact-budget random-allocation analysis with 1000 allocations; and
+    \item paired statistical validation across four BEIR datasets and three split seeds, with Holm-Bonferroni control and formal non-inferiority testing ($\epsilon=0.010$).
 \end{enumerate}
 
 \section{Related Work}
@@ -105,27 +105,24 @@ The router extracts 25 features spanning four groups:
     \item \textbf{Graph signals (3):} maximum degree, mean degree, zero-degree fraction across Dense seeds.
 \end{itemize}
 
-Continuous features are standardized on training splits. Logistic models with balanced class weights predict gain and harm. Sigmoid (Platt) calibration is fitted strictly on validation queries using 3-fold cross-validation. We evaluate calibration using Brier score, uniform ECE ($M=10$), adaptive quantile ECE ($M=5$), AUROC, AUPRC, and logistic calibration slope and intercept.
+Continuous features are standardized on training splits. Logistic models with balanced class weights predict gain and harm. Gain/harm classifiers use internal cross-validated sigmoid calibration on the training split; routing thresholds are selected on the validation split. We evaluate held-out calibration using Brier score, uniform ECE ($M=10$), adaptive quantile ECE ($M=5$), AUROC, AUPRC, and logistic calibration slope and intercept.
 
 \section{Experimental Design}
 \label{sec:experiments}
 
 \subsection{Datasets, Splits, and Leakage Prevention}
-We evaluate four canonical BEIR benchmarks: SciFact ($N=300$), FiQA-2018 ($N=648$), NFCorpus ($N=323$), and ArguAna ($N=1,406$) \cite{thakur2021beir}. Queries are stratified into 40\% training, 10\% validation, and 50\% test partitions. Primary experiments use split seed 42; seeds 123 and 2026 evaluate split sensitivity. All splits enforce strict disjointness assertions: $\text{train} \cap \text{val} = \emptyset$, $\text{train} \cap \text{test} = \emptyset$, $\text{val} \cap \text{test} = \emptyset$.
+We evaluate four canonical BEIR benchmarks: SciFact ($N=300$), FiQA-2018 ($N=648$), NFCorpus ($N=323$), and ArguAna ($N=1,406$) \cite{thakur2021beir}. Queries are stratified into approximately 40\% training, 10\% validation, and 50\% test partitions. Primary experiments use split seed 42; seeds 123 and 2026 measure split sensitivity. Historical artifacts preserve split sizes and held-out test IDs, but not the original train and validation ID lists; therefore this release does not claim that split disjointness has been mechanically re-proven from committed artifacts. The repaired runner writes explicit sorted IDs and hashes for future runs.
 
 \subsection{Baseline Suite}
-We compare 12 routing strategies on identical test queries:
+Eight baseline strategies have per-run result and per-query artifacts on identical test queries:
 \begin{enumerate}
     \item \textbf{Dense-only ($A_0$)} and \textbf{Always-Hybrid ($A_6$)}: static endpoints.
     \item \textbf{Random}: samples $A_6$ with validation advantage rate.
-    \item \textbf{Matched-Budget Random}: matches exact P-SAFE test escalation count $k = \mathrm{round}(f \cdot N)$ across 100 independent random seeds.
     \item \textbf{Dense-margin} and \textbf{Dense-entropy}: heuristic score routers.
-    \item \textbf{BM25-disagreement}: escalates when lexical-dense Jaccard overlap is low.
-    \item \textbf{Cost-only}: escalates based on query complexity/latency proxy.
     \item \textbf{Regression-only} and \textbf{Classifier-only}: learned single-signal baselines.
     \item \textbf{Oracle}: diagnostic upper bound choosing optimal action per query.
-    \item \textbf{B-P-SAFE}: Balanced and High Recall operating modes.
 \end{enumerate}
+Matched-Budget Random is a separate allocation test: it matches the exact P-SAFE test escalation count and evaluates 1000 random allocations. BM25-disagreement and cost-only policies are not reported because no valid validation-tuned execution artifacts were retained.
 
 \subsection{Latency Boundary and Hardware}
 End-to-end latency is measured as $T_{\mathrm{total}} = T_{\mathrm{feat}} + T_{\mathrm{router}} + T_{\mathrm{retrieval}}$. For Dense decisions, $T_{\mathrm{total}}$ includes feature extraction, router prediction, and Dense vector search. For Deep Hybrid, $T_{\mathrm{total}}$ includes full multi-stage retrieval and reranking. Experiments ran on an NVIDIA GeForce RTX 5070 Ti with CUDA and PyTorch 2.3 / Python 3.11.9.
@@ -179,33 +176,7 @@ Table~\ref{tab:calibration} and Fig.~\ref{fig:calibration} report the empirical 
 
 \subsection{Matched-Budget Random Baseline}
 
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.48\textwidth]{fig8_matched_budget_random.pdf}
-    \caption{B-P-SAFE Balanced vs 1000-seed Matched-Budget Random baseline distribution with 95\% empirical confidence intervals on seed 42.}
-    \label{fig:matched_budget}
-\end{figure}
-
-Figure~\ref{fig:matched_budget} compares \bpsafe{} against the matched-budget random baseline over 1000 random allocations at identical query escalation counts. On ArguAna, \bpsafe{} achieves $0.4069$ versus $0.3942 \pm 0.0045$ (95\% CI $[0.3853, 0.4030]$, $\Delta = +0.0127, p=0.004$), demonstrating statistically significant query-selection superiority over random allocation. On NFCorpus ($\Delta = +0.0078, p=0.104$) and FiQA ($\Delta = +0.0021, p=0.371$), \bpsafe{} achieves positive margins over random allocation. On SciFact Balanced, matched random achieves $0.7019 \pm 0.0113$ (95\% CI $[0.6784, 0.7226]$, $\Delta = -0.0054, p=0.695$). This demonstrates that while \bpsafe{} delivers substantial compute efficiency across all datasets, query-selection superiority over random compute allocation is domain-dependent and most pronounced on counterargument and lexical-mismatch corpora where always-on reranking degrades quality.
-
-\subsection{Stability: Training Stochasticity vs Split Sensitivity}
-
-\input{tables/stability_table.tex}
-
-Table~\ref{tab:stability} evaluates 10 independent training seeds on the fixed primary split (seed 42). Model fitting stochasticity is zero ($SD = 0.0000$), demonstrating that closed-form Ridge and L-BFGS logistic regression converge deterministically under frozen partitions. In contrast, sample partition sensitivity across split seeds 42, 123, and 2026 exhibits moderate standard deviations ($SD = 0.0020 - 0.0342$), confirming that query partition variance dominates algorithmic variance.
-
-\subsection{Router Component and Feature Ablations}
-
-\input{tables/ablation_table.tex}
-
-\begin{figure}[t]
-    \centering
-    \includegraphics[width=0.48\textwidth]{fig9_ablation_matrix.pdf}
-    \caption{Macro-average nDCG change ($\Delta_{\mathrm{Full}}$) across component and feature-group ablations.}
-    \label{fig:ablations}
-\end{figure}
-
-Table~\ref{tab:ablations} and Fig.~\ref{fig:ablations} summarize the controlled ablation matrix. Full \bpsafe{} achieves top macro-average \ndcg{} ($0.4560$). Removing $P_{\mathrm{harm}}$ reduces harm avoidance and lowers mean quality. Among feature groups, lexical-dense disagreement signals (Jaccard overlap, rank correlation) and Dense score distributions contribute most strongly to routing efficacy.
+Across 1000 matched-budget random allocations at identical escalation counts, ArguAna \bpsafe{} achieves $0.4069$ versus $0.3939 \pm 0.0046$ (95\% empirical interval $[0.3848, 0.4038]$, $\Delta = +0.0130$, one-sided $p=0.005$). NFCorpus ($\Delta = +0.0082$, $p=0.096$) and FiQA ($\Delta = +0.0019$, $p=0.390$) have positive but non-significant margins. On SciFact Balanced, matched random reaches $0.7017 \pm 0.0110$ versus $0.6965$ for \bpsafe{} ($\Delta = -0.0052$, $p=0.680$). Query-selection benefit is therefore dataset-dependent.
 
 \section{Discussion and Limitations}
 \label{sec:discussion}
@@ -223,19 +194,21 @@ Inspection of per-query routing decisions reveals three diagnostic behaviors:
     \item \textbf{Binary Action Space:} The current verified release evaluates binary Dense-vs-Deep-Hybrid routing. Multi-tier intermediate routing (A0--A16) is documented in archive code and remains future work.
     \item \textbf{Hardware Dependence:} Latency savings are measured on a local NVIDIA RTX 5070 Ti GPU; distributed or CPU-only deployments may exhibit different latency profiles.
     \item \textbf{Safety Scope:} Safety in this work strictly refers to harm-aware protection against retrieval degradation ($\Delta\text{nDCG} < -0.01$). It does not evaluate adversarial robustness, jailbreak protection, or factual generation safety.
+    \item \textbf{Historical Split Provenance:} The committed primary artifacts contain test IDs and split sizes but not explicit historical train/validation ID lists. Split overlap cannot be mechanically re-audited without a fresh canonical run.
+    \item \textbf{Removed Secondary Analyses:} Fixed-split 10-training-seed stability and feature-group ablations are not reported because their earlier artifacts used test-derived or surrogate training evidence.
 \end{itemize}
 
 \section{Reproducibility Statement}
 \label{sec:reproducibility}
 
-All experiments, figures, and tables are fully reproducible from validated machine-readable artifacts. The repository includes an automated submission auditor:
+Primary held-out metrics, retained baselines, matched-budget random analysis, calibration diagnostics, statistics, and tables are reproducible from committed machine-readable artifacts. The repository includes a fail-closed submission auditor:
 \begin{verbatim}
 python -m psafe.audit_submission
 \end{verbatim}
-which programmatically verifies all 18 submission criteria, data split disjointness, baseline completeness, and artifact provenance.
+which reports exact evidence failures. At this release state it intentionally fails the split-provenance gate until a fresh canonical run commits explicit train/validation/test split manifests.
 
 \section{Conclusion}
-\bpsafe{} demonstrates that per-query risk- and cost-aware routing provides an effective, inspectable decision layer for retrieval cascades. Across four BEIR benchmarks, it achieves statistically validated quality gains over Dense, saves 20\%--66\% latency relative to always-on Deep Hybrid, prevents reranking harm on difficult corpora, and satisfies formal non-inferiority criteria.
+The results support per-query risk- and cost-aware routing as an inspectable decision layer for retrieval cascades. On the retained seed-42 comparisons, B-P-SAFE improves over Dense in several dataset/mode settings and saves measured latency relative to always-on Deep Hybrid. These findings are heterogeneous: matched-random superiority is established only on ArguAna, and Holm-adjusted non-inferiority to Deep Hybrid is established only for NFCorpus High Recall.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}

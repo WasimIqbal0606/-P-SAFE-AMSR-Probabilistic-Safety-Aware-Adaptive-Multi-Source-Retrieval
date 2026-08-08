@@ -271,15 +271,25 @@ def audit_one_run(dataset: str, seed: int, mode: str) -> dict:
         ci_low, ci_high = bootstrap_ci(deltas, stored["bootstrap_ci"]["n_bootstrap"])
         perm_p = permutation_p(deltas, stored["permutation_test"]["n_permutations"])
 
+        wilcoxon_stored = stored["wilcoxon"]
+        if np.allclose(deltas, 0.0):
+            wilcoxon_checks = {
+                "wilcoxon_all_zero_note": wilcoxon_stored["note"] == "all deltas zero",
+                "wilcoxon_all_zero_p": approx_equal(wilcoxon_stored["p_value"], 1.0),
+            }
+        else:
+            wilcoxon_checks = {
+                "wilcoxon_statistic": approx_equal(w_stat, wilcoxon_stored["w_statistic"], 1e-9),
+                "wilcoxon_nonzero": n_nonzero == wilcoxon_stored["n_nonzero"],
+            }
         checks = {
             "mean_delta": approx_equal(float(np.mean(deltas)), stored["mean_delta"]),
             "t_statistic": approx_equal(t_stat, stored["paired_ttest"]["t_statistic"], 1e-9),
             "t_p_value": approx_equal(p_value, stored["paired_ttest"]["p_value"], 1e-9),
-            "wilcoxon_statistic": approx_equal(w_stat, stored["wilcoxon"].get("w_statistic", 0.0), 1e-9),
-            "wilcoxon_nonzero": n_nonzero == stored["wilcoxon"].get("n_nonzero", 0),
             "bootstrap_low": approx_equal(ci_low, stored["bootstrap_ci"]["ci_low"], 1e-12),
             "bootstrap_high": approx_equal(ci_high, stored["bootstrap_ci"]["ci_high"], 1e-12),
             "permutation_p": approx_equal(perm_p, stored["permutation_test"]["p_value"], 1e-12),
+            **wilcoxon_checks,
         }
         if not all(checks.values()):
             failed = [key for key, passed in checks.items() if not passed]

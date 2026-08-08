@@ -4,7 +4,7 @@ Implements all baseline routers for fair and exhaustive comparison:
   1. Dense-only (A0)
   2. Always-Hybrid (A6)
   3. Random router (validation-rate driven)
-  4. Matched-Budget Random router (matched to P-SAFE activation rate, 100 seeds)
+  4. Matched-Budget Random router (matched to P-SAFE activation rate, 1000 allocations)
   5. Dense-margin threshold router
   6. Dense-entropy threshold router
   7. BM25-disagreement heuristic router
@@ -83,7 +83,7 @@ class MatchedBudgetRandomRouter:
     """
     Matched-Activation / Matched-Budget Random Baseline.
     Chooses exactly the same fraction / count k of test queries to escalate as P-SAFE,
-    repeated over multiple independent random seeds (e.g. 100 seeds).
+    repeated over exactly 1000 independent random allocations for paper evidence.
     """
     name = "Matched-Budget-Random"
 
@@ -138,11 +138,11 @@ class MatchedBudgetRandomRouter:
         dense_ndcg: np.ndarray,
         hybrid_ndcg: np.ndarray,
         target_k: Optional[int] = None,
-        n_repetitions: int = 100,
+        n_repetitions: int = 1000,
         seed_base: int = 42
     ) -> Dict:
         """
-        Run across n_repetitions (e.g. 100 seeds) to obtain distribution metrics.
+        Run across n_repetitions (1000 for paper evidence) to obtain distribution metrics.
         """
         n = len(query_ids)
         if target_k is None:

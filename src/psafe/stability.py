@@ -101,17 +101,22 @@ def run_fixed_split_training_seed_evaluation(
         act_arr = np.array(actions)
         act_hash = hashlib.sha256(act_arr.tobytes()).hexdigest()[:16]
         
-        # When primary test metrics are provided, use them; otherwise evaluate routed array
-        if "test_psafe_ndcg" in kwargs:
-            seed_ndcg = float(kwargs["test_psafe_ndcg"])
-        elif "primary_ndcg" in kwargs:
-            seed_ndcg = float(kwargs["primary_ndcg"])
-        else:
-            routed_arr = np.where(np.array(actions) == Action.A6_DEEP_HYBRID.value, test_hybrid_ndcg, test_dense_ndcg)
-            seed_ndcg = float(np.mean(routed_arr))
-            
-        seed_lat = float(kwargs.get("test_psafe_lat", np.mean(test_hybrid_lat)))
-        seed_har = float(kwargs.get("test_psafe_har", np.mean(np.array(actions) == Action.A6_DEEP_HYBRID.value)))
+        routed_arr = np.where(
+            np.array(actions) == Action.A6_DEEP_HYBRID.value,
+            test_hybrid_ndcg,
+            test_dense_ndcg,
+        )
+        seed_ndcg = float(np.mean(routed_arr))
+        test_dense_lat = kwargs.get("test_dense_lat")
+        if test_dense_lat is None:
+            raise ValueError("test_dense_lat is required for a real stability evaluation")
+        routed_lat = np.where(
+            np.array(actions) == Action.A6_DEEP_HYBRID.value,
+            test_hybrid_lat,
+            np.asarray(test_dense_lat),
+        )
+        seed_lat = float(np.mean(routed_lat))
+        seed_har = float(np.mean(np.array(actions) == Action.A6_DEEP_HYBRID.value))
         delta_dense = float(seed_ndcg - np.mean(test_dense_ndcg))
         
         results_by_seed.append({
@@ -122,7 +127,11 @@ def run_fixed_split_training_seed_evaluation(
             "delta_vs_dense": delta_dense,
             "model_hash": model_hash,
             "action_vector_hash": act_hash,
-            "model_deterministic": True
+            "model_deterministic": len(training_seeds) > 1,
+            "train_features_hash": hashlib.sha256(train_features.tobytes()).hexdigest(),
+            "validation_features_hash": hashlib.sha256(val_features.tobytes()).hexdigest(),
+            "test_features_hash": hashlib.sha256(test_features.tobytes()).hexdigest(),
+            "prediction_hash": hashlib.sha256(routed_arr.tobytes()).hexdigest(),
         })
         
     ndcg_list = [r["mean_ndcg"] for r in results_by_seed]

@@ -1,86 +1,122 @@
 {
   "project": "P-SAFE-AMSR",
-  "version": "v1.0_pre_submission_verified",
-  "canonical_datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
-  "exploratory_datasets": ["trec-covid"],
-  "primary_seed": 42,
-  "split_seeds": [42, 123, 2026],
+  "registry_version": "forensic_v2",
+  "authority_order": [
+    "per_query_evidence",
+    "machine_readable_results",
+    "statistics",
+    "tables_and_figures",
+    "manuscript",
+    "readme_and_audit_docs"
+  ],
   "claims": [
     {
       "claim_id": "CLM-001",
-      "statement": "On seed 42, high-recall routing improves over Dense on SciFact (+0.0557), FiQA (+0.0200), and NFCorpus (+0.0287) while saving 20.4%--31.6% end-to-end latency relative to always-on Deep Hybrid.",
+      "manuscript_section": "Primary Results",
       "metric": "nDCG@10 and latency_saving_vs_best_hybrid",
-      "datasets": ["scifact", "fiqa", "nfcorpus"],
-      "seed": 42,
+      "dataset": ["scifact", "fiqa", "nfcorpus"],
       "mode": "high_recall",
+      "seed_scope": [42],
       "source_artifact": "results/validated/{dataset}/seed_42/high_recall/extended_metrics.json",
-      "evidence": {
-        "scifact": {"dense": 0.6466, "psafe": 0.7023, "delta": 0.0557, "latency_saving": 0.3158, "har": 0.6645},
-        "fiqa": {"dense": 0.4085, "psafe": 0.4285, "delta": 0.0200, "latency_saving": 0.2802, "har": 0.6400},
-        "nfcorpus": {"dense": 0.3339, "psafe": 0.3626, "delta": 0.0287, "latency_saving": 0.2038, "har": 0.7963}
-      },
-      "validation_status": "PASS"
+      "json_field_or_derivation": "psafe_ndcg - dense_ndcg; latency_saving_vs_best_hybrid",
+      "statement": "On seed 42, High Recall improves over Dense by 0.0557 on SciFact, 0.0200 on FiQA, and 0.0287 on NFCorpus, with measured latency savings of 31.6%, 28.0%, and 20.4% versus always-on Deep Hybrid.",
+      "validation_status": "VALIDATED"
     },
     {
       "claim_id": "CLM-002",
-      "statement": "On ArguAna, always-on reranking degrades mean nDCG below Dense (0.3915 vs 0.3946), while selective Balanced routing improves quality to 0.4069 while activating Hybrid for only 15.0% of queries and saving 66.1% latency.",
-      "metric": "nDCG@10, latency_saving, hybrid_activation_rate",
-      "datasets": ["arguana"],
-      "seed": 42,
+      "manuscript_section": "Primary Results",
+      "metric": "nDCG@10, latency saving, hybrid activation rate",
+      "dataset": ["arguana"],
       "mode": "balanced",
+      "seed_scope": [42],
       "source_artifact": "results/validated/arguana/seed_42/balanced/extended_metrics.json",
-      "evidence": {
-        "arguana": {"dense": 0.3946, "deep_hybrid": 0.3915, "psafe": 0.4069, "latency_saving": 0.6615, "har": 0.1501}
-      },
-      "validation_status": "PASS"
+      "json_field_or_derivation": "dense_ndcg, best_hybrid_ndcg, psafe_ndcg, latency_saving_vs_best_hybrid, hybrid_activation_rate",
+      "statement": "On ArguAna seed 42 Balanced, Deep Hybrid is below Dense (0.3915 vs 0.3946), while P-SAFE reaches 0.4069 with 15.0% hybrid activation and 66.1% measured latency saving.",
+      "validation_status": "VALIDATED"
     },
     {
       "claim_id": "CLM-003",
-      "statement": "Matched-budget random evaluation across 1000 repetitions demonstrates statistically significant query-selection superiority on ArguAna (+0.0127, p=0.004), moderate gains on NFCorpus (+0.0078, p=0.104) and FiQA (+0.0021, p=0.371), while on SciFact matched random achieves 0.7019 (delta = -0.0054, p=0.695), proving compute efficiency exists on SciFact but query-selection superiority over random allocation is domain-dependent.",
-      "metric": "mean_ndcg, std, 95% CI, delta_vs_matched_random, empirical_p_value",
-      "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
-      "seed": 42,
+      "manuscript_section": "Matched-Budget Random",
+      "metric": "1000-allocation matched-budget nDCG and empirical one-sided p-value",
+      "dataset": ["scifact", "fiqa", "nfcorpus", "arguana"],
       "mode": "balanced",
+      "seed_scope": [42],
       "source_artifact": "results/baselines/matched_budget_random_results.json",
-      "evidence": {
-        "scifact": {"psafe": 0.6965, "matched_random_mean": 0.7019, "random_std": 0.0113, "random_ci_95": [0.6784, 0.7226], "delta": -0.0054, "p_val": 0.695},
-        "fiqa": {"psafe": 0.4217, "matched_random_mean": 0.4196, "random_std": 0.0064, "random_ci_95": [0.4072, 0.4320], "delta": 0.0021, "p_val": 0.371},
-        "nfcorpus": {"psafe": 0.3579, "matched_random_mean": 0.3501, "random_std": 0.0063, "random_ci_95": [0.3377, 0.3623], "delta": 0.0078, "p_val": 0.104},
-        "arguana": {"psafe": 0.4069, "matched_random_mean": 0.3942, "random_std": 0.0045, "random_ci_95": [0.3853, 0.4030], "delta": 0.0127, "p_val": 0.004}
-      },
-      "validation_status": "PASS"
+      "json_field_or_derivation": "(1 + count(random_score >= psafe_score)) / 1001",
+      "statement": "At identical escalation counts, ArguAna P-SAFE exceeds matched random by 0.0130 (p=0.005); the margins on NFCorpus and FiQA are positive but not significant, and SciFact P-SAFE is below the matched-random mean.",
+      "validation_status": "VALIDATED"
     },
     {
       "claim_id": "CLM-004",
-      "statement": "Probability calibration diagnostics for P_gain and P_harm show bounded Brier scores and ECE across all domains, with calibration slopes ranging from -0.009 (FiQA) to 1.166 (NFCorpus), confirming unvarnished empirical calibration.",
-      "metric": "brier_score, ece, adaptive_ece, auroc, auprc, calibration_slope",
-      "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
-      "seed": 42,
+      "manuscript_section": "Calibration Diagnostics",
+      "metric": "Brier, ECE, AUROC, AUPRC, slope, intercept, prevalence",
+      "dataset": ["scifact", "fiqa", "nfcorpus", "arguana"],
       "mode": "balanced",
+      "seed_scope": [42],
       "source_artifact": "results/calibration/calibration_metrics.json",
-      "evidence": {
-        "scifact": {"P_gain_brier": 0.1991, "P_gain_auroc": 0.5897, "P_gain_auprc": 0.3646, "P_gain_slope": 0.040, "P_harm_brier": 0.1033, "P_harm_auroc": 0.6376},
-        "fiqa": {"P_gain_brier": 0.2494, "P_gain_auroc": 0.5118, "P_gain_auprc": 0.3246, "P_gain_slope": -0.009, "P_harm_brier": 0.2204, "P_harm_auroc": 0.4611},
-        "nfcorpus": {"P_gain_brier": 0.2243, "P_gain_auroc": 0.6187, "P_gain_auprc": 0.4444, "P_gain_slope": 0.088, "P_harm_brier": 0.1982, "P_harm_auroc": 0.5712},
-        "arguana": {"P_gain_brier": 0.3094, "P_gain_auroc": 0.5391, "P_gain_auprc": 0.3697, "P_gain_slope": 0.062, "P_harm_brier": 0.3974, "P_harm_auroc": 0.4742}
-      },
-      "validation_status": "PASS"
+      "json_field_or_derivation": "{dataset}.42.balanced.{P_gain|P_harm}",
+      "statement": "Held-out gain/harm diagnostics are heterogeneous across datasets; probabilities are treated as operational policy signals, not as uniformly well-calibrated estimates.",
+      "validation_status": "VALIDATED"
     },
     {
       "claim_id": "CLM-005",
-      "statement": "Fixed-split training across 10 independent seeds confirms deterministic closed-form model convergence on seed 42 (SD = 0.0000), while sample partition variability across split seeds 42, 123, and 2026 is SD = 0.0020--0.0342.",
-      "metric": "training_seed_std vs split_seed_std",
-      "datasets": ["scifact", "fiqa", "nfcorpus", "arguana"],
-      "seed": 42,
+      "manuscript_section": "Formal Statistical Inference",
+      "metric": "Holm-adjusted non-inferiority decision",
+      "dataset": ["nfcorpus"],
+      "mode": "high_recall",
+      "seed_scope": [42],
+      "source_artifact": "results/statistics/statistical_analysis.json",
+      "json_field_or_derivation": "family_2_non_inferiority_holm where dataset=nfcorpus and mode=high_recall",
+      "statement": "Only NFCorpus High Recall establishes non-inferiority to Deep Hybrid after Holm correction at epsilon=0.010.",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "claim_id": "CLM-006",
+      "manuscript_section": "Baseline Suite",
+      "metric": "verified baseline count",
+      "dataset": ["scifact", "fiqa", "nfcorpus", "arguana"],
       "mode": "balanced",
-      "source_artifact": "results/stability/fixed_split_training_seeds.json",
-      "evidence": {
-        "scifact": {"training_std": 0.0000, "split_std": 0.0342, "training_mean": 0.6965, "split_mean": 0.6998},
-        "fiqa": {"training_std": 0.0000, "split_std": 0.0020, "training_mean": 0.4217, "split_mean": 0.4218},
-        "nfcorpus": {"training_std": 0.0000, "split_std": 0.0141, "training_mean": 0.3579, "split_mean": 0.3436},
-        "arguana": {"training_std": 0.0000, "split_std": 0.0074, "training_mean": 0.4069, "split_mean": 0.4106}
-      },
-      "validation_status": "PASS"
+      "seed_scope": [42, 123, 2026],
+      "source_artifact": "results/validated/{dataset}/seed_{seed}/balanced/baseline_results.json",
+      "json_field_or_derivation": "eight named baseline entries with per-query companion CSV",
+      "statement": "Eight baselines have genuine per-run artifacts: Dense-only, Always-Hybrid, Random, Dense-margin, Dense-entropy, Regression-only, Classification-only, and Oracle. Matched-budget random is reported separately.",
+      "validation_status": "VALIDATED"
+    },
+    {
+      "claim_id": "CLM-007",
+      "manuscript_section": "Removed Secondary Evidence",
+      "metric": "fixed-split training-seed standard deviation",
+      "dataset": ["scifact", "fiqa", "nfcorpus", "arguana"],
+      "mode": "balanced",
+      "seed_scope": [11, 22, 33, 44, 55, 66, 77, 88, 99, 111],
+      "source_artifact": "archive/invalid_evidence/results/stability/fixed_split_training_seeds.json",
+      "json_field_or_derivation": "not applicable",
+      "statement": "The 10-training-seed stability claim was removed because the records copied primary test metrics and lacked genuine split/model/prediction provenance.",
+      "validation_status": "REMOVED"
+    },
+    {
+      "claim_id": "CLM-008",
+      "manuscript_section": "Removed Secondary Evidence",
+      "metric": "feature-group ablation",
+      "dataset": ["scifact", "fiqa", "nfcorpus", "arguana"],
+      "mode": "balanced",
+      "seed_scope": [42],
+      "source_artifact": "archive/invalid_evidence/results/ablations/ablation_results.json",
+      "json_field_or_derivation": "not applicable",
+      "statement": "Feature-group ablation claims were removed because train/validation labels were synthesized from test-side deltas and retrieval features were surrogate signals.",
+      "validation_status": "REMOVED"
+    },
+    {
+      "claim_id": "CLM-009",
+      "manuscript_section": "Limitations",
+      "metric": "split provenance",
+      "dataset": ["scifact", "fiqa", "nfcorpus", "arguana"],
+      "mode": ["lite", "balanced", "high_recall"],
+      "seed_scope": [42, 123, 2026],
+      "source_artifact": "results/validated/{dataset}/seed_{seed}/{mode}/reproducibility_manifest.json",
+      "json_field_or_derivation": "historical manifests contain split sizes and test IDs but not explicit train/validation IDs",
+      "statement": "Mechanical train/validation/test disjointness cannot be re-proven from the committed historical primary artifacts; a fresh canonical run now writes explicit split manifests.",
+      "validation_status": "UNSUPPORTED"
     }
   ]
 }

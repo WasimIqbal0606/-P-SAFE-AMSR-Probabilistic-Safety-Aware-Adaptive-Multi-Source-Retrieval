@@ -20,21 +20,13 @@ split_seeds:
   - 123
   - 2026
 
-# Primary split seed for deep diagnostics and fixed-split experiments
+# Primary split seed for deep diagnostics
 primary_split_seed: 42
 
-# Training seeds (evaluate repeated-fitting stochasticity on fixed train/val/test split 42)
-training_seeds:
-  - 11
-  - 22
-  - 33
-  - 44
-  - 55
-  - 66
-  - 77
-  - 88
-  - 99
-  - 111
+# Fixed-split repeated fitting is not retained because the historical runs did
+# not preserve genuine train/validation matrices and the estimator path is
+# effectively deterministic.
+fixed_split_training_seed_evaluation: not_run
 
 # Router operating modes evaluated
 router_modes:
@@ -73,7 +65,7 @@ metrics:
   - oracle_gap_closed
   - latency_saving
 
-# Comprehensive baseline router suite
+# Baselines with genuine per-run execution artifacts
 baselines:
   - Dense-only
   - Always-Hybrid
@@ -81,10 +73,8 @@ baselines:
   - Matched-Budget-Random
   - Dense-margin
   - Dense-entropy
-  - BM25-disagreement
-  - Cost-only
   - Regression-only
-  - Classifier-only
+  - Classification-only
   - Oracle
 
 # Statistical testing parameters
@@ -104,8 +94,6 @@ statistics:
 calibration:
   methods:
     - sigmoid_platt
-    - isotonic
-    - uncalibrated
   cv_folds: 3
   n_bins_standard: 10
   n_bins_adaptive: 5
@@ -121,8 +109,6 @@ calibration:
 # Seed namespaces documentation
 seed_namespaces:
   split_seed: "Controls random partition of dataset queries into train (40%), val (10%), test (50%)"
-  router_training_seed: "Controls classifier/regressor random state and cross-validation folding during router training"
-  calibration_seed: "Controls calibration fold splitting in CalibratedClassifierCV"
   random_baseline_seed: "Controls stochastic pseudo-random choices in random and matched-budget baseline routers"
   bootstrap_seed: "Controls bootstrap resampling index draws for confidence interval estimation"
   permutation_seed: "Controls sign-permutation draws for paired permutation significance tests"
@@ -141,7 +127,7 @@ splitting:
   train_ratio: 0.40
   val_ratio: 0.10
   test_ratio: 0.50
-  stratification: "dense_ndcg_quartiles"
+  stratification: "dense_ndcg_easy_hard_threshold_0.5"
   leakage_assertions:
     - "train_intersection_val_is_empty"
     - "train_intersection_test_is_empty"

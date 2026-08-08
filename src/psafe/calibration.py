@@ -176,6 +176,7 @@ def evaluate_calibration(y_true: np.ndarray, y_prob: np.ndarray, label_name: str
         "n_positive": n_pos,
         "n_negative": n_neg,
         "positive_rate": pos_rate,
+        "prevalence": pos_rate,
         "brier_score": brier,
         "ece": ece,
         "adaptive_ece": adaptive_ece,

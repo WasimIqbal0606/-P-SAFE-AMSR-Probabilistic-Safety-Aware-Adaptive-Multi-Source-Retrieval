@@ -266,35 +266,39 @@ def generate_fig7_calibration_reliability():
     with open("results/calibration/reliability_data.json") as f:
         rel_data = json.load(f)
 
-    # Plot SciFact balanced reliability curve
-    entry = rel_data.get("scifact", {}).get("42", {}).get("balanced") or rel_data.get("scifact", {}).get(42, {}).get("balanced")
-    if entry:
-        gain_bins = entry["P_gain_bins"]
-        harm_bins = entry["P_harm_bins"]
+    # Plot the committed SciFact seed-42 Balanced reliability evidence.
+    entry = rel_data["scifact"]["42"]["balanced"]
+    gain_bins = entry["P_gain"]
+    harm_bins = entry["P_harm"]
 
-        # P_gain plot
-        confs_g = [b["confidence"] for b in gain_bins if b["count"] > 0]
-        accs_g = [b["accuracy"] for b in gain_bins if b["count"] > 0]
-        ax1.plot([0, 1], [0, 1], 'k--', alpha=0.6, label='Ideal')
-        ax1.plot(confs_g, accs_g, 's-', color='#1f77b4', lw=1.8, label='Empirical')
-        ax1.set_xlabel(r'Predicted $P_{\rm gain}$')
-        ax1.set_ylabel(r'Empirical Event Rate ($\Delta > 0.05$)')
-        ax1.set_title(r'$P_{\rm gain}$ Reliability (SciFact)')
-        ax1.set_xlim(0, 1)
-        ax1.set_ylim(0, 1)
-        ax1.legend(frameon=True)
+    required_bin_keys = {"count", "mean_predicted", "fraction_positive"}
+    for target, bins in (("P_gain", gain_bins), ("P_harm", harm_bins)):
+        if not bins or any(required_bin_keys - set(bin_row) for bin_row in bins):
+            raise ValueError(f"Incomplete reliability evidence for {target}")
 
-        # P_harm plot
-        confs_h = [b["confidence"] for b in harm_bins if b["count"] > 0]
-        accs_h = [b["accuracy"] for b in harm_bins if b["count"] > 0]
-        ax2.plot([0, 1], [0, 1], 'k--', alpha=0.6, label='Ideal')
-        ax2.plot(confs_h, accs_h, 'o-', color='#d62728', lw=1.8, label='Empirical')
-        ax2.set_xlabel(r'Predicted $P_{\rm harm}$')
-        ax2.set_ylabel(r'Empirical Event Rate ($\Delta < -0.01$)')
-        ax2.set_title(r'$P_{\rm harm}$ Reliability (SciFact)')
-        ax2.set_xlim(0, 1)
-        ax2.set_ylim(0, 1)
-        ax2.legend(frameon=True)
+    # P_gain plot
+    confs_g = [b["mean_predicted"] for b in gain_bins if b["count"] > 0]
+    accs_g = [b["fraction_positive"] for b in gain_bins if b["count"] > 0]
+    ax1.plot([0, 1], [0, 1], 'k--', alpha=0.6, label='Ideal')
+    ax1.plot(confs_g, accs_g, 's-', color='#1f77b4', lw=1.8, label='Empirical')
+    ax1.set_xlabel(r'Predicted $P_{\rm gain}$')
+    ax1.set_ylabel(r'Empirical Event Rate ($\Delta > 0.05$)')
+    ax1.set_title(r'$P_{\rm gain}$ Reliability (SciFact)')
+    ax1.set_xlim(0, 1)
+    ax1.set_ylim(0, 1)
+    ax1.legend(frameon=True)
+
+    # P_harm plot
+    confs_h = [b["mean_predicted"] for b in harm_bins if b["count"] > 0]
+    accs_h = [b["fraction_positive"] for b in harm_bins if b["count"] > 0]
+    ax2.plot([0, 1], [0, 1], 'k--', alpha=0.6, label='Ideal')
+    ax2.plot(confs_h, accs_h, 'o-', color='#d62728', lw=1.8, label='Empirical')
+    ax2.set_xlabel(r'Predicted $P_{\rm harm}$')
+    ax2.set_ylabel(r'Empirical Event Rate ($\Delta < -0.01$)')
+    ax2.set_title(r'$P_{\rm harm}$ Reliability (SciFact)')
+    ax2.set_xlim(0, 1)
+    ax2.set_ylim(0, 1)
+    ax2.legend(frameon=True)
 
     save_fig(fig, "fig7_calibration_reliability")
     plt.close(fig)
@@ -327,62 +331,18 @@ def generate_fig8_matched_budget_random():
         rand_err_high.append(ci[1] - r_mean)
 
     ax.errorbar(x, rand_means, yerr=[rand_err_low, rand_err_high], fmt='o', color='#7f7f7f',
-                capsize=5, elinewidth=1.5, markeredgewidth=1.5, label='Matched-Budget Random (100 seeds, 95% CI)')
+                capsize=5, elinewidth=1.5, markeredgewidth=1.5,
+                label='Matched-Budget Random (1000 allocations, 95% CI)')
     ax.scatter(x, psafe_vals, color='#1f77b4', s=90, marker='*', zorder=5, label='B-P-SAFE (Balanced)')
 
     ax.set_xticks(x)
     ax.set_xticklabels([DATASET_LABELS[d] for d in DATASETS])
     ax.set_ylabel('nDCG@10')
-    ax.set_title('B-P-SAFE vs 100-Seed Matched-Budget Random Router')
+    ax.set_title('B-P-SAFE vs 1000-Allocation Matched-Budget Random Router')
     ax.legend(frameon=True)
 
     save_fig(fig, "fig8_matched_budget_random")
     plt.close(fig)
-
-
-# ── Figure 9: Ablation Matrix Visualization ──────────────────────────────────
-def generate_fig9_ablation_matrix():
-    setup_paper_style()
-    fig, ax = plt.subplots(figsize=(7.5, 4.2))
-
-    with open("results/ablations/ablation_results.json") as f:
-        abl_data = json.load(f)
-
-    # Macro-average deltas across all 4 datasets
-    variants = [
-        ("Minus P_harm", r"w/o $P_{\rm harm}$"),
-        ("Minus P_gain", r"w/o $P_{\rm gain}$"),
-        ("Minus Delta nDCG", r"w/o $\hat{\delta}$"),
-        ("Minus Latency & Cost", "w/o Cost"),
-        ("Minus Soft Overrides", "w/o Overrides"),
-        ("Feature: Query Only", "Query Only"),
-        ("Feature: Dense Only", "Dense Only"),
-        ("Feature: Bm25 Only", "BM25 Only"),
-        ("Feature: Dense Plus Bm25", "Dense+BM25"),
-        ("Feature: Disagreement Only", "Disagreement"),
-        ("Feature: Graph Only", "Graph Only"),
-    ]
-
-    names = []
-    deltas = []
-    for v_key, v_disp in variants:
-        v_dels = [abl_data[ds][v_key]["delta_vs_full"] for ds in DATASETS if ds in abl_data and v_key in abl_data[ds]]
-        names.append(v_disp)
-        deltas.append(float(np.mean(v_dels)) if v_dels else 0.0)
-
-    y_pos = np.arange(len(names))
-    ax.barh(y_pos, deltas, color=['#d62728' if d < 0 else '#2ca02c' for d in deltas], align='center')
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels(names)
-    ax.invert_yaxis()
-    ax.axvline(0, color='black', lw=0.8, linestyle='--')
-    ax.set_xlabel(r'Change in nDCG@10 relative to Full B-P-SAFE ($\Delta_{\rm Full}$)')
-    ax.set_title('Router Component and Feature Ablation Effects')
-
-    save_fig(fig, "fig9_ablation_matrix")
-    plt.close(fig)
-
-
 def generate_all_figures():
     print("="*80)
     print("GENERATING ALL PUBLICATION FIGURES (PDF & PNG)")
@@ -395,7 +355,6 @@ def generate_all_figures():
     generate_fig6_multiseed()
     generate_fig7_calibration_reliability()
     generate_fig8_matched_budget_random()
-    generate_fig9_ablation_matrix()
     print("ALL FIGURES GENERATED SUCCESSFULLY!")
 
 

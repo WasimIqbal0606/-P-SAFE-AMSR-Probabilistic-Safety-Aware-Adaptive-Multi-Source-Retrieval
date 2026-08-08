@@ -1,673 +1,343 @@
-"""
-B-P-SAFE-AMSR — Master Comprehensive Evidence Pipeline
-Reproducibly generates all missing experiments, statistical analyses, baseline evaluations,
-calibration artifacts, ablations, stability benchmarks, and manifests.
+"""Regenerate only retained, source-backed secondary paper evidence.
 
-Canonical Datasets: scifact, fiqa, nfcorpus, arguana
-Exploratory Dataset: trec-covid (explicitly marked as exploratory/out-of-primary-paper)
+This script is intentionally lightweight. It never loads retrieval models and
+never constructs train/validation data from held-out test artifacts.
 """
 
-import os
-import sys
+from __future__ import annotations
+
+import csv
 import json
-import time
-import glob
+import math
+import sys
+from pathlib import Path
+from typing import Any, Iterable
+
 import numpy as np
-import pandas as pd
-from typing import Dict, List, Tuple
-from collections import Counter
-from sklearn.linear_model import LogisticRegression, Ridge
-from sklearn.preprocessing import StandardScaler
-from sklearn.calibration import CalibratedClassifierCV
 
-# Add src to python path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-
-from psafe.actions import Action, ACTION_NAMES
-from psafe.router import BPSafeRouter, PriorProbabilityModel
-from psafe.baselines import (
-    DenseOnlyRouter, AlwaysHybridRouter, RandomRouter, MatchedBudgetRandomRouter,
-    DenseMarginRouter, DenseEntropyRouter, BM25DisagreementRouter, CostOnlyRouter,
-    RegressionOnlyRouter, ClassificationOnlyRouter, OracleRouter, BASELINE_ROUTERS
-)
-from psafe.calibration import (
-    evaluate_calibration, compare_calibration_methods, compute_ece, compute_adaptive_ece,
-    compute_calibration_slope_intercept
-)
-from psafe.ablations import evaluate_ablation_matrix_from_data, FEATURE_GROUPS
-from psafe.stability import run_fixed_split_training_seed_evaluation, TRAINING_SEEDS
-from psafe.statistical_tests import (
-    StatisticalTester, evaluate_non_inferiority, holm_bonferroni_correction,
-    cohens_d_pooled, cohens_dz
-)
-from psafe.feature_extractor import FEATURE_NAMES
-
-CANONICAL_DATASETS = ["scifact", "fiqa", "nfcorpus", "arguana"]
-SPLIT_SEEDS = [42, 123, 2026]
-MODES = ["lite", "balanced", "high_recall"]
-PRIMARY_SEED = 42
+sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+from paper.tools.build_evidence_tables import bootstrap_ci, paired_t, regularized_beta
 
 
-def load_validated_per_query_data(results_dir: str = "results/validated") -> Dict:
-    """
-    Load all per-query metrics and predictions from validated results directory.
-    """
-    data = {}
-    for ds in CANONICAL_DATASETS:
-        data[ds] = {}
-        for seed in SPLIT_SEEDS:
-            data[ds][seed] = {}
+ROOT = Path(__file__).resolve().parents[1]
+VALIDATED = ROOT / "results" / "validated"
+DATASETS = ["scifact", "fiqa", "nfcorpus", "arguana"]
+SEEDS = [42, 123, 2026]
+MODES = ["balanced", "high_recall"]
+BASELINES = [
+    "Dense-only", "Always-Hybrid", "Random", "Dense-margin", "Dense-entropy",
+    "Regression-only", "Classification-only", "Oracle",
+]
+
+
+def read_csv(path: Path) -> list[dict[str, str]]:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
+def read_json(path: Path) -> dict[str, Any]:
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
+def write_json(path: Path, value: Any) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(value, indent=2), encoding="utf-8")
+
+
+def holm(raw: list[float]) -> list[float]:
+    order = np.argsort(np.asarray(raw))
+    result = np.zeros(len(raw), dtype=float)
+    running = 0.0
+    for rank, index in enumerate(order):
+        running = max(running, (len(raw) - rank) * raw[index])
+        result[index] = min(1.0, running)
+    return result.tolist()
+
+
+def regenerate_verified_baselines() -> dict[str, Any]:
+    output: dict[str, Any] = {}
+    for dataset in DATASETS:
+        output[dataset] = {}
+        for seed in SEEDS:
+            path = VALIDATED / dataset / f"seed_{seed}" / "balanced" / "baseline_results.json"
+            source = read_json(path)
+            missing = [name for name in BASELINES if name not in source]
+            if missing:
+                raise KeyError(f"{path}: missing verified baselines {missing}")
+            output[dataset][str(seed)] = {name: source[name] for name in BASELINES}
+    write_json(ROOT / "results/baselines/comprehensive_baseline_results.json", output)
+    return output
+
+
+def matched_scores(dense: np.ndarray, hybrid: np.ndarray, target_k: int) -> np.ndarray:
+    scores = np.empty(1000, dtype=float)
+    for repetition in range(1000):
+        rng = np.random.RandomState(42 + repetition * 1000 + 7)
+        selected = rng.permutation(len(dense))[:target_k]
+        routed = dense.copy()
+        routed[selected] = hybrid[selected]
+        scores[repetition] = float(np.mean(routed))
+    return scores
+
+
+def regenerate_matched_random() -> dict[str, Any]:
+    output: dict[str, Any] = {}
+    for dataset in DATASETS:
+        output[dataset] = {}
+        for seed in SEEDS:
+            output[dataset][str(seed)] = {}
             for mode in MODES:
-                m_path = os.path.join(results_dir, ds, f"seed_{seed}", mode)
-                pq_path = os.path.join(m_path, "per_query_metrics.csv")
-                ap_path = os.path.join(m_path, "action_predictions.csv")
-                em_path = os.path.join(m_path, "extended_metrics.json")
-                mf_path = os.path.join(m_path, "reproducibility_manifest.json")
-                
-                if os.path.exists(pq_path) and os.path.exists(em_path):
-                    df_pq = pd.read_csv(pq_path)
-                    df_ap = pd.read_csv(ap_path) if os.path.exists(ap_path) else None
-                    with open(em_path) as f:
-                        em = json.load(f)
-                    with open(mf_path) as f:
-                        mf = json.load(f)
-                        
-                    data[ds][seed][mode] = {
-                        "per_query": df_pq,
-                        "predictions": df_ap,
-                        "metrics": em,
-                        "manifest": mf,
-                    }
-    return data
-
-
-def run_matched_budget_baselines(validated_data: Dict, out_dir: str = "results/baselines", n_repetitions: int = 1000):
-    """
-    Run 1000-seed matched-budget random router for every evaluated condition.
-    """
-    os.makedirs(out_dir, exist_ok=True)
-    results = {}
-    
-    print("\n" + "="*80)
-    print(f"PHASE 4A: Running Matched-Budget Random Baseline ({n_repetitions} repetitions per run)...")
-    print("="*80)
-    
-    for ds in CANONICAL_DATASETS:
-        results[ds] = {}
-        for seed in SPLIT_SEEDS:
-            results[ds][seed] = {}
-            for mode in ["balanced", "high_recall"]:
-                entry = validated_data[ds][seed].get(mode)
-                if not entry:
-                    continue
-                df_pq = entry["per_query"]
-                em = entry["metrics"]
-                
-                query_ids = [str(q) for q in df_pq["query_id"]]
-                dense_ndcg = df_pq["dense_ndcg"].values
-                hybrid_ndcg = df_pq["hybrid_ndcg"].values
-                psafe_ndcg = df_pq["psafe_ndcg"].values
-                
-                # Number of expensive actions taken by P-SAFE
-                har = em.get("hybrid_activation_rate", 0.0)
-                n_queries = len(df_pq)
-                k_expensive = int(np.round(har * n_queries))
-                
-                router = MatchedBudgetRandomRouter(target_activation_rate=har, seed=42)
-                mb_eval = router.evaluate_multi_seed(
-                    query_ids=query_ids,
-                    dense_ndcg=dense_ndcg,
-                    hybrid_ndcg=hybrid_ndcg,
-                    target_k=k_expensive,
-                    n_repetitions=n_repetitions,
-                    seed_base=42
+                directory = VALIDATED / dataset / f"seed_{seed}" / mode
+                rows = read_csv(directory / "per_query_metrics.csv")
+                actions = read_csv(directory / "action_predictions.csv")
+                dense = np.asarray([float(row["dense_ndcg"]) for row in rows])
+                hybrid = np.asarray([float(row["hybrid_ndcg"]) for row in rows])
+                psafe = float(np.mean([float(row["psafe_ndcg"]) for row in rows]))
+                target_k = sum(
+                    str(row["selected_action"]) in {"6", "A6_DEEP_HYBRID", "Deep Hybrid"}
+                    for row in actions
                 )
-                
-                # Statistical comparison between P-SAFE and Matched-Budget Random (mean allocation)
-                psafe_mean = float(np.mean(psafe_ndcg))
-                rand_mean = mb_eval["mean_ndcg"]
-                delta = psafe_mean - rand_mean
-                
-                # Empirical one-sided p-value: probability that random >= psafe
-                # Using 1000 repetitions generated across seed_base + rep * 1000 + 7
-                means_all = []
-                for rep in range(n_repetitions):
-                    rep_s = 42 + rep * 1000 + 7
-                    r_eval = router.evaluate_batch(query_ids, dense_ndcg, hybrid_ndcg, target_k=k_expensive, seed=rep_s)
-                    means_all.append(r_eval["mean_ndcg"])
-                means_arr = np.array(means_all)
-                emp_p = float((1 + np.sum(means_arr >= psafe_mean)) / (n_repetitions + 1))
-                
-                mb_eval["psafe_mean_ndcg"] = psafe_mean
-                mb_eval["delta_psafe_vs_matched_random"] = delta
-                mb_eval["empirical_p_value"] = emp_p
-                mb_eval["psafe_beats_random_ci"] = bool(psafe_mean > mb_eval["ci_95"][1])
-                
-                results[ds][seed][mode] = mb_eval
-                print(f"[{ds} | seed {seed} | {mode}] P-SAFE: {psafe_mean:.4f} vs Matched-Random: {rand_mean:.4f} +/- {mb_eval['std_ndcg']:.4f} (95% CI [{mb_eval['ci_95'][0]:.4f}, {mb_eval['ci_95'][1]:.4f}]) -> Delta: {delta:+.4f}, p={emp_p:.4f}")
-                
-    with open(os.path.join(out_dir, "matched_budget_random_results.json"), "w") as f:
-        json.dump(results, f, indent=4)
-    print(f"Saved matched-budget results to {out_dir}/matched_budget_random_results.json")
-    return results
-
-
-def run_comprehensive_baselines(validated_data: Dict, out_dir: str = "results/baselines", n_repetitions: int = 1000):
-    """
-    Run and evaluate all 12 baselines on the primary split (seed 42) and multi-seed splits.
-    """
-    os.makedirs(out_dir, exist_ok=True)
-    all_baseline_results = {}
-    
-    print("\n" + "="*80)
-    print("PHASE 4B: Running Comprehensive Baseline Suite (12 baselines)...")
-    print("="*80)
-    
-    for ds in CANONICAL_DATASETS:
-        all_baseline_results[ds] = {}
-        for seed in SPLIT_SEEDS:
-            # We use seed 42 as primary for full baseline reporting
-            entry_bal = validated_data[ds][seed].get("balanced")
-            entry_hr = validated_data[ds][seed].get("high_recall")
-            if not entry_bal:
-                continue
-                
-            df_pq = entry_bal["per_query"]
-            df_ap = entry_bal["predictions"]
-            
-            query_ids = [str(q) for q in df_pq["query_id"]]
-            dense_ndcg = df_pq["dense_ndcg"].values
-            hybrid_ndcg = df_pq["hybrid_ndcg"].values
-            psafe_bal_ndcg = df_pq["psafe_ndcg"].values
-            psafe_hr_ndcg = entry_hr["per_query"]["psafe_ndcg"].values if entry_hr else psafe_bal_ndcg
-            
-            n = len(df_pq)
-            
-            # Load underlying baseline results from validated dir if present, or compute
-            b_path = os.path.join("results/validated", ds, f"seed_{seed}", "balanced", "baseline_results.json")
-            if os.path.exists(b_path):
-                with open(b_path) as f:
-                    base_dict = json.load(f)
-            else:
-                base_dict = {}
-                
-            # Compute Matched-Budget Random with 1000 repetitions
-            har_bal = entry_bal["metrics"].get("hybrid_activation_rate", 0.0)
-            k_bal = int(np.round(har_bal * n))
-            mb_router = MatchedBudgetRandomRouter(target_activation_rate=har_bal)
-            mb_res = mb_router.evaluate_multi_seed(query_ids, dense_ndcg, hybrid_ndcg, target_k=k_bal, n_repetitions=n_repetitions)
-            
-            # Construct mock or real validation features for pre-routing baseline tuning
-            val_dense_ndcg = dense_ndcg
-            val_hybrid_ndcg = hybrid_ndcg
-            
-            # 1. BM25-disagreement baseline: genuine pre-routing lexical disagreement feature
-            bm25_router = BM25DisagreementRouter()
-            # If jaccard overlap feature is in df_ap or features, use it; otherwise proxy from pre-routing signals
-            jaccard_feat = df_ap["pred_delta"].values if "pred_delta" in df_ap.columns else np.full(n, 0.3)
-            # Tune threshold on validation
-            bm25_router.threshold = float(np.percentile(jaccard_feat, 100 * (1 - har_bal)))
-            disagree_actions = [bm25_router.route(jaccard_feat[i], query_ids[i]).action for i in range(n)]
-            disagree_selected = np.array(disagree_actions) == Action.A6_DEEP_HYBRID.value
-            disagree_ndcg = np.where(disagree_selected, hybrid_ndcg, dense_ndcg)
-            disagree_har = float(np.mean(disagree_selected))
-            disagree_lat = float(3.1 + disagree_har * (entry_bal['metrics'].get('best_hybrid_latency', 750.0) - 3.1))
-            
-            # 2. Cost-only baseline: pre-routing predicted cost / latency proxy
-            cost_router = CostOnlyRouter()
-            cost_feat = df_ap["pred_latency"].values if "pred_latency" in df_ap.columns else np.full(n, 400.0)
-            cost_router.threshold = float(np.percentile(cost_feat, 100 * (1 - har_bal)))
-            cost_actions = [cost_router.route(cost_feat[i], query_ids[i]).action for i in range(n)]
-            cost_selected = np.array(cost_actions) == Action.A6_DEEP_HYBRID.value
-            cost_ndcg = np.where(cost_selected, hybrid_ndcg, dense_ndcg)
-            cost_har = float(np.mean(cost_selected))
-            cost_lat = float(3.1 + cost_har * (entry_bal['metrics'].get('best_hybrid_latency', 750.0) - 3.1))
-            
-            # Assemble comprehensive table
-            comp_table = {
-                "Dense-only": {
-                    "mean_ndcg": float(np.mean(dense_ndcg)),
-                    "mean_latency": 3.1,
-                    "hybrid_activation": 0.0,
-                    "delta_vs_dense": 0.0,
-                    "delta_vs_hybrid": float(np.mean(dense_ndcg) - np.mean(hybrid_ndcg)),
-                },
-                "Always-Hybrid": {
-                    "mean_ndcg": float(np.mean(hybrid_ndcg)),
-                    "mean_latency": float(entry_bal["metrics"].get("best_hybrid_latency", 750.0)),
-                    "hybrid_activation": 1.0,
-                    "delta_vs_dense": float(np.mean(hybrid_ndcg) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": 0.0,
-                },
-                "Random": {
-                    "mean_ndcg": float(base_dict.get("Random", {}).get("mean_ndcg", np.mean(dense_ndcg) + 0.5*(np.mean(hybrid_ndcg)-np.mean(dense_ndcg)))),
-                    "mean_latency": float(base_dict.get("Random", {}).get("mean_latency", 250.0)),
-                    "hybrid_activation": float(base_dict.get("Random", {}).get("hybrid_activation", 0.3)),
-                    "delta_vs_dense": float(base_dict.get("Random", {}).get("mean_ndcg", np.mean(dense_ndcg)) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(base_dict.get("Random", {}).get("mean_ndcg", np.mean(hybrid_ndcg)) - np.mean(hybrid_ndcg)),
-                },
-                "Matched-Budget-Random": {
-                    "mean_ndcg": mb_res["mean_ndcg"],
-                    "mean_latency": float(3.1 + har_bal * (entry_bal['metrics'].get('best_hybrid_latency', 750.0) - 3.1)),
-                    "hybrid_activation": mb_res["target_activation_rate"],
-                    "std_ndcg": mb_res["std_ndcg"],
-                    "ci_95": mb_res["ci_95"],
-                    "delta_vs_dense": float(mb_res["mean_ndcg"] - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(mb_res["mean_ndcg"] - np.mean(hybrid_ndcg)),
-                },
-                "Dense-margin": {
-                    "mean_ndcg": float(base_dict.get("Dense-margin", {}).get("mean_ndcg", np.mean(dense_ndcg))),
-                    "mean_latency": float(base_dict.get("Dense-margin", {}).get("mean_latency", 400.0)),
-                    "hybrid_activation": float(base_dict.get("Dense-margin", {}).get("hybrid_activation", 0.5)),
-                    "delta_vs_dense": float(base_dict.get("Dense-margin", {}).get("mean_ndcg", np.mean(dense_ndcg)) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(base_dict.get("Dense-margin", {}).get("mean_ndcg", np.mean(hybrid_ndcg)) - np.mean(hybrid_ndcg)),
-                },
-                "Dense-entropy": {
-                    "mean_ndcg": float(base_dict.get("Dense-entropy", {}).get("mean_ndcg", np.mean(dense_ndcg))),
-                    "mean_latency": float(base_dict.get("Dense-entropy", {}).get("mean_latency", 400.0)),
-                    "hybrid_activation": float(base_dict.get("Dense-entropy", {}).get("hybrid_activation", 0.5)),
-                    "delta_vs_dense": float(base_dict.get("Dense-entropy", {}).get("mean_ndcg", np.mean(dense_ndcg)) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(base_dict.get("Dense-entropy", {}).get("mean_ndcg", np.mean(hybrid_ndcg)) - np.mean(hybrid_ndcg)),
-                },
-                "BM25-disagreement": {
-                    "mean_ndcg": float(np.mean(disagree_ndcg)),
-                    "mean_latency": disagree_lat,
-                    "hybrid_activation": disagree_har,
-                    "delta_vs_dense": float(np.mean(disagree_ndcg) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(np.mean(disagree_ndcg) - np.mean(hybrid_ndcg)),
-                },
-                "Cost-only": {
-                    "mean_ndcg": float(np.mean(cost_ndcg)),
-                    "mean_latency": cost_lat,
-                    "hybrid_activation": cost_har,
-                    "delta_vs_dense": float(np.mean(cost_ndcg) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(np.mean(cost_ndcg) - np.mean(hybrid_ndcg)),
-                },
-                "Regression-only": {
-                    "mean_ndcg": float(base_dict.get("Regression-only", {}).get("mean_ndcg", np.mean(dense_ndcg))),
-                    "mean_latency": float(base_dict.get("Regression-only", {}).get("mean_latency", 400.0)),
-                    "hybrid_activation": float(base_dict.get("Regression-only", {}).get("hybrid_activation", 0.5)),
-                    "delta_vs_dense": float(base_dict.get("Regression-only", {}).get("mean_ndcg", np.mean(dense_ndcg)) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(base_dict.get("Regression-only", {}).get("mean_ndcg", np.mean(hybrid_ndcg)) - np.mean(hybrid_ndcg)),
-                },
-                "Classification-only": {
-                    "mean_ndcg": float(base_dict.get("Classification-only", {}).get("mean_ndcg", np.mean(dense_ndcg))),
-                    "mean_latency": float(base_dict.get("Classification-only", {}).get("mean_latency", 400.0)),
-                    "hybrid_activation": float(base_dict.get("Classification-only", {}).get("hybrid_activation", 0.5)),
-                    "delta_vs_dense": float(base_dict.get("Classification-only", {}).get("mean_ndcg", np.mean(dense_ndcg)) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(base_dict.get("Classification-only", {}).get("mean_ndcg", np.mean(hybrid_ndcg)) - np.mean(hybrid_ndcg)),
-                },
-                "Oracle": {
-                    "mean_ndcg": float(np.mean(np.maximum(dense_ndcg, hybrid_ndcg))),
-                    "mean_latency": float(base_dict.get("Oracle", {}).get("mean_latency", 300.0)),
-                    "hybrid_activation": float(np.mean(hybrid_ndcg > dense_ndcg)),
-                    "delta_vs_dense": float(np.mean(np.maximum(dense_ndcg, hybrid_ndcg)) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(np.mean(np.maximum(dense_ndcg, hybrid_ndcg)) - np.mean(hybrid_ndcg)),
-                },
-                "B-P-SAFE (Balanced)": {
-                    "mean_ndcg": float(np.mean(psafe_bal_ndcg)),
-                    "mean_latency": float(entry_bal["metrics"].get("psafe_latency", 400.0)),
-                    "hybrid_activation": float(entry_bal["metrics"].get("hybrid_activation_rate", 0.5)),
-                    "delta_vs_dense": float(np.mean(psafe_bal_ndcg) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(np.mean(psafe_bal_ndcg) - np.mean(hybrid_ndcg)),
-                },
-                "B-P-SAFE (High recall)": {
-                    "mean_ndcg": float(np.mean(psafe_hr_ndcg)),
-                    "mean_latency": float(entry_hr["metrics"].get("psafe_latency", 500.0)) if entry_hr else float(entry_bal["metrics"].get("psafe_latency", 400.0)),
-                    "hybrid_activation": float(entry_hr["metrics"].get("hybrid_activation_rate", 0.6)) if entry_hr else float(entry_bal["metrics"].get("hybrid_activation_rate", 0.5)),
-                    "delta_vs_dense": float(np.mean(psafe_hr_ndcg) - np.mean(dense_ndcg)),
-                    "delta_vs_hybrid": float(np.mean(psafe_hr_ndcg) - np.mean(hybrid_ndcg)),
+                scores = matched_scores(dense, hybrid, target_k)
+                entry = {
+                    "router_name": "Matched-Budget-Random",
+                    "target_activation_rate": target_k / len(rows),
+                    "target_k": target_k,
+                    "n_queries": len(rows),
+                    "n_repetitions": 1000,
+                    "mean_ndcg": float(np.mean(scores)),
+                    "std_ndcg": float(np.std(scores, ddof=1)),
+                    "ci_95": [float(x) for x in np.percentile(scores, [2.5, 97.5])],
+                    "p5_p95": [float(x) for x in np.percentile(scores, [5.0, 95.0])],
+                    "min_ndcg": float(np.min(scores)),
+                    "max_ndcg": float(np.max(scores)),
+                    "psafe_mean_ndcg": psafe,
+                    "delta_psafe_vs_matched_random": float(psafe - np.mean(scores)),
+                    "empirical_p_value": float((1 + np.sum(scores >= psafe)) / 1001),
+                    "psafe_beats_random_ci": bool(psafe > np.percentile(scores, 97.5)),
                 }
-            }
-            
-            all_baseline_results[ds][seed] = comp_table
-            
-    with open(os.path.join(out_dir, "comprehensive_baseline_results.json"), "w") as f:
-        json.dump(all_baseline_results, f, indent=4)
-    print(f"Saved comprehensive baselines to {out_dir}/comprehensive_baseline_results.json")
-    return all_baseline_results
+                output[dataset][str(seed)][mode] = entry
+    write_json(ROOT / "results/baselines/matched_budget_random_results.json", output)
+    return output
 
 
-def run_calibration_diagnostics(validated_data: Dict, out_dir: str = "results/calibration"):
-    """
-    Run publication-grade calibration evaluation for P_gain and P_harm.
-    """
-    os.makedirs(out_dir, exist_ok=True)
-    calibration_results = {}
-    reliability_data = {}
-    
-    print("\n" + "="*80)
-    print("PHASE 4C: Running Rigorous Calibration Diagnostics (P_gain and P_harm)...")
-    print("="*80)
-    
-    for ds in CANONICAL_DATASETS:
-        calibration_results[ds] = {}
-        reliability_data[ds] = {}
-        for seed in SPLIT_SEEDS:
-            calibration_results[ds][seed] = {}
-            reliability_data[ds][seed] = {}
-            for mode in ["balanced", "high_recall"]:
-                entry = validated_data[ds][seed].get(mode)
-                if not entry:
-                    continue
-                df_pq = entry["per_query"]
-                df_ap = entry["predictions"]
-                if df_ap is None or "p_gain" not in df_ap.columns:
-                    continue
-                    
-                dense_ndcg = df_pq["dense_ndcg"].values
-                hybrid_ndcg = df_pq["hybrid_ndcg"].values
-                delta_true = hybrid_ndcg - dense_ndcg
-                
-                # Ground truth events
-                gain_true = (delta_true > 0.05).astype(int)
-                harm_true = (delta_true < -0.01).astype(int)
-                
-                p_gain_pred = np.clip(df_ap["p_gain"].values, 0.0, 1.0)
-                p_harm_pred = np.clip(df_ap["p_harm"].values, 0.0, 1.0)
-                
-                # Evaluate P_gain calibration
-                gain_diag = evaluate_calibration(gain_true, p_gain_pred, label_name=f"{ds}_seed{seed}_{mode}_Pgain")
-                # Evaluate P_harm calibration
-                harm_diag = evaluate_calibration(harm_true, p_harm_pred, label_name=f"{ds}_seed{seed}_{mode}_Pharm")
-                
-                calibration_results[ds][seed][mode] = {
-                    "P_gain": gain_diag,
-                    "P_harm": harm_diag,
-                }
-                
-                reliability_data[ds][seed][mode] = {
-                    "P_gain_bins": gain_diag["reliability_bins"],
-                    "P_harm_bins": harm_diag["reliability_bins"],
-                }
-                
-                print(f"[{ds} | seed {seed} | {mode}] P_gain: Brier={gain_diag['brier_score']:.4f}, ECE={gain_diag['ece']:.4f}, AUROC={gain_diag['auroc']:.4f}, AUPRC={gain_diag['auprc']:.4f}, Slope={gain_diag['calibration_slope']:.3f}")
-                print(f"[{ds} | seed {seed} | {mode}] P_harm: Brier={harm_diag['brier_score']:.4f}, ECE={harm_diag['ece']:.4f}, AUROC={harm_diag['auroc']:.4f}, AUPRC={harm_diag['auprc']:.4f}, Slope={harm_diag['calibration_slope']:.3f}")
-                
-    with open(os.path.join(out_dir, "calibration_metrics.json"), "w") as f:
-        json.dump(calibration_results, f, indent=4)
-    with open(os.path.join(out_dir, "reliability_data.json"), "w") as f:
-        json.dump(reliability_data, f, indent=4)
-    print(f"Saved calibration artifacts to {out_dir}/calibration_metrics.json")
-    return calibration_results
-
-
-def run_router_ablations(validated_data: Dict, out_dir: str = "results/ablations"):
-    """
-    Run full ablation matrix directly from validated per-query data across all canonical datasets.
-    """
-    os.makedirs(out_dir, exist_ok=True)
-    ablation_summary = {}
-    
-    print("\n" + "="*80)
-    print("PHASE 4D: Running Router Component and Feature Ablations (Genuine Retrained Feature Groups)...")
-    print("="*80)
-    
-    for ds in CANONICAL_DATASETS:
-        ablation_summary[ds] = {}
-        entry = validated_data[ds][PRIMARY_SEED].get("balanced")
-        if not entry:
-            continue
-            
-        df_pq = entry["per_query"]
-        df_ap = entry["predictions"]
-        val_dir = os.path.join("results/validated", ds, f"seed_{PRIMARY_SEED}", "balanced")
-        
-        tr_npz = np.load(os.path.join(val_dir, "train_features.npz"))
-        val_npz = np.load(os.path.join(val_dir, "val_features.npz"))
-        te_npz = np.load(os.path.join(val_dir, "test_features.npz"))
-        
-        abl_results = evaluate_ablation_matrix_from_data(
-            df_ap=df_ap,
-            df_pq=df_pq,
-            em=entry["metrics"],
-            mode="balanced",
-            train_features=tr_npz["features"],
-            train_delta=tr_npz["delta_ndcg"],
-            train_latency=tr_npz["latency"],
-            train_harm=tr_npz["harm"],
-            train_gain=tr_npz["gain"],
-            val_features=val_npz["features"],
-            val_delta=val_npz["delta_ndcg"],
-            test_features=te_npz["features"],
-        )
-        
-        clean_abl = {}
-        for k, v in abl_results.items():
-            clean_abl[k] = {
-                "mean_ndcg": v["mean_ndcg"],
-                "mean_latency": v["mean_latency"],
-                "hybrid_activation_rate": v["hybrid_activation_rate"],
-                "delta_vs_full": v.get("delta_vs_full", 0.0),
-                "harm_avoidance": v["harm_avoidance"],
-                "model_hash": v.get("model_hash", ""),
-                "action_vector_hash": v.get("action_vector_hash", ""),
-            }
-            print(f"[{ds} | Ablation: {k}] nDCG: {v['mean_ndcg']:.4f} (Delta vs Full: {v.get('delta_vs_full', 0.0):+.4f}) | HAR: {v['hybrid_activation_rate']*100:.1f}% | Lat: {v['mean_latency']:.1f}ms")
-            
-        ablation_summary[ds] = clean_abl
-        
-    with open(os.path.join(out_dir, "ablation_results.json"), "w") as f:
-        json.dump(ablation_summary, f, indent=4)
-    print(f"Saved ablation matrix to {out_dir}/ablation_results.json")
-    return ablation_summary
-
-
-def run_stability_experiments(validated_data: Dict, out_dir: str = "results/stability"):
-    """
-    Run fixed-split repeated fitting across 10 independent training seeds on primary split (seed 42).
-    """
-    os.makedirs(out_dir, exist_ok=True)
-    stability_results = {}
-    
-    print("\n" + "="*80)
-    print("PHASE 4E: Running Fixed-Split Repeated-Fitting (10 Training Seeds on Seed 42)...")
-    print("="*80)
-    
-    for ds in CANONICAL_DATASETS:
-        entry = validated_data[ds][PRIMARY_SEED].get("balanced")
-        if not entry:
-            continue
-            
-        df_pq = entry["per_query"]
-        df_ap = entry["predictions"]
-        val_dir = os.path.join("results/validated", ds, f"seed_{PRIMARY_SEED}", "balanced")
-        
-        tr_npz = np.load(os.path.join(val_dir, "train_features.npz"))
-        val_npz = np.load(os.path.join(val_dir, "val_features.npz"))
-        te_npz = np.load(os.path.join(val_dir, "test_features.npz"))
-        
-        n_test = len(df_pq)
-        query_ids = [str(q) for q in df_pq["query_id"]]
-        dense_ndcg = df_pq["dense_ndcg"].values
-        hybrid_ndcg = df_pq["hybrid_ndcg"].values
-        hybrid_lat = float(entry["metrics"].get("best_hybrid_latency", 750.0))
-        
-        primary_ndcg = float(entry["metrics"].get("psafe_ndcg", np.mean(df_pq["psafe_ndcg"].values)))
-        primary_lat = float(entry["metrics"].get("psafe_latency", 467.1))
-        primary_har = float(entry["metrics"].get("hybrid_activation_rate", 0.638))
-        
-        stab = run_fixed_split_training_seed_evaluation(
-            train_features=tr_npz["features"],
-            train_delta=tr_npz["delta_ndcg"],
-            train_latency=tr_npz["latency"],
-            train_harm=tr_npz["harm"],
-            train_gain=tr_npz["gain"],
-            val_features=val_npz["features"],
-            val_delta=val_npz["delta_ndcg"],
-            test_features=te_npz["features"],
-            test_dense_ndcg=dense_ndcg,
-            test_hybrid_ndcg=hybrid_ndcg,
-            test_hybrid_lat=np.full(n_test, hybrid_lat),
-            query_ids=query_ids,
-            mode="balanced",
-            training_seeds=TRAINING_SEEDS,
-            test_psafe_ndcg=primary_ndcg,
-            test_psafe_lat=primary_lat,
-            test_psafe_har=primary_har,
-        )
-        
-        # Split variability across seeds 42, 123, 2026 for comparison
-        split_ndcgs = [validated_data[ds][s]["balanced"]["metrics"]["psafe_ndcg"] for s in SPLIT_SEEDS if s in validated_data[ds] and "balanced" in validated_data[ds][s]]
-        split_lats = [validated_data[ds][s]["balanced"]["metrics"]["psafe_latency"] for s in SPLIT_SEEDS if s in validated_data[ds] and "balanced" in validated_data[ds][s]]
-        split_hars = [validated_data[ds][s]["balanced"]["metrics"]["hybrid_activation_rate"] for s in SPLIT_SEEDS if s in validated_data[ds] and "balanced" in validated_data[ds][s]]
-        
-        stab["split_variability_comparison"] = {
-            "split_seeds": SPLIT_SEEDS,
-            "ndcg_mean": float(np.mean(split_ndcgs)),
-            "ndcg_std": float(np.std(split_ndcgs, ddof=1)),
-            "latency_mean": float(np.mean(split_lats)),
-            "latency_std": float(np.std(split_lats, ddof=1)),
-            "har_mean": float(np.mean(split_hars)),
-            "har_std": float(np.std(split_hars, ddof=1)),
-        }
-        
-        stability_results[ds] = stab
-        print(f"[{ds}] Training-Seed Mean nDCG: {stab['ndcg']['mean']:.4f} +/- {stab['ndcg']['std']:.4f} vs Split-Seed Mean nDCG: {stab['split_variability_comparison']['ndcg_mean']:.4f} +/- {stab['split_variability_comparison']['ndcg_std']:.4f}")
-        
-    with open(os.path.join(out_dir, "fixed_split_training_seeds.json"), "w") as f:
-        json.dump(stability_results, f, indent=4)
-    print(f"Saved stability results to {out_dir}/fixed_split_training_seeds.json")
-    print(f"Saved stability results to {out_dir}/fixed_split_training_seeds.json")
-    return stability_results
-
-
-def run_statistical_and_non_inferiority_analysis(validated_data: Dict, out_dir: str = "results/statistics"):
-    """
-    Run comprehensive statistical analysis:
-      1. Paired tests (t-test, Wilcoxon, 5000-draw bootstrap CI, 2000-draw permutation, Cohen's dz)
-      2. Holm-Bonferroni multi-testing correction across primary hypothesis families
-      3. Formal Non-Inferiority Testing against Deep Hybrid (margin epsilon = 0.010)
-    """
-    os.makedirs(out_dir, exist_ok=True)
-    tester = StatisticalTester(alpha=0.05, n_bootstrap=5000, n_permutation=2000)
-    
-    print("\n" + "="*80)
-    print("PHASE 5: Running Formal Non-Inferiority and Holm-Bonferroni Statistical Analysis...")
-    print("="*80)
-    
-    # Collect tests for Primary Improvement Family
-    family_1_tests = []
-    family_1_pvals = []
-    
-    # Collect tests for Non-Inferiority Family
-    family_2_tests = []
-    family_2_pvals = []
-    
-    full_stats = {}
-    
-    for ds in CANONICAL_DATASETS:
-        full_stats[ds] = {}
-        for seed in SPLIT_SEEDS:
-            full_stats[ds][seed] = {}
-            for mode in ["balanced", "high_recall"]:
-                entry = validated_data[ds][seed].get(mode)
-                if not entry:
-                    continue
-                    
-                df_pq = entry["per_query"]
-                dense_ndcg = df_pq["dense_ndcg"].values
-                hybrid_ndcg = df_pq["hybrid_ndcg"].values
-                psafe_ndcg = df_pq["psafe_ndcg"].values
-                
-                # 1. Comparison vs Dense
-                comp_dense = tester.full_comparison(dense_ndcg, psafe_ndcg, baseline_name="Dense", system_name=f"B-P-SAFE ({mode})")
-                
-                # 2. Comparison vs Deep Hybrid
-                comp_hybrid = tester.full_comparison(hybrid_ndcg, psafe_ndcg, baseline_name="DeepHybrid", system_name=f"B-P-SAFE ({mode})")
-                
-                # 3. Formal Non-Inferiority test against Deep Hybrid (epsilon = 0.010)
-                ni_res = evaluate_non_inferiority(psafe_ndcg, hybrid_ndcg, epsilon=0.010, alpha=0.05, n_bootstrap=5000)
-                
-                full_stats[ds][seed][mode] = {
-                    "vs_dense": comp_dense,
-                    "vs_hybrid": comp_hybrid,
-                    "non_inferiority_vs_hybrid": ni_res,
-                }
-                
-                # Track for primary family correction (primary seed 42)
-                if seed == PRIMARY_SEED:
-                    test_id = f"{ds}_{mode}"
-                    family_1_tests.append((ds, mode, comp_dense))
-                    family_1_pvals.append(comp_dense["paired_ttest"]["p_value"])
-                    
-                    family_2_tests.append((ds, mode, ni_res))
-                    family_2_pvals.append(ni_res["p_value_non_inferiority"])
-                    
-                print(f"[{ds} | seed {seed} | {mode}] vs Dense: Delta={comp_dense['mean_delta']:+.4f} (p_t={comp_dense['paired_ttest']['p_value']:.4f}, 95% CI [{comp_dense['bootstrap_ci']['ci_low']:+.4f}, {comp_dense['bootstrap_ci']['ci_high']:+.4f}])")
-                print(f"[{ds} | seed {seed} | {mode}] Non-Inferiority vs Hybrid (eps=0.010): p_NI={ni_res['p_value_non_inferiority']:.4f}, 95% LB={ni_res['ci_lower_bound_95_param']:+.4f} -> Established={ni_res['non_inferiority_established']}")
-                
-    # Apply Holm-Bonferroni correction to Primary Improvement Family
-    adj_p_fam1 = holm_bonferroni_correction(family_1_pvals)
-    family_1_summary = []
-    for (ds, mode, comp), raw_p, adj_p in zip(family_1_tests, family_1_pvals, adj_p_fam1):
-        family_1_summary.append({
-            "dataset": ds,
-            "mode": mode,
-            "mean_delta": comp["mean_delta"],
-            "raw_p_value": raw_p,
-            "holm_adjusted_p_value": adj_p,
-            "significant_after_correction": bool(adj_p < 0.05),
-            "cohens_dz": comp["effect_size"]["cohens_dz"],
-            "bootstrap_ci_95": [comp["bootstrap_ci"]["ci_low"], comp["bootstrap_ci"]["ci_high"]],
+def reliability(y: np.ndarray, p: np.ndarray, bins: int = 10) -> tuple[float, list[dict[str, Any]]]:
+    edges = np.linspace(0.0, 1.0, bins + 1)
+    details: list[dict[str, Any]] = []
+    error = 0.0
+    for index in range(bins):
+        mask = (p >= edges[index]) & (p <= edges[index + 1] if index == bins - 1 else p < edges[index + 1])
+        count = int(np.sum(mask))
+        accuracy = float(np.mean(y[mask])) if count else 0.0
+        confidence = float(np.mean(p[mask])) if count else 0.0
+        error += count / len(y) * abs(accuracy - confidence)
+        details.append({
+            "bin": index,
+            "lower": float(edges[index]),
+            "upper": float(edges[index + 1]),
+            "count": count,
+            "mean_predicted": confidence,
+            "fraction_positive": accuracy,
         })
-        
-    # Apply Holm-Bonferroni correction to Non-Inferiority Family
-    adj_p_fam2 = holm_bonferroni_correction(family_2_pvals)
-    family_2_summary = []
-    for (ds, mode, ni), raw_p, adj_p in zip(family_2_tests, family_2_pvals, adj_p_fam2):
-        family_2_summary.append({
-            "dataset": ds,
-            "mode": mode,
-            "mean_delta_vs_hybrid": ni["mean_delta"],
-            "epsilon": ni["epsilon_margin"],
-            "ci_lower_bound_95": ni["ci_lower_bound_95_param"],
-            "raw_p_value_ni": raw_p,
-            "holm_adjusted_p_value_ni": adj_p,
-            "non_inferiority_established": bool(adj_p < 0.05 and ni["ci_lower_bound_95_param"] > -ni["epsilon_margin"]),
-        })
-        
-    final_stats_package = {
-        "full_per_run_statistics": full_stats,
-        "family_1_dense_improvement_holm": family_1_summary,
-        "family_2_non_inferiority_holm": family_2_summary,
+    return float(error), details
+
+
+def adaptive_ece(y: np.ndarray, p: np.ndarray, bins: int = 5) -> float:
+    edges = np.percentile(p, np.linspace(0, 100, bins + 1))
+    edges[0], edges[-1] = 0.0, 1.0
+    error = 0.0
+    for index in range(bins):
+        mask = (p >= edges[index]) & (p <= edges[index + 1] if index == bins - 1 else p < edges[index + 1])
+        count = int(np.sum(mask))
+        if count:
+            error += count / len(y) * abs(float(np.mean(y[mask])) - float(np.mean(p[mask])))
+    return float(error)
+
+
+def average_ranks(values: np.ndarray) -> np.ndarray:
+    order = np.argsort(values, kind="mergesort")
+    ranks = np.empty(len(values), dtype=float)
+    start = 0
+    while start < len(values):
+        end = start + 1
+        while end < len(values) and values[order[end]] == values[order[start]]:
+            end += 1
+        ranks[order[start:end]] = (start + 1 + end) / 2.0
+        start = end
+    return ranks
+
+
+def auroc(y: np.ndarray, p: np.ndarray) -> float:
+    positive = int(np.sum(y == 1))
+    negative = len(y) - positive
+    if not positive or not negative:
+        return 0.5
+    ranks = average_ranks(p)
+    return float((np.sum(ranks[y == 1]) - positive * (positive + 1) / 2) / (positive * negative))
+
+
+def auprc(y: np.ndarray, p: np.ndarray) -> float:
+    positive = int(np.sum(y == 1))
+    if not positive:
+        return 0.0
+    order = np.argsort(-p, kind="mergesort")
+    sorted_y = y[order]
+    precision = np.cumsum(sorted_y) / np.arange(1, len(y) + 1)
+    return float(np.sum(precision * sorted_y) / positive)
+
+
+def calibration_line(y: np.ndarray, p: np.ndarray) -> tuple[float, float]:
+    if len(np.unique(y)) < 2:
+        return 1.0, 0.0
+    logits = np.log(np.clip(p, 1e-4, 1 - 1e-4) / (1 - np.clip(p, 1e-4, 1 - 1e-4)))
+    design = np.column_stack([np.ones(len(y)), logits])
+    beta = np.zeros(2, dtype=float)
+    for _ in range(100):
+        eta = np.clip(design @ beta, -30, 30)
+        fitted = 1 / (1 + np.exp(-eta))
+        weights = np.clip(fitted * (1 - fitted), 1e-9, None)
+        hessian = design.T @ (weights[:, None] * design)
+        gradient = design.T @ (y - fitted)
+        step = np.linalg.pinv(hessian) @ gradient
+        beta += step
+        if np.max(np.abs(step)) < 1e-10:
+            break
+    return float(beta[1]), float(beta[0])
+
+
+def calibration_report(y: np.ndarray, p: np.ndarray, label: str) -> dict[str, Any]:
+    p = np.clip(p, 0.0, 1.0)
+    ece, bins = reliability(y, p)
+    slope, intercept = calibration_line(y, p)
+    prevalence = float(np.mean(y))
+    return {
+        "label": label,
+        "n_samples": len(y),
+        "n_positive": int(np.sum(y)),
+        "n_negative": int(np.sum(1 - y)),
+        "positive_rate": prevalence,
+        "prevalence": prevalence,
+        "brier_score": float(np.mean((p - y) ** 2)),
+        "ece": ece,
+        "adaptive_ece": adaptive_ece(y, p),
+        "auroc": auroc(y, p),
+        "auprc": auprc(y, p),
+        "calibration_slope": slope,
+        "calibration_intercept": intercept,
+        "reliability_bins": bins,
     }
-    
-    with open(os.path.join(out_dir, "statistical_analysis.json"), "w") as f:
-        json.dump(final_stats_package, f, indent=4)
-    print(f"Saved statistical analysis to {out_dir}/statistical_analysis.json")
-    return final_stats_package
 
 
-def main():
-    print("="*80)
-    print("STARTING MASTER COMPREHENSIVE EVIDENCE PIPELINE")
-    print("="*80)
-    
-    validated_data = load_validated_per_query_data("results/validated")
-    
-    # 1. Matched-Budget Baselines
-    run_matched_budget_baselines(validated_data)
-    
-    # 2. Comprehensive Baselines (all 12 baselines)
-    run_comprehensive_baselines(validated_data)
-    
-    # 3. Calibration Diagnostics (P_gain, P_harm, slope, intercept, ECE, AUROC, AUPRC)
-    run_calibration_diagnostics(validated_data)
-    
-    # 4. Router Ablations
-    run_router_ablations(validated_data)
-    
-    # 5. Stability & Training Stochasticity
-    run_stability_experiments(validated_data)
-    
-    # 6. Statistical & Non-Inferiority Analysis
-    run_statistical_and_non_inferiority_analysis(validated_data)
-    
-    print("\n" + "="*80)
-    print("MASTER EVIDENCE PIPELINE COMPLETED SUCCESSFULLY!")
-    print("="*80)
+def regenerate_calibration() -> dict[str, Any]:
+    output: dict[str, Any] = {}
+    reliability_output: dict[str, Any] = {}
+    for dataset in DATASETS:
+        output[dataset], reliability_output[dataset] = {}, {}
+        for seed in SEEDS:
+            output[dataset][str(seed)], reliability_output[dataset][str(seed)] = {}, {}
+            for mode in MODES:
+                directory = VALIDATED / dataset / f"seed_{seed}" / mode
+                metrics = read_csv(directory / "per_query_metrics.csv")
+                predictions = read_csv(directory / "action_predictions.csv")
+                dense = np.asarray([float(row["dense_ndcg"]) for row in metrics])
+                hybrid = np.asarray([float(row["hybrid_ndcg"]) for row in metrics])
+                delta = hybrid - dense
+                gain = (delta > 0.05).astype(int)
+                harm = (delta < -0.01).astype(int)
+                p_gain = np.asarray([float(row["p_gain"]) for row in predictions])
+                p_harm = np.asarray([float(row["p_harm"]) for row in predictions])
+                reports = {
+                    "P_gain": calibration_report(gain, p_gain, f"{dataset}_seed{seed}_{mode}_Pgain"),
+                    "P_harm": calibration_report(harm, p_harm, f"{dataset}_seed{seed}_{mode}_Pharm"),
+                }
+                output[dataset][str(seed)][mode] = reports
+                reliability_output[dataset][str(seed)][mode] = {
+                    key: value["reliability_bins"] for key, value in reports.items()
+                }
+    write_json(ROOT / "results/calibration/calibration_metrics.json", output)
+    write_json(ROOT / "results/calibration/reliability_data.json", reliability_output)
+    return output
+
+
+def t_cdf(value: float, degrees: int) -> float:
+    x = degrees / (degrees + value * value)
+    tail = 0.5 * regularized_beta(x, degrees / 2.0, 0.5)
+    return 1.0 - tail if value >= 0 else tail
+
+
+def t_quantile(probability: float, degrees: int) -> float:
+    low, high = -20.0, 20.0
+    for _ in range(100):
+        middle = (low + high) / 2
+        if t_cdf(middle, degrees) < probability:
+            low = middle
+        else:
+            high = middle
+    return (low + high) / 2
+
+
+def regenerate_statistics() -> dict[str, Any]:
+    family_dense: list[dict[str, Any]] = []
+    family_ni: list[dict[str, Any]] = []
+    full: dict[str, Any] = {}
+    for dataset in DATASETS:
+        full[dataset] = {}
+        for mode in MODES:
+            rows = read_csv(VALIDATED / dataset / "seed_42" / mode / "per_query_metrics.csv")
+            dense = np.asarray([float(row["dense_ndcg"]) for row in rows])
+            hybrid = np.asarray([float(row["hybrid_ndcg"]) for row in rows])
+            psafe = np.asarray([float(row["psafe_ndcg"]) for row in rows])
+            delta_dense = psafe - dense
+            _, raw_p = paired_t(dense, psafe)
+            ci = bootstrap_ci(delta_dense, 5000)
+            dz = float(np.mean(delta_dense) / np.std(delta_dense, ddof=1))
+            family_dense.append({
+                "dataset": dataset,
+                "mode": mode,
+                "mean_delta": float(np.mean(delta_dense)),
+                "raw_p_value": raw_p,
+                "cohens_dz": dz,
+                "bootstrap_ci_95": [float(ci[0]), float(ci[1])],
+            })
+            delta_hybrid = psafe - hybrid
+            mean_delta = float(np.mean(delta_hybrid))
+            se = float(np.std(delta_hybrid, ddof=1) / math.sqrt(len(delta_hybrid)))
+            t_value = (mean_delta + 0.010) / se if se else math.inf
+            raw_ni = float(1 - t_cdf(t_value, len(delta_hybrid) - 1)) if se else 0.0
+            lower = mean_delta - t_quantile(0.95, len(delta_hybrid) - 1) * se
+            family_ni.append({
+                "dataset": dataset,
+                "mode": mode,
+                "mean_delta_vs_hybrid": mean_delta,
+                "epsilon": 0.010,
+                "ci_lower_bound_95": float(lower),
+                "raw_p_value_ni": raw_ni,
+            })
+            full[dataset][mode] = {"n_queries": len(rows)}
+    dense_adjusted = holm([row["raw_p_value"] for row in family_dense])
+    ni_adjusted = holm([row["raw_p_value_ni"] for row in family_ni])
+    for row, adjusted in zip(family_dense, dense_adjusted):
+        row["holm_adjusted_p_value"] = adjusted
+        row["significant_after_correction"] = bool(adjusted < 0.05)
+    for row, adjusted in zip(family_ni, ni_adjusted):
+        row["holm_adjusted_p_value_ni"] = adjusted
+        row["non_inferiority_established"] = bool(
+            adjusted < 0.05 and row["ci_lower_bound_95"] > -row["epsilon"]
+        )
+    result = {
+        "full_per_run_statistics": full,
+        "family_1_dense_improvement_holm": family_dense,
+        "family_2_non_inferiority_holm": family_ni,
+    }
+    write_json(ROOT / "results/statistics/statistical_analysis.json", result)
+    return result
+
+
+def main() -> None:
+    regenerate_matched_random()
+    regenerate_verified_baselines()
+    regenerate_calibration()
+    regenerate_statistics()
+    print("RETAINED EVIDENCE REGENERATION: PASS")
 
 
 if __name__ == "__main__":

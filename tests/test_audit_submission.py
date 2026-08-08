@@ -1,220 +1,179 @@
-"""
-Tests for canonical dataset configuration, submission audit, split isolation,
-and hostile adversarial corruption fixtures.
-"""
-import pytest
-import os
-import shutil
-import tempfile
+"""Adversarial tests for the fail-closed submission auditor."""
+
+from __future__ import annotations
+
 import json
+import shutil
+from pathlib import Path
+
+import pytest
 import yaml
-import numpy as np
-import pandas as pd
 
-from psafe.audit_submission import SubmissionAuditor
-
-
-def test_canonical_config_exists():
-    assert os.path.exists("configs/paper_experiment.yaml")
-    with open("configs/paper_experiment.yaml") as f:
-        cfg = yaml.safe_load(f)
-    assert cfg["datasets"] == ["scifact", "fiqa", "nfcorpus", "arguana"]
-    assert cfg["split_seeds"] == [42, 123, 2026]
-    assert "exploratory_datasets" in cfg
-    assert "statistics" in cfg
-    assert cfg["statistics"]["non_inferiority_margin"] == 0.010
+from generate_paper_tables import require
+from psafe.audit_submission import SubmissionAuditor, _hash_ids
 
 
-def test_submission_auditor_pass():
-    auditor = SubmissionAuditor()
-    assert auditor.run_full_audit() is True
+REPO = Path(__file__).resolve().parents[1]
 
 
-def test_no_split_overlap_in_validated_data():
-    datasets = ["scifact", "fiqa", "nfcorpus", "arguana"]
-    seeds = [42, 123, 2026]
-    modes = ["lite", "balanced", "high_recall"]
-
-    for ds in datasets:
-        for seed in seeds:
-            for mode in modes:
-                ap_path = os.path.join("results/validated", ds, f"seed_{seed}", mode, "action_predictions.csv")
-                if os.path.exists(ap_path):
-                    df = pd.read_csv(ap_path)
-                    if "split" in df.columns:
-                        tr = set(df[df["split"] == "train"]["query_id"])
-                        val = set(df[df["split"] == "val"]["query_id"])
-                        te = set(df[df["split"] == "test"]["query_id"])
-
-                        assert len(tr & val) == 0, f"train & val overlap in {ds}/seed_{seed}/{mode}"
-                        assert len(tr & te) == 0, f"train & test overlap in {ds}/seed_{seed}/{mode}"
-                        assert len(val & te) == 0, f"val & test overlap in {ds}/seed_{seed}/{mode}"
+def copy_file(relative: str, root: Path) -> Path:
+    source = REPO / relative
+    destination = root / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, destination)
+    return destination
 
 
-# ==============================================================================
-# ADVERSARIAL AUDITOR TESTS: Intentionally Corrupted Fixtures Must Fail the Auditor
-# ==============================================================================
+def write_config(root: Path, datasets=None, seeds=None, modes=None) -> None:
+    config = {
+        "datasets": datasets or ["scifact"],
+        "split_seeds": seeds or [42],
+        "router_modes": {name: {} for name in (modes or ["lite", "balanced", "high_recall"])},
+        "statistics": {"matched_budget_random_repetitions": 1000},
+        "calibration": {"methods": ["sigmoid_platt"]},
+        "baselines": [
+            "Dense-only", "Always-Hybrid", "Random", "Matched-Budget-Random",
+            "Dense-margin", "Dense-entropy", "Regression-only",
+            "Classification-only", "Oracle",
+        ],
+    }
+    path = root / "configs/paper_experiment.yaml"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(yaml.safe_dump(config), encoding="utf-8")
 
-@pytest.fixture
-def temp_workspace():
-    """Create a temporary sandbox copying the verified directory structure."""
-    tmp = tempfile.mkdtemp()
-    
-    # Copy essential folders
-    for folder in ["configs", "results", "paper"]:
-        if os.path.exists(folder):
-            shutil.copytree(folder, os.path.join(tmp, folder))
-            
-    yield tmp
-    shutil.rmtree(tmp, ignore_errors=True)
 
-
-def test_adversarial_corrupted_ablation_control_fails(temp_workspace):
-    """Fixture: Corrupted ablation full control (e.g. 0.64 instead of 0.6965) must FAIL."""
-    abl_file = os.path.join(temp_workspace, "results/ablations/ablation_results.json")
-    with open(abl_file) as f:
-        data = json.load(f)
-    # Corrupt SciFact Full B-P-SAFE control
-    data["scifact"]["Full B-P-SAFE"]["mean_ndcg"] = 0.6465
-    with open(abl_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
+def test_repository_audit_fails_on_unavailable_historical_split_provenance():
+    auditor = SubmissionAuditor(root_dir=str(REPO))
     assert auditor.run_full_audit() is False
-    assert any("Router Ablations" in f for f in auditor.failures)
+    assert any("Split provenance" in failure for failure in auditor.failures)
 
 
-def test_adversarial_corrupted_ablation_zero_har_fails(temp_workspace):
-    """Fixture: Degenerate collapsed ablation control (0.0% HAR) must FAIL."""
-    abl_file = os.path.join(temp_workspace, "results/ablations/ablation_results.json")
-    with open(abl_file) as f:
-        data = json.load(f)
-    data["scifact"]["Full B-P-SAFE"]["hybrid_activation_rate"] = 0.0
-    with open(abl_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
+def test_adversarial_train_test_overlap_fails(tmp_path: Path):
+    write_config(tmp_path, modes=["lite"])
+    run = tmp_path / "results/validated/scifact/seed_42/lite"
+    run.mkdir(parents=True)
+    copy_file("results/validated/scifact/seed_42/lite/per_query_metrics.csv", tmp_path)
+    test_ids = ["100"]
+    manifest = {
+        "train_query_ids": test_ids,
+        "validation_query_ids": ["validation-only"],
+        "test_query_ids": test_ids,
+        "train_query_ids_hash": _hash_ids(test_ids),
+        "validation_query_ids_hash": _hash_ids(["validation-only"]),
+        "test_query_ids_hash": _hash_ids(test_ids),
+    }
+    (run / "split_manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+    auditor = SubmissionAuditor(root_dir=str(tmp_path))
+    auditor.audit_split_provenance()
+    assert any("split overlap" in failure for failure in auditor.failures)
 
 
-def test_adversarial_matched_budget_k_mismatch_fails(temp_workspace):
-    """Fixture: Matched-budget random using K+10 queries instead of exact target K must FAIL."""
-    mb_file = os.path.join(temp_workspace, "results/baselines/matched_budget_random_results.json")
-    with open(mb_file) as f:
-        data = json.load(f)
-    data["scifact"]["42"]["balanced"]["target_k"] = 999
-    with open(mb_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
-    assert any("Baseline Suite" in f for f in auditor.failures)
+def matched_root(tmp_path: Path) -> tuple[SubmissionAuditor, Path]:
+    write_config(tmp_path, modes=["balanced", "high_recall"])
+    for mode in ("balanced", "high_recall"):
+        copy_file(f"results/validated/scifact/seed_42/{mode}/per_query_metrics.csv", tmp_path)
+        copy_file(f"results/validated/scifact/seed_42/{mode}/action_predictions.csv", tmp_path)
+    source = json.loads((REPO / "results/baselines/matched_budget_random_results.json").read_text(encoding="utf-8"))
+    reduced = {"scifact": {"42": source["scifact"]["42"]}}
+    path = tmp_path / "results/baselines/matched_budget_random_results.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(reduced), encoding="utf-8")
+    return SubmissionAuditor(root_dir=str(tmp_path)), path
 
 
-def test_adversarial_corrupted_calibration_brier_fails(temp_workspace):
-    """Fixture: Out-of-bounds calibration metric (Brier score > 1.0) must FAIL."""
-    cal_file = os.path.join(temp_workspace, "results/calibration/calibration_metrics.json")
-    with open(cal_file) as f:
-        data = json.load(f)
-    data["scifact"]["42"]["balanced"]["P_gain"]["brier_score"] = 1.99
-    with open(cal_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
-    assert any("Calibration Diagnostics" in f for f in auditor.failures)
+@pytest.mark.parametrize("corruption", ["repetitions", "target_k", "p_value"])
+def test_adversarial_matched_random_corruption_fails(tmp_path: Path, corruption: str):
+    auditor, path = matched_root(tmp_path)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    entry = data["scifact"]["42"]["balanced"]
+    if corruption == "repetitions":
+        entry["n_repetitions"] = 999
+    elif corruption == "target_k":
+        entry["target_k"] += 1
+    else:
+        entry["empirical_p_value"] = 0.0
+    path.write_text(json.dumps(data), encoding="utf-8")
+    auditor.audit_matched_random()
+    assert auditor.failures
 
 
-def test_adversarial_corrupted_holm_adjustment_fails(temp_workspace):
-    """Fixture: Manually lowered Holm adjusted p-value (violating step-down bound) must FAIL."""
-    stat_file = os.path.join(temp_workspace, "results/statistics/statistical_analysis.json")
-    with open(stat_file) as f:
-        data = json.load(f)
-    # Violate raw <= adjusted bound
-    data["family_1_dense_improvement_holm"][0]["holm_adjusted_p_value"] = 0.00001
-    with open(stat_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
-    assert any("Statistical & Non-Inferiority" in f for f in auditor.failures)
+def claim_root(tmp_path: Path) -> SubmissionAuditor:
+    write_config(tmp_path)
+    copy_file("paper/claim_registry.json", tmp_path)
+    copy_file("paper/manuscript.tex", tmp_path)
+    copy_file("README.md", tmp_path)
+    copy_file("results/validated/arguana/seed_42/balanced/extended_metrics.json", tmp_path)
+    return SubmissionAuditor(root_dir=str(tmp_path))
 
 
-def test_adversarial_data_split_leakage_fails(temp_workspace):
-    """Fixture: Synthetic overlap between train and test query IDs must FAIL."""
-    ap_file = os.path.join(temp_workspace, "results/validated/scifact/seed_42/balanced/action_predictions.csv")
-    df = pd.read_csv(ap_file)
-    # Introduce deliberate leakage by appending a row marked split='train' with an ID that also exists in split='test'
-    leaked_row = df.iloc[0].copy()
-    leaked_row["split"] = "train"
-    df = pd.concat([df, pd.DataFrame([leaked_row])], ignore_index=True)
-    df.to_csv(ap_file, index=False)
-    
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
-    assert any("Split Leakage" in f for f in auditor.failures)
+def test_adversarial_manuscript_number_mismatch_fails(tmp_path: Path):
+    auditor = claim_root(tmp_path)
+    manuscript = tmp_path / "paper/manuscript.tex"
+    manuscript.write_text(manuscript.read_text(encoding="utf-8").replace("0.4069", "0.9999"), encoding="utf-8")
+    auditor.audit_claim_registry_and_prose()
+    assert any("ArguAna P-SAFE value differs" in failure for failure in auditor.failures)
 
 
-def test_adversarial_matched_random_repetitions_mismatch_fails(temp_workspace):
-    """Fixture: Claiming 1000 repetitions when artifact has 100 must FAIL."""
-    mb_file = os.path.join(temp_workspace, "results/baselines/matched_budget_random_results.json")
-    with open(mb_file) as f:
-        data = json.load(f)
-    data["scifact"]["42"]["balanced"]["n_repetitions"] = 100
-    with open(mb_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
-    assert any("Baseline Suite" in f for f in auditor.failures)
+def test_adversarial_arguana_noninferiority_prose_fails(tmp_path: Path):
+    auditor = claim_root(tmp_path)
+    manuscript = tmp_path / "paper/manuscript.tex"
+    manuscript.write_text(
+        manuscript.read_text(encoding="utf-8") + "\nArguAna non-inferiority is established.\n",
+        encoding="utf-8",
+    )
+    auditor.audit_claim_registry_and_prose()
+    assert any("false ArguAna" in failure for failure in auditor.failures)
 
 
-def test_adversarial_non_inferiority_decision_mismatch_fails(temp_workspace):
-    """Fixture: Fabricating Non-Inferiority on ArguAna when adjusted p > 0.05 must FAIL."""
-    stat_file = os.path.join(temp_workspace, "results/statistics/statistical_analysis.json")
-    with open(stat_file) as f:
-        data = json.load(f)
-    # Tamper decision to True for ArguAna where adjusted p is 0.1068
-    for item in data["family_2_non_inferiority_holm"]:
-        if item["dataset"] == "arguana":
-            item["non_inferiority_established"] = True
-    with open(stat_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
-    assert any("Statistical & Non-Inferiority" in f for f in auditor.failures)
+@pytest.mark.parametrize("artifact", ["ablations", "feature_train_equals_test", "stability"])
+def test_adversarial_removed_scientific_artifact_fails(tmp_path: Path, artifact: str):
+    if artifact == "stability":
+        path = tmp_path / "results/stability/fixed_split_training_seeds.json"
+        payload = {"scifact": {"per_seed_runs": [{"mean_ndcg": 0.5}] * 10}}
+    else:
+        path = tmp_path / "results/ablations/ablation_results.json"
+        payload = {
+            "scifact": {
+                "Full B-P-SAFE": {"mean_ndcg": 0.0},
+                "split_provenance": {"train_hash": "same", "validation_hash": "same", "test_hash": "same"},
+            }
+        }
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(payload), encoding="utf-8")
+    auditor = SubmissionAuditor(root_dir=str(tmp_path))
+    auditor.audit_removed_evidence()
+    assert auditor.failures
 
 
-def test_adversarial_stability_missing_hashes_fails(temp_workspace):
-    """Fixture: Stability runs without model/action hashes must FAIL."""
-    stab_file = os.path.join(temp_workspace, "results/stability/fixed_split_training_seeds.json")
-    with open(stab_file) as f:
-        data = json.load(f)
-    # Remove model hashes
-    for r in data["scifact"]["per_seed_runs"]:
-        r.pop("model_hash", None)
-    with open(stab_file, "w") as f:
-        json.dump(data, f, indent=4)
-        
-    auditor = SubmissionAuditor(root_dir=temp_workspace)
-    assert auditor.run_full_audit() is False
-    assert any("Training Stability" in f for f in auditor.failures)
+def test_adversarial_baseline_fallback_values_fail(tmp_path: Path):
+    write_config(tmp_path, modes=["balanced"])
+    source_path = copy_file("results/validated/scifact/seed_42/balanced/baseline_results.json", tmp_path)
+    source = json.loads(source_path.read_text(encoding="utf-8"))
+    compiled = {"scifact": {"42": source}}
+    compiled["scifact"]["42"]["Dense-margin"]["mean_latency"] = 400.0
+    compiled["scifact"]["42"]["Dense-margin"]["hybrid_activation"] = 0.5
+    path = tmp_path / "results/baselines/comprehensive_baseline_results.json"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(compiled), encoding="utf-8")
+    auditor = SubmissionAuditor(root_dir=str(tmp_path))
+    auditor.audit_verified_baselines()
+    assert auditor.failures
 
 
-def test_feature_ablation_distinct_from_full():
-    """Verify that restricted feature group models produce distinct outputs from Full model."""
-    abl_file = "results/ablations/ablation_results.json"
-    assert os.path.exists(abl_file)
-    with open(abl_file) as f:
-        data = json.load(f)
-        
-    for ds in ["scifact", "fiqa", "nfcorpus", "arguana"]:
-        if ds in data:
-            full_entry = data[ds].get("Full B-P-SAFE", {})
-            query_entry = data[ds].get("Feature: Query Only", {})
-            assert "mean_ndcg" in full_entry
-            assert "mean_ndcg" in query_entry
-            # Restricted query-only model produces distinct routing quality from Full
-            assert query_entry["mean_ndcg"] != full_entry["mean_ndcg"]
+def test_table_missing_key_raises_instead_of_zero():
+    with pytest.raises(KeyError):
+        require({"dense_ndcg": 0.5}, "psafe_ndcg", "corrupted table fixture")
 
+
+def test_adversarial_calibration_methodology_mismatch_fails(tmp_path: Path):
+    write_config(tmp_path, modes=["balanced", "high_recall"])
+    copy_file("results/calibration/calibration_metrics.json", tmp_path)
+    manuscript = copy_file("paper/manuscript.tex", tmp_path)
+    text = manuscript.read_text(encoding="utf-8").replace(
+        "internal cross-validated sigmoid calibration on the training split",
+        "calibration is fitted strictly on validation",
+    )
+    manuscript.write_text(text, encoding="utf-8")
+    auditor = SubmissionAuditor(root_dir=str(tmp_path))
+    auditor.audit_calibration()
+    assert any("methodology contradicts" in failure for failure in auditor.failures)

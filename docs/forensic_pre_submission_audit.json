@@ -1,0 +1,45 @@
+{
+  "frozen_commit": "8277a380c7309a12f094d1f9fde0db58b6951ca7",
+  "verdict": "NOT_SUBMISSION_READY",
+  "valid": [
+    "36 primary per-query result directories",
+    "eight executed baseline artifacts",
+    "1000-allocation matched-budget random analysis",
+    "held-out calibration diagnostics",
+    "paired statistics and Holm-adjusted non-inferiority"
+  ],
+  "invalid": [
+    "test-derived synthetic split feature matrices",
+    "feature-group ablations based on synthetic matrices",
+    "copied-metric 10-training-seed stability",
+    "test-proxy BM25-disagreement baseline",
+    "fallback-valued cost-only and missing baselines"
+  ],
+  "stale": [
+    "10-training-seed manuscript claim",
+    "12-baseline completeness claim",
+    "100-repetition matched-random prose",
+    "validation-fitted calibration prose",
+    "ablation/stability/baseline figures and compiled PDFs"
+  ],
+  "unsupported": [
+    "mechanically re-proven historical split disjointness",
+    "fixed-split repeated-fitting variance",
+    "causal feature importance",
+    "universal router superiority"
+  ],
+  "verification": {
+    "adversarial_tests": "13 passed",
+    "full_pytest": "63 passed, 1 warning",
+    "python": "3.11.9",
+    "torch": "2.11.0+cu128",
+    "cuda_available": true,
+    "gpu": "NVIDIA GeForce RTX 5070 Ti",
+    "submission_audit": "FAIL",
+    "submission_audit_failed_gate": "split_provenance",
+    "figures_regenerated": true,
+    "figures_regenerated_count": 8,
+    "manuscript_pdf_regenerated": false
+  },
+  "blocking_reason": "Historical primary runs lack explicit train and validation query IDs; the LaTeX manuscript PDF also cannot be rebuilt without a LaTeX toolchain."
+}

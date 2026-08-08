@@ -24,6 +24,7 @@ def load_config(config_path: str) -> dict:
 import time
 import numpy as np
 import json
+import hashlib
 from psafe.router import BPSafeRouter
 from psafe.actions import Action, ACTION_NAMES
 from psafe.evaluation import calculate_sensitivity_splits, analyze_sensitivity, EvaluationManager
@@ -144,7 +145,29 @@ def run_experiment(config: dict, dataset: str, profile: str, mode: str, seed: in
     dense_ndcg = action_ndcg[Action.A0_DENSE.value]
     print(f"   Dense mean nDCG@10: {np.mean(dense_ndcg):.4f}")
     
-    split = create_stratified_split(dense_ndcg, train_ratio=0.4, val_ratio=0.1, test_ratio=0.5)
+    split = create_stratified_split(
+        dense_ndcg,
+        train_ratio=0.4,
+        val_ratio=0.1,
+        test_ratio=0.5,
+        seed=seed,
+    )
+
+    split_manifest = {
+        "dataset": dataset,
+        "seed": seed,
+        "mode": mode,
+        "train_query_ids": sorted(str(data.query_ids[i]) for i in split.train_idx),
+        "validation_query_ids": sorted(str(data.query_ids[i]) for i in split.val_idx),
+        "test_query_ids": sorted(str(data.query_ids[i]) for i in split.test_idx),
+    }
+    for split_name in ("train", "validation", "test"):
+        ids = split_manifest[f"{split_name}_query_ids"]
+        split_manifest[f"{split_name}_query_ids_hash"] = hashlib.sha256(
+            "\n".join(ids).encode("utf-8")
+        ).hexdigest()
+    with open(os.path.join(mode_dir, "metrics", "split_manifest.json"), "w", encoding="utf-8") as f:
+        json.dump(split_manifest, f, indent=2)
     
     train_data = {
         'features': np.array([features[i].to_array(FEATURE_NAMES) for i in split.train_idx]),

@@ -1,29 +1,30 @@
+% Sources: results/validated and configs/paper_experiment.yaml
+% Evidence SHA256: c1575551aceacc9faef4136ef11cdb5a589b0118a66cc3d6447e64b16b3cfb7d
 \begin{table*}[t]
 \centering
-\caption{Primary Seed-42 performance across four BEIR datasets. All runs use identical candidate pools (Dense $k=50$, BM25 $k=100$, Graph $k=5$, CrossEncoder top-100 reranking). Latency includes feature extraction, router decision, and selected retrieval action.}
+\caption{Seed-42 endpoint quality and measured end-to-end latency trade-offs. LS is relative to always-on Deep Hybrid; HGR is not applicable when Hybrid does not improve on Dense and is reported as 0.}
 \label{tab:main_results}
 \scriptsize
 \setlength{\tabcolsep}{3.2pt}
-\begin{tabular}{llrrrrrrrrr}
+\begin{tabular}{llrrrrrrrr}
 \toprule
-Dataset & Mode & Dense & Hybrid & B-P-SAFE & Lat. (ms) & LS & HAR & HA & RC & OGC \\
+Dataset & Mode & Dense & Hybrid & B-P-SAFE & $\Delta_D$ & $\Delta_H$ & LS & HAR & HGR \\
 \midrule
-SciFact & Balanced & 0.6466 & 0.7330 & 0.6965 & 467.1 & 34.3\% & 63.8\% & 0.0028 & 0.623 & 0.417 \\
- & High recall & 0.6466 & 0.7330 & 0.7023 & 486.2 & 31.6\% & 66.4\% & 0.0028 & 0.667 & 0.465 \\
- & Lite & 0.6466 & 0.7330 & 0.6466 & 18.5 & 97.4\% & 0.0\% & 0.0411 & 0.000 & 0.000 \\
-\addlinespace[2pt]
-FiQA & Balanced & 0.4085 & 0.4327 & 0.4217 & 499.1 & 43.2\% & 45.8\% & 0.0488 & 0.510 & 0.163 \\
- & High recall & 0.4085 & 0.4327 & 0.4285 & 632.1 & 28.0\% & 64.0\% & 0.0401 & 0.655 & 0.246 \\
- & Lite & 0.4085 & 0.4327 & 0.4085 & 181.2 & 79.4\% & 0.0\% & 0.0791 & 0.000 & 0.000 \\
-\addlinespace[2pt]
-NFCorpus & Balanced & 0.3339 & 0.3632 & 0.3579 & 392.7 & 45.6\% & 54.9\% & 0.0118 & 0.747 & 0.399 \\
- & High recall & 0.3339 & 0.3632 & 0.3626 & 574.3 & 20.4\% & 79.6\% & 0.0056 & 0.893 & 0.476 \\
- & Lite & 0.3339 & 0.3632 & 0.3339 & 7.2 & 99.0\% & 0.0\% & 0.0457 & 0.000 & 0.000 \\
-\addlinespace[2pt]
-ArguAna & Balanced & 0.3946 & 0.3915 & 0.4069 & 400.4 & 66.1\% & 15.0\% & 0.1847 & 0.190 & 0.098 \\
- & High recall & 0.3946 & 0.3915 & 0.4064 & 469.1 & 60.3\% & 22.8\% & 0.1736 & 0.258 & 0.093 \\
- & Lite & 0.3946 & 0.3915 & 0.3946 & 265.7 & 77.5\% & 0.0\% & 0.2036 & 0.000 & 0.000 \\
-\addlinespace[2pt]
+SciFact & Lite & 0.6466 & 0.7330 & 0.6466 & +0.0000 & -0.0865 & 97.4\% & 0.0\% & 0.000 \\
+SciFact & Balanced & 0.6466 & 0.7330 & 0.6965 & +0.0499 & -0.0365 & 34.3\% & 63.8\% & 0.577 \\
+SciFact & High recall & 0.6466 & 0.7330 & 0.7023 & +0.0557 & -0.0308 & 31.6\% & 66.4\% & 0.644 \\
+\addlinespace[1pt]
+FiQA & Lite & 0.4085 & 0.4327 & 0.4085 & +0.0000 & -0.0243 & 79.4\% & 0.0\% & 0.000 \\
+FiQA & Balanced & 0.4085 & 0.4327 & 0.4217 & +0.0132 & -0.0111 & 43.2\% & 45.8\% & 0.544 \\
+FiQA & High recall & 0.4085 & 0.4327 & 0.4285 & +0.0200 & -0.0043 & 28.0\% & 64.0\% & 0.823 \\
+\addlinespace[1pt]
+NFCorpus & Lite & 0.3339 & 0.3632 & 0.3339 & +0.0000 & -0.0293 & 99.0\% & 0.0\% & 0.000 \\
+NFCorpus & Balanced & 0.3339 & 0.3632 & 0.3579 & +0.0240 & -0.0053 & 45.6\% & 54.9\% & 0.819 \\
+NFCorpus & High recall & 0.3339 & 0.3632 & 0.3626 & +0.0287 & -0.0006 & 20.4\% & 79.6\% & 0.978 \\
+\addlinespace[1pt]
+ArguAna & Lite & 0.3946 & 0.3915 & 0.3946 & +0.0000 & +0.0030 & 77.5\% & 0.0\% & 0.000 \\
+ArguAna & Balanced & 0.3946 & 0.3915 & 0.4069 & +0.0123 & +0.0154 & 66.1\% & 15.0\% & 0.000 \\
+ArguAna & High recall & 0.3946 & 0.3915 & 0.4064 & +0.0118 & +0.0148 & 60.3\% & 22.8\% & 0.000 \\
 \bottomrule
 \end{tabular}
 \end{table*}
