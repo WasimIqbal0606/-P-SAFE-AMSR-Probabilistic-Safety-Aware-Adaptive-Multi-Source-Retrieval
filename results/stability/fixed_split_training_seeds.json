@@ -46,8 +46,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -56,8 +56,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -66,8 +66,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -76,8 +76,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -86,8 +86,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -96,8 +96,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -106,8 +106,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -116,8 +116,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -126,8 +126,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             },
             {
@@ -136,8 +136,8 @@
                 "mean_latency": 467.1254671097574,
                 "hybrid_activation_rate": 0.6381578947368421,
                 "delta_vs_dense": 0.04991103378594486,
-                "model_hash": "d83cf457596b63c3",
-                "action_vector_hash": "f563a02731d55f8b",
+                "model_hash": "1b6474fc8ad6b1cd",
+                "action_vector_hash": "7af4799ef880494e",
                 "model_deterministic": true
             }
         ],
@@ -202,8 +202,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -212,8 +212,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -222,8 +222,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -232,8 +232,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -242,8 +242,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -252,8 +252,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -262,8 +262,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -272,8 +272,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -282,8 +282,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             },
             {
@@ -292,8 +292,8 @@
                 "mean_latency": 499.1296067703157,
                 "hybrid_activation_rate": 0.4584615384615385,
                 "delta_vs_dense": 0.013223932533022342,
-                "model_hash": "803aac6343675e72",
-                "action_vector_hash": "8bffbf88a5b1e8bb",
+                "model_hash": "9ef71e33bf5187b5",
+                "action_vector_hash": "f8779316f4d6f617",
                 "model_deterministic": true
             }
         ],
@@ -358,8 +358,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -368,8 +368,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -378,8 +378,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -388,8 +388,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -398,8 +398,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -408,8 +408,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -418,8 +418,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -428,8 +428,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -438,8 +438,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             },
             {
@@ -448,8 +448,8 @@
                 "mean_latency": 392.7437895050209,
                 "hybrid_activation_rate": 0.5493827160493827,
                 "delta_vs_dense": 0.024022803732465903,
-                "model_hash": "bc98a8988d38369f",
-                "action_vector_hash": "e7bc4bd9b255bce8",
+                "model_hash": "b05fd745d75dd4d0",
+                "action_vector_hash": "d9ffbd3108fe5390",
                 "model_deterministic": true
             }
         ],
@@ -514,8 +514,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -524,8 +524,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -534,8 +534,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -544,8 +544,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -554,8 +554,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -564,8 +564,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -574,8 +574,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -584,8 +584,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -594,8 +594,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             },
             {
@@ -604,8 +604,8 @@
                 "mean_latency": 400.4297539650821,
                 "hybrid_activation_rate": 0.1501416430594901,
                 "delta_vs_dense": 0.012330220542749959,
-                "model_hash": "2caa9530edc8bcae",
-                "action_vector_hash": "0657bb5a737eefa4",
+                "model_hash": "435a9956fd472eb8",
+                "action_vector_hash": "07b4947513535464",
                 "model_deterministic": true
             }
         ],

@@ -1,0 +1,16 @@
+{
+    "dataset": "arguana",
+    "seed": 2026,
+    "mode": "high_recall",
+    "n_train": 560,
+    "n_val": 140,
+    "n_test": 706,
+    "train_features_hash": "d1cd2e0664d7dd6e",
+    "val_features_hash": "c3f8c3bb0dba8c36",
+    "test_features_hash": "d20096077f989eb4",
+    "train_query_ids_hash": "95bc8ea7138476d9",
+    "val_query_ids_hash": "0b376cd8a1ddd98b",
+    "test_query_ids_hash": "3f59fa1e8e22d3a0",
+    "zero_query_overlap": true,
+    "zero_feature_matrix_overlap": true
+}

@@ -1,0 +1,16 @@
+{
+    "dataset": "nfcorpus",
+    "seed": 123,
+    "mode": "high_recall",
+    "n_train": 128,
+    "n_val": 33,
+    "n_test": 162,
+    "train_features_hash": "1076f6484b2a0e5b",
+    "val_features_hash": "e0da125d85b737f2",
+    "test_features_hash": "e9ac83c5e4ca9c7d",
+    "train_query_ids_hash": "7c3700cd8752aaa4",
+    "val_query_ids_hash": "b8411322cc65acf0",
+    "test_query_ids_hash": "4a799770a1a05919",
+    "zero_query_overlap": true,
+    "zero_feature_matrix_overlap": true
+}

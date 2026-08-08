@@ -41,6 +41,9 @@ def compute_file_hash(filepath: str) -> str:
 
 class SubmissionAuditor:
     def __init__(self, config_path: str = "configs/paper_experiment.yaml", root_dir: str = "."):
+        # Handle case where root_dir is passed as first positional arg or keyword
+        if os.path.isdir(config_path) and not config_path.endswith(".yaml") and not config_path.endswith(".yml"):
+            root_dir, config_path = config_path, "configs/paper_experiment.yaml"
         self.root_dir = root_dir
         self.config_path = os.path.join(root_dir, config_path) if not os.path.isabs(config_path) else config_path
         self.config = {}

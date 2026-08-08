@@ -401,7 +401,7 @@ def run_router_ablations(validated_data: Dict, out_dir: str = "results/ablations
     ablation_summary = {}
     
     print("\n" + "="*80)
-    print("PHASE 4D: Running Router Component and Feature Ablations...")
+    print("PHASE 4D: Running Router Component and Feature Ablations (Genuine Retrained Feature Groups)...")
     print("="*80)
     
     for ds in CANONICAL_DATASETS:
@@ -412,12 +412,25 @@ def run_router_ablations(validated_data: Dict, out_dir: str = "results/ablations
             
         df_pq = entry["per_query"]
         df_ap = entry["predictions"]
+        val_dir = os.path.join("results/validated", ds, f"seed_{PRIMARY_SEED}", "balanced")
+        
+        tr_npz = np.load(os.path.join(val_dir, "train_features.npz"))
+        val_npz = np.load(os.path.join(val_dir, "val_features.npz"))
+        te_npz = np.load(os.path.join(val_dir, "test_features.npz"))
         
         abl_results = evaluate_ablation_matrix_from_data(
             df_ap=df_ap,
             df_pq=df_pq,
             em=entry["metrics"],
-            mode="balanced"
+            mode="balanced",
+            train_features=tr_npz["features"],
+            train_delta=tr_npz["delta_ndcg"],
+            train_latency=tr_npz["latency"],
+            train_harm=tr_npz["harm"],
+            train_gain=tr_npz["gain"],
+            val_features=val_npz["features"],
+            val_delta=val_npz["delta_ndcg"],
+            test_features=te_npz["features"],
         )
         
         clean_abl = {}
@@ -428,6 +441,8 @@ def run_router_ablations(validated_data: Dict, out_dir: str = "results/ablations
                 "hybrid_activation_rate": v["hybrid_activation_rate"],
                 "delta_vs_full": v.get("delta_vs_full", 0.0),
                 "harm_avoidance": v["harm_avoidance"],
+                "model_hash": v.get("model_hash", ""),
+                "action_vector_hash": v.get("action_vector_hash", ""),
             }
             print(f"[{ds} | Ablation: {k}] nDCG: {v['mean_ndcg']:.4f} (Delta vs Full: {v.get('delta_vs_full', 0.0):+.4f}) | HAR: {v['hybrid_activation_rate']*100:.1f}% | Lat: {v['mean_latency']:.1f}ms")
             
@@ -457,6 +472,11 @@ def run_stability_experiments(validated_data: Dict, out_dir: str = "results/stab
             
         df_pq = entry["per_query"]
         df_ap = entry["predictions"]
+        val_dir = os.path.join("results/validated", ds, f"seed_{PRIMARY_SEED}", "balanced")
+        
+        tr_npz = np.load(os.path.join(val_dir, "train_features.npz"))
+        val_npz = np.load(os.path.join(val_dir, "val_features.npz"))
+        te_npz = np.load(os.path.join(val_dir, "test_features.npz"))
         
         n_test = len(df_pq)
         query_ids = [str(q) for q in df_pq["query_id"]]
@@ -464,28 +484,19 @@ def run_stability_experiments(validated_data: Dict, out_dir: str = "results/stab
         hybrid_ndcg = df_pq["hybrid_ndcg"].values
         hybrid_lat = float(entry["metrics"].get("best_hybrid_latency", 750.0))
         
-        # Build features for training/val/test splits
-        X_mock = np.zeros((n_test, len(FEATURE_NAMES)))
-        if "pred_delta" in df_ap.columns:
-            X_mock[:, FEATURE_NAMES.index("dense_score_gap_1_5")] = df_ap["pred_delta"].values
-            X_mock[:, FEATURE_NAMES.index("dense_entropy_norm")] = 0.5
-            X_mock[:, FEATURE_NAMES.index("bm25_dense_overlap_jaccard_10")] = 0.3
-            X_mock[:, FEATURE_NAMES.index("lexical_specificity_score")] = 0.4
-            X_mock[:, FEATURE_NAMES.index("graph_degree_mean")] = 2.0
-            
         primary_ndcg = float(entry["metrics"].get("psafe_ndcg", np.mean(df_pq["psafe_ndcg"].values)))
         primary_lat = float(entry["metrics"].get("psafe_latency", 467.1))
         primary_har = float(entry["metrics"].get("hybrid_activation_rate", 0.638))
         
         stab = run_fixed_split_training_seed_evaluation(
-            train_features=X_mock,
-            train_delta=hybrid_ndcg - dense_ndcg,
-            train_latency=np.full(n_test, hybrid_lat),
-            train_harm=(hybrid_ndcg < dense_ndcg - 0.01).astype(int),
-            train_gain=(hybrid_ndcg > dense_ndcg + 0.05).astype(int),
-            val_features=X_mock,
-            val_delta=hybrid_ndcg - dense_ndcg,
-            test_features=X_mock,
+            train_features=tr_npz["features"],
+            train_delta=tr_npz["delta_ndcg"],
+            train_latency=tr_npz["latency"],
+            train_harm=tr_npz["harm"],
+            train_gain=tr_npz["gain"],
+            val_features=val_npz["features"],
+            val_delta=val_npz["delta_ndcg"],
+            test_features=te_npz["features"],
             test_dense_ndcg=dense_ndcg,
             test_hybrid_ndcg=hybrid_ndcg,
             test_hybrid_lat=np.full(n_test, hybrid_lat),
@@ -517,6 +528,7 @@ def run_stability_experiments(validated_data: Dict, out_dir: str = "results/stab
         
     with open(os.path.join(out_dir, "fixed_split_training_seeds.json"), "w") as f:
         json.dump(stability_results, f, indent=4)
+    print(f"Saved stability results to {out_dir}/fixed_split_training_seeds.json")
     print(f"Saved stability results to {out_dir}/fixed_split_training_seeds.json")
     return stability_results
 

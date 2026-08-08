@@ -333,30 +333,36 @@ def evaluate_ablation_matrix_from_data(
         raise ValueError(f"CRITICAL ABLATION ERROR: Full B-P-SAFE ({full_abl_ndcg:.5f}) != Primary P-SAFE ({full_ndcg:.5f})")
         
     # 2. Genuine Feature-group ablations
-    # If explicit feature matrices are provided, use them; otherwise extract from available per-query signals
+    # Use real feature matrices from npz files if not passed directly
     n_test = len(df_pq)
     dense_ndcg = df_pq["dense_ndcg"].values
     hybrid_ndcg = df_pq["hybrid_ndcg"].values
     query_ids = [str(q) for q in df_pq["query_id"]]
     
     if test_features is None:
-        # Construct feature matrix from df_ap and df_pq columns
-        X_mock = np.zeros((n_test, len(FEATURE_NAMES)))
-        if "pred_delta" in df_ap.columns:
-            X_mock[:, FEATURE_NAMES.index("dense_score_gap_1_5")] = df_ap["pred_delta"].values
-            X_mock[:, FEATURE_NAMES.index("dense_entropy_norm")] = 0.5
-            X_mock[:, FEATURE_NAMES.index("bm25_dense_overlap_jaccard_10")] = 0.3
-            X_mock[:, FEATURE_NAMES.index("lexical_specificity_score")] = 0.4
-            X_mock[:, FEATURE_NAMES.index("graph_degree_mean")] = 2.0
+        dataset_name = em.get("dataset_name", "scifact")
+        val_dir = os.path.join("results/validated", dataset_name, "seed_42", mode)
+        tr_npz_path = os.path.join(val_dir, "train_features.npz")
+        val_npz_path = os.path.join(val_dir, "val_features.npz")
+        te_npz_path = os.path.join(val_dir, "test_features.npz")
+        
+        if os.path.exists(tr_npz_path) and os.path.exists(val_npz_path) and os.path.exists(te_npz_path):
+            tr_npz = np.load(tr_npz_path)
+            val_npz = np.load(val_npz_path)
+            te_npz = np.load(te_npz_path)
             
-        test_features = X_mock
-        train_features = X_mock
-        val_features = X_mock
-        train_delta = hybrid_ndcg - dense_ndcg
-        val_delta = hybrid_ndcg - dense_ndcg
-        train_latency = np.full(n_test, hybrid_lat)
-        train_harm = (hybrid_ndcg < dense_ndcg - 0.01).astype(int)
-        train_gain = (hybrid_ndcg > dense_ndcg + 0.05).astype(int)
+            train_features = tr_npz["features"]
+            train_delta = tr_npz["delta_ndcg"]
+            train_latency = tr_npz["latency"]
+            train_harm = tr_npz["harm"]
+            train_gain = tr_npz["gain"]
+            
+            val_features = val_npz["features"]
+            val_delta = val_npz["delta_ndcg"]
+            
+            test_features = te_npz["features"]
+        else:
+            raise FileNotFoundError(f"Real split feature matrices missing in {val_dir}. Run generate_split_features.py first.")
         
     feature_mapping = {
         "Feature: Disagreement Only": "disagreement_only",

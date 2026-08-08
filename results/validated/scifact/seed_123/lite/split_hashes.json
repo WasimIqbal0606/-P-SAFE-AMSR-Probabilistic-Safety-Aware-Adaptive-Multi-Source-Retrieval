@@ -1,0 +1,16 @@
+{
+    "dataset": "scifact",
+    "seed": 123,
+    "mode": "lite",
+    "n_train": 118,
+    "n_val": 30,
+    "n_test": 152,
+    "train_features_hash": "06ff35eb04cde138",
+    "val_features_hash": "d5264843d1b89c8b",
+    "test_features_hash": "3fad1575e244cf75",
+    "train_query_ids_hash": "2d30912f8240209f",
+    "val_query_ids_hash": "debb0c881788fae1",
+    "test_query_ids_hash": "27dc6c1efb205f92",
+    "zero_query_overlap": true,
+    "zero_feature_matrix_overlap": true
+}

@@ -1,0 +1,16 @@
+{
+    "dataset": "fiqa",
+    "seed": 2026,
+    "mode": "lite",
+    "n_train": 258,
+    "n_val": 65,
+    "n_test": 325,
+    "train_features_hash": "6cc5619141be43ac",
+    "val_features_hash": "f86541e529850586",
+    "test_features_hash": "886c1fdea4ba4158",
+    "train_query_ids_hash": "cf38a2d6f4f41a53",
+    "val_query_ids_hash": "2d22055437c9b7a7",
+    "test_query_ids_hash": "6faf456dc17caca9",
+    "zero_query_overlap": true,
+    "zero_feature_matrix_overlap": true
+}
